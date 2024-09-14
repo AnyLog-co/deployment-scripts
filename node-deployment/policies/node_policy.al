@@ -48,7 +48,7 @@ set policy new_policy [!node_type][rest_port] = !anylog_rest_port.int
 if !anylog_broker_port then set policy new_policy [!node_type][broker_port] = !anylog_broker_port.int
 
 :cluster-info:
-# if !node_type == operator then set policy new_policy [!node_type][main] = !operator_main.bool
+if !node_type == operator then set policy new_policy [!node_type][main] = !operator_main.bool
 if !node_type == operator and !cluster_id then set policy new_policy [!node_type][cluster] = !cluster_id
 if !node_type == operator and not !cluster_id then goto operator-cluster-error
 
