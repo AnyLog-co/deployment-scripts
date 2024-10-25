@@ -172,6 +172,8 @@ if $NOSQL_USER then nosql_user = $NOSQL_USER
 if $NOSQL_PASSWD then nosql_passwd = $NOSQL_PASSWD
 
 :blockchain:
+## Createing a new contract run:
+## contract = blockchain deploy contract where  platform = optimism and public_key = !public_key
 blockchain_sync = 30 seconds
 set blockchain_source = master
 set blockchain_destination = file
@@ -181,7 +183,7 @@ chain_id = 11155420
 public_key = 0xdf29075946610ABD4FA2761100850869dcd07Aa7
 private_key = 712be5b5827d8c111b3e57a6e529eaa9769dcde550895659e008bdcf4f893c1c
 blockchain set account info where platform = optimism and private_key = !private_key and public_key = !public_key and chain_id = !chain_id
-contract = blockchain deploy contract where  platform = optimism and public_key = !public_key
+contract = 0x9c0383ff43efdc2dbcedb9e6ef32c71b3990a712
 blockchain set account info where platform = optimism and contract = !contract
 
 
