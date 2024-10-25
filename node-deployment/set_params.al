@@ -179,7 +179,7 @@ provider = https://optimism-sepolia.infura.io/v3/532f565202744c0cb7434505859efb7
 chain_id = 11155420
 public_key = 0xdf29075946610ABD4FA2761100850869dcd07Aa7
 private_key = 712be5b5827d8c111b3e57a6e529eaa9769dcde550895659e008bdcf4f893c1c
-contract = 0x8fD816a62e8E7985154248019520915778eB4013
+contract = blockchain deploy contract where  platform = optimism and public_key = !public_key
 
 if $SYNC_TIME then sync_time = $SYNC_TIME
 if $BLOCKCHAIN_SOURCE then blockchain_source=$SOURCE
