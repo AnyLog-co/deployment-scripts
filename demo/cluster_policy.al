@@ -34,8 +34,8 @@ on error ignore
 new_policy = create policy cluster with defaults where company=!company_name and name=!cluster_name
 
 :publish-policy:
-if !debug_mode.int == 2 then thread !local_scripts/publish_policy.al
-else process !local_scripts/publish_policy.al
+if !debug_mode.int == 2 then thread !local_scripts/demo/publish_policy.al
+else process !local_scripts/demo/publish_policy.al
 
 if !error_code == 1 then goto sign-policy-error
 if !error_code == 2 then goto prepare-policy-error

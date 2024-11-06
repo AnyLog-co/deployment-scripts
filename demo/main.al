@@ -7,36 +7,39 @@ if !debug_mode.int == 1 then set debug on
 else if !debug_mode.int == 2 then set debug interactive
 else if !debug_mode.int > 2 then debug_mode=0
 
-set anylog_path = /app
-local_scripts = !anylog_path/deployment-scripts/demo
-test_dir = !anylog_path/deployment-scripts/test
 
-if $ANYLOG_PATH then set anylog_path = $ANYLOG_PATH
-else if $EDGELAKE_PATH then set anylog_path = $EDGELAKE_PATH
-if $LOCAL_SCRIPTS then set local_scripts = $LOCAL_SCRIPTS
-if $TEST_DIR then set test_dir = $TEST_DIR
+set anylog_path = $ANYLOG_PATH
+
+set local_scripts = $LOCAL_SCRIPTS
+set test_dir = $TEST_DIR
+
+#if $ANYLOG_PATH then set anylog_path = $ANYLOG_PATH
+#else if $EDGELAKE_PATH then set anylog_path = $EDGELAKE_PATH
+#if $LOCAL_SCRIPTS then set local_scripts = $LOCAL_SCRIPTS
+#if $TEST_DIR then set test_dir = $TEST_DIR
 
 :set-params:
 if !debug_mode.int > 0 then print "Set params"
-if !debug_mode.int == 2 then thread !local_scripts/set_params.al
-else process !local_scripts/set_params.al
+if !debug_mode.int == 2 then thread !local_scripts/demo/set_params.al
+else process !local_scripts/demo/set_params.al
 
 :networking:
-if !debug_mode.int == 2 then thread !local_scripts/connect_networking.al
-else process !local_scripts/connect_networking.al
+if !debug_mode.int == 2 then thread !local_scripts/demo/connect_networking.al
+else thread !local_scripts/demo/connect_networking.al
+
 
 :blockchain-seed:
 if !debug_mode.int > 0 then print "run blockchain seed"
 on error call blockchain-seed-error
-blockchain seed from !ledger_conn
+if !node_type != master then blockchain seed from !ledger_conn
 
 :declare-cluster:
-if !debug_mode.int == 2 then thread !local_scripts/cluster_policy.al
-else process !local_scripts/cluster_policy.al
+if !debug_mode.int == 2 then thread !local_scripts/demo/cluster_policy.al
+else thread !local_scripts/demo/cluster_policy.al
 
 :declare-operator:
-if !debug_mode.int == 2 then thread !local_scripts/node_policy.al
-else process !local_scripts/node_policy.al
+if !node_type != master then if !debug_mode.int == 2 then thread !local_scripts/demo/node_policy.al
+else thread !local_scripts/demo/node_policy.al
 
 :connect-database:
 if !debug_mode.int > 0 then print "Connecting to databases"
@@ -54,21 +57,21 @@ if !debug_mode.int > 0 then print "Set schedule processes"
 run scheduler 1
 
 on error call blockchain-sync-error
-<run blockchain sync where
+<if !node_type != master then run blockchain sync where
     source=!blockchain_source and
     time=!blockchain_sync and
     dest=!blockchain_destination and
     connection=!ledger_conn>
 
 :operator-processes:
-if !debug_mode.int == 2 then thread !local_scripts/config_threshold.al
-else process !local_scripts/config_threshold.al
+if node_type != master then if !debug_mode.int == 2 then thread !local_scripts/demo/config_threshold.al
+else thread !local_scripts/demo/config_threshold.al
 
 on error call run-streamer-error
 run streamer
 
 on error goto operator-error
-if not !operator_id then goto operator-id-error
+if not !operator_id and !node_type != master then goto operator-id-error
 <if !operator_id then run operator where
     create_table=!create_table and update_tsd_info=!update_tsd_info and compress_json=!compress_file and
     compress_sql=!compress_sql and archive_json=!archive and archive_sql=!archive_sql and
@@ -77,7 +80,7 @@ if not !operator_id then goto operator-id-error
 :enable-mqtt:
 on error ignore
 if !enable_mqtt == true and !debug_mode == 2 then thread !anylog_path/deployment-scripts/demo-scripts/basic_msg_client.al
-else process !anylog_path/deployment-scripts/demo-scripts/basic_msg_client.al
+else thread !anylog_path/deployment-scripts/demo-scripts/basic_msg_client.al
 
 :end-script:
 if !debug_mode.int > 0 then print "Validate everything is running as expected"
