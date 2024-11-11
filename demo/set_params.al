@@ -78,8 +78,8 @@ do anylog_server_port = 32048
 do anylog_rest_port = 32049
 
 if !node_type == operator then
-do anylog_server_port = 32148
-do anylog_rest_port = 32149
+do anylog_server_port = $ANYLOG_SERVER_PORT
+do anylog_rest_port = $ANYLOG_REST_PORT
 
 if !node_type == publisher then
 do anylog_server_port = 32248

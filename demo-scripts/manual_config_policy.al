@@ -103,15 +103,15 @@ if !monitor_nodes == true and !debug_mode.int == 2 then
 do set debug interactive
 do print "Start start monitoring policy"
 do set debug on
-do thread !anylog_path/deployment-scripts/demo-scripts/monitoring_policy.al
-else if !monitor_nodes == true then process !anylog_path/deployment-scripts/demo-scripts/monitoring_policy.al
+do thread $HOME/Github-Repos/deployment-scripts/demo-scripts/monitoring_policy.al
+else if !monitor_nodes == true then process $HOME/Github-Repos/deployment-scripts/demo-scripts/monitoring_policy.al
 
 if !enable_mqtt == true and !debug_mode.int == 2 then
 do set debug interactive
 do print "Start MQTT client process"
 do set debug on
-do thread !anylog_path/deployment-scripts/demo-scripts/basic_msg_client.al
-else if !enable_mqtt == true then process !anylog_path/deployment-scripts/demo-scripts/basic_msg_client.al
+do thread $HOME/Github-Repos/deployment-scripts/demo-scripts/basic_msg_client.al
+else if !enable_mqtt == true then process $HOME/Github-Repos/deployment-scripts/demo-scripts/basic_msg_client.al
 
 if !deploy_local_script == true and !debug_mode.int == 2 then
 do set debug interactive

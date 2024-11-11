@@ -24,12 +24,16 @@ create work directories
 
 :set-params:
 if !debug_mode.int > 0 then print "Set params"
+do process !local_scripts/set_params.al
 if !debug_mode.int == 2 then thread !local_scripts/set_params.al
-else process !local_scripts/set_params.al
+else do process !local_scripts/set_params.al
+
+set debug on
 
 :networking:
-if !debug_mode.int == 2 then process !local_scripts/connect_networking.al
-else process !local_scripts/connect_networking.al
+#if !debug_mode.int == 2 then thread !local_scripts/connect_networking.al
+#else do
+process !local_scripts/connect_networking.al
 
 :blockchain-seed:
 if !debug_mode.int > 0 then print "run blockchain seed"
@@ -38,12 +42,13 @@ blockchain seed from !ledger_conn
 
 :declare-cluster:
 if !debug_mode.int == 2 then thread !local_scripts/cluster_policy.al
-else process !local_scripts/cluster_policy.al
+else do process !local_scripts/cluster_policy.al
+
 cluster_id = blockchain get cluster bring.first [*][id]
 
 :declare-operator:
 if !debug_mode.int == 2 then thread !local_scripts/node_policy.al
-else process !local_scripts/node_policy.al
+else do process !local_scripts/node_policy.al
 operator_id = blockchain get operator bring.first [*][id]
 
 :connect-database:
@@ -70,7 +75,7 @@ on error call blockchain-sync-error
 
 :operator-processes:
 if !debug_mode.int == 2 then thread !local_scripts/config_threshold.al
-else process !local_scripts/config_threshold.al
+else do process !local_scripts/config_threshold.al
 
 on error call run-streamer-error
 run streamer

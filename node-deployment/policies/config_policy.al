@@ -87,7 +87,7 @@ if !node_type == master or !node_type == query then
     "process !local_scripts/database/deploy_database.al",
     "process !local_scripts/policies/node_policy.al",
     "run scheduler 1",
-    "if !monitor_nodes == true then process !anylog_path/deployment-scripts/demo-scripts/monitoring_policy.al",
+    "if !monitor_nodes == true then process $HOME/Github-Repos/deployment-scripts/demo-scripts/monitoring_policy.al",
     "if !deploy_local_script == true then process !local_scripts/local_script.al"
 ]>
 goto publish-policy
@@ -101,9 +101,9 @@ goto publish-policy
     "run streamer",
     "if !blockchain_source != master then run publisher where compress_json=!compress_file and compress_sql=!compress_file and blockchain=!blockchain_source and dbms_name=!dbms_file_location and table_name=!table_file_location",
     "if !blockchain_source == master then run publisher where compress_json=!compress_file and compress_sql=!compress_file and master=!ledger_conn and dbms_name=!dbms_file_location and table_name=!table_file_location",
-    "if !monitor_nodes == true then process !anylog_path/deployment-scripts/demo-scripts/monitoring_policy.al",
-    "if !enable_mqtt == true then process !anylog_path/deployment-scripts/demo-scripts/basic_msg_client.al",
-    "if !syslog_monitoring == true then process !anylog_path/deployment-scripts/demo-scripts/syslog.al",
+    "if !monitor_nodes == true then process $HOME/Github-Repos/deployment-scripts/demo-scripts/monitoring_policy.al",
+    "if !enable_mqtt == true then process $HOME/Github-Repos/eployment-scripts/demo-scripts/basic_msg_client.al",
+    "if !syslog_monitoring == true then process $HOME/Github-Repos/deployment-scripts/demo-scripts/syslog.al",
     "if !deploy_local_script == true then process !local_scripts/local_script.al"
 ]>
 goto publish-policy
@@ -121,9 +121,9 @@ goto publish-policy
     "if !operator_id and !blockchain_source != master then run operator where create_table=!create_table and update_tsd_info=!update_tsd_info and compress_json=!compress_file and compress_sql=!compress_sql and archive_json=!archive and archive_sql=!archive_sql and blockchain=!blockchain_source and policy=!operator_id and threads=!operator_threads",
     "if !operator_id and !blockchain_source == master then run operator where create_table=!create_table and update_tsd_info=!update_tsd_info and compress_json=!compress_file and compress_sql=!compress_sql and archive_json=!archive and archive_sql=!archive_sql and master_node=!ledger_conn and policy=!operator_id and threads=!operator_threads",
     "schedule name=remove_archive and time=1 day and task delete archive where days = !archive_delete",
-    "if !monitor_nodes == true then process !anylog_path/deployment-scripts/demo-scripts/monitoring_policy.al",
-    "if !enable_mqtt == true then process !anylog_path/deployment-scripts/demo-scripts/basic_msg_client.al",
-    "if !syslog_monitoring == true then process !anylog_path/deployment-scripts/demo-scripts/syslog.al",
+    "if !monitor_nodes == true then process $HOME/Github-Repos/deployment-scripts/demo-scripts/monitoring_policy.al",
+    "if !enable_mqtt == true then process $HOME/Github-Repos/deployment-scripts/demo-scripts/basic_msg_client.al",
+    "if !syslog_monitoring == true then process $HOME/Github-Repos/deployment-scripts/demo-scripts/syslog.al",
     "if !deploy_local_script == true then process !local_scripts/local_script.al"
 ]>
 

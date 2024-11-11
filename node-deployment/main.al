@@ -21,10 +21,10 @@ else if !debug_mode.int > 2 then debug_mode=0
 :set-configs:
 set debug off
 set echo queue on
-set authentication off
+#set authentication off
 
 :is-edgelake:
-if !debug_mode.int > 0 then print "Check whether if an EdgeLake or AnyLog Deployment"
+if !debug_mode.int > 0 then do print "Check whether if an EdgeLake or AnyLog Deployment"
 
 # check whether we're running EdgeLake or AnyLog
 set is_edgelake = false
@@ -55,12 +55,15 @@ if !debug_mode.int > 0 then print "Set environment params"
 process !local_scripts/set_params.al
 
 :configure-networking:
-if !debug_mode.int > 0 then print "Configure networking"
+if !debug_mode.int == 1 then print "Configure networking"
+do process !local_scripts/connect_networking.al
 if !debug_mode.int == 2 then thread !local_scripts/connect_networking.al
-else process !local_scripts/connect_networking.al
+else do print "Connect networking"
+do process !local_scripts/connect_networking.al
 
 :blockchain-seed:
-if !debug_mode.int > 0 then print "Blockchain Seed"
+if !debug_mode.int == 1 then print "Blockchain Seed"
+do blockchain seed from !ledger_conn
 if !node_type == generic then goto set-license
 else if !node_type != master and !blockchain_source != master then process !local_scripts/connect_blockchain.al
 else if !node_type != master then
@@ -69,9 +72,10 @@ do blockchain seed from !ledger_conn
 do on error ignore
 
 :declare-policy:
-if !debug_mode.int > 0 then print "Declare policies"
+if !debug_mode.int == 1 then print "Declare policies"
+do process !local_scripts/policies/config_policy.al
 if !debug_mode.int == 2 then thread !local_scripts/policies/config_policy.al
-else process !local_scripts/policies/config_policy.al
+else do process !local_scripts/policies/config_policy.al
 
 :set-license:
 if !debug_mode.int > 0  then print "Set license key"

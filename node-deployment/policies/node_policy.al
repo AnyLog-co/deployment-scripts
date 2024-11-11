@@ -32,8 +32,8 @@ if !debug_mode.int > 0 then print "Check whether policy already exists based on 
 
 process !local_scripts/policies/validate_node_policy.al
 if not !is_policy and !create_policy == false then goto create-policy
-if not !is_policy and !create_policy == true then goto config-policy-error
-else goto node-info
+else if not !is_policy and !create_policy == true then goto config-policy-error
+else do goto node-info
 
 :create-policy:
 if !debug_mode.int > 0 then print "Declare new policy variables"
@@ -75,12 +75,14 @@ if !city then set policy new_policy [!node_type][city] = !city
 :publish-policy:
 if !debug_mode.int > 0 then print "Publish policy"
 
+
+# do here
 process !local_scripts/policies/publish_policy.al
-if !error_code == 1 then goto sign-policy-error
-if !error_code == 2 then goto prepare-policy-error
-if !error_code == 3 then goto declare-policy-error
+#if !error_code == 1 then goto sign-policy-error
+#if !error_code == 2 then goto prepare-policy-error
+#if !error_code == 3 then goto declare-policy-error
 set create_policy = true
-goto check-policy
+#goto check-policy
 
 :node-info:
 on error ignore
