@@ -90,6 +90,10 @@ if !country then set policy new_policy [!node_type][country] = !country
 if !state then set policy new_policy [!node_type][state] = !state
 if !city then set policy new_policy [!node_type][city] = !city
 
+if !node_type == operator and !branch then set policy new_policy [!node_type][branch]
+if !node_type == operator and !dept then set policy new_policy [!node_type][dept]
+
+
 :publish-policy:
 if !debug_mode == true then print "Publish policy"
 

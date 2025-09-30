@@ -46,6 +46,8 @@ if $LOCATION then loc = $LOCATION
 if $COUNTRY then country = $COUNTRY
 if $STATE then state = $STATE
 if $CITY then city = $CITY
+if $BRANCH then branch= $BRANCH
+if $DEPT then dept = $DEPT
 
 if !loc_info and not !loc then loc = from !loc_info bring [loc]
 if not !loc_info and not !loc then loc = 0.0, 0.0
@@ -281,7 +283,7 @@ if $OPCUA_FREQUENCY then opcua_frequency=$OPCUA_FREQUENCY
 
 :etherip-conifgs:
 set enable_etherip=false
-set set_etherip_tags=false 
+set set_etherip_tags=false
 if $ENABLE_ETHERIP == true or $ENABLE_ETHERIP == True or $ENABLE_ETHERIP == TRUE then set enable_etherip = true
 if $ETHERIP_URL then etherip_url = $ETHERIP_URL
 else if !enable_etherip and ($SIMULATOR_MODE == true or $SIMULATOR_MODE == True or $SIMULATOR_MODE == TRUE) then etherip_url=127.0.0.1
