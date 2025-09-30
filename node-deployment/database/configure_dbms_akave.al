@@ -14,9 +14,10 @@ on error goto declare-provider-error
     region = akave-network and
     endpoint_url = https://o3-rc3.akave.xyz>
 
-:create-bucket:
-on error goto create-bucket-error
-bucket create where group = branch_videos and name = deptcounts
+# we need a function to check if bucket has been created
+#:create-bucket:
+#on error goto create-bucket-error
+#bucket create where group = branch_videos and name = deptcounts
 
 :assign-logical-name:
 on error goto assign-logical-name-error
