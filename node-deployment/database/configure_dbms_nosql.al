@@ -7,6 +7,9 @@ on error ignore
 if !debug_mode == true then set debug on
 
 if !enable_nosql == false then goto blobs-archiver
+if !enable_nosql == true and !nosql_type == akave then
+do proces !local_scripts/database/configure_dbms_akave.al
+do goto end-script
 
 :connect-dbms:
 if !debug_mode == true then print "Deploy blobs database " !default_dbms
