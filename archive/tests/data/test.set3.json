@@ -1,0 +1,31 @@
+{"timestamp": "2022-03-01T14:34:30.724161Z", "file": "test.image.20200306202538150.jpeg", "class": "kizu", "bbox": [675, 358, 689, 379], "score": 0.66439, "status": "ok"}
+{"timestamp": "2022-02-25T04:37:30.724336Z", "file": "test.image.20200306202548585.jpeg", "class": "", "bbox": "", "score": -1, "status": "Nok"}
+{"timestamp": "2022-04-15T20:22:30.724465Z", "file": "test.image.20200306202537600.jpeg", "class": "kizu", "bbox": [694, 179, 710, 207], "score": 0.83051, "status": "ok"}
+{"timestamp": "2022-04-13T00:03:30.724592Z", "file": "test.image.20200306202533614.jpeg", "class": "kizu", "bbox": [66, 291, 682, 306], "score": 0.70679, "status": "ok"}
+{"timestamp": "2022-03-12T21:31:30.724714Z", "file": "test.image.20200306202547620.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "2022-04-06T21:29:30.724919Z", "file": "test.image.20200306202543730.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "2022-03-05T08:00:30.725109Z", "file": "test.image.20200306202549604.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "2022-02-20T17:30:30.725246Z", "file": "test.image.20200306202549096.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "2022-03-24T18:44:30.725374Z", "file": "test.image.20200306202534601.jpeg", "class": "kizu", "bbox": [658, 657, 674, 671], "score": 0.59605, "status": "ok"}
+{"timestamp": "2022-02-24T05:54:30.725505Z", "file": "test.image.20200306s02535591.jpeg", "class": "", "bbox": "", "score": -2, "status": "Nok"}
+{"timestamp": "2022-02-26T20:20:30.725628Z", "file": "test.image.20200306202540594.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "2022-03-08T00:34:30.725749Z", "file": "test.image.20200306202545256.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "2022-04-14T22:09:30.725870Z", "file": "test.image.20200306202546732.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "", "file": "test.image.20200306202541232.jpeg", "class": "kizu", "bbox": [657, 218, 681, 232], "score": 0.76175, "status": "ok"}
+{"timestamp": "2022-03-02T09:11:30.725990Z", "file": "test.image.20200306202547119.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "2022-03-12T20:01:30.726110Z", "file": "test.image.20200306202542589.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "2022-03-03T04:51:30.726285Z", "file": "test.image.20200306202539142.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "2022-03-04T08:38:30.726455Z", "file": "test.image.20200306202542230.jpeg", "class": "kizu", "bbox": [62d2, 607, 656, 621], "score": 0.86265, "status": "ok"}
+{"timestamp": "2022-02-22T01:01:30.726603Z", "file": "test.image.20200306202536595.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "2022-04-11T09:02:30.726736Z", "file": "test.image.20200306202539660.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "2022-03-17T01:00:30.726867Z", "file": "test.image.20200306202545740.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "", "file": "test.image.20200306202536107.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "2022-04-02T03:27:30.727095Z", "file": "test.image.20200306202541714.jpeg", "class": "kizu", "bbox": [643, 417, 668, 432], "score": 0.52102, "status": "ok"}
+{"timestamp": "2022-03-03T17:00:30.727224Z", "file": "test.image.20200306202546177.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "2022-03-21T09:36:30.727397Z", "file": "test.image.20200306202543226.jpeg", "class": "", "bbox": "", "score": -1, "status": "Nok"}
+{"timestamp": "2022-03-03T09:36:30.727569Z", "file": "test.image.20200306202544268.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "2022-02-19T22:21:30.727711Z", "file": "test.image.20200306202550118.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "2022-03-17T22:53:30.727844Z", "file": "test.image.20200306202535111.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "2022-02-20T14:27:30.727971Z", "file": "test.image.20200306202548137.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}
+{"timestamp": "2022-02-21T06:42:30.728178Z", "file": "test.image.20200306202537178.jpeg", "class": "kizu", "bbox": [703, 42, 719, 65], "score": 0.61374, "status": "ok"}
+{"timestamp": "2022-03-05T22:35:30.728318Z", "file": "test.image.20200306202544600.jpeg", "class": "", "bbox": "", "score": -1, "status": "ok"}

@@ -1,0 +1,19 @@
+==========================================================================
+Title:      1 hour increments
+Date:       2023-04-06 16:32:04.416721
+Command:    select increments(hour, 1, timestamp), parentelement, min(timestamp) as min_ts, max(timestamp) as max_ts, min(value) as min_val, max(value) as max_val, avg(value)::float(6) as avg_value, sum(value)::float(6) as sum_val, count(*) as row_count from ping_sensor where timestamp >= '2022-02-15 19:00:00' and timestamp <= '2022-02-15 20:00:00' group by parentelement
+DBMS:       test
+Include:    (percentagecpu_sensor)
+Extend:     (@table_name as table)
+Format:     table
+==========================================================================
+table                parentelement                        min_ts                     max_ts                     min_val max_val avg_value sum_val row_count 
+-------------------- ------------------------------------ -------------------------- -------------------------- ------- ------- --------- ------- --------- 
+percentagecpu_sensor 1ab3b14e-93b1-11e9-b465-d4856454f4ba 2022-02-15 19:29:51.280598 2022-02-15 19:29:51.280598   68.33   68.33     68.33   68.33         1 
+percentagecpu_sensor 62e71893-92e0-11e9-b465-d4856454f4ba 2022-02-15 19:18:52.723688 2022-02-15 19:18:52.723688   47.38   47.38     47.38   47.38         1 
+percentagecpu_sensor 68ae8bef-92e1-11e9-b465-d4856454f4ba 2022-02-15 19:33:52.375153 2022-02-15 19:33:52.375153   77.54   77.54     77.54   77.54         1 
+ping_sensor          1ab3b14e-93b1-11e9-b465-d4856454f4ba 2022-02-15 19:26:47.242941 2022-02-15 19:59:47.537468    4.26    9.27      7.55    30.2         4 
+ping_sensor          62e71893-92e0-11e9-b465-d4856454f4ba 2022-02-15 19:30:47.217171 2022-02-15 19:30:47.217171     3.5     3.5       3.5     3.5         1 
+ping_sensor          68ae8bef-92e1-11e9-b465-d4856454f4ba 2022-02-15 19:25:46.424230 2022-02-15 19:25:46.424230   28.32   28.32     28.32   28.32         1 
+ping_sensor          d515dccb-58be-11ea-b46d-d4856454f4ba 2022-02-15 19:20:46.747508 2022-02-15 19:51:46.743786   36.81   39.28    38.045   76.09         2 
+ping_sensor          f0bd0832-a81e-11ea-b46d-d4856454f4ba 2022-02-15 19:04:46.391523 2022-02-15 19:59:47.554615   15.16   30.21     22.14   66.42         3 

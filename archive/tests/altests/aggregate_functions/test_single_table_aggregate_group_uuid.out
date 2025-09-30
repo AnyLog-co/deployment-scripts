@@ -1,0 +1,14 @@
+==========================================================================
+Title:      Aggregate Summary GROUP BY UUID
+Date:       2023-04-05 22:14:01.060688
+Command:    select parentelement, min(value) as min_val, max(value) as max_val, avg(value)::float(6) as avg_value, sum(value)::float(6) as sum_val, count(*) as row_count from ping_sensor group by parentelement
+DBMS:       test
+Format:     table
+==========================================================================
+parentelement                        min_val max_val avg_value sum_val  row_count 
+------------------------------------ ------- ------- --------- -------- --------- 
+1ab3b14e-93b1-11e9-b465-d4856454f4ba     0.0    11.0  5.477433 10965.82      2002 
+62e71893-92e0-11e9-b465-d4856454f4ba     0.0     4.0   1.97175  4022.37      2040 
+68ae8bef-92e1-11e9-b465-d4856454f4ba    0.03   48.97 24.462562 48313.56      1975 
+d515dccb-58be-11ea-b46d-d4856454f4ba    0.05    49.0 25.059048 50268.45      2006 
+f0bd0832-a81e-11ea-b46d-d4856454f4ba    2.01   36.99 19.511103 38573.45      1977 

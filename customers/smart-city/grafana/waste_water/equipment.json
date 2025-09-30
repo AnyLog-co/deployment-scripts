@@ -1,0 +1,1692 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [
+        "Waste Water Plant"
+      ],
+      "targetBlank": false,
+      "title": "Menu",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
+  "panels": [
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "bdr5p5qemo5j4c"
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": null,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<p class =\"panel-title-text\"\n  style=\"\n    font-size: xx-large;\n    text-align:center;\n    height:40%;\n    bottom:0;\n    margin:0;\">Waste Water Plant</p>\n<hr\n  style=\"\n    width:40%;\n    margin-bottom: 8px;\">\n<p class =\"panel-subtitle-text\"\n  style=\"\n    font-size: large;\n    text-align:center;\n    height:60%;\n    bottom:0;\n    margin:0;\n    max-width: 100%;\">Equipment Status</p>\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "bdr5p5qemo5j4c"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 1,
+        "y": 3
+      },
+      "id": null,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<p class =\"panel-title-text\"\n  style=\"\n    font-size: large;\n    height:100%;\n    bottom:0;\n    margin:0;\n    max-width: 100%;\n    display:flex;\n    align-items:center;\n    justify-content:center;\">Moyno Channel Grinder</p>",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "bdr5p5qemo5j4c"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 7,
+        "y": 3
+      },
+      "id": null,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<p class =\"panel-title-text\"\n  style=\"\n    font-size: large;\n    height:100%;\n    bottom:0;\n    margin:0;\n    max-width: 100%;\n    display:flex;\n    align-items:center;\n    justify-content:center;\">Hydro Grit King</p>",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "bdr5p5qemo5j4c"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 13,
+        "y": 3
+      },
+      "id": null,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<p class =\"panel-title-text\"\n  style=\"\n    font-size: large;\n    height:100%;\n    bottom:0;\n    margin:0;\n    max-width: 100%;\n    display:flex;\n    align-items:center;\n    justify-content:center;\">Screw Screen</p>",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "bdr5p5qemo5j4c"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 19,
+        "y": 3
+      },
+      "id": null,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<p class =\"panel-title-text\"\n  style=\"\n    font-size: large;\n    text-align:center;\n    height:60%;\n    bottom:0;\n    margin:0;\n    max-width: 100%;\">UV Equipment</P>\n<p class = \"panel-subtitle-text\"\n  style=\"\n    text-align:center;\n    height:40%;\n    bottom:0;\n    margin:0;\n    max-width: 100%;\">Filter Output</P>\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "purple",
+                  "index": 0,
+                  "text": "NOT RUNNING"
+                },
+                "1": {
+                  "color": "blue",
+                  "index": 1,
+                  "text": "NOT RUNNING"
+                },
+                "2": {
+                  "color": "green",
+                  "index": 2,
+                  "text": "RUNNING REVERSE"
+                },
+                "3": {
+                  "color": "green",
+                  "index": 3,
+                  "text": "RUNNING FORWARD"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 1,
+        "y": 5
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Running Status$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 28
+        },
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "gF_09-E7z"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"SELECT insert_timestamp, cg_start_s, cg_fwdrev_s FROM wwp_digital ORDER BY insert_timestamp DESC limit 1\"\r\n}",
+          "query": "from(bucket: \"csobsidian's Bucket\")\r\n    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n    |> filter(fn: (r) => r._measurement == \"waterMeter\")\r\n    |> filter(fn: (r) => r.sensor_id == \"Raw\")\r\n    |> filter(fn: (r) => r._field == \"TotalToday\")\r\n    |> last()\r\n    |> map(fn: (r) => ({r with _value: r._value * 0.001}))",
+          "refId": "A",
+          "target": "cos.wwp_digital"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "enum",
+                "enumConfig": {
+                  "text": [
+                    "False",
+                    "True"
+                  ]
+                },
+                "targetField": "cg_start_s"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "cg_start_s"
+              },
+              {
+                "destinationType": "enum",
+                "enumConfig": {
+                  "text": [
+                    "False",
+                    "True"
+                  ]
+                },
+                "targetField": "cg_fwdrev_s"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "cg_fwdrev_s"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "binary": {
+              "left": "cg_start_s",
+              "operator": "*",
+              "right": "2"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "am_auger_status": false,
+              "cg_fwdrev_s": false,
+              "cg_start_s": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "am_auger_status": "Auger",
+              "am_beltpress_status": "Belt Press",
+              "am_maindrum_status": "Main Drum",
+              "am_pdb1_status": "Blower #1",
+              "am_pdb2_status": "Blower #2",
+              "am_pdb3_status": "Blower #3",
+              "am_pdb4_status": "Blower #4",
+              "am_thickenera_status": "Thickener A",
+              "am_thickenerb_status": "Thickener B",
+              "am_waterpump_status": "Water Pump",
+              "cos_wp_analog<avg>": "Total",
+              "cos_wwp<avg>": "Blower #1",
+              "gk_pmprng_s": "Pump",
+              "ss_screenrun_s": "Screw Screen"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "cg_fwdrev_s": true,
+              "cg_fwdrev_s * 2": true,
+              "cg_start_s": true,
+              "cg_start_s * 2": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Total": "Running Status"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "False": {
+                  "color": "purple",
+                  "index": 0,
+                  "text": "SYSTEM IN AUTO"
+                },
+                "True": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "SYSTEM IN HAND"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 7,
+        "y": 5
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Mode$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 28
+        },
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "gF_09-E7z"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"SELECT insert_timestamp, gk_shand_s FROM wwp_digital ORDER BY insert_timestamp DESC limit 1\"\r\n}",
+          "query": "from(bucket: \"csobsidian's Bucket\")\r\n    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n    |> filter(fn: (r) => r._measurement == \"waterMeter\")\r\n    |> filter(fn: (r) => r.sensor_id == \"Raw\")\r\n    |> filter(fn: (r) => r._field == \"TotalToday\")\r\n    |> last()\r\n    |> map(fn: (r) => ({r with _value: r._value * 0.001}))",
+          "refId": "A",
+          "target": "cos.wwp_digital"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "am_auger_status": false
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "am_auger_status": "Auger",
+              "am_beltpress_status": "Belt Press",
+              "am_maindrum_status": "Main Drum",
+              "am_pdb1_status": "Blower #1",
+              "am_pdb2_status": "Blower #2",
+              "am_pdb3_status": "Blower #3",
+              "am_pdb4_status": "Blower #4",
+              "am_thickenera_status": "Thickener A",
+              "am_thickenerb_status": "Thickener B",
+              "am_waterpump_status": "Water Pump",
+              "cos_wp_analog<avg>": "Total",
+              "cos_wwp<avg>": "Blower #1",
+              "gk_pmprng_s": "Pump",
+              "gk_shand_s": "Mode",
+              "ss_screenrun_s": "Screw Screen"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "False": {
+                  "color": "purple",
+                  "index": 0,
+                  "text": "SYSTEM IN AUTO"
+                },
+                "True": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "SYSTEM IN HAND"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 13,
+        "y": 5
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Mode$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 28
+        },
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "gF_09-E7z"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"SELECT insert_timestamp, ss_auto_s FROM wwp_digital ORDER BY insert_timestamp DESC limit 1\"\r\n}",
+          "query": "from(bucket: \"csobsidian's Bucket\")\r\n    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n    |> filter(fn: (r) => r._measurement == \"waterMeter\")\r\n    |> filter(fn: (r) => r.sensor_id == \"Raw\")\r\n    |> filter(fn: (r) => r._field == \"TotalToday\")\r\n    |> last()\r\n    |> map(fn: (r) => ({r with _value: r._value * 0.001}))",
+          "refId": "A",
+          "target": "cos.wwp_digital"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "am_auger_status": false
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "am_auger_status": "Auger",
+              "am_beltpress_status": "Belt Press",
+              "am_maindrum_status": "Main Drum",
+              "am_pdb1_status": "Blower #1",
+              "am_pdb2_status": "Blower #2",
+              "am_pdb3_status": "Blower #3",
+              "am_pdb4_status": "Blower #4",
+              "am_thickenera_status": "Thickener A",
+              "am_thickenerb_status": "Thickener B",
+              "am_waterpump_status": "Water Pump",
+              "cos_wp_analog<avg>": "Total",
+              "cos_wwp<avg>": "Blower #1",
+              "gk_pmprng_s": "Pump",
+              "gk_shand_s": "Mode",
+              "ss_auto_s": "Mode",
+              "ss_screenrun_s": "Screw Screen"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "% Kill"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 19,
+        "y": 5
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 28
+        },
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "gF_09-E7z"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"type\": \"period\",\r\n  \"time_column\": \"insert_timestamp\",\r\n  \"value_column\": \"uv_signal1_ai\",\r\n  \"functions\": [\"avg\"],\r\n  \"grafana\": {\r\n    \"format_as\": \"timeseries\"\r\n  }\r\n}",
+          "query": "from(bucket: \"csobsidian's Bucket\")\r\n    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n    |> filter(fn: (r) => r._measurement == \"waterMeter\")\r\n    |> filter(fn: (r) => r.sensor_id == \"Raw\")\r\n    |> filter(fn: (r) => r._field == \"TotalToday\")\r\n    |> last()\r\n    |> map(fn: (r) => ({r with _value: r._value * 0.001}))",
+          "refId": "A",
+          "target": "cos.wwp_analog"
+        }
+      ],
+      "title": "UV Filter #1",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "cos_wp_analog<avg>": "Total",
+              "cos_wwp<avg>": "UV Filter #1"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": -1000,
+                "result": {
+                  "index": 0,
+                  "text": "0.0 % Kill"
+                },
+                "to": 0
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "% Kill"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 21,
+        "y": 5
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 28
+        },
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "gF_09-E7z"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"type\": \"period\",\r\n  \"time_column\": \"insert_timestamp\",\r\n  \"value_column\": \"uv_signal2_ai\",\r\n  \"functions\": [\"avg\"],\r\n  \"grafana\": {\r\n    \"format_as\": \"timeseries\"\r\n  }\r\n}",
+          "query": "from(bucket: \"csobsidian's Bucket\")\r\n    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n    |> filter(fn: (r) => r._measurement == \"waterMeter\")\r\n    |> filter(fn: (r) => r.sensor_id == \"Raw\")\r\n    |> filter(fn: (r) => r._field == \"TotalToday\")\r\n    |> last()\r\n    |> map(fn: (r) => ({r with _value: r._value * 0.001}))",
+          "refId": "A",
+          "target": "cos.wwp_analog"
+        }
+      ],
+      "title": "UV Filter #2",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "cos_wp_analog<avg>": "Total",
+              "cos_wwp<avg>": "UV Filter #2"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "False": {
+                  "color": "red",
+                  "index": 0,
+                  "text": "CLOSED"
+                },
+                "True": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "OPENED"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 7,
+        "y": 7
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Valve$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 28
+        },
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "gF_09-E7z"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"SELECT insert_timestamp, gk_fvo_s FROM wwp_digital ORDER BY insert_timestamp DESC limit 1\"\r\n}",
+          "query": "from(bucket: \"csobsidian's Bucket\")\r\n    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n    |> filter(fn: (r) => r._measurement == \"waterMeter\")\r\n    |> filter(fn: (r) => r.sensor_id == \"Raw\")\r\n    |> filter(fn: (r) => r._field == \"TotalToday\")\r\n    |> last()\r\n    |> map(fn: (r) => ({r with _value: r._value * 0.001}))",
+          "refId": "A",
+          "target": "cos.wwp_digital"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "am_auger_status": false
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "am_auger_status": "Auger",
+              "am_beltpress_status": "Belt Press",
+              "am_maindrum_status": "Main Drum",
+              "am_pdb1_status": "Blower #1",
+              "am_pdb2_status": "Blower #2",
+              "am_pdb3_status": "Blower #3",
+              "am_pdb4_status": "Blower #4",
+              "am_thickenera_status": "Thickener A",
+              "am_thickenerb_status": "Thickener B",
+              "am_waterpump_status": "Water Pump",
+              "cos_wp_analog<avg>": "Total",
+              "cos_wwp<avg>": "Blower #1",
+              "gk_fvo_s": "Valve",
+              "gk_pmprng_s": "Pump",
+              "insert_timestamp": "",
+              "ss_screenrun_s": "Screw Screen"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "False": {
+                  "color": "purple",
+                  "index": 0,
+                  "text": "NOT RUNNING"
+                },
+                "True": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "RUNNING"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 13,
+        "y": 7
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Screw Screen$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 28
+        },
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "gF_09-E7z"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"SELECT insert_timestamp, ss_screenrun_s FROM wwp_digital ORDER BY insert_timestamp DESC limit 1\"\r\n}",
+          "query": "from(bucket: \"csobsidian's Bucket\")\r\n    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n    |> filter(fn: (r) => r._measurement == \"waterMeter\")\r\n    |> filter(fn: (r) => r.sensor_id == \"Raw\")\r\n    |> filter(fn: (r) => r._field == \"TotalToday\")\r\n    |> last()\r\n    |> map(fn: (r) => ({r with _value: r._value * 0.001}))",
+          "refId": "A",
+          "target": "cos.wwp_digital"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "am_auger_status": false,
+              "insert_timestamp": false
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "am_auger_status": "Auger",
+              "am_beltpress_status": "Belt Press",
+              "am_maindrum_status": "Main Drum",
+              "am_pdb1_status": "Blower #1",
+              "am_pdb2_status": "Blower #2",
+              "am_pdb3_status": "Blower #3",
+              "am_pdb4_status": "Blower #4",
+              "am_thickenera_status": "Thickener A",
+              "am_thickenerb_status": "Thickener B",
+              "am_waterpump_status": "Water Pump",
+              "cos_wp_analog<avg>": "Total",
+              "cos_wwp<avg>": "Blower #1",
+              "insert_timestamp": "",
+              "ss_screenrun_s": "Screw Screen"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "% Kill",
+            "axisPlacement": "left",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 1,
+          "mappings": [],
+          "max": 150,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "match": "null",
+                      "result": {
+                        "index": 0,
+                        "text": "Influent"
+                      }
+                    },
+                    "type": "special"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 2,
+        "x": 19,
+        "y": 8
+      },
+      "id": null,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "vertical",
+        "showValue": "never",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "hide": false,
+          "payload": "{\r\n  \"type\": \"period\",\r\n  \"time_column\": \"insert_timestamp\",\r\n  \"value_column\": \"uv_signal1_ai\",\r\n  \"functions\": [\"avg\"],\r\n  \"grafana\": {\r\n    \"format_as\": \"timeseries\"\r\n  }\r\n}",
+          "refId": "A",
+          "target": "cos.wwp_analog"
+        },
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "hide": true,
+          "payload": "{\r\n  \"type\": \"period\",\r\n  \"time_column\": \"insert_timestamp\",\r\n  \"value_column\": \"uv_signal2_ai\",\r\n  \"functions\": [\"avg\"],\r\n  \"grafana\": {\r\n    \"format_as\": \"timeseries\"\r\n  }\r\n}",
+          "refId": "B",
+          "target": "cos.cos_wwp"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "Time",
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "cos_wwp<avg> 1"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "cos_wwp<avg> 2"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "Time",
+                "timezone": "browser"
+              },
+              {
+                "destinationType": "other",
+                "targetField": "Time"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Date": false,
+              "Time": false,
+              "cos_wwp<avg> 1": false
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Avg": "Flow",
+              "Date": "",
+              "Time": "",
+              "cos_wwp<avg>": "UV Filter #1",
+              "cos_wwp<avg> 1": "UV Filter #1",
+              "cos_wwp<avg> 2": "UV Filter #2"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "% Kill",
+            "axisPlacement": "left",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 1,
+          "mappings": [],
+          "max": 150,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "match": "null",
+                      "result": {
+                        "index": 0,
+                        "text": "Influent"
+                      }
+                    },
+                    "type": "special"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 2,
+        "x": 21,
+        "y": 8
+      },
+      "id": null,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "vertical",
+        "showValue": "never",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "hide": false,
+          "payload": "{\r\n  \"type\": \"period\",\r\n  \"time_column\": \"insert_timestamp\",\r\n  \"value_column\": \"uv_signal2_ai\",\r\n  \"functions\": [\"avg\"],\r\n  \"grafana\": {\r\n    \"format_as\": \"timeseries\"\r\n  }\r\n}",
+          "refId": "A",
+          "target": "cos.wwp_analog"
+        },
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "hide": true,
+          "payload": "{\r\n  \"type\": \"period\",\r\n  \"time_column\": \"insert_timestamp\",\r\n  \"value_column\": \"uv_signal2_ai\",\r\n  \"functions\": [\"avg\"],\r\n  \"grafana\": {\r\n    \"format_as\": \"timeseries\"\r\n  }\r\n}",
+          "refId": "B",
+          "target": "cos.cos_wwp"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "Time",
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "cos_wwp<avg> 1"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "cos_wwp<avg> 2"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "Time",
+                "timezone": "browser"
+              },
+              {
+                "destinationType": "other",
+                "targetField": "Time"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Date": false,
+              "Time": false,
+              "cos_wwp<avg> 1": false
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Avg": "Flow",
+              "Date": "",
+              "Time": "",
+              "cos_wwp<avg>": "UV Filter #2",
+              "cos_wwp<avg> 1": "UV Filter #1",
+              "cos_wwp<avg> 2": "UV Filter #2"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "False": {
+                  "color": "purple",
+                  "index": 0,
+                  "text": "NOT RUNNING"
+                },
+                "True": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "RUNNING"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 7,
+        "y": 9
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Pump$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 28
+        },
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "gF_09-E7z"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"SELECT insert_timestamp, gk_pmprng_s FROM wwp_digital ORDER BY insert_timestamp DESC limit 1\"\r\n}",
+          "query": "from(bucket: \"csobsidian's Bucket\")\r\n    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n    |> filter(fn: (r) => r._measurement == \"waterMeter\")\r\n    |> filter(fn: (r) => r.sensor_id == \"Raw\")\r\n    |> filter(fn: (r) => r._field == \"TotalToday\")\r\n    |> last()\r\n    |> map(fn: (r) => ({r with _value: r._value * 0.001}))",
+          "refId": "A",
+          "target": "cos.wwp_digital"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "am_auger_status": false
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "am_auger_status": "Auger",
+              "am_beltpress_status": "Belt Press",
+              "am_maindrum_status": "Main Drum",
+              "am_pdb1_status": "Blower #1",
+              "am_pdb2_status": "Blower #2",
+              "am_pdb3_status": "Blower #3",
+              "am_pdb4_status": "Blower #4",
+              "am_thickenera_status": "Thickener A",
+              "am_thickenerb_status": "Thickener B",
+              "am_waterpump_status": "Water Pump",
+              "cos_wp_analog<avg>": "Total",
+              "cos_wwp<avg>": "Blower #1",
+              "gk_pmprng_s": "Pump",
+              "ss_screenrun_s": "Screw Screen"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": 60000,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 1,
+          "mappings": [],
+          "max": 140,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 19,
+        "y": 19
+      },
+      "id": null,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "maxHeight": 600,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.2.0-73179",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "edm4v9bhlxedcf"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"type\": \"increments\",\r\n  \"time_column\": \"insert_timestamp\",\r\n  \"value_column\": \"uv_signal1_ai\",\r\n  \"functions\": [\"avg\"],\r\n  \"grafana\": {\r\n    \"format_as\": \"timeseries\"\r\n  },\r\n  \"timezone\": \"local\"\r\n}",
+          "query": "from(bucket: \"csobsidian's Bucket\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r._measurement == \"turbidity\")\r\n  |> drop(columns: [\"location\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)",
+          "refId": "A",
+          "target": "cos.wwp_analog"
+        },
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "edm4v9bhlxedcf"
+          },
+          "editorMode": "code",
+          "hide": false,
+          "payload": "{\r\n  \"type\": \"increments\",\r\n  \"time_column\": \"insert_timestamp\",\r\n  \"value_column\": \"uv_signal2_ai\",\r\n  \"functions\": [\"avg\"],\r\n  \"grafana\": {\r\n    \"format_as\": \"timeseries\"\r\n  },\r\n  \"timezone\": \"local\"\r\n}",
+          "refId": "B",
+          "target": "cos.wwp_analog"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "Time",
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "cos.cos_wp_analog 1": "UV Filter #1",
+              "cos.cos_wp_analog 2": "UV Filter #2",
+              "cos_wp_analog<avg>": "Combined",
+              "cos_wp_analog<avg> 1": "Combined",
+              "cos_wp_analog<avg> 2": "Filter 1",
+              "cos_wp_analog<avg> 3": "Filter 2",
+              "cos_wp_analog<avg> 4": "Filter 3",
+              "cos_wwp<avg> 1": "UV Filter #1",
+              "cos_wwp<avg> 2": "UV Filter #2",
+              "wwp_analog<avg> 1": "UV Filter #1",
+              "wwp_analog<avg> 2": "UV Filter #2"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 39,
+  "tags": [
+    "Waste Water Plant"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Equipment Status",
+  "uid": "bds8ixue2dn28f",
+  "version": 5,
+  "weekStart": ""
+}

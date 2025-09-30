@@ -1,0 +1,920 @@
+==========================================================================
+Title:      Show Timestamp + Value WHERE timestamp AND string
+Date:       2023-04-05 22:14:05.947500
+Command:    select timestamp, value from ping_sensor where timestamp >= '2022-02-01 00:00:00' and timestamp < '2022-03-01 00:00:00' and device_name = 'ADVA FSP3000R7' order by timestamp asc
+DBMS:       test
+Include:    (percentagecpu_sensor)
+Extend:     (@table_name as table)
+Format:     table
+==========================================================================
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+percentagecpu_sensor 2022-02-13 21:20:51.999012 64.38 
+ping_sensor          2022-02-13 21:21:47.231712  3.55 
+percentagecpu_sensor 2022-02-14 02:43:51.277166 56.78 
+percentagecpu_sensor 2022-02-14 03:34:52.389181 62.63 
+ping_sensor          2022-02-14 06:18:47.559354  3.22 
+ping_sensor          2022-02-14 07:51:46.380901  2.09 
+ping_sensor          2022-02-14 09:31:47.539200  0.71 
+ping_sensor          2022-02-14 09:46:46.415283  1.02 
+percentagecpu_sensor 2022-02-14 12:14:51.277194 85.55 
+percentagecpu_sensor 2022-02-14 12:35:51.278768 71.57 
+ping_sensor          2022-02-14 13:50:47.561069  1.39 
+ping_sensor          2022-02-14 14:37:47.208009  2.58 
+ping_sensor          2022-02-14 14:50:47.233300  2.72 
+percentagecpu_sensor 2022-02-14 16:11:52.395290   3.1 
+percentagecpu_sensor 2022-02-14 17:13:52.759821 94.34 
+percentagecpu_sensor 2022-02-14 17:37:51.960412 27.79 
+percentagecpu_sensor 2022-02-14 18:16:51.583010 92.17 
+ping_sensor          2022-02-14 19:41:46.060174  3.78 
+percentagecpu_sensor 2022-02-14 22:16:51.279614  9.03 
+ping_sensor          2022-02-14 22:17:47.202073  3.46 
+ping_sensor          2022-02-14 22:21:46.424028  0.87 
+percentagecpu_sensor 2022-02-14 22:40:51.605539 44.38 
+percentagecpu_sensor 2022-02-14 22:46:51.581771  4.65 
+ping_sensor          2022-02-14 22:50:46.395025   0.5 
+percentagecpu_sensor 2022-02-15 00:05:52.386039 71.34 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+ping_sensor          2022-02-15 00:17:47.538691   1.4 
+percentagecpu_sensor 2022-02-15 01:14:52.739947 10.87 
+ping_sensor          2022-02-15 01:34:47.236135  0.35 
+percentagecpu_sensor 2022-02-15 01:42:52.014151 89.62 
+percentagecpu_sensor 2022-02-15 01:51:51.967939 66.33 
+ping_sensor          2022-02-15 02:44:47.507218   1.9 
+ping_sensor          2022-02-15 02:48:47.204985  1.75 
+percentagecpu_sensor 2022-02-15 03:47:51.971446  10.3 
+percentagecpu_sensor 2022-02-15 04:22:52.412150 14.04 
+ping_sensor          2022-02-15 04:25:47.549364  0.08 
+ping_sensor          2022-02-15 05:00:46.086260  3.16 
+ping_sensor          2022-02-15 05:51:46.374295  2.27 
+ping_sensor          2022-02-15 06:23:46.847262  0.61 
+percentagecpu_sensor 2022-02-15 06:24:51.578764 82.32 
+percentagecpu_sensor 2022-02-15 07:38:51.565911  69.8 
+ping_sensor          2022-02-15 08:31:47.229162  2.76 
+ping_sensor          2022-02-15 09:02:46.757922  3.09 
+percentagecpu_sensor 2022-02-15 09:15:52.399710 80.84 
+ping_sensor          2022-02-15 09:19:47.231276  1.63 
+percentagecpu_sensor 2022-02-15 09:31:51.579302 89.49 
+percentagecpu_sensor 2022-02-15 10:21:51.257533 17.84 
+ping_sensor          2022-02-15 10:34:46.105469  2.28 
+ping_sensor          2022-02-15 10:44:46.406911   1.5 
+percentagecpu_sensor 2022-02-15 11:52:51.615530 21.99 
+percentagecpu_sensor 2022-02-15 11:58:52.710952 31.87 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+ping_sensor          2022-02-15 12:12:46.746584  0.19 
+ping_sensor          2022-02-15 12:55:46.836633  0.34 
+ping_sensor          2022-02-15 13:13:47.519801  0.49 
+percentagecpu_sensor 2022-02-15 13:39:52.724745  34.4 
+percentagecpu_sensor 2022-02-15 14:02:52.373482 90.69 
+percentagecpu_sensor 2022-02-15 14:09:51.581285   5.3 
+ping_sensor          2022-02-15 14:21:46.070696  2.99 
+ping_sensor          2022-02-15 14:45:47.565984  3.87 
+ping_sensor          2022-02-15 14:54:46.074356  2.42 
+percentagecpu_sensor 2022-02-15 14:54:51.598918 14.04 
+percentagecpu_sensor 2022-02-15 15:21:51.609918 19.78 
+ping_sensor          2022-02-15 15:23:46.737181  1.39 
+percentagecpu_sensor 2022-02-15 16:24:51.960664 15.43 
+ping_sensor          2022-02-15 16:54:47.240467  1.24 
+ping_sensor          2022-02-15 17:30:47.563983   0.1 
+ping_sensor          2022-02-15 17:49:46.088668  2.33 
+percentagecpu_sensor 2022-02-15 18:07:51.299830  7.61 
+percentagecpu_sensor 2022-02-15 18:09:51.572844 39.81 
+percentagecpu_sensor 2022-02-15 18:28:52.423696 80.69 
+ping_sensor          2022-02-15 18:34:47.251763  1.56 
+percentagecpu_sensor 2022-02-15 18:59:52.712756  92.9 
+percentagecpu_sensor 2022-02-15 19:18:52.723688 47.38 
+ping_sensor          2022-02-15 19:30:47.217171   3.5 
+percentagecpu_sensor 2022-02-15 20:37:51.580278 81.33 
+ping_sensor          2022-02-15 20:53:46.809292  3.36 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+ping_sensor          2022-02-15 20:56:46.371862  3.66 
+ping_sensor          2022-02-15 21:01:46.060476  1.67 
+ping_sensor          2022-02-15 21:19:47.507004  3.63 
+percentagecpu_sensor 2022-02-15 22:08:52.371884  65.8 
+ping_sensor          2022-02-15 22:31:47.516141  2.63 
+ping_sensor          2022-02-15 22:57:47.558049  3.07 
+percentagecpu_sensor 2022-02-15 23:12:51.300952 13.62 
+ping_sensor          2022-02-15 23:23:46.102390  3.65 
+ping_sensor          2022-02-15 23:42:47.560019  1.18 
+ping_sensor          2022-02-15 23:51:46.426098  0.98 
+ping_sensor          2022-02-15 23:57:47.524155  2.25 
+percentagecpu_sensor 2022-02-16 00:36:51.577941 51.12 
+percentagecpu_sensor 2022-02-16 01:02:52.015228  20.1 
+ping_sensor          2022-02-16 01:07:46.368227  0.29 
+ping_sensor          2022-02-16 01:11:47.556894  2.96 
+ping_sensor          2022-02-16 01:34:46.374324  0.23 
+ping_sensor          2022-02-16 01:56:46.762274  1.69 
+percentagecpu_sensor 2022-02-16 02:54:52.388645 76.68 
+ping_sensor          2022-02-16 02:58:46.377558  0.04 
+ping_sensor          2022-02-16 03:09:47.200133   3.4 
+ping_sensor          2022-02-16 03:42:47.544917  1.22 
+percentagecpu_sensor 2022-02-16 04:44:52.411285 32.32 
+percentagecpu_sensor 2022-02-16 05:20:52.409739 37.99 
+percentagecpu_sensor 2022-02-16 05:28:51.602237 21.75 
+percentagecpu_sensor 2022-02-16 05:39:52.741834 25.55 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+ping_sensor          2022-02-16 05:58:46.095211   0.9 
+percentagecpu_sensor 2022-02-16 06:11:51.976468 93.69 
+ping_sensor          2022-02-16 07:15:46.395458  0.43 
+percentagecpu_sensor 2022-02-16 07:46:51.271547 20.74 
+percentagecpu_sensor 2022-02-16 08:03:52.739475 42.95 
+percentagecpu_sensor 2022-02-16 08:31:52.716098 14.34 
+percentagecpu_sensor 2022-02-16 08:50:52.419420   5.6 
+percentagecpu_sensor 2022-02-16 09:25:52.719171  50.9 
+ping_sensor          2022-02-16 09:32:46.777491   1.8 
+percentagecpu_sensor 2022-02-16 09:37:52.379518 42.35 
+percentagecpu_sensor 2022-02-16 10:14:51.960550 36.74 
+ping_sensor          2022-02-16 10:19:47.528827  3.69 
+percentagecpu_sensor 2022-02-16 10:31:52.757354 28.66 
+percentagecpu_sensor 2022-02-16 11:18:52.421078 58.32 
+percentagecpu_sensor 2022-02-16 11:19:52.377735 68.87 
+percentagecpu_sensor 2022-02-16 11:22:52.390764 94.95 
+percentagecpu_sensor 2022-02-16 11:26:52.741528 51.99 
+ping_sensor          2022-02-16 12:13:46.094086  1.08 
+percentagecpu_sensor 2022-02-16 12:16:52.726711  7.62 
+ping_sensor          2022-02-16 12:25:46.383998  3.09 
+percentagecpu_sensor 2022-02-16 12:39:51.305289 68.53 
+percentagecpu_sensor 2022-02-16 12:54:51.280534 83.83 
+percentagecpu_sensor 2022-02-16 12:56:51.268253  93.2 
+ping_sensor          2022-02-16 12:58:46.390687  2.44 
+ping_sensor          2022-02-16 13:12:46.409855  3.63 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+ping_sensor          2022-02-16 13:30:46.796934  0.75 
+ping_sensor          2022-02-16 13:51:47.199092  1.61 
+ping_sensor          2022-02-16 14:39:47.202130  0.39 
+ping_sensor          2022-02-16 14:50:46.082201  3.37 
+percentagecpu_sensor 2022-02-16 15:26:52.418186 61.29 
+percentagecpu_sensor 2022-02-16 15:34:52.381220 50.81 
+percentagecpu_sensor 2022-02-16 15:48:52.725085 36.84 
+ping_sensor          2022-02-16 16:03:46.100947  1.86 
+percentagecpu_sensor 2022-02-16 16:03:51.276771 35.91 
+ping_sensor          2022-02-16 18:31:46.852344  0.23 
+ping_sensor          2022-02-16 19:10:47.563952  2.85 
+ping_sensor          2022-02-16 19:27:46.086779  2.06 
+percentagecpu_sensor 2022-02-16 20:13:51.570605 80.48 
+percentagecpu_sensor 2022-02-16 20:15:52.730264 64.19 
+percentagecpu_sensor 2022-02-16 20:38:51.991493 53.82 
+percentagecpu_sensor 2022-02-16 23:21:51.590706 83.37 
+ping_sensor          2022-02-16 23:48:47.515993  1.21 
+ping_sensor          2022-02-16 23:50:46.814411  2.68 
+percentagecpu_sensor 2022-02-17 00:33:52.420517 64.97 
+ping_sensor          2022-02-17 01:11:47.529036  1.35 
+ping_sensor          2022-02-17 02:36:46.415592  1.84 
+ping_sensor          2022-02-17 03:08:46.378217  3.26 
+ping_sensor          2022-02-17 03:53:46.816233  1.34 
+ping_sensor          2022-02-17 03:55:47.545915  2.45 
+percentagecpu_sensor 2022-02-17 04:17:51.573019 69.25 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+percentagecpu_sensor 2022-02-17 05:40:52.404959  96.5 
+percentagecpu_sensor 2022-02-17 05:58:52.390317 69.87 
+percentagecpu_sensor 2022-02-17 06:00:51.978646 41.56 
+percentagecpu_sensor 2022-02-17 06:42:52.389234 43.54 
+ping_sensor          2022-02-17 08:30:46.808047  1.51 
+ping_sensor          2022-02-17 10:29:46.102684  0.02 
+percentagecpu_sensor 2022-02-17 10:39:51.255864  0.22 
+ping_sensor          2022-02-17 10:48:46.392098  2.49 
+ping_sensor          2022-02-17 11:13:47.542462  2.81 
+percentagecpu_sensor 2022-02-17 11:20:51.602156 19.34 
+ping_sensor          2022-02-17 12:00:46.846545   1.9 
+ping_sensor          2022-02-17 12:28:47.512254   3.5 
+ping_sensor          2022-02-17 12:34:47.224198   2.8 
+percentagecpu_sensor 2022-02-17 12:46:51.954710 72.02 
+ping_sensor          2022-02-17 13:01:46.101388  3.81 
+ping_sensor          2022-02-17 13:05:47.550978  3.35 
+percentagecpu_sensor 2022-02-17 14:08:51.617237 46.47 
+ping_sensor          2022-02-17 14:12:46.411057  1.96 
+ping_sensor          2022-02-17 14:21:46.751934  1.44 
+ping_sensor          2022-02-17 14:22:46.754748  1.83 
+ping_sensor          2022-02-17 14:32:47.212713  2.23 
+percentagecpu_sensor 2022-02-17 14:35:51.972358 82.34 
+percentagecpu_sensor 2022-02-17 14:38:52.412542 17.86 
+ping_sensor          2022-02-17 14:53:47.539667  0.22 
+ping_sensor          2022-02-17 16:20:47.232598  3.31 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+percentagecpu_sensor 2022-02-17 17:01:51.967984   8.7 
+ping_sensor          2022-02-17 17:22:46.079903  1.13 
+percentagecpu_sensor 2022-02-17 17:25:51.983231 99.72 
+ping_sensor          2022-02-17 17:46:47.215871  0.63 
+ping_sensor          2022-02-17 18:07:47.543452  1.89 
+percentagecpu_sensor 2022-02-17 18:25:52.012044 20.75 
+ping_sensor          2022-02-17 18:44:46.054515  1.27 
+percentagecpu_sensor 2022-02-17 19:29:51.605702 43.61 
+percentagecpu_sensor 2022-02-17 20:06:51.268312 41.06 
+percentagecpu_sensor 2022-02-17 20:19:51.965694 23.97 
+percentagecpu_sensor 2022-02-17 21:01:51.599449 30.23 
+percentagecpu_sensor 2022-02-17 21:09:52.716619  40.4 
+percentagecpu_sensor 2022-02-17 21:24:52.012153 51.47 
+ping_sensor          2022-02-17 21:44:47.237683  0.72 
+ping_sensor          2022-02-17 22:15:47.516582   3.2 
+ping_sensor          2022-02-17 22:28:47.562800  1.71 
+ping_sensor          2022-02-17 22:32:46.849029   0.8 
+percentagecpu_sensor 2022-02-17 23:21:52.755247 12.95 
+percentagecpu_sensor 2022-02-17 23:40:51.988219  35.1 
+ping_sensor          2022-02-17 23:48:47.534886  2.41 
+percentagecpu_sensor 2022-02-18 01:07:51.250833 41.63 
+ping_sensor          2022-02-18 01:10:47.509277  1.21 
+ping_sensor          2022-02-18 01:27:47.515805  3.85 
+percentagecpu_sensor 2022-02-18 02:09:52.380315 83.05 
+ping_sensor          2022-02-18 02:12:46.391920  0.33 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+ping_sensor          2022-02-18 02:46:46.398868  0.87 
+percentagecpu_sensor 2022-02-18 03:00:51.611537  89.9 
+percentagecpu_sensor 2022-02-18 03:24:52.722632  6.99 
+ping_sensor          2022-02-18 03:37:46.809118   1.6 
+percentagecpu_sensor 2022-02-18 03:37:52.407778  58.9 
+ping_sensor          2022-02-18 03:38:47.524243  3.94 
+percentagecpu_sensor 2022-02-18 04:04:52.015172 68.69 
+ping_sensor          2022-02-18 04:25:47.198664  2.39 
+percentagecpu_sensor 2022-02-18 05:57:51.997300 32.73 
+ping_sensor          2022-02-18 06:06:46.851104  3.31 
+ping_sensor          2022-02-18 06:28:47.193258  3.58 
+ping_sensor          2022-02-18 06:59:47.216396  1.07 
+percentagecpu_sensor 2022-02-18 08:20:52.722687 35.38 
+ping_sensor          2022-02-18 08:40:46.417903  3.67 
+ping_sensor          2022-02-18 08:42:46.759521   2.5 
+percentagecpu_sensor 2022-02-18 08:46:51.976658 97.61 
+ping_sensor          2022-02-18 09:29:46.792739   3.6 
+percentagecpu_sensor 2022-02-18 09:59:52.727957  1.57 
+ping_sensor          2022-02-18 10:43:46.378505  3.99 
+percentagecpu_sensor 2022-02-18 10:56:52.419554 35.49 
+percentagecpu_sensor 2022-02-18 11:11:51.263270  3.63 
+percentagecpu_sensor 2022-02-18 11:28:51.958212 72.98 
+ping_sensor          2022-02-18 13:35:46.388645  1.75 
+percentagecpu_sensor 2022-02-18 13:48:52.383930  76.8 
+percentagecpu_sensor 2022-02-18 14:00:51.608062 44.74 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+ping_sensor          2022-02-18 14:20:46.754213  2.37 
+ping_sensor          2022-02-18 14:22:46.755156  0.72 
+percentagecpu_sensor 2022-02-18 14:38:51.951904 44.08 
+ping_sensor          2022-02-18 15:38:46.396224  3.93 
+percentagecpu_sensor 2022-02-18 15:58:52.758599 27.23 
+percentagecpu_sensor 2022-02-18 16:42:52.421908 75.81 
+percentagecpu_sensor 2022-02-18 16:46:52.004162 25.75 
+ping_sensor          2022-02-18 17:38:47.541095  3.98 
+ping_sensor          2022-02-18 17:42:46.063707  0.58 
+ping_sensor          2022-02-18 18:07:46.763244  1.32 
+ping_sensor          2022-02-18 19:13:46.057421  0.54 
+ping_sensor          2022-02-18 19:21:46.392467  3.95 
+ping_sensor          2022-02-18 19:27:47.512578  3.84 
+percentagecpu_sensor 2022-02-18 20:32:52.744133  17.6 
+ping_sensor          2022-02-18 21:01:46.058861  1.35 
+percentagecpu_sensor 2022-02-18 21:13:51.612911 64.31 
+ping_sensor          2022-02-18 22:18:46.407025  3.66 
+percentagecpu_sensor 2022-02-19 00:16:51.589217  42.8 
+ping_sensor          2022-02-19 00:23:46.371625  0.24 
+percentagecpu_sensor 2022-02-19 00:38:51.603601 38.23 
+ping_sensor          2022-02-19 02:14:46.748429  2.59 
+ping_sensor          2022-02-19 02:25:46.751700  1.22 
+ping_sensor          2022-02-19 02:27:46.828376  1.92 
+ping_sensor          2022-02-19 02:33:47.201054  2.61 
+ping_sensor          2022-02-19 02:34:46.791900  0.31 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+percentagecpu_sensor 2022-02-19 02:38:51.277877  9.14 
+ping_sensor          2022-02-19 02:41:46.415837  3.23 
+percentagecpu_sensor 2022-02-19 03:11:52.378183 73.53 
+ping_sensor          2022-02-19 03:20:47.553533  3.45 
+percentagecpu_sensor 2022-02-19 03:33:51.594242 77.53 
+ping_sensor          2022-02-19 03:43:46.097285  0.78 
+ping_sensor          2022-02-19 03:48:46.379106  1.49 
+ping_sensor          2022-02-19 03:57:47.234935  2.56 
+ping_sensor          2022-02-19 04:26:46.837964  1.97 
+ping_sensor          2022-02-19 04:49:47.546357  2.87 
+ping_sensor          2022-02-19 04:56:46.421917  1.71 
+ping_sensor          2022-02-19 05:09:47.201026  2.22 
+ping_sensor          2022-02-19 05:48:46.077913  0.77 
+ping_sensor          2022-02-19 05:59:46.079012  1.77 
+percentagecpu_sensor 2022-02-19 06:01:51.594810 85.94 
+percentagecpu_sensor 2022-02-19 06:21:52.377116 33.44 
+percentagecpu_sensor 2022-02-19 06:29:51.285940 30.84 
+percentagecpu_sensor 2022-02-19 06:39:51.957766 37.33 
+ping_sensor          2022-02-19 07:51:47.560955  1.04 
+ping_sensor          2022-02-19 08:03:47.511927  0.74 
+ping_sensor          2022-02-19 08:11:46.063221   3.8 
+percentagecpu_sensor 2022-02-19 08:51:51.254089  82.7 
+ping_sensor          2022-02-19 09:09:46.057753  0.02 
+ping_sensor          2022-02-19 09:31:47.224545   2.8 
+ping_sensor          2022-02-19 10:28:46.083254  1.77 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+percentagecpu_sensor 2022-02-19 11:01:52.736123 68.94 
+ping_sensor          2022-02-19 11:56:46.081255  3.15 
+ping_sensor          2022-02-19 11:56:47.208066  3.94 
+percentagecpu_sensor 2022-02-19 12:06:51.584119  70.0 
+ping_sensor          2022-02-19 12:10:47.518043  0.03 
+ping_sensor          2022-02-19 12:36:46.753886  0.05 
+ping_sensor          2022-02-19 12:53:47.212004  0.79 
+ping_sensor          2022-02-19 12:54:46.095385  2.89 
+percentagecpu_sensor 2022-02-19 13:14:51.608506 80.29 
+percentagecpu_sensor 2022-02-19 13:44:51.574927  5.59 
+ping_sensor          2022-02-19 13:49:46.427469  2.38 
+ping_sensor          2022-02-19 14:01:47.220353  3.14 
+ping_sensor          2022-02-19 14:25:46.101218  2.92 
+ping_sensor          2022-02-19 15:07:46.754836  3.21 
+ping_sensor          2022-02-19 15:26:46.370788  3.38 
+ping_sensor          2022-02-19 15:41:47.237417  3.03 
+percentagecpu_sensor 2022-02-19 15:47:51.297954  2.41 
+percentagecpu_sensor 2022-02-19 16:53:51.306120 11.14 
+percentagecpu_sensor 2022-02-19 17:46:52.012396 73.66 
+percentagecpu_sensor 2022-02-19 17:53:51.287326 70.12 
+percentagecpu_sensor 2022-02-19 18:05:51.279278 11.57 
+ping_sensor          2022-02-19 19:10:47.214328  0.52 
+percentagecpu_sensor 2022-02-19 19:25:51.985203 52.18 
+percentagecpu_sensor 2022-02-19 20:05:52.001483 14.92 
+percentagecpu_sensor 2022-02-19 20:29:52.758220 29.87 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+ping_sensor          2022-02-19 20:34:46.103031  0.72 
+percentagecpu_sensor 2022-02-19 20:42:52.744575 66.53 
+percentagecpu_sensor 2022-02-19 21:03:51.303926 17.12 
+percentagecpu_sensor 2022-02-19 21:52:52.711807 76.74 
+ping_sensor          2022-02-19 22:22:46.371538  2.59 
+ping_sensor          2022-02-19 22:30:46.399080  2.99 
+ping_sensor          2022-02-19 22:40:46.375700  0.91 
+ping_sensor          2022-02-19 23:10:46.424776  0.05 
+ping_sensor          2022-02-20 00:04:46.045280  3.95 
+percentagecpu_sensor 2022-02-20 00:16:51.279139 25.48 
+percentagecpu_sensor 2022-02-20 00:30:51.612992 81.03 
+ping_sensor          2022-02-20 01:03:46.823772  3.38 
+ping_sensor          2022-02-20 01:03:47.506732  2.82 
+percentagecpu_sensor 2022-02-20 01:22:52.001205 72.65 
+percentagecpu_sensor 2022-02-20 01:40:52.716383 86.16 
+ping_sensor          2022-02-20 02:42:46.732414   0.0 
+ping_sensor          2022-02-20 02:50:46.848856  2.62 
+percentagecpu_sensor 2022-02-20 04:05:51.958605 64.36 
+ping_sensor          2022-02-20 04:20:47.537672  1.36 
+percentagecpu_sensor 2022-02-20 04:55:52.407669 76.41 
+ping_sensor          2022-02-20 05:26:47.223425  3.07 
+percentagecpu_sensor 2022-02-20 05:44:51.981813 75.38 
+percentagecpu_sensor 2022-02-20 06:12:52.383060 41.39 
+percentagecpu_sensor 2022-02-20 06:24:51.619027 13.68 
+ping_sensor          2022-02-20 06:49:47.196161  1.08 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+percentagecpu_sensor 2022-02-20 08:03:51.275857 87.23 
+ping_sensor          2022-02-20 08:24:47.218306  1.51 
+ping_sensor          2022-02-20 09:35:46.078786  1.38 
+ping_sensor          2022-02-20 10:43:47.225516  2.61 
+percentagecpu_sensor 2022-02-20 11:41:51.959939  86.2 
+percentagecpu_sensor 2022-02-20 11:43:51.967719  22.6 
+percentagecpu_sensor 2022-02-20 11:43:51.986347 59.23 
+percentagecpu_sensor 2022-02-20 13:34:52.384540 53.22 
+ping_sensor          2022-02-20 13:53:46.828314  1.03 
+ping_sensor          2022-02-20 13:54:47.515597  3.13 
+percentagecpu_sensor 2022-02-20 15:40:51.959911 90.03 
+percentagecpu_sensor 2022-02-20 15:44:52.373366 49.12 
+percentagecpu_sensor 2022-02-20 16:13:51.279750  10.1 
+ping_sensor          2022-02-20 17:01:46.391262  0.26 
+ping_sensor          2022-02-20 17:37:46.807285  3.07 
+ping_sensor          2022-02-20 17:46:47.216048  1.65 
+percentagecpu_sensor 2022-02-20 17:56:51.266790 64.14 
+ping_sensor          2022-02-20 18:37:47.546328  3.36 
+percentagecpu_sensor 2022-02-20 18:41:51.568295 29.29 
+percentagecpu_sensor 2022-02-20 18:59:51.291977 77.09 
+ping_sensor          2022-02-20 19:19:46.740871  2.81 
+ping_sensor          2022-02-20 19:53:46.403148  1.97 
+ping_sensor          2022-02-20 20:19:47.564225  3.21 
+percentagecpu_sensor 2022-02-20 20:31:51.606980 55.77 
+ping_sensor          2022-02-20 21:08:46.055554  2.92 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+percentagecpu_sensor 2022-02-20 22:18:51.975781 88.91 
+percentagecpu_sensor 2022-02-20 22:39:51.583444 70.68 
+ping_sensor          2022-02-21 00:12:46.813414  3.56 
+ping_sensor          2022-02-21 00:49:46.416250  2.42 
+percentagecpu_sensor 2022-02-21 00:50:51.293831 62.09 
+ping_sensor          2022-02-21 01:04:47.528614  0.49 
+percentagecpu_sensor 2022-02-21 01:12:51.265851 65.97 
+percentagecpu_sensor 2022-02-21 01:24:52.390956 58.51 
+ping_sensor          2022-02-21 01:37:46.369560  1.63 
+ping_sensor          2022-02-21 01:53:47.196936  1.19 
+percentagecpu_sensor 2022-02-21 04:58:52.001177 31.95 
+ping_sensor          2022-02-21 04:59:46.069293  2.33 
+percentagecpu_sensor 2022-02-21 05:40:52.761506 63.13 
+percentagecpu_sensor 2022-02-21 05:41:51.263904 45.65 
+percentagecpu_sensor 2022-02-21 05:42:51.596804 52.91 
+ping_sensor          2022-02-21 05:56:47.519838  0.66 
+percentagecpu_sensor 2022-02-21 06:10:52.725912 68.31 
+ping_sensor          2022-02-21 06:47:47.555998  2.85 
+ping_sensor          2022-02-21 07:01:47.194071  2.77 
+percentagecpu_sensor 2022-02-21 07:20:51.255646  2.84 
+ping_sensor          2022-02-21 07:26:47.194473  3.39 
+ping_sensor          2022-02-21 08:03:47.205966  1.34 
+ping_sensor          2022-02-21 08:18:46.075189  1.44 
+percentagecpu_sensor 2022-02-21 08:26:51.569199  7.81 
+percentagecpu_sensor 2022-02-21 08:27:51.606622  41.2 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+percentagecpu_sensor 2022-02-21 08:28:51.993214 95.62 
+ping_sensor          2022-02-21 08:39:47.559061  3.61 
+percentagecpu_sensor 2022-02-21 10:37:51.248683 64.64 
+ping_sensor          2022-02-21 10:40:47.227041  0.98 
+percentagecpu_sensor 2022-02-21 10:52:51.613720 17.98 
+percentagecpu_sensor 2022-02-21 10:59:52.748580 32.53 
+percentagecpu_sensor 2022-02-21 11:48:52.422160 19.75 
+percentagecpu_sensor 2022-02-21 12:44:52.008372 30.83 
+ping_sensor          2022-02-21 13:08:47.214921  2.99 
+ping_sensor          2022-02-21 13:26:46.371744  0.45 
+percentagecpu_sensor 2022-02-21 14:16:52.756994 41.53 
+ping_sensor          2022-02-21 14:43:46.391779  3.35 
+percentagecpu_sensor 2022-02-21 14:57:52.402221 14.27 
+percentagecpu_sensor 2022-02-21 15:14:52.380039 36.93 
+ping_sensor          2022-02-21 15:16:47.234615  0.98 
+percentagecpu_sensor 2022-02-21 15:22:51.949611  88.7 
+percentagecpu_sensor 2022-02-21 15:51:51.302328 42.22 
+ping_sensor          2022-02-21 16:23:46.084536  0.48 
+ping_sensor          2022-02-21 16:45:46.105759  0.31 
+ping_sensor          2022-02-21 17:48:47.224170  0.86 
+percentagecpu_sensor 2022-02-21 17:56:52.759116 88.62 
+ping_sensor          2022-02-21 18:32:46.098781  0.78 
+percentagecpu_sensor 2022-02-21 18:33:52.003205  7.78 
+ping_sensor          2022-02-21 18:50:47.224403   0.1 
+percentagecpu_sensor 2022-02-21 18:50:52.004051  63.8 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+ping_sensor          2022-02-21 19:16:47.515452  2.13 
+ping_sensor          2022-02-21 19:28:46.754980  2.33 
+ping_sensor          2022-02-21 19:33:47.197347  1.88 
+percentagecpu_sensor 2022-02-21 20:01:51.970900 82.69 
+ping_sensor          2022-02-21 20:36:46.407082  3.55 
+percentagecpu_sensor 2022-02-21 20:55:51.290586  2.21 
+percentagecpu_sensor 2022-02-21 21:25:52.391176  90.4 
+percentagecpu_sensor 2022-02-21 21:33:51.255509 40.35 
+percentagecpu_sensor 2022-02-21 21:54:51.270802 82.85 
+percentagecpu_sensor 2022-02-21 22:05:51.617102 21.34 
+percentagecpu_sensor 2022-02-21 22:15:51.619975 18.63 
+ping_sensor          2022-02-21 22:30:46.086722  0.42 
+ping_sensor          2022-02-21 22:32:46.847206  1.45 
+percentagecpu_sensor 2022-02-21 22:41:51.957097 22.56 
+percentagecpu_sensor 2022-02-21 23:24:51.609620 66.87 
+ping_sensor          2022-02-21 23:35:46.104493  3.32 
+percentagecpu_sensor 2022-02-21 23:38:52.385170  76.1 
+percentagecpu_sensor 2022-02-21 23:39:51.966850  45.7 
+ping_sensor          2022-02-21 23:40:46.104731  2.06 
+ping_sensor          2022-02-21 23:57:46.052890  1.09 
+percentagecpu_sensor 2022-02-22 00:04:51.990734  19.8 
+ping_sensor          2022-02-22 00:16:47.520666  1.19 
+percentagecpu_sensor 2022-02-22 00:25:52.402531 18.81 
+ping_sensor          2022-02-22 00:41:46.783661  1.49 
+percentagecpu_sensor 2022-02-22 01:04:52.756098 86.68 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+percentagecpu_sensor 2022-02-22 01:30:52.013870 23.24 
+percentagecpu_sensor 2022-02-22 01:34:52.013598 87.61 
+percentagecpu_sensor 2022-02-22 01:42:52.003912 91.58 
+percentagecpu_sensor 2022-02-22 01:47:51.283339  61.3 
+percentagecpu_sensor 2022-02-22 02:08:51.620326  7.78 
+ping_sensor          2022-02-22 02:24:46.383035   0.9 
+ping_sensor          2022-02-22 03:01:47.204414  1.42 
+percentagecpu_sensor 2022-02-22 04:34:51.284606 40.21 
+percentagecpu_sensor 2022-02-22 05:29:51.591918 50.74 
+percentagecpu_sensor 2022-02-22 05:30:52.719967 15.65 
+percentagecpu_sensor 2022-02-22 05:32:52.715849 34.73 
+percentagecpu_sensor 2022-02-22 05:43:51.592365 35.08 
+percentagecpu_sensor 2022-02-22 05:44:51.568377 76.69 
+percentagecpu_sensor 2022-02-22 07:30:51.979908 88.78 
+ping_sensor          2022-02-22 07:52:47.522093  2.75 
+ping_sensor          2022-02-22 08:40:47.195642   2.2 
+percentagecpu_sensor 2022-02-22 09:44:51.600672 90.79 
+percentagecpu_sensor 2022-02-22 10:11:51.267829 24.57 
+percentagecpu_sensor 2022-02-22 10:26:51.959492   1.3 
+ping_sensor          2022-02-22 11:09:46.375899  3.39 
+percentagecpu_sensor 2022-02-22 11:50:52.732885 37.59 
+percentagecpu_sensor 2022-02-22 12:27:51.289284 86.57 
+ping_sensor          2022-02-22 12:31:46.390092   2.0 
+ping_sensor          2022-02-22 12:32:47.246745  3.31 
+ping_sensor          2022-02-22 12:49:47.533559  0.99 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+ping_sensor          2022-02-22 13:51:46.828739  0.95 
+ping_sensor          2022-02-22 14:17:47.210387  3.38 
+percentagecpu_sensor 2022-02-22 14:17:51.955111  98.9 
+percentagecpu_sensor 2022-02-22 14:44:52.414734 98.09 
+percentagecpu_sensor 2022-02-22 14:46:51.567967 75.93 
+ping_sensor          2022-02-22 15:35:47.525366  2.13 
+ping_sensor          2022-02-22 16:01:46.840056  1.18 
+percentagecpu_sensor 2022-02-22 16:29:51.262333 19.39 
+percentagecpu_sensor 2022-02-22 16:57:51.261692 68.93 
+ping_sensor          2022-02-22 18:43:46.778223  0.69 
+percentagecpu_sensor 2022-02-22 18:55:51.266957 94.83 
+ping_sensor          2022-02-22 19:24:47.220792  1.14 
+percentagecpu_sensor 2022-02-22 20:44:51.987434 88.64 
+percentagecpu_sensor 2022-02-22 21:19:51.266515 73.57 
+ping_sensor          2022-02-22 21:33:46.384083  1.94 
+percentagecpu_sensor 2022-02-22 21:36:52.412206  89.8 
+percentagecpu_sensor 2022-02-22 22:38:51.951555  7.31 
+ping_sensor          2022-02-22 22:51:46.851052  3.66 
+ping_sensor          2022-02-22 22:51:47.552905  3.78 
+ping_sensor          2022-02-22 22:56:47.209458  0.79 
+percentagecpu_sensor 2022-02-22 23:22:52.715692 37.07 
+percentagecpu_sensor 2022-02-22 23:36:52.416164 63.88 
+percentagecpu_sensor 2022-02-22 23:45:52.423007 12.49 
+percentagecpu_sensor 2022-02-22 23:48:52.737047 78.98 
+ping_sensor          2022-02-22 23:59:46.081110  2.93 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+percentagecpu_sensor 2022-02-23 00:10:52.402301 78.95 
+percentagecpu_sensor 2022-02-23 00:53:51.602291 55.62 
+ping_sensor          2022-02-23 01:25:47.545560  2.18 
+percentagecpu_sensor 2022-02-23 01:42:51.269293 18.29 
+ping_sensor          2022-02-23 01:43:46.800129  3.85 
+percentagecpu_sensor 2022-02-23 02:40:52.718871 96.23 
+ping_sensor          2022-02-23 02:52:46.755878  0.73 
+ping_sensor          2022-02-23 03:26:46.099581  0.25 
+ping_sensor          2022-02-23 03:33:46.095353  2.19 
+ping_sensor          2022-02-23 03:55:46.375985  0.39 
+percentagecpu_sensor 2022-02-23 04:33:51.580771 69.23 
+percentagecpu_sensor 2022-02-23 04:40:51.581664  2.14 
+percentagecpu_sensor 2022-02-23 04:49:51.596469  28.3 
+percentagecpu_sensor 2022-02-23 04:51:51.281054 87.07 
+ping_sensor          2022-02-23 05:47:46.420642  3.89 
+ping_sensor          2022-02-23 05:49:46.414868  2.92 
+ping_sensor          2022-02-23 06:01:46.369504  1.24 
+percentagecpu_sensor 2022-02-23 07:18:52.370681 76.42 
+ping_sensor          2022-02-23 07:20:46.378705  3.26 
+percentagecpu_sensor 2022-02-23 08:33:51.605621 46.23 
+ping_sensor          2022-02-23 09:59:47.193950  2.47 
+ping_sensor          2022-02-23 10:05:46.848915  1.98 
+ping_sensor          2022-02-23 10:19:46.822087  3.26 
+percentagecpu_sensor 2022-02-23 11:38:51.991018 68.43 
+percentagecpu_sensor 2022-02-23 12:07:52.373998 72.57 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+percentagecpu_sensor 2022-02-23 12:24:51.570965 80.79 
+percentagecpu_sensor 2022-02-23 13:59:51.587698 76.91 
+ping_sensor          2022-02-23 14:21:46.426654  2.75 
+ping_sensor          2022-02-23 15:22:46.051595  1.71 
+ping_sensor          2022-02-23 15:57:47.556457  2.34 
+ping_sensor          2022-02-23 16:20:47.212515  3.94 
+ping_sensor          2022-02-23 16:23:46.078178  3.42 
+percentagecpu_sensor 2022-02-23 16:31:52.006530  95.6 
+ping_sensor          2022-02-23 17:04:47.194444  0.02 
+percentagecpu_sensor 2022-02-23 17:06:52.372025 47.99 
+ping_sensor          2022-02-23 17:48:46.399678  0.42 
+ping_sensor          2022-02-23 18:08:47.520781  1.33 
+percentagecpu_sensor 2022-02-23 18:14:51.277222 68.97 
+percentagecpu_sensor 2022-02-23 18:22:51.565301  2.56 
+ping_sensor          2022-02-23 18:27:46.756560  3.65 
+percentagecpu_sensor 2022-02-23 18:27:51.572905 35.72 
+ping_sensor          2022-02-23 18:37:46.083462  0.54 
+ping_sensor          2022-02-23 18:57:46.752226  1.42 
+ping_sensor          2022-02-23 19:05:46.394285  1.08 
+ping_sensor          2022-02-23 19:18:47.514232  3.94 
+ping_sensor          2022-02-23 19:53:47.535661  2.15 
+percentagecpu_sensor 2022-02-23 20:37:51.980525 28.08 
+percentagecpu_sensor 2022-02-23 20:58:52.746769 49.59 
+ping_sensor          2022-02-23 21:27:46.066501  2.59 
+percentagecpu_sensor 2022-02-23 22:31:52.383496 93.39 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+percentagecpu_sensor 2022-02-23 22:37:51.301702 19.97 
+ping_sensor          2022-02-23 22:38:47.241936  0.04 
+ping_sensor          2022-02-23 22:58:47.250255  2.45 
+percentagecpu_sensor 2022-02-24 00:12:51.978044 98.13 
+percentagecpu_sensor 2022-02-24 00:13:51.285453 62.64 
+ping_sensor          2022-02-24 00:18:46.052110  0.72 
+ping_sensor          2022-02-24 00:32:46.044791  0.76 
+percentagecpu_sensor 2022-02-24 00:52:51.986375 50.76 
+ping_sensor          2022-02-24 01:00:46.795603  1.75 
+percentagecpu_sensor 2022-02-24 01:32:52.377791  85.9 
+ping_sensor          2022-02-24 01:49:46.060444  2.79 
+percentagecpu_sensor 2022-02-24 02:29:51.982558 77.15 
+percentagecpu_sensor 2022-02-24 02:31:52.758193 58.96 
+percentagecpu_sensor 2022-02-24 02:47:51.989118 77.64 
+ping_sensor          2022-02-24 03:42:46.761399  2.78 
+percentagecpu_sensor 2022-02-24 04:45:51.612535 97.26 
+ping_sensor          2022-02-24 05:42:46.068528  1.13 
+ping_sensor          2022-02-24 05:42:46.088525  1.44 
+ping_sensor          2022-02-24 05:42:46.754777  0.56 
+ping_sensor          2022-02-24 06:47:46.396863  2.09 
+percentagecpu_sensor 2022-02-24 06:53:51.579034 85.77 
+ping_sensor          2022-02-24 06:59:46.764097  0.99 
+ping_sensor          2022-02-24 08:15:46.058178  2.68 
+ping_sensor          2022-02-24 09:04:47.524502  1.31 
+ping_sensor          2022-02-24 09:21:47.215424  3.04 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+percentagecpu_sensor 2022-02-24 09:40:52.741195 52.01 
+percentagecpu_sensor 2022-02-24 10:08:52.746555 96.45 
+ping_sensor          2022-02-24 10:09:47.520378  1.89 
+percentagecpu_sensor 2022-02-24 10:40:51.284689 38.96 
+percentagecpu_sensor 2022-02-24 11:35:52.747953  4.53 
+percentagecpu_sensor 2022-02-24 12:28:51.605158 68.18 
+percentagecpu_sensor 2022-02-24 12:31:52.737855  2.47 
+percentagecpu_sensor 2022-02-24 12:39:51.616664 72.43 
+ping_sensor          2022-02-24 12:59:46.747864   2.9 
+percentagecpu_sensor 2022-02-24 13:08:52.009849 78.62 
+ping_sensor          2022-02-24 13:36:47.531679  1.22 
+percentagecpu_sensor 2022-02-24 14:11:51.971844  6.34 
+ping_sensor          2022-02-24 15:05:47.237446  2.35 
+ping_sensor          2022-02-24 15:20:46.077318  3.13 
+percentagecpu_sensor 2022-02-24 15:30:51.289888 79.11 
+percentagecpu_sensor 2022-02-24 15:37:52.388374 53.18 
+percentagecpu_sensor 2022-02-24 15:45:52.751631 90.21 
+ping_sensor          2022-02-24 16:10:46.409084  0.11 
+ping_sensor          2022-02-24 16:19:46.757748  2.24 
+percentagecpu_sensor 2022-02-24 17:27:52.420784 67.58 
+percentagecpu_sensor 2022-02-24 17:30:51.571920 97.07 
+ping_sensor          2022-02-24 17:40:47.538868  2.52 
+ping_sensor          2022-02-24 17:54:46.045341   0.5 
+ping_sensor          2022-02-24 18:25:46.386210   3.0 
+percentagecpu_sensor 2022-02-24 18:39:51.288151 44.29 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+ping_sensor          2022-02-24 18:43:47.247610  1.24 
+ping_sensor          2022-02-24 18:46:46.732937  2.67 
+ping_sensor          2022-02-24 19:07:47.533156  3.74 
+percentagecpu_sensor 2022-02-24 19:27:52.761204 44.94 
+percentagecpu_sensor 2022-02-24 19:45:52.390030 28.41 
+ping_sensor          2022-02-24 20:01:47.207783  0.05 
+percentagecpu_sensor 2022-02-24 21:38:51.305483 21.68 
+ping_sensor          2022-02-24 22:02:47.211582  1.05 
+percentagecpu_sensor 2022-02-24 22:35:51.565387  55.7 
+percentagecpu_sensor 2022-02-24 22:40:52.014974 61.22 
+ping_sensor          2022-02-24 22:55:46.761630   0.2 
+ping_sensor          2022-02-24 23:27:47.527636  3.12 
+ping_sensor          2022-02-24 23:48:47.240290  3.97 
+ping_sensor          2022-02-24 23:51:47.507125  0.49 
+percentagecpu_sensor 2022-02-24 23:56:51.583090 61.57 
+ping_sensor          2022-02-25 01:01:47.542699  1.26 
+percentagecpu_sensor 2022-02-25 01:18:51.951821 30.42 
+ping_sensor          2022-02-25 03:02:46.738282  0.24 
+percentagecpu_sensor 2022-02-25 04:32:51.287747 27.03 
+percentagecpu_sensor 2022-02-25 04:39:52.407614 30.91 
+percentagecpu_sensor 2022-02-25 05:55:51.972131 76.43 
+ping_sensor          2022-02-25 06:19:46.735632  0.96 
+percentagecpu_sensor 2022-02-25 06:22:52.715388  86.2 
+percentagecpu_sensor 2022-02-25 06:27:52.005002 79.49 
+ping_sensor          2022-02-25 07:49:47.227268  0.13 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+ping_sensor          2022-02-25 08:03:46.409458  3.58 
+ping_sensor          2022-02-25 08:16:46.761716  2.72 
+percentagecpu_sensor 2022-02-25 08:33:52.390458  24.5 
+percentagecpu_sensor 2022-02-25 09:32:51.614017 73.99 
+ping_sensor          2022-02-25 10:15:47.512784  3.81 
+percentagecpu_sensor 2022-02-25 10:30:51.268141 65.61 
+percentagecpu_sensor 2022-02-25 10:31:52.001315 80.98 
+percentagecpu_sensor 2022-02-25 10:59:51.580602 54.75 
+ping_sensor          2022-02-25 11:15:47.543336  3.75 
+ping_sensor          2022-02-25 11:19:46.740813   2.7 
+ping_sensor          2022-02-25 11:42:47.230990  1.41 
+ping_sensor          2022-02-25 12:11:47.560048  0.23 
+ping_sensor          2022-02-25 13:25:46.393335   3.1 
+ping_sensor          2022-02-25 13:26:47.224802  1.22 
+percentagecpu_sensor 2022-02-25 13:51:52.011882 74.31 
+ping_sensor          2022-02-25 14:48:46.817149  2.27 
+ping_sensor          2022-02-25 16:00:46.397049   3.7 
+percentagecpu_sensor 2022-02-25 16:36:52.009766 30.61 
+percentagecpu_sensor 2022-02-25 17:23:52.015312 62.35 
+ping_sensor          2022-02-25 17:24:46.074890  2.76 
+percentagecpu_sensor 2022-02-25 17:56:52.758927 55.66 
+ping_sensor          2022-02-25 18:47:46.427096   1.3 
+percentagecpu_sensor 2022-02-25 19:30:51.288913 78.16 
+percentagecpu_sensor 2022-02-25 19:40:52.010179 62.59 
+ping_sensor          2022-02-25 19:48:46.068881  3.34 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+percentagecpu_sensor 2022-02-25 20:14:51.976549  65.3 
+ping_sensor          2022-02-25 21:12:46.762866  3.76 
+percentagecpu_sensor 2022-02-25 21:57:52.710366 34.82 
+percentagecpu_sensor 2022-02-25 22:31:51.977609  8.01 
+ping_sensor          2022-02-25 22:42:46.777039   3.8 
+percentagecpu_sensor 2022-02-25 22:45:52.408233 18.23 
+percentagecpu_sensor 2022-02-25 23:14:51.612857 78.53 
+ping_sensor          2022-02-25 23:36:46.081349   0.3 
+ping_sensor          2022-02-26 00:22:47.538898  2.16 
+percentagecpu_sensor 2022-02-26 00:26:52.000820  59.1 
+ping_sensor          2022-02-26 00:49:46.774014  2.68 
+percentagecpu_sensor 2022-02-26 00:51:51.995117  51.4 
+percentagecpu_sensor 2022-02-26 00:55:52.388428  42.3 
+percentagecpu_sensor 2022-02-26 00:56:51.279558 24.84 
+percentagecpu_sensor 2022-02-26 01:28:51.974592 78.53 
+ping_sensor          2022-02-26 01:38:46.048124  0.28 
+percentagecpu_sensor 2022-02-26 01:56:52.747752 90.54 
+percentagecpu_sensor 2022-02-26 02:01:51.980202  63.8 
+percentagecpu_sensor 2022-02-26 02:31:51.998287 92.56 
+percentagecpu_sensor 2022-02-26 03:06:51.271097 46.52 
+ping_sensor          2022-02-26 03:50:47.202787  2.23 
+ping_sensor          2022-02-26 03:59:46.059968  1.07 
+percentagecpu_sensor 2022-02-26 04:58:52.738592 99.03 
+ping_sensor          2022-02-26 05:21:46.852674  0.77 
+ping_sensor          2022-02-26 05:22:46.061628  3.87 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+ping_sensor          2022-02-26 05:44:46.840462  2.29 
+ping_sensor          2022-02-26 06:09:47.552524   0.6 
+percentagecpu_sensor 2022-02-26 06:27:51.255309 61.53 
+percentagecpu_sensor 2022-02-26 06:39:51.598614 62.72 
+percentagecpu_sensor 2022-02-26 06:39:51.978209 74.08 
+percentagecpu_sensor 2022-02-26 06:55:51.608806  7.73 
+ping_sensor          2022-02-26 07:18:46.413004  0.67 
+percentagecpu_sensor 2022-02-26 07:41:51.973879  78.0 
+percentagecpu_sensor 2022-02-26 07:59:52.729009 62.93 
+percentagecpu_sensor 2022-02-26 08:04:52.749470  5.45 
+percentagecpu_sensor 2022-02-26 08:10:51.598254  36.4 
+ping_sensor          2022-02-26 09:20:46.408475  0.52 
+ping_sensor          2022-02-26 11:09:46.075487  1.03 
+ping_sensor          2022-02-26 11:33:46.426452  3.98 
+ping_sensor          2022-02-26 11:52:46.390430  0.79 
+ping_sensor          2022-02-26 12:22:46.822908   1.7 
+ping_sensor          2022-02-26 12:33:47.519688  2.12 
+percentagecpu_sensor 2022-02-26 13:43:51.262194 57.73 
+percentagecpu_sensor 2022-02-26 13:54:52.393303  3.96 
+ping_sensor          2022-02-26 14:16:47.245603  1.52 
+ping_sensor          2022-02-26 14:44:47.555681  3.55 
+ping_sensor          2022-02-26 14:46:46.824685  2.27 
+ping_sensor          2022-02-26 15:27:46.745798   3.6 
+ping_sensor          2022-02-26 15:34:47.534080  1.61 
+percentagecpu_sensor 2022-02-26 15:36:51.607312  41.7 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+ping_sensor          2022-02-26 16:06:47.557470  0.61 
+ping_sensor          2022-02-26 16:17:47.201846  0.89 
+ping_sensor          2022-02-26 16:41:47.549951  2.24 
+percentagecpu_sensor 2022-02-26 16:56:52.707460 76.96 
+ping_sensor          2022-02-26 17:41:47.241478  3.19 
+ping_sensor          2022-02-26 18:38:46.748550  0.06 
+percentagecpu_sensor 2022-02-26 19:45:52.001540  1.12 
+ping_sensor          2022-02-26 20:33:46.082172  2.71 
+percentagecpu_sensor 2022-02-26 21:25:52.743700 37.39 
+percentagecpu_sensor 2022-02-26 22:34:52.366493 14.95 
+ping_sensor          2022-02-26 22:56:47.218653  0.94 
+ping_sensor          2022-02-26 23:08:46.377500  2.92 
+ping_sensor          2022-02-26 23:32:46.386751  1.78 
+percentagecpu_sensor 2022-02-26 23:57:52.005741 69.67 
+percentagecpu_sensor 2022-02-27 01:08:51.251987  1.58 
+ping_sensor          2022-02-27 02:15:46.090944  0.41 
+ping_sensor          2022-02-27 02:29:46.750399  0.04 
+ping_sensor          2022-02-27 02:51:46.732765  2.49 
+ping_sensor          2022-02-27 02:54:47.553471  1.55 
+ping_sensor          2022-02-27 03:29:46.427589  3.14 
+percentagecpu_sensor 2022-02-27 04:01:51.974236 20.46 
+ping_sensor          2022-02-27 04:32:46.755302  1.34 
+percentagecpu_sensor 2022-02-27 04:51:51.996904 47.33 
+percentagecpu_sensor 2022-02-27 05:29:52.373829 67.02 
+ping_sensor          2022-02-27 05:42:46.381132  2.49 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+ping_sensor          2022-02-27 05:44:47.550593  0.55 
+ping_sensor          2022-02-27 05:56:46.419399  2.67 
+ping_sensor          2022-02-27 06:00:47.512343  0.46 
+percentagecpu_sensor 2022-02-27 06:36:51.292865   7.6 
+percentagecpu_sensor 2022-02-27 06:51:52.419527 71.25 
+percentagecpu_sensor 2022-02-27 06:57:51.278184 32.05 
+percentagecpu_sensor 2022-02-27 07:08:52.385843  33.0 
+percentagecpu_sensor 2022-02-27 07:13:51.958577  69.7 
+percentagecpu_sensor 2022-02-27 07:45:52.760091 75.18 
+percentagecpu_sensor 2022-02-27 08:10:52.738104 70.54 
+ping_sensor          2022-02-27 10:00:46.045189  3.06 
+percentagecpu_sensor 2022-02-27 10:14:52.709535 50.36 
+percentagecpu_sensor 2022-02-27 10:21:51.256453  3.73 
+ping_sensor          2022-02-27 10:46:47.217549  0.59 
+ping_sensor          2022-02-27 11:22:47.246180  0.32 
+percentagecpu_sensor 2022-02-27 13:09:51.993935 80.76 
+ping_sensor          2022-02-27 13:35:46.427529   1.1 
+ping_sensor          2022-02-27 14:03:46.391376  2.92 
+percentagecpu_sensor 2022-02-27 14:16:52.420438 71.73 
+percentagecpu_sensor 2022-02-27 14:38:51.294000 89.23 
+percentagecpu_sensor 2022-02-27 14:58:52.419069 79.54 
+ping_sensor          2022-02-27 15:24:46.809469   0.4 
+ping_sensor          2022-02-27 15:36:47.248843  2.93 
+percentagecpu_sensor 2022-02-27 15:38:52.377512  90.4 
+ping_sensor          2022-02-27 15:53:47.238688   1.5 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+percentagecpu_sensor 2022-02-27 17:13:51.594071 13.39 
+ping_sensor          2022-02-27 17:30:47.217142  0.35 
+ping_sensor          2022-02-27 17:47:47.225715   0.0 
+percentagecpu_sensor 2022-02-27 17:48:52.000902  9.52 
+ping_sensor          2022-02-27 18:35:47.240640  1.21 
+ping_sensor          2022-02-27 18:48:46.750805  1.11 
+percentagecpu_sensor 2022-02-27 18:58:51.288177 66.59 
+ping_sensor          2022-02-27 19:04:46.736540  3.38 
+percentagecpu_sensor 2022-02-27 19:48:51.618536 24.59 
+percentagecpu_sensor 2022-02-27 20:14:52.720048 42.49 
+ping_sensor          2022-02-27 20:29:47.199647  1.03 
+percentagecpu_sensor 2022-02-27 20:44:52.402383 11.38 
+percentagecpu_sensor 2022-02-27 20:46:52.707952 25.23 
+ping_sensor          2022-02-27 20:49:46.376444  0.92 
+percentagecpu_sensor 2022-02-27 21:10:51.304781 12.67 
+ping_sensor          2022-02-27 21:44:47.565781  2.75 
+percentagecpu_sensor 2022-02-27 21:47:52.423480 97.85 
+ping_sensor          2022-02-27 22:37:46.751232   0.9 
+ping_sensor          2022-02-27 22:56:46.393363  3.88 
+ping_sensor          2022-02-27 23:15:47.514418  3.88 
+ping_sensor          2022-02-27 23:29:47.559146  0.54 
+percentagecpu_sensor 2022-02-27 23:30:51.982834 61.42 
+percentagecpu_sensor 2022-02-27 23:35:52.373042 14.28 
+percentagecpu_sensor 2022-02-28 00:31:51.568789 63.22 
+percentagecpu_sensor 2022-02-28 00:54:51.270251  4.26 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+percentagecpu_sensor 2022-02-28 01:17:52.391148  5.57 
+ping_sensor          2022-02-28 01:27:46.373547  3.79 
+ping_sensor          2022-02-28 02:35:47.561505  3.54 
+ping_sensor          2022-02-28 03:36:47.541700  1.34 
+percentagecpu_sensor 2022-02-28 03:46:52.728765 91.51 
+ping_sensor          2022-02-28 04:07:47.235517  0.47 
+ping_sensor          2022-02-28 04:16:47.558947  1.43 
+ping_sensor          2022-02-28 04:17:47.557037  2.77 
+ping_sensor          2022-02-28 04:26:46.061069  1.88 
+percentagecpu_sensor 2022-02-28 04:59:51.580799 31.33 
+ping_sensor          2022-02-28 05:12:46.093445  3.92 
+percentagecpu_sensor 2022-02-28 05:14:51.279026 82.26 
+ping_sensor          2022-02-28 05:36:46.073443  0.64 
+percentagecpu_sensor 2022-02-28 05:44:51.957706  24.3 
+ping_sensor          2022-02-28 06:13:46.801066  2.17 
+percentagecpu_sensor 2022-02-28 06:17:51.263571 53.05 
+ping_sensor          2022-02-28 06:23:47.225431  1.73 
+ping_sensor          2022-02-28 06:23:47.226167  2.24 
+percentagecpu_sensor 2022-02-28 06:46:51.266547  8.15 
+ping_sensor          2022-02-28 06:50:47.557151  1.18 
+ping_sensor          2022-02-28 08:15:46.076890  0.43 
+percentagecpu_sensor 2022-02-28 08:33:51.993098 55.75 
+percentagecpu_sensor 2022-02-28 09:01:52.011909 98.85 
+ping_sensor          2022-02-28 09:03:46.417786  3.76 
+ping_sensor          2022-02-28 09:13:46.401018   1.7 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+ping_sensor          2022-02-28 09:31:46.749079  0.14 
+percentagecpu_sensor 2022-02-28 10:23:52.005144 60.35 
+percentagecpu_sensor 2022-02-28 10:29:52.413730  91.5 
+percentagecpu_sensor 2022-02-28 10:31:52.392611   1.3 
+percentagecpu_sensor 2022-02-28 10:44:52.746147 26.94 
+percentagecpu_sensor 2022-02-28 10:57:51.968379 53.82 
+ping_sensor          2022-02-28 11:11:47.245148  1.24 
+percentagecpu_sensor 2022-02-28 12:18:51.610808 48.68 
+ping_sensor          2022-02-28 12:38:46.401220   3.6 
+percentagecpu_sensor 2022-02-28 12:43:51.304424 35.12 
+ping_sensor          2022-02-28 13:10:46.379618  0.81 
+ping_sensor          2022-02-28 13:22:46.740756  1.81 
+percentagecpu_sensor 2022-02-28 13:37:52.758792  2.55 
+percentagecpu_sensor 2022-02-28 14:01:51.297249 32.43 
+percentagecpu_sensor 2022-02-28 14:03:52.402920 36.38 
+ping_sensor          2022-02-28 14:16:47.219866  1.29 
+percentagecpu_sensor 2022-02-28 14:51:52.749359 49.54 
+ping_sensor          2022-02-28 15:01:47.505465  0.37 
+ping_sensor          2022-02-28 15:01:47.519320   1.2 
+ping_sensor          2022-02-28 15:10:47.211724  0.81 
+percentagecpu_sensor 2022-02-28 15:35:51.576196 32.37 
+percentagecpu_sensor 2022-02-28 15:38:52.754559 19.54 
+ping_sensor          2022-02-28 15:52:47.234113  0.04 
+percentagecpu_sensor 2022-02-28 17:19:52.414624 64.29 
+percentagecpu_sensor 2022-02-28 17:23:51.609755  51.8 
+
+table                timestamp                  value 
+-------------------- -------------------------- ----- 
+percentagecpu_sensor 2022-02-28 17:44:51.991302 69.75 
+ping_sensor          2022-02-28 17:58:46.072906   2.1 
+ping_sensor          2022-02-28 18:18:47.550622  2.88 
+percentagecpu_sensor 2022-02-28 18:18:52.412344  8.74 
+ping_sensor          2022-02-28 18:42:47.555277  2.24 
+ping_sensor          2022-02-28 19:27:46.408185  1.22 
+percentagecpu_sensor 2022-02-28 20:20:52.727517 69.18 
+percentagecpu_sensor 2022-02-28 21:04:51.955590 99.66 
+ping_sensor          2022-02-28 21:19:46.848061  1.54 
+ping_sensor          2022-02-28 23:02:47.215512  1.04 
+percentagecpu_sensor 2022-02-28 23:02:51.984571 42.29 
+percentagecpu_sensor 2022-02-28 23:05:51.570357 26.45 
+ping_sensor          2022-02-28 23:34:46.063492  1.56 
