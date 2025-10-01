@@ -169,6 +169,10 @@ if $NOSQL_PORT then nosql_port = $NOSQL_PORT
 if $NOSQL_USER then nosql_user = $NOSQL_USER
 if $NOSQL_PASSWD then nosql_passwd = $NOSQL_PASSWD
 
+:akave-access: 
+if $AKAVE_ACCESS_KEY then akave_access_key = $AKAVE_ACCESS_KEY
+if $AKAVE_SECRET_KEY then akave_secret_key = $AKAVE_SECRET_KEY
+
 :blockchain-basic:
 # blockchain platform - either master (node) or optimism
 set blockchain_source = master
