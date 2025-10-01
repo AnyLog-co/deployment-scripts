@@ -156,13 +156,13 @@ set blobs_compress = true
 set blobs_reuse = true
 
 if $ENABLE_NOSQL == true or $ENABLE_NOSQL == True or $ENABLE_NOSQL == TRUE then
-do set enable_nosql=true
+do set enable_nosql = true
 do set blobs_dbms = true
-# if $BLOBS_DBMS == true or $BLOBS_DBMS == True or $BLOBS_DBMS == TRUE  then set blobs_dbms = true
-if $BLOBS_REUSE == false or $BLOBS_REUSE == False or $BLOBS_REUSE == FALSE then set blobs_reuse = false
 
-# if $NOSQL_TYPE then set nosql_type = $NOSQL_TYPE
-# if !nosql_type != mongo then  goto invalid-nosql-database
+# disable blobs folder storage
+if $BLOBS_FOLDER == false or $BLOBS_FOLDER == False or $BLOBS_FOLDER == FALSE then set blobs_folder = false
+
+if $BLOBS_REUSE == false or $BLOBS_REUSE == False or $BLOBS_REUSE == FALSE then set blobs_reuse = false
 
 if $NOSQL_IP then nosql_ip = $NOSQL_IP
 if $NOSQL_PORT then nosql_port = $NOSQL_PORT
