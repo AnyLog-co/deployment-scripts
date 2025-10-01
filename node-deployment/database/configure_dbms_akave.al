@@ -9,8 +9,8 @@ on error goto declare-provider-error
     group = branch_videos and
     provider = akave and
     id = 123 and
-    access_key = O3_Q2YDJM8CQ4E02X49D and
-    secret_key = Wm5eKQWarOqUcIXPnJHcLfyLC08zRYOZuVFs and
+    access_key = !akave_access_key and
+    secret_key = !akave_secret_key and
     region = akave-network and
     endpoint_url = https://o3-rc3.akave.xyz>
 
