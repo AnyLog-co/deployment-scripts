@@ -109,6 +109,11 @@ if not $NIC_TYPE and $OVERLAY_IP then overlay_ip = $OVERLAY_IP
 if $PROXY_IP then proxy_ip = $PROXY_IP
 if $CONFIG_NAME then config_name = $CONFIG_NAME
 
+# option to not set ledger_conn for master
+if !node_type == master and not $LEDGER_CONN and !overlay_ip then tmp_ledger = !overlay_ip + ":" + !anylog_server_port
+else if !node_type == master and not $LEDGER_CONN then tmp_ledger = !ip + ":" + !anylog_server_port
+if !node_type == master and not $LEDGER_CONN then ledger_conn = python !tmp_ledger.strip()
+
 :authentication:
 set enable_auth = false
 if !is_edgelake == false and ($ENABLE_AUTH == true or $ENABLE_AUTH == True or $ENABLE_AUTH == TRUE) then set enable_auth = true
