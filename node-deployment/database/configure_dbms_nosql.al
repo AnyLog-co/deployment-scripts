@@ -28,6 +28,8 @@ else connect dbms !default_dbms where type=!nosql_type and ip=!nosql_ip and port
 :blobs-archiver:
 if !debug_mode == true then print "Enable blobs archiver"
 
+set blobs_dbms = true
+
 on error call blobs-archiver-error
 if !blobs_dbms == false then set blobs_folder = true
 <run blobs archiver where
@@ -50,7 +52,7 @@ return
 
 :connect-dbms-error:
 echo "Error: Failed to declare " !default_dbms " NoSQL database with database type " !db_type
-goto terminate-scripts
+goto blobs-archiver
 
 :blobs-archiver-error:
 echo "Error: Failed to enable blobs archiver"
