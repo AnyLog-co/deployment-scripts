@@ -3,7 +3,7 @@
 If any form of monitoring is enabled, the system automatically connects to a logical database called `monitoring`, and 
 store associated data for 36 hours in 12 hour partition intervals. 
 
-For convenience, the different monitoring options, and associated database, using [monitoring_policy.al](../southbound-monitoring/monitoring_policy.al)
+For convenience, the different monitoring options, and associated database, using [monitoring_policy.al](config_monitoring_policy.al)
 
 ## Node Monitoring
 

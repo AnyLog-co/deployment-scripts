@@ -20,7 +20,7 @@
 #       * this command should be run for each machine sending data
 #       * each rule should have a unique name `set msg rule [RULE_NAME] if ...`
 #
-# :processs:
+# :process:
 #   1. create table policy if DNE
 #   2. connect monitoring database inn SQLite
 #   3. set partitions
@@ -33,7 +33,7 @@ on error ignore
 if !debug_mode == true then set debug on
 
 :dbms-configs:
-process !local_scripts/connectors/syslog_table_policy.al
+process !anylog_path/deployment-scripts/southbound-monitoring/syslog_monitoring_table.al
 
 :store-monitoring:
 if !debug_mode == true then print "Monitoring database and table configurations for syslog"

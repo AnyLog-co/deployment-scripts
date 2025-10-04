@@ -39,6 +39,7 @@ if $COMPANY_NAME then company_name = $COMPANY_NAME
 
 if $LEDGER_CONN then ledger_conn=$LEDGER_CONN
 
+if $LICENSE_KEY then license_key = $LICENSE_KEY
 
 :general-params:
 loc_info = rest get where url = https://ipinfo.io/json
