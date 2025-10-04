@@ -72,7 +72,7 @@ set policy new_policy [config][tcp_bind] = '!tcp_bind'
 set policy new_policy [config][rest_threads] = '!rest_threads.int'
 set policy new_policy [config][rest_timeout] = '!rest_timeout.int'
 set policy new_policy [config][rest_bind] = '!rest_bind'
-if !rest_bind == true and  not !overlay_ip then set new_policy [config][rest_ip] == '!ip'
+if !rest_bind == true and  not !overlay_ip then set policy new_policy [config][rest_ip] == '!ip'
 if !rest_bind == true and !overlay_ip      then set policy new_policy [config][rest_ip] = '!overlay_ip'
 
 if !anylog_broker_port then
