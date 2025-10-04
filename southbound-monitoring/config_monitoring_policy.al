@@ -23,7 +23,7 @@ if !debug_mode == true then set debug on
 
 :check-policy:
 if !debug_mode == true then print "check if policy exists"
-is_policy = blockchain get schedule where id=!config_id
+is_policy = blockchain get config where id=!config_id
 
 # just created the policy + exists
 if !is_policy then goto config-policy
