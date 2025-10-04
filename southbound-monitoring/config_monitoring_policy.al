@@ -41,8 +41,8 @@ new_policy=""
         "script": [
             "process !anylog_path/deployment-scripts/southbound-monitoring/prepare_monitoring.al",
             "if !monitor_nodes == true then process !anylog_path/deployment-scripts/southbound-monitoring/node_monitoring.al",
-            "if !syslog_monitoring == true and (!node_type == operator or !node_type == publisher) then !anylog_path/deployment-scripts/southbound-monitoring/syslog_monitoring.al",
-            "if !docker_monitoring == true and (!node_type == operator or !node_type == publisher) then !anylog_path/deployment-scripts/southbound-monitoring/docker_monitoring.al"
+            "if !syslog_monitoring == true and (!node_type == operator or !node_type == publisher) then process !anylog_path/deployment-scripts/southbound-monitoring/syslog_monitoring.al",
+            "if !docker_monitoring == true and (!node_type == operator or !node_type == publisher) then process !anylog_path/deployment-scripts/southbound-monitoring/docker_monitoring.al"
         ]
     }
 }>
