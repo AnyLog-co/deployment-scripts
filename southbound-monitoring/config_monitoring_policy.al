@@ -15,7 +15,7 @@ if !debug_mode == true then set debug on
 
 :set-params:
 if !debug_mode == true then print "Setting env params"
-schedule_id = config-monitoring
+config_id = config-monitoring
 set create_policy = false
 
 on error ignore
@@ -23,7 +23,7 @@ if !debug_mode == true then set debug on
 
 :check-policy:
 if !debug_mode == true then print "check if policy exists"
-is_policy = blockchain get schedule where id=!schedule_id
+is_policy = blockchain get schedule where id=!config_id
 
 # just created the policy + exists
 if !is_policy then goto config-policy
@@ -35,13 +35,14 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
 if !debug_mode == true then print "create policy"
 new_policy=""
 <new_policy = {
-    "schedule": {
-        "id": !schedule_id,
+    "config": {
+        "id": !config_id,
         "name": "Node Monitoring Schedule",
         "script": [
             "process !anylog_path/deployment-scripts/southbound-monitoring/prepare_monitoring.al",
             "if !monitor_nodes == true then process !anylog_path/deployment-scripts/southbound-monitoring/node_monitoring.al",
-            "if !syslog_monitoring == true then process !anylog_path/deployment-scripts/southbound-monitoring/syslog_monitoring_table.al"
+            "if !syslog_monitoring == true and (!node_type == operator or !node_type == publisher) then !anylog_path/deployment-scripts/southbound-monitoring/syslog_monitoring.al",
+            "if !docker_monitoring == true and (!node_type == operator or !node_type == publisher) then !anylog_path/deployment-scripts/southbound-monitoring/docker_monitoring.al"
         ]
     }
 }>
@@ -58,7 +59,7 @@ goto check-policy
 :config-policy:
 if !debug_mode == true then print "Config from policy"
 on error goto config-policy-error
-config from policy where id=!schedule_id
+config from policy where id=!config_id
 
 :end-script:
 end script
