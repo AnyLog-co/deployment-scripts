@@ -46,7 +46,7 @@ if $ANYLOG_PATH then set anylog_path = $ANYLOG_PATH
 else if $EDGELAKE_PATH then set anylog_path = $EDGELAKE_PATH
 
 if !debug_mode == true then print "set home path"
-set anylog home $ANYLOG_PATH
+set anylog home $HOME/AnyLog-source
 
 local_scripts = !anylog_path/deployment-scripts/node-deployment
 test_dir = !anylog_path/deployment-scripts/test
