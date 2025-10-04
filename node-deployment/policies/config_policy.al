@@ -91,11 +91,8 @@ if !node_type == operator then goto operator-scripts
 :generic-node:
 if !node_type == generic then
 <do set policy new_policy [config][script] = [
-    "if !blockchain_source == master then blockchain seed from !ledger_conn",
-    "process !local_scripts/connect_blockchain.al",
     "if !system_query == true then process !local_scripts/database/configure_dbms_system_query.al",
     "run scheduler 1",
-    "process !anylog_path/deployment-scripts/southbound-monitoring/monitoring_policy.al",
     "if !deploy_local_script == true then process !local_scripts/local_script.al",
     "if !is_edgelake == false then process !local_scripts/policies/license_policy.al"
 ]>
