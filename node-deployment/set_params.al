@@ -57,6 +57,9 @@ if not !loc_info and not !state then state = Unknown
 if !loc_info and not !city then city = from !loc_info bring [city]
 if not !loc_info and not !city then city = Unknown
 
+if $BRANCH then branch= $BRANCH
+if $DEPT then dept = $DEPT
+
 :networking:
 set configure_dns=false
 config_name = !node_type.name + - + !company_name.name + -configs
