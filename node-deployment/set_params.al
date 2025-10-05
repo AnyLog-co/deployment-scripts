@@ -57,7 +57,7 @@ if not !loc_info and not !state then state = Unknown
 if !loc_info and not !city then city = from !loc_info bring [city]
 if not !loc_info and not !city then city = Unknown
 
-if $BRANCH then branch= $BRANCH
+if $BRANCH_NAME then branch_name=$BRANCH_NAME
 if $DEPT then dept = $DEPT
 
 :networking:
