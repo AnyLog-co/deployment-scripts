@@ -53,6 +53,9 @@ set policy new_policy [!node_type] = {}
 set policy new_policy [!node_type][name] = !node_name
 set policy new_policy [!node_type][company] = !company_name
 
+if !node_type == operator and !branch then set policy new_policy [!node_type][branch]
+if !node_type == operator and !dept then set policy new_policy [!node_type][dept]
+
 :network-!node_type:
 if !debug_mode == true then print "Declare network configuration in new policy variables"
 
