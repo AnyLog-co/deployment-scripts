@@ -65,6 +65,10 @@ process !local_scripts/set_params.al
 if !debug_mode == true then print "declare configs"
 process !local_scripts/policies/config_policy.al
 
+
+if $NODE_NAME == "NYC-ACME" then process /Users/roy/Github-Repos/deployment-scripts/akave-connection/rc2.al
+if $NODE_NAME == "Chi-ACME" then process /Users/roy/Github-Repos/deployment-scripts/akave-connection/rc3.al
+
 :end-script:
 if !debug_mode == true then print "Validate everything is running as expected"
 get processes
