@@ -164,13 +164,6 @@ set blobs_reuse = true
 # store blobs in storage that's not local file system
 if $BLOBS_STORAGE == true or $BLOBS_STORAGE == True or $BLOBS_STORAGE == TRUE then set blobs_storage = true
 
-# by default we're storing blobs to local files, so disable that option - either by user or us
-# - user can force disable by setting folder as False
-# - user can force enable by setting  folder as True
-if $BLOBS_FOLDER == false or $BLOBS_FOLDER == False or $BLOBS_FOLDER == FALSE then set blobs_folder = false
-else if not $BLOBS_FOLDER and !blobs_dbms == true then set set blobs_folder = false
-
-
 if $BLOBS_REUSE == false or $BLOBS_REUSE == False or $BLOBS_REUSE == FALSE then set blobs_reuse = false
 
 # Storage type (mongo, akave, s3 , etc)
@@ -179,6 +172,12 @@ if $BLOB_STORAGE_TYPE then blob_storage_type = $BLOB_STORAGE_TYPE
 # URL or IP address to access blob storage
 if $BLOB_STORAGE_IP then blob_storage_ip = $BLOB_STORAGE_IP
 if $BLOB_STORAGE_PORT then blob_storage_port = $BLOB_STORAGE_PORT
+
+# by default we're storing blobs to local files, so disable that option - either by user or us
+# - user can force disable by setting folder as False
+# - user can force enable by setting  folder as True
+if $BLOBS_FOLDER == false or $BLOBS_FOLDER == False or $BLOBS_FOLDER == FALSE then set blobs_folder = false
+else if not $BLOBS_FOLDER and !blobs_storage == true and !blob_storage_type then set set blobs_folder = false
 
 :blob-dbms:
 # MongoDB access credentials

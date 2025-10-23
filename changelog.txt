@@ -1,2 +1,15 @@
 Blob storage:
 1. set_params.al - updated param names + added comments (L 154-193)
+-- blob-storage
+-- blob-dbms
+-- blob-bucket
+
+To look into - what happens if someone wants this:
+-> local MongoDB or MinIO
+-> remote S3 or Akave storage
+
+
+2. New scripts
+-- configure_blob_storage.al - select storage + configure archiver
+-- connect_dbms_nosql.al - NoSQL storage (ex. MongoDB)
+-- connect_dbms_objstore.al - Akave code
