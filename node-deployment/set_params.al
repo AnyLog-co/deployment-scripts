@@ -25,6 +25,10 @@ company_name = "New Company"
 ledger_conn = 127.0.0.1:32048
 hostname = get hostname
 
+if $NODE_TYPE == master or $NODE_TYPE == master-operator or $NODE_TYPE == master-publisher then set = master_configs = true
+if $NODE_TYPE == operator or $NODE_TYPE == master-operator then set node_type = operator
+if $NODE_TYPE == publisher or $NODE_TYPE == master-publisher then set publisher_configs = true set node_type = publihser
+
 if $NODE_TYPE == master-operator then set node_type = operator
 else if $NODE_TYPE == master-publisher then set node_type = publisher
 else if $NODE_TYPE then set node_type = $NODE_TYPE
