@@ -151,34 +151,46 @@ do if $MEMORY == false or $MEMORY == False or $MEMORY == FALSE then set memory=f
 system_query_db = sqlite
 if $SYSTEM_QUERY_DB == psql or $SYSTEM_QUERY_DB == sqlite then system_query_db = $SYSTEM_QUERY_DB
 
-:nosql-database:
-set enable_nosql = false
-nosql_type = mongo
-nosql_ip = 127.0.0.1
-nosql_port = 27017
-set blobs_dbms = false
+:blob-storage:
+# store blobs in data store - mongo, s3, akave, minio, etc.
+set blobs_storage = false
+# store blobs in local file
 set blobs_folder = true
+# compress blobs
 set blobs_compress = true
+# reuse repeating blobs
 set blobs_reuse = true
 
-if $ENABLE_NOSQL == true or $ENABLE_NOSQL == True or $ENABLE_NOSQL == TRUE then
-do set enable_nosql = true
-do set blobs_dbms = true
-else if $BLOBS_DBMS == true or $BLOBS_DBMS == True or $BLOBS_DBMS == TRUE then set blobs_dbms = true
+# store blobs in storage that's not local file system
+if $BLOBS_STORAGE == true or $BLOBS_STORAGE == True or $BLOBS_STORAGE == TRUE then set blobs_storage = true
 
-# disable blobs folder storage
+# by default we're storing blobs to local files, so disable that option - either by user or us
+# - user can force disable by setting folder as False
+# - user can force enable by setting  folder as True
 if $BLOBS_FOLDER == false or $BLOBS_FOLDER == False or $BLOBS_FOLDER == FALSE then set blobs_folder = false
+else if not $BLOBS_FOLDER and !blobs_dbms == true then set set blobs_folder = false
+
 
 if $BLOBS_REUSE == false or $BLOBS_REUSE == False or $BLOBS_REUSE == FALSE then set blobs_reuse = false
 
-if $NOSQL_IP then nosql_ip = $NOSQL_IP
-if $NOSQL_PORT then nosql_port = $NOSQL_PORT
-if $NOSQL_USER then nosql_user = $NOSQL_USER
-if $NOSQL_PASSWD then nosql_passwd = $NOSQL_PASSWD
+# Storage type (mongo, akave, s3 , etc)
+if $BLOB_STORAGE_TYPE then blob_storage_type = $BLOB_STORAGE_TYPE
 
-:akave-access:
-if $AKAVE_ACCESS_KEY then akave_access_key = $AKAVE_ACCESS_KEY
-if $AKAVE_SECRET_KEY then akave_secret_key = $AKAVE_SECRET_KEY
+# URL or IP address to access blob storage
+if $BLOB_STORAGE_IP then blob_storage_ip = $BLOB_STORAGE_IP
+if $BLOB_STORAGE_PORT then blob_storage_port = $BLOB_STORAGE_PORT
+
+:blob-dbms:
+# MongoDB access credentials
+if $BLOB_STORAGE_USER then blob_storage_user = $BLOB_STORAGE_USER
+if $BLOB_STORAGE_PASSWORD then blob_storage_password = $BLOB_STORAGE_PASSWORD
+
+:blob-bucket:
+if $BUCKET_GROUP then bucket_group = $BUCKET_GROUP
+if $BUCKET_ID then bucket_id = $BUCKET_ID
+if $BUCKET_ACCESS_KEY then bucket_access_key = $BUCKET_ACCESS_KEY
+if $BUCKET_SECRETE_KEY then bucket_secrete_key = $BUCKET_SECRETE_KEY
+if $BUCKET_REGION then bucket_region = $BUCKET_REGION
 
 :blockchain-basic:
 # blockchain platform - either master (node) or optimism

@@ -7,12 +7,12 @@
 on error goto declare-provider-error
 <bucket provider connect where
     group = branch_videos and
-    provider = akave and
+    provider = akave and # $BLOB_STORAGE_TYPE
     id = 123 and
     access_key = !akave_access_key and
     secret_key = !akave_secret_key and
     region = akave-network and
-    endpoint_url = https://o3-rc3.akave.xyz>
+    endpoint_url = https://o3-rc3.akave.xyz> # $BLOB_STORAGE_IP
 
 # we need a function to check if bucket has been created
 #:create-bucket:

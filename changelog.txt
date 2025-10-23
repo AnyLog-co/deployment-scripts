@@ -1,0 +1,2 @@
+Blob storage:
+1. set_params.al - updated param names + added comments (L 154-193)
