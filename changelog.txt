@@ -13,3 +13,7 @@ To look into - what happens if someone wants this:
 -- configure_blob_storage.al - select storage + configure archiver
 -- connect_dbms_nosql.al - NoSQL storage (ex. MongoDB)
 -- connect_dbms_objstore.al - Akave code
+
+3. updated file names / paths in database/ for consistency
+-- simplify connection process to 1 file rather than "unique" per database
+--

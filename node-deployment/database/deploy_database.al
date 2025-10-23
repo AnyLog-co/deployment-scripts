@@ -20,7 +20,7 @@ else if $NODE_TYPE == master then goto end-script
 :operator-dbms:
 if !debug_mode == true then print "Operator related database processes"
 process !local_scripts/database/configure_dbms_operator.al
-process !local_scripts/database/configure_dbms_nosql.al
+process !local_scripts/database/configure_blob_storage.al
 
 :almgm-dbms:
 if !debug_mode == true then print "almgm related database processes"
