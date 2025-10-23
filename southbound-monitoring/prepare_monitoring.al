@@ -1,5 +1,7 @@
 on error ignore
 
+if !node_type != operator or (not !monitor_nodes and not !syslog_monitoring and not !docker_monitoring) then goto end-script
+
 :set-dbms-monitoring:
 schedule name = monitoring_ips and time=300 seconds and task monitoring_ips = blockchain get query bring.ip_port
 

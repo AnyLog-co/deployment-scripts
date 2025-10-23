@@ -39,6 +39,7 @@ if $COMPANY_NAME then company_name = $COMPANY_NAME
 
 if $LEDGER_CONN then ledger_conn=$LEDGER_CONN
 
+if $LICENSE_KEY then license_key = $LICENSE_KEY
 
 :general-params:
 loc_info = rest get where url = https://ipinfo.io/json
@@ -175,7 +176,7 @@ if $NOSQL_PORT then nosql_port = $NOSQL_PORT
 if $NOSQL_USER then nosql_user = $NOSQL_USER
 if $NOSQL_PASSWD then nosql_passwd = $NOSQL_PASSWD
 
-:akave-access: 
+:akave-access:
 if $AKAVE_ACCESS_KEY then akave_access_key = $AKAVE_ACCESS_KEY
 if $AKAVE_SECRET_KEY then akave_secret_key = $AKAVE_SECRET_KEY
 

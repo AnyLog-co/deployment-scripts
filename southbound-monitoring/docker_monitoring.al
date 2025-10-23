@@ -1,7 +1,5 @@
 on error ignore
 if !node_type != operator then goto pull-data
-:store-monitoring:
-process !local_scripts/database/configure_dbms_monitoring.al
 
 :pull-data:
 on error pull-data-error
