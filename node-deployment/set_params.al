@@ -163,6 +163,7 @@ set blobs_reuse = true
 if $ENABLE_NOSQL == true or $ENABLE_NOSQL == True or $ENABLE_NOSQL == TRUE then
 do set enable_nosql = true
 do set blobs_dbms = true
+else if $BLOBS_DBMS == true or $BLOBS_DBMS == True or $BLOBS_DBMS == TRUE then set blobs_dbms = true
 
 # disable blobs folder storage
 if $BLOBS_FOLDER == false or $BLOBS_FOLDER == False or $BLOBS_FOLDER == FALSE then set blobs_folder = false
