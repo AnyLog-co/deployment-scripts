@@ -1,4 +1,4 @@
-Blob storage:
+* Blob storage:
 1. set_params.al - updated param names + added comments (L 154-193)
 -- blob-storage
 -- blob-dbms
@@ -16,4 +16,14 @@ To look into - what happens if someone wants this:
 
 3. updated file names / paths in database/ for consistency
 -- simplify connection process to 1 file rather than "unique" per database
---
+-- updated deploy_database.al with correct paths
+
+* Node Types - we should now support:
+-- master
+-- operator
+-- query
+-- publisher
+-- master-operator (This is an operator node with blockchain.ledger)
+-- master-publisher (this is a publisher node with blockchain.ledger)
+
+Note: `system_query` can still be deployed by simplify setting `SYSTEM_QUERY=true`
