@@ -5,7 +5,7 @@
 
 on error ignore
 :connect-dbms:
-db_name = blockchain
+set db_name = blockchain
 process !local_scripts/database/connect_dbms_sql.al
 
 :create-table:
