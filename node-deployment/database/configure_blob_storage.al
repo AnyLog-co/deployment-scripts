@@ -4,14 +4,14 @@
 on error ignore
 
 :validate-process:
-if !blobs_storage == true and not !blob_storage_type then goto missing-storage-type
-if !blobs_storage == false and !blobs_folder == true then goto blobs-archiver
-else if !blobs_storage == false and !blobs_folder == false then goto end-script
+if !blobs_storage == false and !blobs_folder == false then goto blobs-archiver-warning
+else if !blobs_storage == true and not !blob_storage_type then goto missing-storage-type
+else if !blobs_storage == false and !blobs_folder == true then goto blobs-archiver
 
 
 :connect-blob-storage:
 if !blobs_storage == true and !blob_storage_type == mongo then goto !local_scripts/database/connect_dbms_mongo.al
-if !blobs_storage == true and (!blobs_storage_type == akave or !blobs_storage_type == s3) then goto !local_scripts/database/connect_dbms_bucket.al
+else if !blobs_storage == true and (!blobs_storage_type == akave or !blobs_storage_type == s3) then goto !local_scripts/database/connect_dbms_bucket.al
 
 :blobs-archiver:
 #----------------------------------------------------------------------------------------------------------------------#
@@ -34,6 +34,10 @@ end script
 
 :terminate-scripts:
 exit scripts
+
+:blobs-archiver-warning:
+echo "Warning: blobs archiver service is not configured"
+goto end-script
 
 :missing-storage-type:
 echo "Warning: missing blobs storage type - blobs will be stored in local file"
