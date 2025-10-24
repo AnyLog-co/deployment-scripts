@@ -168,6 +168,8 @@ set blobs_reuse = true
 # store blobs in storage that's not local file system
 if $BLOBS_STORAGE == true or $BLOBS_STORAGE == True or $BLOBS_STORAGE == TRUE then set blobs_storage = true
 
+if $BLOBS_COMPRESS == false or $BLOBS_COMPRESS == False or $BLOBS_COMPRESS == FALSE then set blobs_compress = false
+
 if $BLOBS_REUSE == false or $BLOBS_REUSE == False or $BLOBS_REUSE == FALSE then set blobs_reuse = false
 
 # Storage type (mongo, akave, s3 , etc)

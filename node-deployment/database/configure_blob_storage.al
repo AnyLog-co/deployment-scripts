@@ -10,8 +10,8 @@ else if !blobs_storage == false and !blobs_folder == true then goto blobs-archiv
 
 
 :connect-blob-storage:
-if !blobs_storage == true and !blob_storage_type == mongo then goto !local_scripts/database/connect_dbms_mongo.al
-else if !blobs_storage == true and (!blobs_storage_type == akave or !blobs_storage_type == s3) then goto !local_scripts/database/connect_dbms_bucket.al
+if !blobs_storage == true and !blob_storage_type == mongo then process !local_scripts/database/connect_dbms_mongo.al
+else if !blobs_storage == true and (!blobs_storage_type == akave or !blobs_storage_type == s3) then process !local_scripts/database/connect_dbms_bucket.al
 
 :blobs-archiver:
 #----------------------------------------------------------------------------------------------------------------------#
