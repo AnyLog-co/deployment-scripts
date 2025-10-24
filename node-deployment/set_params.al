@@ -183,7 +183,7 @@ if $BLOB_STORAGE_PORT then blob_storage_port = $BLOB_STORAGE_PORT
 # - user can force disable by setting folder as False
 # - user can force enable by setting  folder as True
 if $BLOBS_FOLDER == false or $BLOBS_FOLDER == False or $BLOBS_FOLDER == FALSE then set blobs_folder = false
-else if not $BLOBS_FOLDER and !blobs_storage == true and !blob_storage_type then set set blobs_folder = false
+else if not $BLOBS_FOLDER and !blobs_storage == true and !blob_storage_type then set blobs_folder = false
 
 :blob-dbms:
 # MongoDB access credentials
