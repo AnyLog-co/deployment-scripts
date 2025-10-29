@@ -1,16 +1,3 @@
-| Column Name        | Data Type | Notes                                                            |
-| ``      | string    | Always `"true"` in sample; could be boolean but stored as string |
-| ``        | integer   | Phase A current                                                  |
-| ``      | integer   | Phase A to neutral voltage                                       |
-| ``        | integer   | Phase B current                                                  |
-| ``      | integer   | Phase B to neutral voltage                                       |
-| ``        | integer   | Phase C current                                                  |
-| ``      | integer   | Phase C to neutral voltage                                       |
-| `` | integer   | Always `1` in sample, could be scaling factor                    |
-| ``        | integer   | Frequency × 100 (e.g., `6002` = 60.02 Hz)                        |
-| ``      | integer   | Percentage (e.g., `97` = 0.97)                                   |
-
-
 <run msg client  where broker=172.104.228.251 and  port=1883 and user=anyloguser and password=mqtt4AnyLog! and log=false and topic=(
     name="power-plant" and
     dbms=nov and
