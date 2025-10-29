@@ -28,6 +28,7 @@
 #    'Network Error' : 0
 # }
 #----------------------------------------------------------------------------------------------------------------------#
+# process !anylog_path/deployment-scripts/southbound-monitoring/node_monitoring_policy.al
 
 # enable_monitoring
 # store_monitoring
@@ -55,7 +56,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "scripts": [
             # create database + table policy
             "if !node_type == operator then process !anylog_path/deployment-scripts/node-deployment/configure_dbms_monitoring.al",
-            "if !node_type == operator then process !anylog_path/deployment-scripts/node-deployment/create_node_monitoring_table.al",
+            "if !node_type == operator then process !anylog_path/deployment-scripts/southbound-monitoring/create_node_monitoring_table.al",
 
             # get destinations
             "if !node_type != operator and !store_monitoring == true and not !monitoring_storage_dest then schedule name = get-storage-dest  and time = 300 seconds task if not !monitoring_storage_dest then monitoring_storage_dest = blockchain get operator bring.last [*][ip] : [*][port]",
