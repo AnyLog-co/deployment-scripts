@@ -13,13 +13,11 @@ on error ignore
 if !overlay_ip then set syslog_ip = !overlay_ip
 else set syslog_ip = !ip
 set syslog_name = !node_name
-
-:set-config-params:
-config_id = syslog-monitoring
 set create_policy = false
+config_id = syslog-monitoring
 
 :check-policy:
-is_policy = blockchain get schedule where id=!config_id
+is_policy = blockchain get config where id=!config_id
 
 # just created the policy + exists
 if !is_policy then goto config-policy
