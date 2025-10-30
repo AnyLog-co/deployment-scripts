@@ -31,6 +31,8 @@
 # process !anylog_path/deployment-scripts/southbound-monitoring/policy_node_monitoring.al
 
 
+set debug interactive
+
 :set-params:
 schedule_id = node-monitoring
 set create_policy = false
@@ -52,7 +54,6 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "scripts": [
             "print set database",
             "if !node_type == operator then process !anylog_path/deployment-scripts/southbound-monitoring/create_node_monitoring_table.al",
-
 
             "print prep test",
             "if !node_type != operator and !store_monitoring == true and not !monitoring_storage_dest then schedule name=get-storage-dest and time = 300 seconds task if not !monitoring_storage_dest then monitoring_storage_dest = blockchain get operator bring.last [*][ip] : [*][port]",
