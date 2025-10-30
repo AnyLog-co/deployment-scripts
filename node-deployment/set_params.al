@@ -22,7 +22,6 @@ if !debug_mode == true then set debug on
 
 :required-params:
 company_name = "New Company"
-ledger_conn = 127.0.0.1:32048
 hostname = get hostname
 
 if $NODE_TYPE == master or $NODE_TYPE == master-operator or $NODE_TYPE == master-publisher then set master_configs = true
@@ -42,6 +41,8 @@ set node name !node_name
 if $COMPANY_NAME then company_name = $COMPANY_NAME
 
 if $LEDGER_CONN then ledger_conn=$LEDGER_CONN
+else if !master_configs == true then ledger_conn = !ip + : + !anylog_server_port
+else ledger_conn = !ip + :32048
 
 if $LICENSE_KEY then license_key = $LICENSE_KEY
 
