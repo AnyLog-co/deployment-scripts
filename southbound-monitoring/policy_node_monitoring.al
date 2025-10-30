@@ -28,7 +28,7 @@
 #    'Network Error' : 0
 # }
 #----------------------------------------------------------------------------------------------------------------------#
-# process !anylog_path/deployment-scripts/southbound-monitoring/node_monitoring_policy.al
+# process !anylog_path/deployment-scripts/southbound-monitoring/policy_node_monitoring.al
 
 # enable_monitoring
 # store_monitoring
@@ -55,7 +55,6 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "name": "Node Monitoring Schedule",
         "scripts": [
             # create database + table policy
-            "if !node_type == operator then process !anylog_path/deployment-scripts/node-deployment/configure_dbms_monitoring.al",
             "if !node_type == operator then process !anylog_path/deployment-scripts/southbound-monitoring/create_node_monitoring_table.al",
 
             # get destinations

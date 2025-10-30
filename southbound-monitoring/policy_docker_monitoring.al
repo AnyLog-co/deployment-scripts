@@ -1,7 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # Configure docker monitoring
+# NOTE: not supported for non-operator nodes - can work with publisher if user defines distribution
 #----------------------------------------------------------------------------------------------------------------------#
-# process !anylog_path/deployment-scripts/southbound-monitoring/node_monitoring_policy.al
+# process !anylog_path/deployment-scripts/southbound-monitoring/policy_docker_monitoring.al
 
 # enable_monitoring
 # store_monitoring
@@ -29,7 +30,6 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "name": "Docker Monitoring Schedule",
         "scripts": [
             # create database + table policy
-            "if !node_type == operator then process !anylog_path/deployment-scripts/node-deployment/configure_dbms_monitoring.al",
             "run scheduled pull where name = docker_insights and type = docker and frequency = 5 and continuous = true and dbms = monitoring and table = docker_insight"
         ]
     }
