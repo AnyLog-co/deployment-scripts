@@ -20,7 +20,7 @@
 # CREATE INDEX syslog_insert_timestamp_index ON syslog(insert_timestamp);
 # CREATE INDEX syslog_source_ip_index ON syslog(source_ip);
 #-----------------------------------------------------------------------------------------------------------------------
-# process !local_scripts/connectors/syslog_table_policy.al
+# process  !anylog_path/deployment-scripts/southbound-monitoring/create_syslog_monitoring_table.al
 
 
 if !debug_mode == true then set debug on

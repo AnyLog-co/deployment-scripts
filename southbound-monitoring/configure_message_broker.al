@@ -9,7 +9,7 @@ set debug on
 
 :check-network:
 conn_info = get connections where format=json
-is_msg_broker  = from !conn_info bring [Messaging][external]
+is_msg_broker = from !conn_info bring [Messaging][external]
 if !is_msg_broker == 'Not declared' then set-configs
 else goto end-script
 
