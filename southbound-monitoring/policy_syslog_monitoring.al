@@ -7,9 +7,6 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !anylog_path/deployment-scripts/southbound-monitoring/policy_syslog_monitoring.al
 
-on error ignore
-set debug interactive
-
 :set-params:
 config_id = syslog-monitoring
 set create_policy = false

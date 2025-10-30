@@ -30,9 +30,6 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !anylog_path/deployment-scripts/southbound-monitoring/policy_node_monitoring.al
 
-on error ignore
-set debug interactive
-
 :set-params:
 schedule_id = node-monitoring
 set create_policy = false

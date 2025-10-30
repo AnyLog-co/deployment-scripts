@@ -8,6 +8,8 @@
 # process !anylog_path/deployment-scripts/southbound-monitoring/deploy_monitoring.al
 
 on error ignore
+reset error log
+
 if !node_monitoring == false and !syslog_monitoring == false and !docker_monitoring == false then goto end-script
 
 else if !node_type == operator and (!node_monitoring == true or !syslog_monitoring == true or !docker_monitoring == true) then
