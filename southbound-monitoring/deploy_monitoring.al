@@ -10,7 +10,7 @@
 on error ignore
 
 if !node_type == operator and (!node_monitoring == true or !syslog_monitoring == true or !docker_monitoring == true) then
-do process !anylog_path/deployment-scripts/node-deployment/configure_dbms_monitoring.al
+do process !anylog_path/deployment-scripts/node-deployment/database/configure_dbms_monitoring.al
 
 if !node_monitoring   == true then process !anylog_path/deployment-scripts/southbound-monitoring/policy_node_monitoring.al
 if !syslog_monitoring == true then process !anylog_path/deployment-scripts/southbound-monitoring/policy_syslog_monitoring.al
