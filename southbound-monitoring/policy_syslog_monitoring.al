@@ -11,7 +11,7 @@ on error ignore
 set debug interactive
 
 :set-params:
-schedule_id = syslog-monitoring
+config_id = syslog-monitoring
 set create_policy = false
 
 if !overlay_ip then set syslog_ip = !overlay_ip
@@ -20,7 +20,7 @@ set syslog_name = !node_name
 
 
 :check-policy:
-is_policy = blockchain get schedule where id=!schedule_id
+is_policy = blockchain get schedule where id=!config_id
 
 # just created the policy + exists
 if !is_policy then goto config-policy
@@ -30,9 +30,9 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
 
 :create-policy
 <new_policy = {
-    "schedule": {
-        "id": !schedule_id,
-        "name": "Syslog Monitoring Schedule",
+    "config": {
+        "id": !config_id,
+        "name": "Syslog Monitoring",
         "scripts": [
             "set debug on",
             "if !node_type == operator then process !anylog_path/deployment-scripts/southbound-monitoring/create_syslog_monitoring_table.al",
@@ -47,16 +47,18 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
 :publish-policy:
 on error ignore
 process !local_scripts/policies/publish_policy.al
-if !error_code == 1 then goto sign-policy-error
-if !error_code == 2 then goto prepare-policy-error
-if !error_code == 3 then goto declare-policy-error
-set create_policy = true
+if not !error_code.int then
+do set create_policy = true
 goto check-policy
+
+else if !error_code == 1 then goto sign-policy-error
+else if !error_code == 2 then goto prepare-policy-error
+else if !error_code == 3 then goto declare-policy-error
 
 :config-policy:
 if !debug_mode == true then print "Config from policy"
 on error goto config-policy-error
-config from policy where id=!schedule_id
+config from policy where id=!config_id
 
 :end-script:
 end script
