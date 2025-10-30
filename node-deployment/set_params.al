@@ -23,6 +23,7 @@ if !debug_mode == true then set debug on
 :required-params:
 company_name = "New Company"
 hostname = get hostname
+ledger_conn = 127.0.0.1:32048
 
 if $NODE_TYPE == master or $NODE_TYPE == master-operator or $NODE_TYPE == master-publisher then set master_configs = true
 if $NODE_TYPE == operator or $NODE_TYPE == master-operator then set node_type = operator
@@ -40,9 +41,6 @@ set node name !node_name
 
 if $COMPANY_NAME then company_name = $COMPANY_NAME
 
-if $LEDGER_CONN then ledger_conn=$LEDGER_CONN
-else if !master_configs == true then ledger_conn = !ip + : + !anylog_server_port
-else ledger_conn = !ip + :32048
 
 if $LICENSE_KEY then license_key = $LICENSE_KEY
 
@@ -116,9 +114,12 @@ if $PROXY_IP then proxy_ip = $PROXY_IP
 if $CONFIG_NAME then config_name = $CONFIG_NAME
 
 # option to not set ledger_conn for master
-if !node_type == master and not $LEDGER_CONN and !overlay_ip then tmp_ledger = !overlay_ip + ":" + !anylog_server_port
-else if !node_type == master and not $LEDGER_CONN then tmp_ledger = !ip + ":" + !anylog_server_port
-if !node_type == master and not $LEDGER_CONN then ledger_conn = python !tmp_ledger.strip()
+
+if $LEDGER_CONN then ledger_conn=$LEDGER_CONN
+else if !master_configs == true and !overlay_ip then ledger_conn = !overlay_ip + : + !anylog_server_port
+else if !master_configs == true and not !overlay_ip then ledger_conn = !ip + : + !anylog_server_port
+else if !master_configs == false and !overlay_ip then ledger_conn = !overlay_ip + :32048
+else if !master_configs == false and not !overlay_ip then ledger_conn = !ip + :32048
 
 :authentication:
 set enable_auth = false
