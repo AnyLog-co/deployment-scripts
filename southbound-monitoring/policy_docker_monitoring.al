@@ -4,6 +4,8 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !anylog_path/deployment-scripts/southbound-monitoring/policy_docker_monitoring.al
 
+set debug interactive
+on error ignore
 
 :set-params:
 schedule_id = docker-monitoring
