@@ -15,7 +15,7 @@ process !local_scripts/database/connect_dbms_sql.al
 if !debug_mode == true then print "Set Partitioning"
 if !enable_partitions == true then
 do on error goto partitioning-error
-do partition !default_dbms * using insert_timestamp by 12 hours
+do partition monitoring * using insert_timestamp by 12 hours
 <do schedule time=12 hours and name="Monitoring - Drop Partitions"
     task drop partition where dbms=monitoring and table="*" and keep=3>
 
