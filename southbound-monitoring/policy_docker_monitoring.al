@@ -4,10 +4,6 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !anylog_path/deployment-scripts/southbound-monitoring/policy_docker_monitoring.al
 
-# enable_monitoring
-# store_monitoring
-# monitoring_storage_dest
-# view_monitoring_dest
 
 :set-params:
 schedule_id = docker-monitoring
@@ -25,7 +21,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
 
 :create-policy
 <new_policy = {
-    "schedule": {
+    "config": {
         "id": !schedule_id,
         "name": "Docker Monitoring Schedule",
         "scripts": [
