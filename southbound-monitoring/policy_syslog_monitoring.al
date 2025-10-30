@@ -7,14 +7,16 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !anylog_path/deployment-scripts/southbound-monitoring/policy_syslog_monitoring.al
 
-:set-params:
-config_id = syslog-monitoring
-set create_policy = false
+on error ignore
 
+:preset-params:
 if !overlay_ip then set syslog_ip = !overlay_ip
 else set syslog_ip = !ip
 set syslog_name = !node_name
 
+:set-config-params:
+config_id = syslog-monitoring
+set create_policy = false
 
 :check-policy:
 is_policy = blockchain get schedule where id=!config_id
@@ -33,7 +35,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "script": [
             "if !node_type == operator then process !anylog_path/deployment-scripts/southbound-monitoring/create_syslog_monitoring_table.al",
             "if !node_type == operator then process !anylog_path/deployment-scripts/southbound-monitoring/configure_message_broker.al",
-            "set msg rule !syslog_name if ip=!syslog_ip then dbms=monitoring and table=syslog and extend=ip and syslog=true"
+            "set msg rule !syslog_name if ip = !syslog_ip then dbms = monitoring and table = syslog and extend = ip and syslog = true"
         ]
     }
 }>

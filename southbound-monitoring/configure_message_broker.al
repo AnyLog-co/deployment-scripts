@@ -10,17 +10,13 @@ set debug on
 :check-network:
 conn_info = get connections where format=json
 is_msg_broker = from !conn_info bring [Messaging][external]
-if !is_msg_broker == 'Not declared' then set-configs
-else goto end-script
+if !is_msg_broker != "Not declared" then goto end-script
 
 :set-configs:
 if not !anylog_broker_port then
 do anylog_broker_port = 32150
 do set broker_bind = !rest_bind
 do set broker_threads = !rest_threads
-
-if !is_msg_broker  == 'Not declared' then
-
 
 :connect-broker:
 on error goto connect-broker-error
