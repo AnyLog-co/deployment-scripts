@@ -36,10 +36,10 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "id": !schedule_id,
         "name": "Syslog Monitoring Schedule",
         "scripts": [
-            # create database + table policy
             "if !node_type == operator then process !anylog_path/deployment-scripts/southbound-monitoring/create_syslog_monitoring_table.al",
-            # connect message broker (if not set)
+
             "process !anylog_path/deployment-scripts/southbound-monitoring/configure_message_broker.al",
+
             "set msg rule !syslog_name where ip = !syslog_ip and dbms = monitoring and table = syslog and extend = ip and syslog = true"w
         ]
     }

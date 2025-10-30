@@ -7,6 +7,8 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !anylog_path/deployment-scripts/southbound-monitoring/deploy_monitoring.al
 
+set debug on
+
 on error ignore
 
 if !node_type == operator and (!node_monitoring == true or !syslog_monitoring == true or !docker_monitoring == true) then
