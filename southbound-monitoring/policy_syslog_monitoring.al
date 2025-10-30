@@ -40,7 +40,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
 
             "process !anylog_path/deployment-scripts/southbound-monitoring/configure_message_broker.al",
 
-            "set msg rule !syslog_name where ip = !syslog_ip and dbms = monitoring and table = syslog and extend = ip and syslog = true"w
+            "set msg rule !syslog_name where ip=!syslog_ip and dbms=monitoring and table=syslog and extend=ip and syslog=true"
         ]
     }
 }>
