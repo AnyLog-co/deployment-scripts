@@ -18,7 +18,7 @@ do on error goto partitioning-error
 do partition !default_dbms * using insert_timestamp by 12 hours
 <do schedule time="12 hours" and name="Drop Monitoring Partitions"
     task drop partition where dbms=monitoring and table=* and keep=3>
-schedule name=remove_archive and time=1 day and task delete archive where days = 3
+# schedule name=remove_archive and time=1 day and task delete archive where days = 3
 
 :end-script:
 end script
