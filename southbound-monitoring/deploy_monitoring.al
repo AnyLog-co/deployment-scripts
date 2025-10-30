@@ -7,8 +7,6 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !anylog_path/deployment-scripts/southbound-monitoring/deploy_monitoring.al
 
-set debug on
-
 on error ignore
 if !node_monitoring == false and !syslog_monitoring == false and !docker_monitoring == false then goto end-script
 
