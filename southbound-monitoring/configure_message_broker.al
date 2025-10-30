@@ -4,12 +4,13 @@
 #   2. connect to message broker
 #----------------------------------------------------------------------------------------------------------------------#
 
+on error ignore
 
 :check-network:
-on error ignore
+
 conn_info = get connections where format=json
 is_msg_broker  = from !conn_info bring [Messaging][external]
-if !is_msg_broker == 'Not declared' then set is_msg_broker = false
+if !is_msg_broker == 'Not declared' then set-configs
 else goto end-script
 
 :set-configs:
@@ -28,12 +29,12 @@ if !overlay_ip then
 <do run message broker where
     external_ip=!external_ip and external_port=!anylog_broker_port and
     internal_ip=!!overlay_ip and internal_port=!anylog_broker_port and
-    bind=!broker_bind and threads=!broker_threads>
+    bind=!broker_bind and threads=!broker_threads.int>
 
 <else run message broker where
     external_ip=!external_ip and external_port=!anylog_broker_port and
     internal_ip=!ip and internal_port=!anylog_broker_port and
-    bind=!broker_bind and threads=!broker_threads>
+    bind=!broker_bind and threads=!broker_threads.int>
 
 :end-script:
 end script
