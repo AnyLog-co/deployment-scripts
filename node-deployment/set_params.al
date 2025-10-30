@@ -296,6 +296,9 @@ store_monitoring        = false
 monitoring_storage_dest = ""
 view_monitoring_dest    = ""
 
+monitoring_frequency = 30
+docker_frequency = 5
+
 
 if $NODE_MONITORING == true   or $NODE_MONITORING == True   or $NODE_MONITORING == TRUE   then set node_monitoring   = true
 if $SYSLOG_MONITORING == true or $SYSLOG_MONITORING == True or $SYSLOG_MONITORING == TRUE then set syslog_monitoring = true
@@ -306,6 +309,9 @@ if $STORE_MONITORING == true or $STORE_MONITORING == True or $STORE_MONITORING =
 if $NODE_STORAGE_DEST then monitoring_storage_dest = $NODE_STORAGE_DEST
 # if not set - will be declare using `blockchain get query bring.ip_port`
 if $VIEW_MONITORING_DEST then view_monitoring_dest = $VIEW_MONITORING_DEST
+
+if $MONITORING_FREQUENCY then monitoring_frequency = $MONITORING_FREQUENCY
+if $DOCKER_FREQUENCY     then docker_frequency     = $DOCKER_FREQUENCY
 
 :opcua-configs:
 set enable_opcua=false
