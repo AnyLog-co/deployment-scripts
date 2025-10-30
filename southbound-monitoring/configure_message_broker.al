@@ -10,9 +10,7 @@ on error ignore
 conn_info = get connections where format=json
 is_msg_broker  = from !conn_info bring [Messaging][external]
 if !is_msg_broker == 'Not declared' then set is_msg_broker = false
-else set is_msg_broker = True
-
-if !is_msg_broker == true goto end-script
+else goto end-script
 
 :set-configs:
 if not !anylog_broker_port then
