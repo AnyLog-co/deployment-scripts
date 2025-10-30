@@ -23,7 +23,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
 
 :create-policy
 <new_policy = {
-    "config": {
+    "schedule": {
         "id": !schedule_id,
         "name": "Docker Monitoring Schedule",
         "scripts": [
