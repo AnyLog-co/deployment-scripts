@@ -35,6 +35,9 @@
 # process !local_scripts/southbound-monitoring/monitoring_table_policy.al
 on error ignore
 
+on error ignore
+set debug interactive
+
 if !debug_mode == true then set debug on
 set create_table = false
 

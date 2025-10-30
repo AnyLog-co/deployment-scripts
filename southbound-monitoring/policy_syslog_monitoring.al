@@ -7,8 +7,8 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !anylog_path/deployment-scripts/southbound-monitoring/policy_syslog_monitoring.al
 
-set debug interactive
 on error ignore
+set debug interactive
 
 :set-params:
 schedule_id = syslog-monitoring
@@ -30,7 +30,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
 
 :create-policy
 <new_policy = {
-    "config": {
+    "schedule": {
         "id": !schedule_id,
         "name": "Syslog Monitoring Schedule",
         "scripts": [

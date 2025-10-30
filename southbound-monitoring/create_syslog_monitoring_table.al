@@ -21,7 +21,10 @@
 # CREATE INDEX syslog_source_ip_index ON syslog(source_ip);
 #-----------------------------------------------------------------------------------------------------------------------
 # process !local_scripts/connectors/syslog_table_policy.al
+
 on error ignore
+set debug interactive
+
 if !debug_mode == true then set debug on
 
 set create_table = false
