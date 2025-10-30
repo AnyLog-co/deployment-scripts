@@ -42,7 +42,7 @@ else if not !is_table and !create_table == true then goto declare-policy-error
 :publish-policy:
 process !local_scripts/policies/publish_policy.al
 if not !error_code.int then
-do set create_policy = true
+do set create_table = true
 goto check-table-policy
 
 if !error_code == 1 then goto sign-policy-error

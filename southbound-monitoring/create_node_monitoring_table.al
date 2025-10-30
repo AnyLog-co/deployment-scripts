@@ -55,7 +55,7 @@ else if not !is_table and !create_table == true then goto declare-policy-error
 process !local_scripts/policies/publish_policy.al
 if !error_code == 1 then goto sign-policy-error
 if not !error_code.int then
-do set create_policy = true
+do set create_table = true
 goto check-table-policy
 
 else if !error_code == 2 then goto prepare-policy-error
