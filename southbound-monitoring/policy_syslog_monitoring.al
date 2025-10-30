@@ -53,7 +53,6 @@ else if !error_code == 2 then goto prepare-policy-error
 else if !error_code == 3 then goto declare-policy-error
 
 :config-policy:
-if !debug_mode == true then print "Config from policy"
 on error goto config-policy-error
 config from policy where id=!config_id
 

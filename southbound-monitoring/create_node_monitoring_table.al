@@ -35,17 +35,14 @@
 # process !anylog_path/deployment-scripts/southbound-monitoring/create_node_monitoring_table.al
 on error ignore
 
-if !debug_mode == true then set debug on
 set create_table = false
 
 :check-table-policy:
-if !debug_mode == true then print "Check if policy eixsts"
 is_table = blockchain get table where dbms=monitoring and name=node_insight
 if !is_table then goto dbms-configs
 else if not !is_table and !create_table == true then goto declare-policy-error
 
 :declare-policy:
-if !debug_mode == true then print "Create table policy for monitoring"
 <new_policy = {
     "table": {
         "dbms": "monitoring",
@@ -57,10 +54,12 @@ if !debug_mode == true then print "Create table policy for monitoring"
 :publish-policy:
 process !local_scripts/policies/publish_policy.al
 if !error_code == 1 then goto sign-policy-error
+if not !error_code.int then
+do set create_policy = true
+goto check-policy
+
 else if !error_code == 2 then goto prepare-policy-error
 else if !error_code == 3 then goto declare-policy-error
-set create_table = true
-goto check-table-policy
 
 :dbms-configs:
 if !node_type != operator then goto end-script

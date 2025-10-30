@@ -87,14 +87,16 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
 :publish-policy:
 on error ignore
 process !local_scripts/policies/publish_policy.al
+
+if not !error_code.int then
+do set create_policy = true
+goto check-policy
+
 if !error_code == 1 then goto sign-policy-error
 if !error_code == 2 then goto prepare-policy-error
 if !error_code == 3 then goto declare-policy-error
-set create_policy = true
-goto check-policy
 
 :config-policy:
-if !debug_mode == true then print "Config from policy"
 on error goto config-policy-error
 config from policy where id=!schedule_id
 

@@ -22,18 +22,15 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # process  !anylog_path/deployment-scripts/southbound-monitoring/create_syslog_monitoring_table.al
 
-
-if !debug_mode == true then set debug on
-
+on error ignore
 set create_table = false
+
 :check-table-policy:
-if !debug_mode == true then print "Check if policy eixsts"
 is_table = blockchain get table where dbms=monitoring and name=syslog
 if !is_table then goto end-script
 else if not !is_table and !create_table == true then goto declare-policy-error
 
 :declare-policy:
-if !debug_mode == true then print "Create table policy for monitoring syslog"
 <new_policy = {
     "table": {
         "dbms": "monitoring",
@@ -43,13 +40,14 @@ if !debug_mode == true then print "Create table policy for monitoring syslog"
 }>
 
 :publish-policy:
-if !debug_mode == true then print "Create policy"
 process !local_scripts/policies/publish_policy.al
+if not !error_code.int then
+do set create_policy = true
+goto check-policy
+
 if !error_code == 1 then goto sign-policy-error
 else if !error_code == 2 then goto prepare-policy-error
 else if !error_code == 3 then goto declare-policy-error
-set create_table = true
-goto check-table-policy
 
 :end-script:
 end script
