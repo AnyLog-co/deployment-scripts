@@ -30,10 +30,6 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !anylog_path/deployment-scripts/southbound-monitoring/policy_node_monitoring.al
 
-# enable_monitoring
-# store_monitoring
-# monitoring_storage_dest
-# view_monitoring_dest
 
 :set-params:
 schedule_id = node-monitoring

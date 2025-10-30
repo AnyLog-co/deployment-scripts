@@ -287,17 +287,25 @@ if $MSG_TIMESTAMP_COLUMN then msg_timestamp_column=$MSG_TIMESTAMP_COLUMN
 if $MSG_VALUE_COLUMN_TYPE then msg_value_column_type=$MSG_VALUE_COLUMN_TYPE
 if $MSG_VALUE_COLUMN then msg_value_column=$MSG_VALUE_COLUMN
 
-:node-monitoring:
-set monitor_nodes = true
-set store_monitoring = false
 
-if $MONITOR_NODES == false or $MONITOR_NODES == False or $MONITOR_NODES == FALSE then set monitor_nodes = false
+:monitoring:
+set node_monitoring     = false
+set syslog_monitoring   = false
+set docker_monitoring   = false
+store_monitoring        = false
+monitoring_storage_dest = ""
+view_monitoring_dest    = ""
+
+
+if $NODE_MONITORING == true   or $NODE_MONITORING == True   or $NODE_MONITORING == TRUE   then set node_monitoring   = true
+if $SYSLOG_MONITORING == true or $SYSLOG_MONITORING == True or $SYSLOG_MONITORING == TRUE then set syslog_monitoring = true
+if $DOCKER_MONITORING == true or $DOCKER_MONITORING == True or $DOCKER_MONITORING == TRUE then set docker_monitoring = true
+
 if $STORE_MONITORING == true or $STORE_MONITORING == True or $STORE_MONITORING == TRUE then set store_monitoring = true
-if $MONITORING_OPERATOR then monitoring_operator = $MONITORING_OPERATOR
-
-:docker-monitoring:
-set docker_continuous = true
-if $DOCKER_CONTINUOUS == false or $DOCKER_CONTINUOUS == False or $DOCKER_CONTINUOUS == FALSE then  set docker_continuous = false
+# if not set - will be declare using `blockchain get operator bring.last`
+if $NODE_STORAGE_DEST then monitoring_storage_dest = $NODE_STORAGE_DEST
+# if not set - will be declare using `blockchain get query bring.ip_port`
+if $VIEW_MONITORING_DEST then view_monitoring_dest = $VIEW_MONITORING_DEST
 
 :opcua-configs:
 set enable_opcua=false
@@ -333,7 +341,6 @@ if $AGGREGATION_VALUE_COLUMN then aggregation_value_column = $AGGREGATION_VALUE_
 
 :other-settings:
 set deploy_local_script = false
-set syslog_monitoring = false
 set create_table = true
 set update_tsd_info = true
 set archive = true
@@ -353,11 +360,7 @@ threshold_time = 60 seconds
 threshold_volume = 10KB
 
 if $DEPLOY_LOCAL_SCRIPT == true or $DEPLOY_LOCAL_SCRIPT == True or $DEPLOY_LOCAL_SCRIPT == TRUE then set deploy_local_script=true
-if $SYSLOG_MONITORING == true or $SYSLOG_MONITORING == True or $SYSLOG_MONITORING == TRUE then set syslog_monitoring = true
 
-if !SYSLOG_MONITORING == true and not !anylog_broker_port then
-do echo "Unable to deploy syslog support - broker port is required"
-do set SYSLOG_MONITORING = false
 
 if $COMPRESS_FILE == false or $COMPRESS_FILE == False or $COMPRESS_FILE == FALSE then set compress_file=false
 if $WRITE_IMMEDIATE == false or $WRITE_IMMEDIATE == False or $WRITE_IMMEDIATE == FALSE then set write_immediate=false
