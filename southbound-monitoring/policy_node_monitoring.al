@@ -54,11 +54,11 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
             "if !node_type != operator and !store_monitoring == true and not !monitoring_storage_dest then schedule name=get-storage-dest and time = 300 seconds task if not !monitoring_storage_dest then monitoring_storage_dest = blockchain get operator bring.last [*][ip] : [*][port]",
             "if not !view_monitoring_dest then schedule name = get-view-dest  and time = 300 seconds task if not !view_monitoring_dest then view_monitoring_dest = blockchain get query bring.ip_port",
 
-            "schedule name = get_stats and time=30 seconds and task node_insight = get stats where service = operator and topic = summary  and format = json",
-            "schedule name = get_timestamp and time=30 seconds and task node_insight[timestamp] = get datetime local now()",
-            "schedule name = set_node_type and time=30 seconds and task set node_insight[node type] = !node_type",
+            "schedule name = get_stats and time=!monitoring_frequency and task node_insight = get stats where service = operator and topic = summary  and format = json",
+            "schedule name = get_timestamp and time=!monitoring_frequency and task node_insight[timestamp] = get datetime local now()",
+            "schedule name = set_node_type and time=!monitoring_frequency and task set node_insight[node type] = !node_type",
 
-            "schedule name = get_disk_space and time=30 seconds and task disk_space = get disk percentage .",
+            "schedule name = get_disk_space and time=!monitoring_frequency and task disk_space = get disk percentage .",
             "schedule name = get_cpu_percent and time = 30 seconds task cpu_percent = get node info cpu_percent",
             "schedule name = get_packets_recv and time = 30 seconds task packets_recv = get node info net_io_counters packets_recv",
             "schedule name = get_packets_sent and time = 30 seconds task packets_sent = get node info net_io_counters packets_sent",

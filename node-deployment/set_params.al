@@ -296,7 +296,7 @@ store_monitoring        = false
 monitoring_storage_dest = ""
 view_monitoring_dest    = ""
 
-monitoring_frequency = 30
+monitoring_frequency = "30 seconds"
 docker_frequency = 5
 
 
