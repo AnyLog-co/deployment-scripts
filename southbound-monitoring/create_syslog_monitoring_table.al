@@ -22,8 +22,6 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # process !local_scripts/connectors/syslog_table_policy.al
 
-on error ignore
-set debug interactive
 
 if !debug_mode == true then set debug on
 

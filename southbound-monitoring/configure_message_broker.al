@@ -4,8 +4,6 @@
 #   2. connect to message broker
 #----------------------------------------------------------------------------------------------------------------------#
 
-on error ignore
-set debug interactive
 
 :check-network:
 on error ignore

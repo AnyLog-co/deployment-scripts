@@ -5,7 +5,7 @@
 # process !anylog_path/deployment-scripts/southbound-monitoring/policy_docker_monitoring.al
 
 on error ignore
-set debug interactive
+# set debug interactive
 
 :set-params:
 schedule_id = docker-monitoring
@@ -26,7 +26,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
     "schedule": {
         "id": !schedule_id,
         "name": "Docker Monitoring Schedule",
-        "scripts": [
+        "scripts: [
             "run scheduled pull where name = docker_insights and type = docker and frequency = 5 and continuous = true and dbms = monitoring and table = docker_insight"
         ]
     }
