@@ -25,14 +25,19 @@ company_name = "New Company"
 hostname = get hostname
 ledger_conn = 127.0.0.1:32048
 
-if $NODE_TYPE == master or $NODE_TYPE == master-operator or $NODE_TYPE == master-publisher then set master_configs = true
-if $NODE_TYPE == operator or $NODE_TYPE == master-operator then set node_type = operator
-if $NODE_TYPE == publisher or $NODE_TYPE == master-publisher then set publisher_configs = true set node_type = publihser
+set is_hidden =false
+set master_configs = false
 
+if $NODE_TYPE == master-hidden or $NODE_TYPE == query-hidden then set is_hidden = true
+if $NODE_TYPE == master or $NODE_TYPE == master-operator or $NODE_TYPE == master-publisher then set master_configs = true
 if $NODE_TYPE == master-operator then set node_type = operator
 else if $NODE_TYPE == master-publisher then set node_type = publisher
+else if $NODE_TYPE == master-hidden then set node_type = master
+else if $NODE_TYPE == query-hidden then set node_type = query
 else if $NODE_TYPE then set node_type = $NODE_TYPE
-else goto missing-node-type
+
+if not !node_type then goto  missing-node-type
+
 
 if $NODE_NAME then node_name = $NODE_NAME
 else node_name = !hostname + " " + !node_type
@@ -114,7 +119,6 @@ if $PROXY_IP then proxy_ip = $PROXY_IP
 if $CONFIG_NAME then config_name = $CONFIG_NAME
 
 # option to not set ledger_conn for master
-
 if $LEDGER_CONN then ledger_conn=$LEDGER_CONN
 else if !master_configs == true and !overlay_ip then ledger_conn = !overlay_ip + : + !anylog_server_port
 else if !master_configs == true and not !overlay_ip then ledger_conn = !ip + : + !anylog_server_port

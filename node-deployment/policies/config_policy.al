@@ -104,7 +104,7 @@ if !node_type == master or !node_type == query then
     "process !local_scripts/database/deploy_database.al",
     "if !blockchain_source == master then blockchain seed from !ledger_conn",
     "process !local_scripts/connect_blockchain.al",
-    "process !local_scripts/policies/node_policy.al",
+    "if !is_hidden == false then process !local_scripts/policies/node_policy.al",
     "run scheduler 1",
     "if !deploy_local_script == true then process !local_scripts/local_script.al",
     "if !is_edgelake == false then process !local_scripts/policies/license_policy.al"
