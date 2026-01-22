@@ -9,6 +9,7 @@ on error ignore
    table="bring [table]" and
    column.timestamp.timestamp = "bring [timestamp]" and
    column.site.str = "bring [site]" and
+   column.tank.str = "bring [tank]" and
    column.lot_id.str = "bring [lotnumberid]" and
    column.oee.float = "bring [oee]" and
    column.performance.float = "bring [performance]" and
@@ -23,6 +24,7 @@ on error ignore
    table="bring [table]" and
    column.timestamp.timestamp = "bring [timestamp]" and
    column.site.str = "bring [site]" and
+   column.tank.str = "bring [tank]" and
    column.lot_id.str = "bring [lotnumberid]" and
    column.state.str = "bring [state]" and
    column.duration.float = "bring [duration]" and
