@@ -3,13 +3,27 @@
 #--------------------------------------------------------#
 on error ignore
 :kpi-client:
+#--------------------------------------------------------#
+# :Sample Data:
+# {
+#   "dbms":"bottle_factory",
+#   "timestamp":"2026-01-23T02:14:19Z",
+#   "site":"Site1",
+#   "asset":"sealer",
+#   "quality":1,
+#   "performance":1.03272293814433,
+#   "oee":0.7204180151024812,
+#   "availability":0.6975907946781733,
+#   "table":"kpi"
+# }
+#--------------------------------------------------------#
 <run msg client where broker=local and log=false and topic=(
    name=kpi and
    dbms=!default_dbms and
    table="bring [table]" and
    column.timestamp.timestamp = "bring [timestamp]" and
    column.site.str = "bring [site]" and
-   column.tank.str = "bring [tank]" and
+   column.asset.str = "bring [asset]" and
    column.lot_id.str = "bring [lotnumberid]" and
    column.oee.float = "bring [oee]" and
    column.performance.float = "bring [performance]" and
