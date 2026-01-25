@@ -9,7 +9,7 @@ on error ignore
     intervals=10 and
     time="1 minute"  and
     time_column=timestamp and
-    value_column=value>
+    value_column=*>
 
 <set aggregation ingest where
     dbms=!default_dbms and
@@ -20,7 +20,7 @@ on error ignore
 <set aggregation encoding where
     dbms = !default_dbms and
     table =* and
-    value_column = value and
+    value_column = * and
     encoding = bounds>
 
 :end-script:
