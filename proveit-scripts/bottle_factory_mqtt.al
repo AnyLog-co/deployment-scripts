@@ -22,7 +22,6 @@ BROKER = "virtualfactory.proveit.services"
 PORT = 1883
 USERNAME = "proveitreadonly"
 PASSWORD = "proveitreadonlypassword"
-default_dbms = my_dbms
 
 <run msg client where
 	broker = !BROKER and port=!PORT and
