@@ -3,7 +3,8 @@
 #--------------------------------------------------------#
 on error ignore
 :msg-client:
-<run msg client where broker=rest and user-agent=anylog and log=false and topic=(
+
+<run msg client where broker=rest and user-agent=anylog and git branch log=false and topic=(
    name=manufacturing_historian and
    dbms=!default_dbms and
    table="bring [table]" and
