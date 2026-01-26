@@ -20,7 +20,7 @@ on error ignore
 reset error log
 
 <run msg client where
-	broker = !mqtt_broker and port=!PORT and
+	broker = !mqtt_broker and port=!mqtt_port and
 	user = !mqtt_user and password = !mqtt_passwd and
 	master_node = !ledger_conn and
 	log = false and topic = (
