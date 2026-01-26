@@ -3,8 +3,8 @@
 #--------------------------------------------------------#
 on error ignore
 :msg-client:
-<run msg client where broker = !mqtt_broker and port=!PORT and user = !mqtt_user and password = !mqtt_passwd and
-                      log = false and topic = (
+<run msg client where broker = !mqtt_broker and port=!mqtt_port and user = !mqtt_user and password = !mqtt_passwd and
+                      user-agent=anylog and log = false and topic = (
                         name=!mqtt_topic and
                         dbms=!default_dbms and
                         table="bring [table]" and
