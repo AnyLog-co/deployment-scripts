@@ -18,41 +18,19 @@ on error ignore
 # }
 #--------------------------------------------------------#
 reset error log
-BROKER = "virtualfactory.proveit.services"
-PORT = 1883
-USERNAME = "proveitreadonly"
-PASSWORD = "proveitreadonlypassword"
-# default_dbms = my_dbms
 
 <run msg client where
-	broker = !BROKER and port=!PORT and
-	user = !USERNAME and password = !PASSWORD and
+	broker = !mqtt_broker and port=!PORT and
+	user = !mqtt_user and password = !mqtt_passwd and
 	master_node = !ledger_conn and
 	log = false and topic = (
-		name="Enterprise B/Site1/#" and
+		name=!mqtt_topic and
 		dbms=!default_dbms and
 		dynamic = True
 	)>
 
 wait 120
 run uns streamer
-
-
-# :processing-client:
-# <run msg client where broker=local and log=false and topic=(
-#   name=processing and
-#   dbms=!default_dbms and
-#   table="bring [table]" and
-#   column.timestamp.timestamp = "bring [timestamp]" and
-#   column.site.str = "bring [site]" and
-#   column.tank.str = "bring [tank]" and
-#   column.lot_id.str = "bring [lotnumberid]" and
-#   column.state.str = "bring [state]" and
-#   column.duration.float = "bring [duration]" and
-#   column.flowrate.float = "bring [flowrate]" and
-#   column.temperature.float = "bring [temperature]" and
-#   column.weight.float = "bring [weight]"
-#)>
 
 :end-script:
 end script
