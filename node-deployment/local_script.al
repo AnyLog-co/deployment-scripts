@@ -14,7 +14,7 @@
 on error ignore
 
 if !company_name == "Bottle Factory" then
-do process !anylog_path/deployment-scripts/proveit-scripts/bottle_factory_aggregation.al
+# do process !anylog_path/deployment-scripts/proveit-scripts/bottle_factory_aggregation.al
 do process !anylog_path/deployment-scripts/proveit-scripts/bottle_factory_mqtt.al
 
 if !company_name == "Manufacturing Historian" then
