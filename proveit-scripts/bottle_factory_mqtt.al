@@ -30,7 +30,7 @@ PASSWORD = "proveitreadonlypassword"
 	master_node = !ledger_conn and
 	log = false and topic = (
 		name="Enterprise B/Site1/#" and
-		dbms=proveit and
+		dbms=!default_dbms and
 		dynamic = True
 	)>
 
