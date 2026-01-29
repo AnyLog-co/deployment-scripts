@@ -17,6 +17,8 @@ if !company_name == "Bottle Factory" then
 # do process !anylog_path/deployment-scripts/proveit-scripts/bottle_factory_aggregation.al
 do process !anylog_path/deployment-scripts/proveit-scripts/bottle_factory_mqtt.al
 
+if !node_name == "Site2" then process !anylog_path/deployment-scripts/proveit-scripts/bottle_factory_root.al
+
 if !company_name == "Manufacturing Historian" then
 do process !anylog_path/deployment-scripts/proveit-scripts/manufacturing_historian_aggregation.al
 do process !anylog_path/deployment-scripts/proveit-scripts/manufacturing_historian_mqtt.al
