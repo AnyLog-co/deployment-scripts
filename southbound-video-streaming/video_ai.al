@@ -15,7 +15,7 @@ set debug on
 
 :set-paths:
 streams_generated = !local_scripts/southbound-video-streaming/video_ai_streams.al
-is_file = file check !streams_generated
+is_file = file test !streams_generated
 if !is_file == false then goto missing-file
 
 # print "video_ai.al: Paths set, streams script = " + !streams_generated

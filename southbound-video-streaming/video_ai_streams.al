@@ -6,7 +6,7 @@
 on error ignore
 
 # Check video GRPC directory
-is_file = file check !video_grpc_dir
+is_file = file test !video_grpc_dir
 if !is_file == false then goto grpc-error
 
 # Only run detections if enabled
