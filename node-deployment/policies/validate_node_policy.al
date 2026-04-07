@@ -24,14 +24,14 @@ if !external_dns then
     name=!node_name and
     ip = !external_dns and
     port = !anylog_server_port bring.first>
-do goto end-script
+do goto check-operator
 else if !tcp_bind == true and !dns then
 <do is_policy = blockchain get !node_type where
     company=!company_name and
     name=!node_name and
     ip = !dns and
     port = !anylog_server_port bring.first>
-do goto end-script
+do goto check-operator
 else goto mismatch-error
 
 :overlay-check:
@@ -41,14 +41,14 @@ if !tcp_bind == false and !overlay_ip then
     name=!node_name and
     local_ip = !overlay_ip and
     port = !anylog_server_port bring.first>
-do goto end-script
+do goto check-operator
 else if !tcp_bind == true and !overlay_ip then
 <do is_policy = blockchain get !node_type where
     company=!company_name and
     name=!node_name and
     ip = !overlay_ip and
     port = !anylog_server_port bring.first>
-do goto end-script
+do goto check-operator
 else goto mismatch-error
 
 :generic-check:
@@ -58,14 +58,14 @@ if !tcp_bind == false then
     name=!node_name and
     local_ip = !ip and
     port = !anylog_server_port bring.first>
-do goto end-script
+do goto check-operator
 else if !tcp_bind == true
 <do is_policy = blockchain get !node_type where
     company=!company_name and
     name=!node_name and
     ip = !ip and
     port = !anylog_server_port bring.first>
-do goto end-script
+do goto check-operator
 else goto network-config-error
 
 :check-operator:
