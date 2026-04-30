@@ -8,7 +8,7 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/node-deployment/connect_blockchain.al
 
-set debug on
+set debug interactive
 
 on error ignore
 
