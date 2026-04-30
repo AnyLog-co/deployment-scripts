@@ -78,7 +78,7 @@ do goto publish-policy
 :publisher-scripts:
 if !node_type == publisher then
 <do set policy new_policy [config][script] = [
-    "set debug interactive",
+    "set debug on",
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
     "if !is_hidden == false then process !local_scripts/node-deployment/policies/node_policy.al",
@@ -92,7 +92,8 @@ if !node_type == publisher then
     "if !enable_mqtt == true then process !local_scripts/sample-scripts/basic_msg_client.al",
     "if !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "if !is_edgelake == false then process !local_scripts/node-deployment/policies/license_policy.al"
+    "if !is_edgelake == false then process !local_scripts/node-deployment/policies/license_policy.al",
+    "set debug off",
 ]>
 do goto publish-policy
 
