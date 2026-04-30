@@ -21,9 +21,6 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/node-deployment/policies/node_policy.al
 
-set debug on
-
-
 on error ignore
 set create_policy = false
 if !is_relay == true then set node_type = relay
