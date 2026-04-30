@@ -5,7 +5,7 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: -->
+<!-- last-processed: 4f8345a (2026-04-29) -->
 
 <!-- Developers: add bullets below as changes land in your branch -->
 
@@ -13,17 +13,38 @@ layout: page
 
 ## 2026
 
-### [a73584e] · 2026-04-08 (latest)
+### [4f8345a] · 2026-04-29 (latest)
 
-| Date | Commit | Summary |
-|------|--------|---------|
-| 2026-04-08 | [a73584e] | Drone deployment scripts and bind/mode configuration |
-|            |           | Debug and print improvements across deployment scripts |
-|            |           | Policy sync and seed updates for node deployment |
-|            |           | Aggregation script updates and mapping fixes |
-|            |           | Missing parameter fixes across southbound connectors |
-|            |           | Blockchain policy updates and debug additions |
-|            |           | Deployment mode configuration (trying/false pattern cleanup) |
+| Date | Commit | Author | Summary |
+|------|--------|--------|---------|
+| 2026-04-29 | [4f8345a] | Ori Shadmon | Remove archive / customer logic |
+| 2026-04-28 | [8d556c6] | Ori Shadmon | Validate MQTT logic works |
+| 2026-04-28 | [e7cb791] | Ori Shadmon | Validate MQTT logic works (follow-up fix) |
+
+---
+
+### [fc2309d] · 2026-04-17 – 2026-04-18
+
+| Date | Commit | Author | Summary |
+|------|--------|--------|---------|
+| 2026-04-18 | [fc2309d] | Ori Shadmon | Litmus single table |
+| 2026-04-17 | [a0c1637] | Ori Shadmon | Litmus 2 tables (supported) |
+| 2026-04-17 | [02731e3] | Ori Shadmon | Telegraf supported |
+
+---
+
+### [a73584e] · 2026-04-08 – 2026-04-10
+
+| Date | Commit | Author | Summary |
+|------|--------|--------|---------|
+| 2026-04-10 | [6fc2530] | Ori Shadmon | Skip publish to remote master when `!master_configs=true` |
+| 2026-04-10 | [5e1c1c1] | Ori Shadmon | Integration of version control + slight reorg in `.github` dir |
+| 2026-04-10 | [5c1e40f] | Ori Shadmon | Integration of version control + slight reorg in `.github` dir (follow-up) |
+| 2026-04-09 | [3d224e4] | Moshe       | Integrate aggregation example as part of vessel demo |
+| 2026-04-09 | [d5bca98] | Moshe       | Bug fix |
+| 2026-04-08 | [a73584e] | Ori Shadmon | Power plant data |
+
+> **Note:** This release group supersedes the previous [a73584e] entry — that commit is now covered above.
 
 ---
 
@@ -36,6 +57,13 @@ layout: page
 | 2025-12 | — | Publish workflow scripts; relay and networking configs added |
 |         |   | Cluster policy support in node-deployment |
 |         |   | Monitoring script refactors for southbound connectors |
+| 2025-10 | [423e749] | Blobs folder / dbms based on param |
+|          | [eb0a352] | `blobs_folder` addition |
+|          | [9f9a665] | Rename: `branch` → `branch_name` |
+|          | [07cf288] | Rename: `$BRANCH` → `$BRANCH_NAME` |
+|          | [681e2ff] | Update `node_policy.al` |
+|          | [f4d9f42] | Akave demo scripts |
+|          | [ef12590] | Akave demo support additions |
 | 2025-09 | — | Blockchain policy reorg; path and config cleanup |
 |         |   | Syslog script updates and parameter fixes |
 | 2025-06 | — | License key management scripts added |
