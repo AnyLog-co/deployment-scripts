@@ -8,6 +8,8 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/node-deployment/connect_blockchain.al
 
+set debug on
+
 on error ignore
 
 if !blockchain_source == master then goto blockchain-sync
