@@ -2,16 +2,30 @@ process !local_scripts/data-generator/vessel_data.al
 
 get msg client
 
-ecit msg client 2
+exit msg client 2
 
 get aggregation
 
 
 
-run client () sql anotherpeak format = table select * from battery_pack_device_logs
+run client () sql anotherpeak format = table select * from battery_pack_logs
 
 
 anotherpeak|battery_pack_device_logs
 
 
 get operator inserts
+
+test teee
+
+
+run client () sql anotherpeak format = table select * from battery_pack_device_logs
+
+
+get aggregation ingest
+
+run client () sql anotherpeak format = table select timestamp, gcurrent from battery_pack_logs
+
+
+
+run client () sql anotherpeak format = table select timestamp, gcurrent from battery_pack_logs where  timestamp < 2026-04-10T03:49:58.030715
