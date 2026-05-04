@@ -89,20 +89,23 @@ if $EXTERNAL_DNS then set external_dns = $EXTERNAL_DNS
 if $DNS then set dns = $DNS
 else if $DNS_DOMAIN then dns = !hostname.$DNS_DOMAIN
 
+if !node_type == master then
+do anylog_server_port = 32048
+do anylog_rest_port = 32049
+else if !node_type == query then
+do anylog_server_port = 32348
+do anylog_rest_port = 32349
+else if !node_type == operator then
+do anylog_server_port = 32148
+do anylog_rest_port = 32149
+do anylog_broker_port = 32150
+else if !node_type == publisher then
+do anylog_server_port = 32248
+do anylog_rest_port = 32249
+do anylog_broker_port = 32250
+
 if $ANYLOG_SERVER_PORT then anylog_server_port = $ANYLOG_SERVER_PORT
 if $ANYLOG_REST_PORT then anylog_rest_port = $ANYLOG_REST_PORT
-
-if !node_type == master and not !anylog_server_port then anylog_server_port = 32048
-if !node_type == master and not !anylog_rest_port then anylog_rest_port = 32049
-if !node_type == operator and not !anylog_server_port then anylog_server_port = 32148
-if !node_type == operator and not !anylog_rest_port then anylog_rest_port = 32149
-if !node_type == query and not !anylog_server_port then anylog_server_port = 32348
-if !node_type == query and not !anylog_rest_port then anylog_rest_port = 32349
-if !node_type == publisher and not !anylog_server_port then anylog_server_port = 32248
-if !node_type == publisher and not !anylog_rest_port then anylog_rest_port = 32249
-if not !anylog_server_port then anylog_server_port = 32548
-if not !anylog_rest_port then anylog_rest_port = 32549
-
 if $ANYLOG_BROKER_PORT then anylog_broker_port = $ANYLOG_BROKER_PORT
 
 if $TCP_BIND == true or $TCP_BIND == True or $TCP_BIND == TRUE then tcp_bind = true
