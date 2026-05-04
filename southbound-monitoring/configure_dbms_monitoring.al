@@ -4,13 +4,16 @@
 # - database keeps 36 hours of data
 # - file storage keeps 3 days of data
 #-----------------------------------------------------------------------------------------------------------------------
-# process !local_scripts/node-deployment/database/configure_dbms_operator.al
+# process !local_scripts/southbound-monitoring/configure_dbms_operator.al
 
 on error ignore
+
+if !node_monitoring == false and !syslog_monitoring == false and !docker_monitoring == false then goto end-script
+
 :connect-dbms:
 db_name = monitoring
-# process !local_scripts/node-deployment/database/connect_dbms_sql.al
-connect dbms !db_name where type=sqlite
+process !local_scripts/node-deployment/database/connect_dbms_sql.al
+# connect dbms !db_name where type=sqlite
 
 :data-partitioning:
 if !enable_partitions == true then
@@ -21,6 +24,7 @@ do partition monitoring * using insert_timestamp by 12 hours
 
 # schedule name=remove_archive and time=1 day and task delete archive where days = 3
 
+set db_name = ""
 
 :end-script:
 end script
