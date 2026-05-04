@@ -112,7 +112,7 @@ do goto publish-policy
     "if !enable_aggregations == true then process !local_scripts/sample-scripts/aggregation.al",
     "if !enable_mqtt == true then process !local_scripts/sample-scripts/basic_msg_client.al",
     "if !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
-    "process !local_scripts/southbound-monitoring/deploy_monitoring.al",
+    "process !local_scripts/southbound-monitoring/configure_dbms_operator.al",
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
     "if !is_edgelake == false then process !local_scripts/node-deployment/policies/license_policy.al"
 ]>
