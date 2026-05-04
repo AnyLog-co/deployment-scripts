@@ -13,6 +13,9 @@ if not !db_name then
 do err_code = 1
 do goto end-script
 
+list_dbs = get databases where format=json
+if !list_dbs contains !db_name then goto end-script
+
 :connect:
 on error goto connect-error
 <if !db_type == psql then connect dbms !db_name where
