@@ -89,6 +89,10 @@ if $EXTERNAL_DNS then set external_dns = $EXTERNAL_DNS
 if $DNS then set dns = $DNS
 else if $DNS_DOMAIN then dns = !hostname.$DNS_DOMAIN
 
+if !node_type == generic then
+do anylog_server_port = 32548
+do anylog_rest_port = 32549
+do anylog_broker_port = 32550
 if !node_type == master then
 do anylog_server_port = 32048
 do anylog_rest_port = 32049
