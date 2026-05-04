@@ -64,7 +64,7 @@ if !node_type == generic then
     "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/policy_docker_monitoring.al",
 
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "if !is_edgelake == false then process !local_scripts/node-deployment/policies/license_policy.al"
+    "process !local_scripts/node-deployment/policies/license_policy.al"
 ]>
 do goto publish-policy
 
@@ -81,7 +81,7 @@ if !node_type == master or !node_type == query then
     "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/policy_node_monitoring.al",
 
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "if !is_edgelake == false then process !local_scripts/node-deployment/policies/license_policy.al"
+    "process !local_scripts/node-deployment/policies/license_policy.al"
 ]>
 do goto publish-policy
 
@@ -107,7 +107,7 @@ if !node_type == publisher then
     "if !enable_mqtt == true then process !local_scripts/sample-scripts/basic_msg_client.al",
     "if !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "if !is_edgelake == false then process !local_scripts/node-deployment/policies/license_policy.al"
+    "process !local_scripts/node-deployment/policies/license_policy.al"
 ]>
 do goto publish-policy
 
@@ -135,7 +135,7 @@ do goto publish-policy
     "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/policy_docker_monitoring.al",
 
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "if !is_edgelake == false then process !local_scripts/node-deployment/policies/license_policy.al"
+    "process !local_scripts/node-deployment/policies/license_policy.al"
 ]>
 
 :publish-policy:
