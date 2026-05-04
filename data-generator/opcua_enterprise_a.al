@@ -29,11 +29,9 @@ if !is_file == true then goto process-tags
 :process-tags:
 on error ignore
 
-is_file = if test !tags_file
-if not !is_file goto missing-file-tags
+is_file = file test !tags_file
+if !is_file != true goto missing-file-tags
 process !tags_file
-
-:define-client:
 
 :declare-client:
 on error call declare-client-err
@@ -54,13 +52,13 @@ if !is_file == true then goto process-client
 :process-client:
 on error ignore
 
-is_file = if test !client_file
-if not !is_file then goto missing-file-client
+is_file = file test !client_file
+if !is_file != then goto missing-file-client
 process !client_file
 
 
 :end-script:
-end-script
+end script
 
 :missing-file-tags:
 echo "Failed to create !file_opcua_tags file - cannot continue"

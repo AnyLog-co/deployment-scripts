@@ -10,6 +10,3 @@
 # Documentation: https://github.com/AnyLog-co/documentation
 #-----------------------------------------------------------------------------------------------------------------------
 # process !local_scripts/node-deployment/local_script.al
-
-
-process !local_scripts/data-generator/vessel_aggregation_demo.al

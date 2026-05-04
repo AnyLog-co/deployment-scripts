@@ -27,7 +27,7 @@ on error call declare-policy-error
 blockchain prepare policy !new_policy
 
 policy_type = from !new_policy  bring [*]
-if !policy_type == config then
+if !policy_type == config or !master_configs == true then
 do blockchain insert where policy=!new_policy and local=true
 do config_policy = !new_policy
 else blockchain insert where policy=!new_policy and local=true and master=!ledger_conn

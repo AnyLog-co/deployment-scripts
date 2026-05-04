@@ -12,7 +12,7 @@ on error ignore
     broker=172.104.228.251 and port=1883 and
     user=anyloguser and password=mqtt4AnyLog! and
     log=false and topic=(
-        name=anylog-demo and
+        name=rand-data and
         dbms=!default_dbms and
         table = "bring [table]" and
         column.timestamp.timestamp = "bring [timestamp]" and

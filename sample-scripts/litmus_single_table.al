@@ -1,8 +1,6 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # Mapping policy to accept data from Litmus Edge
-# Data is split into two tables
-#   - Table 1: raw content
-#   - Table 2: metadata information
+# Data is split into one table where metadata will be stored as a raw string
 #
 #:sample-data:
 #{
@@ -20,24 +18,19 @@
 #   }
 #}
 #----------------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/sample-scripts/litmus.al
+# process !local_scripts/sample-scripts/litmus_single_table.al
 
 on error ignore
 
-:set-params:
 topic_name = litmus
-data_policy_id = litmus-data
-metadata_policy_id = litmus-metadata
-
-set is_data = true
 
 :mapping-data:
-is_policy = blockchain get mapping where id = !data_policy_id
+policy_id = litmus-data
+is_policy = blockchain get mapping where id = !policy_id
 if !is_policy then goto metadata-mapping
 
-
 <new_policy = {"mapping" : {
-        "id" : !data_policy_id,
+        "id" : !policy_id,
         "dbms" : !default_dbms,
         "table" : "bring [deviceName] _ [deviceID]",
         "readings" : "",
@@ -51,39 +44,10 @@ if !is_policy then goto metadata-mapping
             "*" : {
                 "type": "*",
                 "bring": ["success", "tagName", "value", "description"]
-            }
-        }
-}}>
-
-goto publish-policy
-
-
-:metadata-mapping:
-is_policy = blockchain get mapping where id = !metadata_policy_id
-if !is_policy then goto msg-call
-
-<new_policy = {"mapping" : {
-        "id" : !metadata_policy_id,
-        "dbms" : !default_dbms,
-        "table" : "bring [deviceName] _ [deviceID] _metadata",
-        "readings" : "metadata",
-        "schema" : {
-            "timestamp" : {
-                "type" : "timestamp",
-                "default": "now()",
-                "bring" : "[timestamp]",
-                "apply" :  "epoch_to_datetime",
-                "root": true
             },
-            "success" : {
-                "type": "bool",
-                "default": null,
-                "bring": "[success]",
-                "root": true
-            },
-            "*" : {
-                "type": "*",
-                "bring": ["*"]
+            "metadata": {
+                "type": "varchar",
+                "bring": "[metadata]"
             }
         }
 }}>
@@ -95,28 +59,24 @@ if !error_code == 1 then goto sign-policy-error
 if !error_code == 2 then goto prepare-policy-error
 if !error_code == 3 then goto declare-policy-error
 
-if !is_data == true then
-do set is_data = false
-do goto metadata-mapping
-
 :msg-call:
 on error goto msg-error
 if !anylog_broker_port then
 <do run msg client where broker=local and port=!anylog_broker_port and log=false and topic=(
     name=!topic_name and
-    policy=!data_policy_id and policy=!metadata_policy_id
+    policy=!policy_id
 )>
 
 if not !anylog_broker_port and !user_name and !user_password then
 <do run msg client where broker=rest and port=!anylog_rest_port and user=!user_name and password=!user_password and user-agent=anylog and log=false and topic=(
     name=!topic_name and
-    policy=!data_policy_id and policy=!metadata_policy_id
+    policy=!policy_id
 )>
 
 if not !anylog_broker_port and not !user_name and not !user_password then
 <do run msg client where broker=rest and port=!anylog_rest_port and user-agent=anylog and log=false and topic=(
     name=!topic_name and
-    policy=!data_policy_id and policy=!metadata_policy_id
+    policy=!policy_id
 )>
 
 :end-script:

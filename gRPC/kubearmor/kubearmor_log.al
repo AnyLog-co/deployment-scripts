@@ -11,7 +11,7 @@
 #     "ProcessName": "/usr/bin/bash", "HostPPID": 1059916, "Labels": "app=nginx",
 #     "Owner": {"Ref": "Deployment", "Name": "nginx", "Namespace": "default"}}
 #-----------------------------------------------------------------------------------------------------------------------
-# process !anylog_path/deployment-scripts/grpc/kubearmor/kubearmor_system_policy.al
+# process !local_scripts/grpc/kubearmor/kubearmor_system_policy.al
 
 on error ignore
 :set-params:

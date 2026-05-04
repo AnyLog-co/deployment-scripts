@@ -1,7 +1,7 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # Mapping policy to accept data from Telegraf
 # :sample-data:
-# {"metrics":[
+# {[
 #  {
 #    "fields":{"active":7080853504,"available":7166590976,"available_percent":41.715049743652344,"free":415137792,"inactive":6751453184,"total":17179869184,"used":10013278208,"used_percent":58.284950256347656,"wired":1292861440},#
 #    "name":"mem", "tags":{"host":"Oris-Mac-mini.local"}, "timestamp":1715018940
@@ -20,7 +20,7 @@
 #  }
 # ]}
 #----------------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/demo-scripts/telegraf.al
+# process !local_scripts/sample-scripts/telegraf.al
 
 on error ignore
 
@@ -34,12 +34,13 @@ policy = blockchain get mapping where id = !policy_id
 if !policy then goto msg-call
 if !create_policy == true  and not !policy then goto declare-policy-error
 
-:preparre-policy:
+:prepare-policy:
 # for table name - the following includes both sensor and hostname; "bring [name] _ [tags][name]:[tags][host]",
 <new_policy = {"mapping" : {
         "id" : !policy_id,
         "dbms" : !default_dbms,
-        "table" : "bring [name] _ [tags][name]:[tags][host]",
+            "table" : "bring [name]",
+        "readings" : "",
         "schema" : {
                 "timestamp" : {
                     "type" : "timestamp",

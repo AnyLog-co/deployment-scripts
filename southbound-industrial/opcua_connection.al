@@ -6,6 +6,8 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/southbound-industrial-opcua/main.al
 
+set debug on
+
 on error ignore
 
 if  !opcua_name then
@@ -30,7 +32,7 @@ if !opcua_username or !opcua_password then goto define-tags-auth
     schema = true and
     class = variable and
     target = "local = true and master = !ledger_conn" and
-    output = !local_scripts/southbound-industrial-opcua/!file_opcua_tags>
+    output = !local_scripts/southbound-industrial-opcua/my_tag.al>
 
 goto process-tags
 
@@ -45,7 +47,7 @@ goto process-tags
     schema = true and
     class = variable and
     target = "local = true and master = !ledger_conn" and
-    output = !local_scripts/southbound-industrial-opcua/!file_opcua_client>
+    output = !local_scripts/southbound-industrial-opcua/my_tag.al>
 
 :process-tags:
 on error ignore

@@ -3,7 +3,7 @@
 #   - The HealthCheck simply replies the corresponding value sent to it. It's suppose to show bidirectional communication
 #   -
 #-----------------------------------------------------------------------------------------------------------------------
-# process !anylog_path/deployment-scripts/grpc/kubearmor/grpc_client.al
+# process !local_scripts/grpc/kubearmor/grpc_client.al
 on error call grpc-client-error
 
 if !grpc_function == HealthCheck then

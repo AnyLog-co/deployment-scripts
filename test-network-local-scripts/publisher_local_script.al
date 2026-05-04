@@ -8,7 +8,7 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # process !local_scripts/test-network-local-scripts/publisher_local_script.al
 
-process /app/deployment-scripts/demo-scripts/data_generator_generic_ping_percentage_demo.al
+process !local_scripts/demo-scripts/data_generator_generic_ping_percentage_demo.al
 <set data distribution where dbms=litsanleandro and table=ping_sensor and
    dest=139.162.164.95:32148 and
    dest=172.105.13.202:32148 and
