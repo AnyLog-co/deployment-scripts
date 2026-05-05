@@ -50,7 +50,6 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "name": "Node Monitoring Schedule",
         "script": [
             "if !node_type == operator then process !local_scripts/southbound-monitoring/table_node_monitoring.al",
-            "process !local_scripts/southbound-monitoring/node_monitoring_set_params.al",
 
             "schedule name = get_stats and time=!monitoring_frequency and task node_insight = get stats where service = operator and topic = summary  and format = json",
             "schedule name = get_timestamp and time=!monitoring_frequency and task node_insight[timestamp] = get datetime local now()",

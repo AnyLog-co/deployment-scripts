@@ -10,6 +10,8 @@
 #--------------------------------------------------------------------------------------------------------------------
 # process !local_scripts/data-generator/power_plant.al
 
+:run-msg-client:
+on error goto msg-client-error
 <run msg client where
     broker=172.104.228.251 and port=1883 and
     user=anyloguser and password=mqtt4AnyLog! and
@@ -40,4 +42,13 @@
         column.pv.float = "bring [PV]"
     )>
 
+:get-msg-client:
+on error ignore
+get msg client
 
+:end script:
+end script
+
+:msg-client-error:
+echo "Failed to start message client for power plant data"
+goto end-script

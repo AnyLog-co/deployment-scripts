@@ -351,7 +351,7 @@ store_monitoring_dest   = ""
 view_monitoring_dest    = ""
 
 monitoring_frequency = "30 seconds"
-docker_frequency = 5
+docker_frequency = 10
 
 
 if $NODE_MONITORING == true   or $NODE_MONITORING == True   or $NODE_MONITORING == TRUE   then set node_monitoring   = true

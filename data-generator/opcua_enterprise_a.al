@@ -56,6 +56,9 @@ is_file = file test !client_file
 if !is_file != true then goto missing-file-client
 process !client_file
 
+:view-opcua:
+ignore error log
+get plc client
 
 :end-script:
 end script
