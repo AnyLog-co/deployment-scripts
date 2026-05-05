@@ -17,6 +17,12 @@ do partition !default_dbms !table_name using !partition_column by !partition_int
     task drop partition where dbms=!default_dbms and table =!table_name and keep=!partition_keep>
 schedule name=remove_archive and time=1 day and task delete archive where days = !archive_delete
 
+:worker-threads:
+on error call worker-thread-err
+
+if !operator_workers and !operator_workers.int >= 1 and !node_type == operator and !db_type == psql then
+do run helpers where type = psql and count = !operator_workers.int
+
 :end-script:
 end script
 
@@ -31,3 +37,6 @@ goto terminate-scripts
 echo "Failed to set partitions for logical database: " + !default_dbms + " - data will stored in a single table"
 goto end-script
 
+:worker-thread-err:
+echo "Failed to define worker threads for data insertion"
+goto end-script
