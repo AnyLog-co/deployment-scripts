@@ -58,10 +58,9 @@ if !node_type == generic then
     "run scheduler 1",
     "if !system_query == true and !enable_mcp == true then run mcp server",
 
-    "process !local_scripts/southbound-monitoring/configure_dbms_operator.al",
-    "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/policy_node_monitoring.al",
-    "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/policy_syslog_monitoring.al",
-    "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/policy_docker_monitoring.al",
+    "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
+    "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
 
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
     "process !local_scripts/node-deployment/policies/license_policy.al"
@@ -77,7 +76,6 @@ if !node_type == master or !node_type == query then
     "run scheduler 1",
     "if !system_query == true and !enable_mcp == true then run mcp server",
 
-    "process !local_scripts/southbound-monitoring/configure_dbms_operator.al",
     "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/policy_node_monitoring.al",
 
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
@@ -99,11 +97,11 @@ if !node_type == publisher then
     "if !system_query == true and !enable_mcp == true then run mcp server",
     "if !enable_aggregations == true then process !local_scripts/sample-scripts/aggregation.al",
 
-    "process !local_scripts/southbound-monitoring/configure_dbms_operator.al",
-    "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/policy_node_monitoring.al",
-    "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/policy_syslog_monitoring.al",
-    "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/policy_docker_monitoring.al",
+    "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
+    "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
 
+    "process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
     "if !enable_mqtt == true then process !local_scripts/sample-scripts/basic_msg_client.al",
     "if !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
@@ -129,10 +127,10 @@ do goto publish-policy
     "if !enable_mqtt == true then process !local_scripts/sample-scripts/basic_msg_client.al",
     "if !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
 
-    "process !local_scripts/southbound-monitoring/configure_dbms_operator.al",
-    "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/policy_node_monitoring.al",
-    "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/policy_syslog_monitoring.al",
-    "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/policy_docker_monitoring.al",
+    "process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
+    "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
+    "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
 
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
     "process !local_scripts/node-deployment/policies/license_policy.al"

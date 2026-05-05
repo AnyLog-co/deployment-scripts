@@ -4,7 +4,7 @@
 # - database keeps 36 hours of data
 # - file storage keeps 3 days of data
 #-----------------------------------------------------------------------------------------------------------------------
-# process !local_scripts/southbound-monitoring/configure_dbms_operator.al
+# process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al
 
 on error ignore
 

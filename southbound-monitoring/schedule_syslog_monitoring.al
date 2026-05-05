@@ -1,24 +1,23 @@
 #----------------------------------------------------------------------------------------------------------------------#
-# Configure docker monitoring
-# NOTE: not supported for non-operator nodes - can work with publisher if user defines distribution
+# Configure syslog monitoring
+# To run with remote syslog(s):
+#   1. On the destination (operator) node create a new file
+#   2. set variables `syslog_name` and `syslog_ip`
+#   3. execute - `config from policy where id=syslog-monitoring`
 #----------------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/southbound-monitoring/policy_docker_monitoring.al
-
-
+# process !local_scripts/southbound-monitoring/policy_syslog_monitoring.al
 
 on error ignore
 
-:check-socket:
-is_docker = file check /var/run/docker.sock
-if not !is_docker then goto missing-socket-error
-
-:set-params:
-schedule_id = docker-monitoring
+:preset-params:
+if !overlay_ip then set syslog_ip = !overlay_ip
+else set syslog_ip = !ip
+set syslog_name = !node_name
 set create_policy = false
-
+config_id = syslog-monitoring
 
 :check-policy:
-is_policy = blockchain get schedule where id=!schedule_id
+is_policy = blockchain get schedule where id=!config_id
 
 # just created the policy + exists
 if !is_policy then goto config-policy
@@ -29,10 +28,11 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
 :create-policy
 <new_policy = {
     "schedule": {
-        "id": !schedule_id,
-        "name": "Docker Monitoring Schedule",
+        "id": !config_id,
+        "name": "Syslog Monitoring",
         "script": [
-            "run scheduled pull where name = docker_insights and type = docker and frequency = !docker_frequency and continuous = false and dbms = monitoring and table = docker_insight"
+            "if !node_type == operator then process !local_scripts/southbound-monitoring/table_syslog_monitoring.al",
+            "set msg rule !syslog_name if ip = !syslog_ip then dbms = monitoring and table = syslog and extend = ip and syslog = true"
         ]
     }
 }>
@@ -45,23 +45,19 @@ if not !error_code.int then
 do set create_policy = true
 goto check-policy
 
-if !error_code == 1 then goto sign-policy-error
-if !error_code == 2 then goto prepare-policy-error
-if !error_code == 3 then goto declare-policy-error
+else if !error_code == 1 then goto sign-policy-error
+else if !error_code == 2 then goto prepare-policy-error
+else if !error_code == 3 then goto declare-policy-error
 
 :config-policy:
 on error goto config-policy-error
-config from policy where id=!schedule_id
+config from policy where id=!config_id
 
 :end-script:
 end script
 
 :terminate-scripts:
 exit scripts
-
-:missing-socket-error:
-echo "Missing docker.socket cannot configure docker monitoring"
-do goto end-script
 
 :store-monitoring-error:
 print "Failed to store "

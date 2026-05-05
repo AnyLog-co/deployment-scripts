@@ -28,7 +28,7 @@
 #    'Network Error' : 0
 # }
 #----------------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/southbound-monitoring/policy_node_monitoring.al
+# process !local_scripts/southbound-monitoring/schedule_node_monitoring.al
 
 :set-params:
 schedule_id = node-monitoring
@@ -49,7 +49,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "id": !schedule_id,
         "name": "Node Monitoring Schedule",
         "script": [
-            "if !node_type == operator then process !local_scripts/southbound-monitoring/create_node_monitoring_table.al",
+            "if !node_type == operator then process !local_scripts/southbound-monitoring/table_node_monitoring.al",
             "process !local_scripts/southbound-monitoring/node_monitoring_set_params.al",
 
             "schedule name = get_stats and time=!monitoring_frequency and task node_insight = get stats where service = operator and topic = summary  and format = json",

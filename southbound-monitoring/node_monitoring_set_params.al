@@ -15,7 +15,6 @@ if !store_monitoring_dest and !view_monitoring_dest then goto end-script
 if !store_monitoring_dest and not !view_monitoring_dest goto view-monitoring-dest
 
 
-
 :store-monitoring-dest:
 if not !store_monitoring_dest and !node_type != operator and !store_monitoring == true then
 <do schedule
