@@ -10,8 +10,9 @@
 on error ignore
 
 :preset-params:
-if !overlay_ip then set syslog_ip = !overlay_ip
-else set syslog_ip = !ip
+syslog_ip = *
+#if !overlay_ip then set syslog_ip = !overlay_ip
+#else set syslog_ip = !ip
 set syslog_name = !node_name
 set create_policy = false
 config_id = syslog-monitoring
@@ -32,7 +33,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "name": "Syslog Monitoring",
         "script": [
             "if !node_type == operator then process !local_scripts/southbound-monitoring/table_syslog_monitoring.al",
-            "set msg rule !syslog_name if ip = !syslog_ip then dbms = monitoring and table = syslog and extend = ip and syslog = true"
+            "set msg rule !syslog_name if ip = * then dbms = monitoring and table = syslog and extend = ip and syslog = true"
         ]
     }
 }>
