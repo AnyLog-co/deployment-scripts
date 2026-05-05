@@ -30,7 +30,7 @@ if !is_file == true then goto process-tags
 on error ignore
 
 is_file = file test !tags_file
-if !is_file != true goto missing-file-tags
+if !is_file != true then goto missing-file-tags
 process !tags_file
 
 :declare-client:
