@@ -20,8 +20,8 @@ schedule name=remove_archive and time=1 day and task delete archive where days =
 :worker-threads:
 on error call worker-thread-err
 
-if !operator_workers and !operator_workers.int >= 1 and !node_type == operator and !db_type == psql then
-do run helpers where type = psql and count = !operator_workers.int
+if !operator_helpers and !operator_helpers.int >= 1 and !node_type == operator and !db_type == psql then
+do run helpers where type = psql and count = !operator_helpers.int
 
 :end-script:
 end script
