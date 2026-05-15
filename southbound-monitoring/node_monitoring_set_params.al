@@ -9,6 +9,8 @@
 #------------------------------------------------------------------------------------#
 # process !local_scripts/southbound-monitoring/node_monitoring_set_params.al
 
+if !monitoring_node == true then process !local_scripts/southbound-monitoring/monitoring_node.al
+
 schedule_time = 300 seconds
 
 if !store_monitoring_dest and !view_monitoring_dest then goto end-script

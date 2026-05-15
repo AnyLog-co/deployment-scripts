@@ -49,6 +49,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "id": !schedule_id,
         "name": "Node Monitoring Schedule",
         "script": [
+            "schedule name=get_view_monitoring_dest and time=300 seconds and task if view_monitoring_dest = blockchain get monitoring-node bring [*][host] : [*][port] separator=,",
             "if !node_type == operator then process !local_scripts/southbound-monitoring/table_node_monitoring.al",
 
             "schedule name = get_stats and time=!monitoring_frequency and task node_insight = get stats where service = operator and topic = summary  and format = json",

@@ -343,6 +343,7 @@ if $MSG_VALUE_COLUMN then msg_value_column=$MSG_VALUE_COLUMN
 
 
 :monitoring:
+set monitoring_node     = false
 set node_monitoring     = false
 set syslog_monitoring   = false
 set docker_monitoring   = false
@@ -354,6 +355,7 @@ monitoring_frequency = "30 seconds"
 docker_frequency = 10
 
 
+if $MONITORING_NODE == true or  $MONITORING_NODE == True or  $MONITORING_NODE == TRUE then set monitoring_node = $MONITORING_NODE
 if $NODE_MONITORING == true   or $NODE_MONITORING == True   or $NODE_MONITORING == TRUE   then set node_monitoring   = true
 if $SYSLOG_MONITORING == true or $SYSLOG_MONITORING == True or $SYSLOG_MONITORING == TRUE then set syslog_monitoring = true
 if $DOCKER_MONITORING == true or $DOCKER_MONITORING == True or $DOCKER_MONITORING == TRUE then set docker_monitoring = true
