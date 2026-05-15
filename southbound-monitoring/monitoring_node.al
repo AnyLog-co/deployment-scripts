@@ -13,14 +13,23 @@ if !is_policy then goto end-script
 else if not !is_policy and !create_policy == true then goto declare-policy-error
 
 :define-policy:
+set new_policy = ""
 set policy new_policy [monitoring-node] = {}
 set policy new_policy [monitoring-node][name] = !node_name
 
-if $DNS_DOMAIN or $DNS then  set policy new_policy [config][host] = !dns
-else if !tcp_bind == true and !overlay_ip then then set policy new_policy [config][host] = !overlay_ip
-else if !tcp_bind == true then set policy new_policy [config][host] = !ip
-else set policy new_policy [config][host] = !external_ip
+:ip-config:
+if $DNS_DOMAIN or $DNS then
+do set policy new_policy [monitoring-node][host] = !dns
+do goto port-config
+else if !tcp_bind == true and !overlay_ip then
+do set policy new_policy [monitoring-node][host] = !overlay_ip
+do goto port-config
+else if !tcp_bind == true then
+do set policy new_policy [monitoring-node][host] = !ip
+do goto port-config
+else set policy new_policy [monitoring-node][host] = !external_ip
 
+:port-config:
 set policy new_policy [monitoring-node][port] = !anylog_server_port
 
 :publish-policy:
