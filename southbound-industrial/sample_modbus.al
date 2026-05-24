@@ -8,7 +8,7 @@
 # process !local_scripts/southbound-industrial/sample_modbus.al
 
 policy_id = "modbus-mapping"
-mapping_policy = blockchain get mapping where id = !policy_id
+mapping_policy = blockchain get modbus-mapping where id = !policy_id
 if not !mapping_policy then goto missing-mapping-policy
 
 table_name = from !mapping_policy bring [mapping][table]
