@@ -51,7 +51,7 @@ set new_policy = ""
             {"name": "motor_enabled", "coil": 1},
             {"name": "valve_open", "coil": 2},
             {"name": "alarm_active", "coil": 3},
-            {"name": "system_ready", "coil": 4},
+            {"name": "system_ready", "coil": 4}
 
         ]
     }
