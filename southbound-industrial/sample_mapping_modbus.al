@@ -4,12 +4,6 @@
 #
 # :URL:
 #   https://hub.docker.com/r/oitc/modbus-server
-#            {"name": "door_sensor", "discreteInput": 0},
-#            {"name": "motion_detected", "discreteInput": 1},
-#            {"name": "water_leak", "discreteInput": 2},
-#            {"name": "emergency_stop", "discreteInput": 3},
-#            {"name": "maintenance_mode", "discreteInput": 4}
-#
 #---------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/southbound-industrial/sample_mapping_modbus.al
 
@@ -35,7 +29,7 @@ set new_policy = ""
         "device_id": 1,
 
         "schema": [
-            {"name": "kitchen_temperature", "register": 0},
+           {"name": "kitchen_temperature", "register": 0},
             {"name": "kitchen_humidity", "register": 1},
             {"name": "pressure", "register": 2},
             {"name": "status_code", "register": 3},
@@ -51,8 +45,13 @@ set new_policy = ""
             {"name": "motor_enabled", "coil": 1},
             {"name": "valve_open", "coil": 2},
             {"name": "alarm_active", "coil": 3},
-            {"name": "system_ready", "coil": 4}
+            {"name": "system_ready", "coil": 4},
 
+            {"name": "door_sensor", "input": 0},
+            {"name": "motion_detected", "input": 1},
+            {"name": "water_leak", "input": 2},
+            {"name": "emergency_stop", "input": 3},
+            {"name": "maintenance_mode", "input": 4}
         ]
     }
 }>
