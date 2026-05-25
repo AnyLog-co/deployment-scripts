@@ -11,8 +11,8 @@ policy_id = "modbus-mapping"
 mapping_policy = blockchain get modbus-mapping where id = !policy_id
 if not !mapping_policy then goto missing-mapping-policy
 
-table_name = from !mapping_policy bring [mapping][table]
-mapping_logic = from !mapping_policy bring [mapping][schema]
+table_name = from !mapping_policy bring [*][table]
+mapping_logic = from !mapping_policy bring [*][schema]
 
 :msg-client:
 on error goto msg-client-err
@@ -24,8 +24,8 @@ on error goto msg-client-err
     frequency = 5 and
     name = mb10 and
     dbms = !default_dbms and
-    table = !table_name  and
-    map = !mapping_logic>
+    map = !mapping_logic and
+    dynamic=true and master_node=!ledger_conn>
 
 
 :end-script:

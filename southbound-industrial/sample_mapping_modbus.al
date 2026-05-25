@@ -13,23 +13,48 @@ policy_id = "modbus-mapping"
 set create_policy = false
 
 :check-policy:
-is_policy = blockchain get modbus-mapping where id = !policy_id
+is_policy = blockchain get modbus where id = !policy_id
 if not !is_policy and !create_policy == false then goto declare-policy
 else if !is_policy then goto end-script
 else if not !is_policy and !create_policy == true then goto declare-policy-error
 
 :declare-policy:
 set new_policy = ""
-<new_policy = {
-    "modbus-mapping" : {
-        "id": "modbus-mapping",
-        "table": "modbus_readings_10",
+new_policy = {
+    "modbus": {
+        "id": "mb10",
+        "host": "172.232.211.205",
+        "port": 5020,
+
+        "device_id": 1,
+
         "schema": [
-            {"name":"kitchen_temperature","register":0},
-            {"name":"kitchen_humidity","register":1}
+            {"name": "kitchen_temperature", "register": 0},
+            {"name": "kitchen_humidity", "register": 1},
+            {"name": "pressure", "register": 2},
+            {"name": "status_code", "register": 3},
+            {"name": "energy_total", "register": 5},
+
+            {"name": "analog_sensor_0", "inputRegister": 0},
+            {"name": "analog_sensor_1", "inputRegister": 1},
+            {"name": "adc_raw", "inputRegister": 2},
+            {"name": "voltage", "inputRegister": 3},
+            {"name": "runtime_seconds", "inputRegister": 4},
+
+            {"name": "pump_running", "coil": 0},
+            {"name": "motor_enabled", "coil": 1},
+            {"name": "valve_open", "coil": 2},
+            {"name": "alarm_active", "coil": 3},
+            {"name": "system_ready", "coil": 4},
+
+            {"name": "door_sensor", "discreteInput": 0},
+            {"name": "motion_detected", "discreteInput": 1},
+            {"name": "water_leak", "discreteInput": 2},
+            {"name": "emergency_stop", "discreteInput": 3},
+            {"name": "maintenance_mode", "discreteInput": 4}
         ]
     }
-}>
+}
 
 :publish-policy:
 process !local_scripts/node-deployment/policies/publish_policy.al
