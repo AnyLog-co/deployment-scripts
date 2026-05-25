@@ -7,25 +7,29 @@
 #---------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/southbound-industrial/sample_modbus.al
 
-policy_id = "modbus-mapping"
-mapping_policy = blockchain get modbus-mapping where id = !policy_id
+policy_id = "mb10"
+mapping_policy = blockchain get modbus where id = !policy_id
 if not !mapping_policy then goto missing-mapping-policy
 
-table_name = from !mapping_policy bring [*][table]
-mapping_logic = from !mapping_policy bring [*][schema]
+modbus_host      = from !mapping_policy bring [*][host]
+modbus_port      = from !mapping_policy bring [*][port]
+modbus_device_id = from !mapping_policy bring [*][device_id]
+modbus_name      = from !mapping_policy bring [*][id]
+mapping_logic    = from !mapping_policy bring [*][schema]
 
 :msg-client:
 on error goto msg-client-err
 <run plc client where
     type = modbus and
-    hostname = 172.232.211.205 and
-    port = 5020 and
-    device_id = 1 and
+    hostname = !modbus_host and
+    port = !modbus_port and
+    device_id = !modbus_device_id and
     frequency = 5 and
-    name = mb10 and
+    name = !modbus_name and
     dbms = !default_dbms and
     map = !mapping_logic and
-    dynamic=true and master_node=!ledger_conn>
+    dynamic=true and
+    master_node=!ledger_conn>
 
 
 :end-script:

@@ -4,6 +4,12 @@
 #
 # :URL:
 #   https://hub.docker.com/r/oitc/modbus-server
+#            {"name": "door_sensor", "discreteInput": 0},
+#            {"name": "motion_detected", "discreteInput": 1},
+#            {"name": "water_leak", "discreteInput": 2},
+#            {"name": "emergency_stop", "discreteInput": 3},
+#            {"name": "maintenance_mode", "discreteInput": 4}
+#
 #---------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/southbound-industrial/sample_mapping_modbus.al
 
@@ -20,7 +26,7 @@ else if not !is_policy and !create_policy == true then goto declare-policy-error
 
 :declare-policy:
 set new_policy = ""
-new_policy = {
+<new_policy = {
     "modbus": {
         "id": "mb10",
         "host": "172.232.211.205",
@@ -47,14 +53,9 @@ new_policy = {
             {"name": "alarm_active", "coil": 3},
             {"name": "system_ready", "coil": 4},
 
-            {"name": "door_sensor", "discreteInput": 0},
-            {"name": "motion_detected", "discreteInput": 1},
-            {"name": "water_leak", "discreteInput": 2},
-            {"name": "emergency_stop", "discreteInput": 3},
-            {"name": "maintenance_mode", "discreteInput": 4}
         ]
     }
-}
+}>
 
 :publish-policy:
 process !local_scripts/node-deployment/policies/publish_policy.al
