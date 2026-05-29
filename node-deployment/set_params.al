@@ -25,6 +25,10 @@ company_name = "New Company"
 hostname = get hostname
 ledger_conn = 127.0.0.1:32048
 
+print $TPM_DIR
+
+if $TPM_DIR then tpm_dir=$TPM_DIR
+
 set is_hidden =false
 set master_configs = false
 
