@@ -68,6 +68,7 @@ do goto terminate-scripts
 create work directories
 
 :set-params:
+process !local_scripts/node-deployment/authentication/gen_keys.al
 process !local_scripts/node-deployment/set_params.al
 
 :set-configs:

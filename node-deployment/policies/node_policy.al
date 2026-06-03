@@ -68,7 +68,11 @@ if !member then set policy new_policy [!node_type][member] = !member.int
 
 
 if not !is_main then is_primary = blockchain get operator where cluster = !cluster_id
-if not !is_main and !is_primary then set is_main = false
+if not !is_main and !is_primary then
+do set is_main = false
+do node_name = !node_name + "-bkup"
+Do set policy new_policy [!node_type][name] = !node_name
+do set node name !node_name
 else if not !is_main and not !is_primary then set is_main = true
 set policy new_policy [!node_type][main] = !is_main.bool
 

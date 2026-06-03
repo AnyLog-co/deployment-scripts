@@ -19,30 +19,43 @@ on error ignore
 if $DISABLE_CLI == true or  $DISABLE_CLI == True or $DISABLE_CLI == TRUE then set cli off
 
 :required-params:
-company_name = "New Company"
+company_name = "Acme"
+if $COMPANY_NAME then company_name = $COMPANY_NAME
+
 hostname = get hostname
 ledger_conn = 127.0.0.1:32048
+
 
 set is_hidden =false
 set master_configs = false
 
-if not $NODE_TYPE then goto missing-node-type
-else if $NODE_TYPE == master-operator  then node_type = operator
-else if $NODE_TYPE == master-publisher then node_type = publisher
-else set node_type = $NODE_TYPE
-
-if $NODE_TYPE == master-operator or $NODE_TYPE == master-publisher or $NODE_TYPE == master then set master_configs = true
-if !node_type != operator and $IS_HIDDEN == true or $IS_HIDDEN == True or $IS_HIDDEN == TRUE then is_hidden = true
+node_name = !hostname
+if not !hostname then node_name = python !company_name.replace(' ', '-').replace('.', '-').lower()
 
 if $NODE_NAME then node_name = $NODE_NAME
-else node_name = !hostname + " " + !node_type
+else if not $NODE_TYPE then goto missing-node-type
+else if $NODE_TYPE == master-operator  then
+do node_type = operator
+do node_name = !node_name + "-standalone-operator-" + !node_uid
+do set master_configs = true
+else if $NODE_TYPE == master-publisher then
+do node_type = publisher
+do node_name = !node_name + "-standalone-publisher-" + !node_uid
+do set master_configs = true
+else
+do set node_type = $NODE_TYPE
+do node_name = !node_name + "-" + !node_type + "-" + !node_uid
+
+
+if !node_type == operator and  $CLUSTER_NAME then cluster_name = $CLUSTER_NAME
+else if !node_type == operator then cluster_name = !node_name + "-cluster-" + !node_uid
+
+if !node_type != operator and $IS_HIDDEN == true or $IS_HIDDEN == True or $IS_HIDDEN == TRUE then is_hidden = true
 
 set node name !node_name
 
-if $COMPANY_NAME then company_name = $COMPANY_NAME
-
-
 if $LICENSE_KEY then license_key = $LICENSE_KEY
+
 
 :general-params:
 loc_info = rest get where url = https://ipinfo.io/json
@@ -271,7 +284,7 @@ else if $IS_MAIN and ($IS_MAIN == false or $IS_MAIN == False  or $IS_MAIN == FAL
 if $ENABLE_PARTITIONS == false or $ENABLE_PARTITIONS == False or $ENABLE_PARTITIONS == FALSE then set enable_partitions=false
 
 if not $CLUSTER_NAME or $CLUSTER_NAME == nc-cluster or $CLUSTER_NAME == new-cluster then cluster_name = !company_name.name + -cluster- + !hostname.name
-else cluster_name = $CLUSTER_NAME
+else
 
 if $TABLE_NAME then table_name=$TABLE_NAME
 if $PARTITION_COLUMN then set partition_column = $PARTITION_COLUMN
