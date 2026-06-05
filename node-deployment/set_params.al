@@ -19,43 +19,34 @@ on error ignore
 if $DISABLE_CLI == true or  $DISABLE_CLI == True or $DISABLE_CLI == TRUE then set cli off
 
 :required-params:
-company_name = "Acme"
-if $COMPANY_NAME then company_name = $COMPANY_NAME
-
+company_name = "New Company"
 hostname = get hostname
 ledger_conn = 127.0.0.1:32048
-
 
 set is_hidden =false
 set master_configs = false
 
-node_name = !hostname
-if not !hostname then node_name = python !company_name.replace(' ', '-').replace('.', '-').lower()
+if not $NODE_TYPE then goto missing-node-type
+else if $NODE_TYPE == master-operator  then node_type = operator
+else if $NODE_TYPE == master-publisher then node_type = publisher
+else set node_type = $NODE_TYPE
+
+
+
+if $NODE_TYPE == master-operator or $NODE_TYPE == master-publisher or $NODE_TYPE == master then set master_configs = true
+if !node_type != operator and $IS_HIDDEN == true or $IS_HIDDEN == True or $IS_HIDDEN == TRUE then is_hidden = true
 
 if $NODE_NAME then node_name = $NODE_NAME
-else if not $NODE_TYPE then goto missing-node-type
-else if $NODE_TYPE == master-operator  then
-do node_type = operator
-do node_name = !node_name + "-standalone-operator-" + !node_uid
-do set master_configs = true
-else if $NODE_TYPE == master-publisher then
-do node_type = publisher
-do node_name = !node_name + "-standalone-publisher-" + !node_uid
-do set master_configs = true
-else
-do set node_type = $NODE_TYPE
-do node_name = !node_name + "-" + !node_type + "-" + !node_uid
-
-
-if !node_type == operator and  $CLUSTER_NAME then cluster_name = $CLUSTER_NAME
-else if !node_type == operator then cluster_name = !node_name + "-cluster-" + !node_uid
-
-if !node_type != operator and $IS_HIDDEN == true or $IS_HIDDEN == True or $IS_HIDDEN == TRUE then is_hidden = true
+else if $NODE_TYPE == master-operator then node_name = !hostname + "-standalone-operator-" + !node_uid
+else if $NODE_TYPE == master-publisher then node_name = !hostname + "-standalone-publisher-" + !node_uid
+else if $NODE_TYPE then  node_name = !hostname + "-standalone-" + $NODE_TYPE + "-" + !node_uid
 
 set node name !node_name
 
-if $LICENSE_KEY then license_key = $LICENSE_KEY
+if $COMPANY_NAME then company_name = $COMPANY_NAME
 
+
+if $LICENSE_KEY then license_key = $LICENSE_KEY
 
 :general-params:
 loc_info = rest get where url = https://ipinfo.io/json
@@ -84,23 +75,29 @@ config_name = !node_type.name + - + !company_name.name + -configs
 if !node_type == generic then
 do anylog_server_port = 32548
 do anylog_rest_port = 32549
+do anylog_broker_port = 32550
+
 else if !node_type == master then
 do anylog_server_port = 32048
 do anylog_rest_port = 32049
+do anylog_broker_port = ""
+
 else if !node_type == query then
 do anylog_server_port = 32348
 do anylog_rest_port = 32349
+do anylog_broker_port = ""
+
 else if !node_type == operator then
 do anylog_server_port = 32148
 do anylog_rest_port = 32149
 do anylog_broker_port = 32150
+
 else if !node_type == publisher then
 do anylog_server_port = 32248
 do anylog_rest_port = 32249
 do anylog_broker_port = 32250
 
-
-tcp_bind = false
+tcp_bind = true
 tcp_threads=6
 rest_bind = false
 rest_threads=6
@@ -123,7 +120,7 @@ if $ANYLOG_SERVER_PORT then anylog_server_port = $ANYLOG_SERVER_PORT
 if $ANYLOG_REST_PORT then anylog_rest_port = $ANYLOG_REST_PORT
 if $ANYLOG_BROKER_PORT then anylog_broker_port = $ANYLOG_BROKER_PORT
 
-if $TCP_BIND == true or $TCP_BIND == True or $TCP_BIND == TRUE then tcp_bind = true
+if $TCP_BIND == false or $TCP_BIND == False or $TCP_BIND == FALSE then tcp_bind = false
 if $TCP_THREADS then tcp_threads = $TCP_THREADS
 if !tcp_threads.int < 1 then tcp_threads = 1
 
@@ -159,11 +156,7 @@ else if !master_configs == false and !overlay_ip then ledger_conn = !overlay_ip 
 else if !master_configs == true then ledger_conn = !ip + ":" + !anylog_server_port
 else if !master_configs == false then ledger_conn = !ip + ":32048"
 
-config_version = "Unknown"
-check_config_setup = file test !local_scripts/setup.cfg
-if $CONFIG_VERSION then config_version = $CONFIG_VERSION
-else if not $CONFIG_VERSION and !check_config_setup == true then config_version = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
-
+config_version = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
 
 :authentication:
 set enable_auth = false
@@ -171,8 +164,8 @@ if !is_edgelake == false and ($ENABLE_AUTH == true or $ENABLE_AUTH == True or $E
 if !is_edgelake == true or !enable_auth == false then goto sql-database
 
 if $NODE_PASSWORD then node_password = $NODE_PASSWORD
-if $USERNAME then username = $USERNAME
-if $USER_PASSWORD then user_passsword = $USER_PASSWORD
+# if $USERNAME then username = $USERNAME
+# if $USER_PASSWORD then user_password = $USER_PASSWORD
 
 :sql-database:
 db_type = sqlite
@@ -285,10 +278,8 @@ if $MEMBER and $MEMBER.int then member = $MEMBER
 if $IS_MAIN and ($IS_MAIN == true or $IS_MAIN == True or $IS_MAIN == TRUE) then set is_main = true
 else if $IS_MAIN and ($IS_MAIN == false or $IS_MAIN == False  or $IS_MAIN == FALSE) then set is_main = false
 
-if $ENABLE_PARTITIONS == false or $ENABLE_PARTITIONS == False or $ENABLE_PARTITIONS == FALSE then set enable_partitions=false
-
-if not $CLUSTER_NAME or $CLUSTER_NAME == nc-cluster or $CLUSTER_NAME == new-cluster then cluster_name = !company_name.name + -cluster- + !hostname.name
-else
+if $CLUSTER_NAME then cluster_name = $CLUSTER_NAME
+else cluster_name = !hostname + "-cluster-" + !node_uid
 
 if $TABLE_NAME then table_name=$TABLE_NAME
 if $PARTITION_COLUMN then set partition_column = $PARTITION_COLUMN
@@ -297,10 +288,10 @@ if $PARTITION_KEEP then set partition_keep = $PARTITION_KEEP
 if $PARTITION_SYNC then set partition_sync = $PARTITION_SYNC
 
 :operator-ha:
-set enable_ha = false
+set enable_ha = true
 start_date = -30d
 
-if $ENABLE_HA == true or $ENABLE_HA == TRUE or $ENABLE_HA == True then set enable_ha=true
+if $ENABLE_HA == false or $ENABLE_HA == FALSE or $ENABLE_HA == False then set enable_ha=false
 if $START_DATE then start_date = $START_DATE
 if !start_date.int then start_date = - + $START_DATE + d
 
@@ -364,13 +355,22 @@ set monitoring_node     = false
 set node_monitoring     = false
 set syslog_monitoring   = false
 set docker_monitoring   = false
-store_monitoring        = false
+set store_monitoring    = false
 store_monitoring_dest   = ""
 view_monitoring_dest    = ""
+monitoring_db = sqlite
 
 monitoring_frequency = "30 seconds"
 docker_frequency = 10
 
+if !system_query == true then set monitoring_node = true
+if !node_type == operator then
+do set node_monitoring     = true
+do set syslog_monitoring   = true
+do set docker_monitoring   = true
+do set store_monitoring    = true
+
+if $MONITORING_DB == psql or $MONITORING_DB == sqlite then monitoring_db = $MONITORING_DB
 
 if $MONITORING_NODE == true or  $MONITORING_NODE == True or  $MONITORING_NODE == TRUE then set monitoring_node = $MONITORING_NODE
 if $NODE_MONITORING == true   or $NODE_MONITORING == True   or $NODE_MONITORING == TRUE   then set node_monitoring   = true

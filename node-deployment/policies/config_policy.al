@@ -128,7 +128,8 @@ do goto publish-policy
     "if !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
 
     "process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
-    "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "if !node_monitoring == true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "if !monitoring_node == true then process !local_scripts/southbound-monitoring/monitoring_node.al",
     "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
     "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
 

@@ -11,22 +11,23 @@
 
 on error ignore
 :set-params:
-auth_password = 123
-if $AUTH_PASSWORD then auth_password=$AUTH_PASSWORD
+node_password = 123
+if $NODE_PASSWORD then node_password = $NODE_PASSWORD
+set is_id = false
+
+:check-ids:
 node_id = get node id
-
-if !node_id then goto node-info
-
-:check-is-file:
-is_file = test file
+if !node_id then goto node-info node-info
+else if !is_id == true then goto create-id-error
 
 :create-id:
 on error goto create-id-error
-id create keys for node where password = auth_password
+id create keys for node where password = node_password
+set is_id = true
+goto check-ids
 
 :node-info:
 on error ignore
-node_id = get node id
 node_uid = python !node_id[:5]
 
 
