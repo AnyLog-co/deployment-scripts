@@ -17,7 +17,7 @@ set is_id = false
 
 :check-ids:
 node_id = get node id
-if !node_id then goto node-info node-info
+if !node_id then goto node-info
 else if !is_id == true then goto create-id-error
 
 :create-id:
