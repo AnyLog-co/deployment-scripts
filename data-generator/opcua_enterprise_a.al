@@ -30,7 +30,7 @@ if !is_file == true then goto process-tags
 on error ignore
 
 is_file = file test !tags_file
-if !is_file != true then goto missing-file-tags
+if !is_file != true goto missing-file-tags
 process !tags_file
 
 :declare-client:
@@ -53,12 +53,9 @@ if !is_file == true then goto process-client
 on error ignore
 
 is_file = file test !client_file
-if !is_file != true then goto missing-file-client
+if !is_file != then goto missing-file-client
 process !client_file
 
-:view-opcua:
-ignore error log
-get plc client
 
 :end-script:
 end script
