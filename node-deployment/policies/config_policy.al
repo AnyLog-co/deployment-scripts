@@ -102,7 +102,7 @@ if !node_type == publisher then
     "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
 
     "process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
-    "if !enable_mqtt == true then process !local_scripts/sample-scripts/data_generator.al",
+    "if !enable_mqtt == true then process !local_scripts/data-generator/data_generator.al",
     "if !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
     "process !local_scripts/node-deployment/policies/license_policy.al"
