@@ -6,8 +6,8 @@
 
 on error ignore
 
-if      !msg_topic == rand_data    then process !local_scripts/data-generator/rand_data.al
-else if !msg_topic == power_plant  then process !local_scripts/data-generator/power_plant.al
+if      !msg_topic == rand-data    then process !local_scripts/data-generator/rand_data.al
+else if !msg_topic == power-plant  then process !local_scripts/data-generator/power_plant.al
 else if !msg_topic == wind-turbine then process !local_scripts/data-generator/wind_turbine_data.al
 else if !msg_topic == rig-data     then process !local_scripts/data-generator/oil_rig_data.al
 else if !msg_topic == wind-turbine then process !local_scripts/data-generator/wind_turbine_data.al
