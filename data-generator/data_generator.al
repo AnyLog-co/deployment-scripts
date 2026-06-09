@@ -4,6 +4,7 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/data-generator/data_generator.al
 
+set debug interactive
 on error ignore
 
 if      !msg_topic == rand-data    then process !local_scripts/data-generator/rand_data.al
