@@ -12,9 +12,8 @@ else if !msg_topic == power-plant  then process !local_scripts/data-generator/po
 else if !msg_topic == wind-turbine then process !local_scripts/data-generator/wind_turbine_data.al
 else if !msg_topic == rig-data     then process !local_scripts/data-generator/oil_rig_data.al
 else if !msg_topic == wind-turbine then process !local_scripts/data-generator/wind_turbine_data.al
-else if !msg_topic == vessel-data then
-do process !local_scripts/data-generator/vessel_aggregation_demo.al
-do process !local_scripts/data-generator/vessel_data.al
+else if !msg_topic == vessel-data  then process !local_scripts/data-generator/vessel_aggregation_demo.al
+else if !msg_topic == vessel-data  then process !local_scripts/data-generator/vessel_data.al
 else echo "Support for topic: " + !msg_topic + " not found"
 
 
