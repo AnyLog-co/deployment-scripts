@@ -1,0 +1,11 @@
+==========================================================================
+Title:      Aggregate Summary
+Date:       2023-04-05 22:14:02.483814
+Command:    select min(value) as min_val, max(value) as max_val, avg(value)::float(6) as avg_value, sum(value)::float(6) as sum_val, count(*) as row_count from ping_sensor
+DBMS:       test
+Include:    (percentagecpu_sensor)
+Format:     table
+==========================================================================
+min_val max_val avg_value sum_val   row_count 
+------- ------- --------- --------- --------- 
+    0.0   99.99 32.748349 654966.99     20000 

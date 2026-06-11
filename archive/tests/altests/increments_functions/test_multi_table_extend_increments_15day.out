@@ -1,0 +1,15 @@
+==========================================================================
+Title:      15 day increments
+Date:       2023-04-06 16:32:05.341835
+Command:    select increments(day, 15, timestamp), min(timestamp) as min_ts, max(timestamp) as max_ts, min(value) as min_val, max(value) as max_val, avg(value)::float(6) as avg_value, sum(value)::float(6) as sum_val, count(*) as row_count from ping_sensor where timestamp >= '2022-02-01 00:00:00' and timestamp < '2022-03-01 00:00:00'
+DBMS:       test
+Include:    (percentagecpu_sensor)
+Extend:     (@table_name as table)
+Format:     table
+==========================================================================
+table                min_ts                     max_ts                     min_val max_val avg_value sum_val   row_count 
+-------------------- -------------------------- -------------------------- ------- ------- --------- --------- --------- 
+percentagecpu_sensor 2022-02-13 21:20:51.999012 2022-02-14 23:55:51.296406    0.83   99.55 48.763205   3803.53        78 
+ping_sensor          2022-02-13 21:21:46.746294 2022-02-14 23:35:47.507093     0.5    48.2 18.513462   1444.05        78 
+percentagecpu_sensor 2022-02-15 00:05:52.386039 2022-02-28 23:31:51.286046     0.0   99.94 50.102062 100855.45      2013 
+ping_sensor          2022-02-15 00:01:46.048094 2022-02-28 23:43:46.851381     0.0    49.0 15.790436  30443.96      1928 

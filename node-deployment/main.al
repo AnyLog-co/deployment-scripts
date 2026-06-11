@@ -41,9 +41,13 @@ set authentication off
 
 # check whether we're running EdgeLake or AnyLog
 set is_edgelake = false
+set release_type = ""
 version = get version
 deployment_type = python !version.split(" ")[0]
-if !deployment_type != AnyLog then set is_edgelake = true
+
+if !deployment_type == AnyLog then release_type = python !version.split("(")[-1].split(")")
+if !deployment_type != AnyLog or !release_type == "RTS" then set is_edgelake = true
+
 if !is_edgelake == true and $NODE_TYPE == publisher then edgelake-error
 
 :directories:
@@ -68,6 +72,7 @@ do goto terminate-scripts
 create work directories
 
 :set-params:
+process !local_scripts/node-deployment/authentication/gen_keys.al
 process !local_scripts/node-deployment/set_params.al
 
 :set-configs:

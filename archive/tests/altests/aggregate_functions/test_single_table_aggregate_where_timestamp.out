@@ -1,0 +1,10 @@
+==========================================================================
+Title:      Aggregate Summary WHERE timestamp
+Date:       2023-04-05 22:14:01.292608
+Command:    select min(timestamp) as min_ts, max(timestamp) as max_ts, min(value) as min_val, max(value) as max_val, avg(value)::float(6) as avg_value, sum(value)::float(6) as sum_val, count(*) as row_count from ping_sensor where timestamp >= '2022-01-01 00:00:00' and timestamp <= '2022-12-31 23:59:59.999999'
+DBMS:       test
+Format:     table
+==========================================================================
+min_ts                     max_ts                     min_val max_val avg_value sum_val   row_count 
+-------------------------- -------------------------- ------- ------- --------- --------- --------- 
+2022-02-13 21:21:46.746294 2022-04-16 20:33:46.370019     0.0    49.0 15.183185 126885.88      8357 

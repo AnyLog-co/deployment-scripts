@@ -1,0 +1,2864 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [
+        "Waste Water Plant"
+      ],
+      "targetBlank": false,
+      "title": "Menu",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
+  "panels": [
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "bdr5p5qemo5j4c"
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": null,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<p class =\"panel-title-text\"\n  style=\"\n    font-size: xx-large;\n    text-align:center;\n    height:40%;\n    bottom:0;\n    margin:0;\">Waste Water Plant</p>\n<hr\n  style=\"\n    width:40%;\n    margin-bottom: 8px;\">\n<p class =\"panel-subtitle-text\"\n  style=\"\n    font-size: large;\n    text-align:center;\n    height:60%;\n    bottom:0;\n    margin:0;\n    max-width: 100%;\">Plant Status</p>\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "bdr5p5qemo5j4c"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 1,
+        "y": 3
+      },
+      "id": null,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<p class =\"panel-title-text\"\n  style=\"\n    font-size: large;\n    height:100%;\n    bottom:0;\n    margin:0;\n    max-width: 100%;\n    display:flex;\n    align-items:center;\n    justify-content:center;\">Influent</p>",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "bdr5p5qemo5j4c"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 6,
+        "x": 5,
+        "y": 3
+      },
+      "id": null,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<p class =\"panel-title-text\"\n  style=\"\n    font-size: large;\n    height:100%;\n    bottom:0;\n    margin:0;\n    max-width: 100%;\n    display:flex;\n    align-items:center;\n    justify-content:center;\">Air Temperature</p>",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "bdr5p5qemo5j4c"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 13,
+        "y": 3
+      },
+      "id": null,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<p class =\"panel-title-text\"\n  style=\"\n    font-size: large;\n    height:100%;\n    bottom:0;\n    margin:0;\n    max-width: 100%;\n    display:flex;\n    align-items:center;\n    justify-content:center;\">Fans and Water Pumps</p>",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "bdr5p5qemo5j4c"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 19,
+        "y": 3
+      },
+      "id": null,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<p class =\"panel-title-text\"\n  style=\"\n    font-size: large;\n    height:100%;\n    bottom:0;\n    margin:0;\n    max-width: 100%;\n    display:flex;\n    align-items:center;\n    justify-content:center;\">Automatic Transfer Switch</p>",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "flowgpm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 1,
+        "y": 5
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "gF_09-E7z"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"type\": \"period\",\r\n  \"time_column\": \"insert_timestamp\",\r\n  \"value_column\": \"hw_influent\",\r\n  \"functions\": [\"avg\"],\r\n  \"grafana\": {\r\n    \"format_as\": \"timeseries\"\r\n  }\r\n}",
+          "query": "from(bucket: \"csobsidian's Bucket\")\r\n    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n    |> filter(fn: (r) => r._measurement == \"waterMeter\")\r\n    |> filter(fn: (r) => r.sensor_id == \"Raw\")\r\n    |> filter(fn: (r) => r._field == \"TotalToday\")\r\n    |> last()\r\n    |> map(fn: (r) => ({r with _value: r._value * 0.001}))",
+          "refId": "A",
+          "target": "cos.wwp_analog"
+        }
+      ],
+      "title": "Influent Flow",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "cos_wp_analog<avg>": "Total",
+              "cos_wwp<avg>": "Total"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "fahrenheit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 5,
+        "y": 5
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 28
+        },
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "gF_09-E7z"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"type\": \"period\",\r\n  \"time_column\": \"insert_timestamp\",\r\n  \"value_column\": \"uv_room_temp_ai\",\r\n  \"functions\": [\"avg\"],\r\n  \"grafana\": {\r\n    \"format_as\": \"timeseries\"\r\n  }\r\n}",
+          "query": "from(bucket: \"csobsidian's Bucket\")\r\n    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n    |> filter(fn: (r) => r._measurement == \"waterMeter\")\r\n    |> filter(fn: (r) => r.sensor_id == \"Raw\")\r\n    |> filter(fn: (r) => r._field == \"TotalToday\")\r\n    |> last()\r\n    |> map(fn: (r) => ({r with _value: r._value * 0.001}))",
+          "refId": "A",
+          "target": "cos.wwp_analog"
+        }
+      ],
+      "title": "UV Room",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "cos_wp_analog<avg>": "Total",
+              "cos_wwp<avg>": "UV Filter #1"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "fahrenheit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 7,
+        "y": 5
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 28
+        },
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "gF_09-E7z"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"type\": \"period\",\r\n  \"time_column\": \"insert_timestamp\",\r\n  \"value_column\": \"am_pr_temp_ai\",\r\n  \"functions\": [\"avg\"],\r\n  \"grafana\": {\r\n    \"format_as\": \"timeseries\"\r\n  }\r\n}",
+          "query": "from(bucket: \"csobsidian's Bucket\")\r\n    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n    |> filter(fn: (r) => r._measurement == \"waterMeter\")\r\n    |> filter(fn: (r) => r.sensor_id == \"Raw\")\r\n    |> filter(fn: (r) => r._field == \"TotalToday\")\r\n    |> last()\r\n    |> map(fn: (r) => ({r with _value: r._value * 0.001}))",
+          "refId": "A",
+          "target": "cos.wwp_analog"
+        }
+      ],
+      "title": "Press Room",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "cos_wp_analog<avg>": "Total",
+              "cos_wwp<avg>": "UV Filter #1"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "fahrenheit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 9,
+        "y": 5
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 28
+        },
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "gF_09-E7z"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"type\": \"period\",\r\n  \"time_column\": \"insert_timestamp\",\r\n  \"value_column\": \"am_hw_temp_ai\",\r\n  \"functions\": [\"avg\"],\r\n  \"grafana\": {\r\n    \"format_as\": \"timeseries\"\r\n  }\r\n}",
+          "query": "from(bucket: \"csobsidian's Bucket\")\r\n    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n    |> filter(fn: (r) => r._measurement == \"waterMeter\")\r\n    |> filter(fn: (r) => r.sensor_id == \"Raw\")\r\n    |> filter(fn: (r) => r._field == \"TotalToday\")\r\n    |> last()\r\n    |> map(fn: (r) => ({r with _value: r._value * 0.001}))",
+          "refId": "A",
+          "target": "cos.wwp_analog"
+        }
+      ],
+      "title": "Headworks",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "cos_wp_analog<avg>": "Total",
+              "cos_wwp<avg>": "UV Filter #1"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "False": {
+                  "color": "dark-blue",
+                  "index": 0,
+                  "text": "Stopped"
+                },
+                "True": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "Running"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-blue",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 2,
+        "x": 13,
+        "y": 5
+      },
+      "id": null,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": false,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            },
+            "image": {
+              "field": "",
+              "fixed": "",
+              "mode": "fixed"
+            }
+          },
+          "border": {
+            "color": {
+              "fixed": "dark-green"
+            },
+            "width": 0
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "field": "Status",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "size": 20,
+                "text": {
+                  "field": "Status",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Status",
+              "placement": {
+                "height": 40,
+                "left": 0,
+                "top": 85,
+                "width": 150
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "fill": {
+                  "fixed": "#D9D9D9"
+                },
+                "path": {
+                  "field": "",
+                  "fixed": "https://raw.githubusercontent.com/Templarian/MaterialDesign/ce55b68ba7308fef54003d5c588343eeac30ff7a/svg/fan.svg",
+                  "mode": "fixed"
+                }
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Icon",
+              "placement": {
+                "height": 50,
+                "left": 0,
+                "top": 30,
+                "width": 150
+              },
+              "type": "icon"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "rgb(204, 204, 220)"
+                },
+                "size": 16,
+                "text": {
+                  "fixed": "Blower Room Fan"
+                },
+                "valign": "bottom"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Label",
+              "placement": {
+                "height": 30,
+                "left": 0,
+                "top": 0,
+                "width": 150
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1715690993925",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"SELECT insert_timestamp, am_mx1_running FROM wwp_digital ORDER BY insert_timestamp DESC limit 1\"\r\n}",
+          "refId": "A",
+          "target": "cos.wwp_digital"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "am_mx1_running": "Status",
+              "am_rasab1_valve": "Status",
+              "am_seq1a_valve": "Status",
+              "insert_timestamp": "",
+              "servicepump1running_di": "ServicePump1Running"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "False": {
+                  "color": "dark-blue",
+                  "index": 0,
+                  "text": "Stopped"
+                },
+                "True": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "Running"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-blue",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 2,
+        "x": 15,
+        "y": 5
+      },
+      "id": null,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": false,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            },
+            "image": {
+              "field": "",
+              "fixed": "",
+              "mode": "fixed"
+            }
+          },
+          "border": {
+            "color": {
+              "fixed": "dark-green"
+            },
+            "width": 0
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "field": "Status",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "size": 20,
+                "text": {
+                  "field": "Status",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Status",
+              "placement": {
+                "height": 40,
+                "left": 0,
+                "top": 85,
+                "width": 150
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "fill": {
+                  "fixed": "#D9D9D9"
+                },
+                "path": {
+                  "field": "",
+                  "fixed": "https://raw.githubusercontent.com/Templarian/MaterialDesign/ce55b68ba7308fef54003d5c588343eeac30ff7a/svg/fan.svg",
+                  "mode": "fixed"
+                }
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Icon",
+              "placement": {
+                "height": 50,
+                "left": 0,
+                "top": 30,
+                "width": 150
+              },
+              "type": "icon"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "rgb(204, 204, 220)"
+                },
+                "size": 16,
+                "text": {
+                  "fixed": "Sludge Room Fan"
+                },
+                "valign": "bottom"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Label",
+              "placement": {
+                "height": 30,
+                "left": 0,
+                "top": 0,
+                "width": 150
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1715690993925",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"SELECT insert_timestamp, mcc_srfrng_s FROM wwp_digital ORDER BY insert_timestamp DESC limit 1\"\r\n}",
+          "refId": "A",
+          "target": "cos.wwp_digital"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "am_mx1_running": "Status",
+              "am_rasab1_valve": "Status",
+              "am_seq1a_valve": "Status",
+              "insert_timestamp": "",
+              "mcc_srfrng_s": "Status",
+              "servicepump1running_di": "ServicePump1Running"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "False": {
+                  "color": "purple",
+                  "index": 0,
+                  "text": "NOT READY"
+                },
+                "True": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "READY"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 19,
+        "y": 5
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Normal Power$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 28
+        },
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "gF_09-E7z"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"SELECT insert_timestamp, mcc_tsnprdy_s FROM wwp_digital ORDER BY insert_timestamp DESC limit 1\"\r\n}",
+          "query": "from(bucket: \"csobsidian's Bucket\")\r\n    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n    |> filter(fn: (r) => r._measurement == \"waterMeter\")\r\n    |> filter(fn: (r) => r.sensor_id == \"Raw\")\r\n    |> filter(fn: (r) => r._field == \"TotalToday\")\r\n    |> last()\r\n    |> map(fn: (r) => ({r with _value: r._value * 0.001}))",
+          "refId": "A",
+          "target": "cos.wwp_digital"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "am_auger_status": false,
+              "insert_timestamp": false
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "am_auger_status": "Auger",
+              "am_beltpress_status": "Belt Press",
+              "am_maindrum_status": "Main Drum",
+              "am_pdb1_status": "Blower #1",
+              "am_pdb2_status": "Blower #2",
+              "am_pdb3_status": "Blower #3",
+              "am_pdb4_status": "Blower #4",
+              "am_thickenera_status": "Thickener A",
+              "am_thickenerb_status": "Thickener B",
+              "am_waterpump_status": "Water Pump",
+              "cos_wp_analog<avg>": "Total",
+              "cos_wwp<avg>": "Blower #1",
+              "insert_timestamp": "",
+              "mcc_tsnprdy_s": "Normal Power",
+              "ss_screenrun_s": "Normal Power"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "False": {
+                  "color": "purple",
+                  "index": 0,
+                  "text": "NOT READY"
+                },
+                "True": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "READY"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 19,
+        "y": 7
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Standby Power$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 28
+        },
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "gF_09-E7z"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"SELECT insert_timestamp, mcc_tstdbyrdy_s FROM wwp_digital ORDER BY insert_timestamp DESC limit 1\"\r\n}",
+          "query": "from(bucket: \"csobsidian's Bucket\")\r\n    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n    |> filter(fn: (r) => r._measurement == \"waterMeter\")\r\n    |> filter(fn: (r) => r.sensor_id == \"Raw\")\r\n    |> filter(fn: (r) => r._field == \"TotalToday\")\r\n    |> last()\r\n    |> map(fn: (r) => ({r with _value: r._value * 0.001}))",
+          "refId": "A",
+          "target": "cos.wwp_digital"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "am_auger_status": false,
+              "insert_timestamp": false
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "am_auger_status": "Auger",
+              "am_beltpress_status": "Belt Press",
+              "am_maindrum_status": "Main Drum",
+              "am_pdb1_status": "Blower #1",
+              "am_pdb2_status": "Blower #2",
+              "am_pdb3_status": "Blower #3",
+              "am_pdb4_status": "Blower #4",
+              "am_thickenera_status": "Thickener A",
+              "am_thickenerb_status": "Thickener B",
+              "am_waterpump_status": "Water Pump",
+              "cos_wp_analog<avg>": "Total",
+              "cos_wwp<avg>": "Blower #1",
+              "insert_timestamp": "",
+              "mcc_tsnprdy_s": "Normal Power",
+              "mcc_tstdbyrdy_s": "Standby Power",
+              "ss_screenrun_s": "Normal Power"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "GPM",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "max": 400,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Date"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "match": "null",
+                      "result": {
+                        "index": 0,
+                        "text": "Influent"
+                      }
+                    },
+                    "type": "special"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "Flow"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 2,
+        "x": 1,
+        "y": 8
+      },
+      "id": null,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "vertical",
+        "showValue": "never",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"type\": \"period\",\r\n  \"time_column\": \"insert_timestamp\",\r\n  \"value_column\": \"hw_influent\",\r\n  \"functions\": [\"avg\"],\r\n  \"grafana\": {\r\n    \"format_as\": \"table\"\r\n  }\r\n}",
+          "refId": "A",
+          "target": "cos.wwp_analog"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "Avg"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "Date"
+              },
+              {
+                "destinationType": "other",
+                "targetField": "Date"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Date": false
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Avg": "Flow",
+              "Date": "",
+              "cos_wwp<avg>": "Flow"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "°F",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "max": 140,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Date"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "match": "null",
+                      "result": {
+                        "index": 0,
+                        "text": "UV Room"
+                      }
+                    },
+                    "type": "special"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 2,
+        "x": 5,
+        "y": 8
+      },
+      "id": null,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "vertical",
+        "showValue": "never",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"type\": \"period\",\r\n  \"time_column\": \"insert_timestamp\",\r\n  \"value_column\": \"uv_room_temp_ai\",\r\n  \"functions\": [\"avg\"],\r\n  \"grafana\": {\r\n    \"format_as\": \"table\"\r\n  }\r\n}",
+          "refId": "A",
+          "target": "cos.wwp_analog"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "Avg"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "Date"
+              },
+              {
+                "destinationType": "other",
+                "targetField": "Date"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Date": false
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Avg": "Temp.",
+              "Date": "",
+              "cos_wwp<avg>": "Flow"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "°F",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "max": 140,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Date"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "match": "null",
+                      "result": {
+                        "index": 0,
+                        "text": "Press Room"
+                      }
+                    },
+                    "type": "special"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 2,
+        "x": 7,
+        "y": 8
+      },
+      "id": null,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "vertical",
+        "showValue": "never",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"type\": \"period\",\r\n  \"time_column\": \"insert_timestamp\",\r\n  \"value_column\": \"am_pr_temp_ai\",\r\n  \"functions\": [\"avg\"],\r\n  \"grafana\": {\r\n    \"format_as\": \"table\"\r\n  }\r\n}",
+          "refId": "A",
+          "target": "cos.wwp_analog"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "Avg"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "Date"
+              },
+              {
+                "destinationType": "other",
+                "targetField": "Date"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Date": false
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Avg": "Temp.",
+              "Date": "",
+              "cos_wwp<avg>": "Flow"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "°F",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "max": 140,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Date"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "match": "null",
+                      "result": {
+                        "index": 0,
+                        "text": "Headworks"
+                      }
+                    },
+                    "type": "special"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 2,
+        "x": 9,
+        "y": 8
+      },
+      "id": null,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "vertical",
+        "showValue": "never",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"type\": \"period\",\r\n  \"time_column\": \"insert_timestamp\",\r\n  \"value_column\": \"am_hw_temp_ai\",\r\n  \"functions\": [\"avg\"],\r\n  \"grafana\": {\r\n    \"format_as\": \"table\"\r\n  }\r\n}",
+          "refId": "A",
+          "target": "cos.wwp_analog"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "Avg"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "Date"
+              },
+              {
+                "destinationType": "other",
+                "targetField": "Date"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Date": false
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Avg": "Temp.",
+              "Date": "",
+              "cos_wwp<avg>": "Flow"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "False": {
+                  "color": "dark-blue",
+                  "index": 0,
+                  "text": "Stopped"
+                },
+                "True": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "Running"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-blue",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 2,
+        "x": 14,
+        "y": 9
+      },
+      "id": null,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": false,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            },
+            "image": {
+              "field": "",
+              "fixed": "",
+              "mode": "fixed"
+            }
+          },
+          "border": {
+            "color": {
+              "fixed": "dark-green"
+            },
+            "width": 0
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "field": "Status",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "size": 20,
+                "text": {
+                  "field": "Status",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Status",
+              "placement": {
+                "height": 40,
+                "left": 0,
+                "top": 85,
+                "width": 150
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "fill": {
+                  "fixed": "#D9D9D9"
+                },
+                "path": {
+                  "field": "",
+                  "fixed": "https://raw.githubusercontent.com/Templarian/MaterialDesign/ce55b68ba7308fef54003d5c588343eeac30ff7a/svg/fan.svg",
+                  "mode": "fixed"
+                }
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Icon",
+              "placement": {
+                "height": 50,
+                "left": 0,
+                "top": 30,
+                "width": 150
+              },
+              "type": "icon"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "rgb(204, 204, 220)"
+                },
+                "size": 16,
+                "text": {
+                  "fixed": "Headworks Fan"
+                },
+                "valign": "bottom"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Label",
+              "placement": {
+                "height": 30,
+                "left": 0,
+                "top": 0,
+                "width": 150
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1715690993925",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"SELECT insert_timestamp, am_hvefrng_s FROM wwp_digital ORDER BY insert_timestamp DESC limit 1\"\r\n}",
+          "refId": "A",
+          "target": "cos.wwp_digital"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "am_hvefrng_s": "Status",
+              "am_mx1_running": "Status",
+              "am_rasab1_valve": "Status",
+              "am_seq1a_valve": "Status",
+              "insert_timestamp": "",
+              "servicepump1running_di": "ServicePump1Running"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "False": {
+                  "color": "purple",
+                  "index": 0,
+                  "text": "NOT READY"
+                },
+                "True": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "READY"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 19,
+        "y": 9
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Transfer Switch$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 28
+        },
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "gF_09-E7z"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"SELECT insert_timestamp, mcc_tsstdby_s FROM wwp_digital ORDER BY insert_timestamp DESC limit 1\"\r\n}",
+          "query": "from(bucket: \"csobsidian's Bucket\")\r\n    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n    |> filter(fn: (r) => r._measurement == \"waterMeter\")\r\n    |> filter(fn: (r) => r.sensor_id == \"Raw\")\r\n    |> filter(fn: (r) => r._field == \"TotalToday\")\r\n    |> last()\r\n    |> map(fn: (r) => ({r with _value: r._value * 0.001}))",
+          "refId": "A",
+          "target": "cos.wwp_digital"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "am_auger_status": false,
+              "insert_timestamp": false
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "am_auger_status": "Auger",
+              "am_beltpress_status": "Belt Press",
+              "am_maindrum_status": "Main Drum",
+              "am_pdb1_status": "Blower #1",
+              "am_pdb2_status": "Blower #2",
+              "am_pdb3_status": "Blower #3",
+              "am_pdb4_status": "Blower #4",
+              "am_thickenera_status": "Thickener A",
+              "am_thickenerb_status": "Thickener B",
+              "am_waterpump_status": "Water Pump",
+              "cos_wp_analog<avg>": "Total",
+              "cos_wwp<avg>": "Blower #1",
+              "insert_timestamp": "",
+              "mcc_tsnprdy_s": "Normal Power",
+              "mcc_tsstdby_s": "Transfer Switch",
+              "mcc_tstdbyrdy_s": "Standby Power",
+              "ss_screenrun_s": "Normal Power"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "bdr5p5qemo5j4c"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 19,
+        "y": 11
+      },
+      "id": null,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<p class =\"panel-title-text\"\n  style=\"\n    font-size: large;\n    height:100%;\n    bottom:0;\n    margin:0;\n    max-width: 100%;\n    display:flex;\n    align-items:center;\n    justify-content:center;\">Generator</p>",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "False": {
+                  "color": "dark-blue",
+                  "index": 0,
+                  "text": "Stopped"
+                },
+                "True": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "Running"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-blue",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 2,
+        "x": 13,
+        "y": 13
+      },
+      "id": null,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": false,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            },
+            "image": {
+              "field": "",
+              "fixed": "",
+              "mode": "fixed"
+            }
+          },
+          "border": {
+            "color": {
+              "fixed": "dark-green"
+            },
+            "width": 0
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "field": "Status",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "size": 20,
+                "text": {
+                  "field": "Status",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Status",
+              "placement": {
+                "height": 40,
+                "left": 0,
+                "top": 85,
+                "width": 150
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "fill": {
+                  "fixed": "#D9D9D9"
+                },
+                "path": {
+                  "field": "",
+                  "fixed": "https://raw.githubusercontent.com/Templarian/MaterialDesign/ce55b68ba7308fef54003d5c588343eeac30ff7a/svg/pump.svg",
+                  "mode": "fixed"
+                }
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Icon",
+              "placement": {
+                "height": 50,
+                "left": 0,
+                "top": 30,
+                "width": 150
+              },
+              "type": "icon"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "rgb(204, 204, 220)"
+                },
+                "size": 16,
+                "text": {
+                  "fixed": "NP Water Pump 1"
+                },
+                "valign": "bottom"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Label",
+              "placement": {
+                "height": 30,
+                "left": 0,
+                "top": 0,
+                "width": 150
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1715690993925",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"SELECT timestamp, mcc_npwprng1_s FROM wwp_digital ORDER BY timestamp DESC limit 1\"\r\n}",
+          "refId": "A",
+          "target": "cos.wwp_digital"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "am_mx1_running": "Status",
+              "am_rasab1_valve": "Status",
+              "am_seq1a_valve": "Status",
+              "insert_timestamp": "",
+              "mcc_npwprng1_s": "Status",
+              "servicepump1running_di": "ServicePump1Running"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "False": {
+                  "color": "dark-blue",
+                  "index": 0,
+                  "text": "Stopped"
+                },
+                "True": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "Running"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-blue",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 2,
+        "x": 15,
+        "y": 13
+      },
+      "id": null,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": false,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            },
+            "image": {
+              "field": "",
+              "fixed": "",
+              "mode": "fixed"
+            }
+          },
+          "border": {
+            "color": {
+              "fixed": "dark-green"
+            },
+            "width": 0
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "field": "Status",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "size": 20,
+                "text": {
+                  "field": "Status",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Status",
+              "placement": {
+                "height": 40,
+                "left": 0,
+                "top": 85,
+                "width": 150
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "fill": {
+                  "fixed": "#D9D9D9"
+                },
+                "path": {
+                  "field": "",
+                  "fixed": "https://raw.githubusercontent.com/Templarian/MaterialDesign/ce55b68ba7308fef54003d5c588343eeac30ff7a/svg/pump.svg",
+                  "mode": "fixed"
+                }
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Icon",
+              "placement": {
+                "height": 50,
+                "left": 0,
+                "top": 30,
+                "width": 150
+              },
+              "type": "icon"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "rgb(204, 204, 220)"
+                },
+                "size": 16,
+                "text": {
+                  "fixed": "NP Water Pump 2"
+                },
+                "valign": "bottom"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Label",
+              "placement": {
+                "height": 30,
+                "left": 0,
+                "top": 0,
+                "width": 150
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1715690993925",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"SELECT timestamp, mcc_npwprng2_s FROM wwp_digital ORDER BY timestamp DESC limit 1\"\r\n}",
+          "refId": "A",
+          "target": "cos.wwp_digital"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "am_mx1_running": "Status",
+              "am_rasab1_valve": "Status",
+              "am_seq1a_valve": "Status",
+              "insert_timestamp": "",
+              "mcc_npwprng2_s": "Status",
+              "servicepump1running_di": "ServicePump1Running"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "False": {
+                  "color": "transparent",
+                  "index": 0,
+                  "text": "NOT RUNNING"
+                },
+                "True": {
+                  "color": "red",
+                  "index": 1,
+                  "text": "RUNNING"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "purple",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 19,
+        "y": 13
+      },
+      "id": null,
+      "options": {
+        "colorMode": "background_solid",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Generator Status$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 28
+        },
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "gF_09-E7z"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"SELECT insert_timestamp, mcc_genrng_s FROM wwp_digital ORDER BY insert_timestamp DESC limit 1\"\r\n}",
+          "query": "from(bucket: \"csobsidian's Bucket\")\r\n    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n    |> filter(fn: (r) => r._measurement == \"waterMeter\")\r\n    |> filter(fn: (r) => r.sensor_id == \"Raw\")\r\n    |> filter(fn: (r) => r._field == \"TotalToday\")\r\n    |> last()\r\n    |> map(fn: (r) => ({r with _value: r._value * 0.001}))",
+          "refId": "A",
+          "target": "cos.wwp_digital"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "am_auger_status": false,
+              "insert_timestamp": false
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "am_auger_status": "Auger",
+              "am_beltpress_status": "Belt Press",
+              "am_maindrum_status": "Main Drum",
+              "am_pdb1_status": "Blower #1",
+              "am_pdb2_status": "Blower #2",
+              "am_pdb3_status": "Blower #3",
+              "am_pdb4_status": "Blower #4",
+              "am_thickenera_status": "Thickener A",
+              "am_thickenerb_status": "Thickener B",
+              "am_waterpump_status": "Water Pump",
+              "cos_wp_analog<avg>": "Total",
+              "cos_wwp<avg>": "Blower #1",
+              "insert_timestamp": "",
+              "mcc_genrng_s": "Generator Status",
+              "mcc_tsnprdy_s": "Normal Power",
+              "mcc_tsstdby_s": "Transfer Switch",
+              "mcc_tstdbyrdy_s": "Standby Power",
+              "ss_screenrun_s": "Normal Power"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 39,
+  "tags": [
+    "Waste Water Plant"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Plant Status",
+  "uid": "eds8k5nspj9j4f",
+  "version": 6,
+  "weekStart": ""
+}

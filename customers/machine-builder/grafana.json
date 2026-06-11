@@ -1,0 +1,2361 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "advperaencnb4e"
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": null,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div\n  style=\"\n    display: flex;\n    height: 100%;\n    margin: 0;\n    flex-direction: row;\n    align-items: center\">\n  <div name=\"left\"\n    style=\"\n      width: 33%;\">\n    <p class = \"panel-title-text\"\n      style = \"\n        font-size: large;\n        height: 100%;\n        bottom: 0;\n        margin: 0;\n        margin-left: 10px;\n        max-width: 100%;\n        display: flex;\n        align-items: center;\n        justify-content: left;\">\n        <img src=\"https://orics.com/wp-content/uploads/2018/07/logo-for-optimize.png\" alt=\"ORICS Automated Filling and Sealing machines\">\n    </p>\n  </div>\n  <div name=\"center\"\n    style=\"\n      width: 34%;\n      margin: 0\">\n    <p class = \"panel-title-text\"\n      style = \"\n        font-size: xx-large;\n        height: 40%;\n        bottom: 0;\n        margin: 0;\n        max-width: 100%;\n        display: flex;\n        align-items: center;\n        justify-content: center;\">R50</p>\n    <hr\n      style=\"\n        margin: 0;\n        margin-bottom: 8px\">\n    <p class = \"panel-title-text\"\n      style = \"\n        font-size: large;\n        height: 60%;\n        bottom: 0;\n        margin: 0;\n        max-width: 100%;\n        display: flex;\n        align-items: center;\n        justify-content: center;\">System Details</p>\n  </div>\n  <div name=\"right\"\n    style=\"\n      width: 33%;\n      align-content: right;\">\n    <p class = \"panel-title-text\"\n      style = \"\n        font-size: large;\n        height: 100%;\n        bottom: 0;\n        margin: 0;\n        margin-right: 10px;\n        max-width: 100%;\n        display: flex;\n        align-items: center;\n        justify-content: right;\">SN: $serial_number</p>\n  </div>\n</div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "advperaencnb4e"
+          },
+          "editorMode": "code",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "advperaencnb4e"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "1562": {
+                  "index": 0,
+                  "text": "Heater Disconnected"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "fahrenheit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 0,
+        "y": 3
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^heater1_temp$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "advperaencnb4e"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"select * from r_50 order by insert_timestamp desc limit 1\"\r\n}",
+          "refId": "A",
+          "target": "orics.r_50"
+        }
+      ],
+      "title": "Heater Temperature",
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "row_id": ""
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "advperaencnb4e"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "cpm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 6,
+        "y": 3
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^cy_min$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "advperaencnb4e"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"select * from r_50 order by insert_timestamp desc limit 1\"\r\n}",
+          "refId": "A",
+          "target": "orics.r_50"
+        }
+      ],
+      "title": "Production Rate",
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {}
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Dashboard --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Ready"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 0,
+                        "text": "Not Ready"
+                      },
+                      "1": {
+                        "index": 1,
+                        "text": "Ready"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Running"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 0,
+                        "text": "Stopped"
+                      },
+                      "1": {
+                        "index": 1,
+                        "text": "Running"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Amperage"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "amp"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "text",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 2
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "thresholds"
+                }
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 3,
+        "x": 12,
+        "y": 3
+      },
+      "id": null,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": false,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            },
+            "image": {
+              "field": "",
+              "fixed": "",
+              "mode": "fixed"
+            },
+            "size": "cover"
+          },
+          "border": {
+            "color": {
+              "fixed": "dark-green"
+            },
+            "width": 0
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                },
+                "image": {
+                  "fixed": ""
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "field": "Amperage",
+                  "fixed": "text"
+                },
+                "size": 24,
+                "text": {
+                  "field": "Amperage",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Current",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 40,
+                "left": 40,
+                "rotation": 0,
+                "top": 210,
+                "width": 150
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "Running",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "size": 20,
+                "text": {
+                  "field": "Running",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Running Status",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 40,
+                "left": 40,
+                "rotation": 0,
+                "top": 160,
+                "width": 150
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "Ready",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "size": 20,
+                "text": {
+                  "field": "Ready",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Ready Status",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 40,
+                "left": 40,
+                "rotation": 0,
+                "top": 110,
+                "width": 150
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "fill": {
+                  "fixed": "#D9D9D9"
+                },
+                "path": {
+                  "field": "",
+                  "fixed": "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/9e04201d4557e729822fb57f62a316c3dea1d4a8/svg/paper-roll.svg",
+                  "mode": "fixed"
+                }
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Icon",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 80,
+                "left": 40,
+                "rotation": 0,
+                "top": 30,
+                "width": 150
+              },
+              "type": "icon"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "rgb(204, 204, 220)"
+                },
+                "size": 16,
+                "text": {
+                  "fixed": "Film Supply"
+                },
+                "valign": "bottom"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Label",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 30,
+                "left": 40,
+                "rotation": 0,
+                "top": 0,
+                "width": 150
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1715690993925",
+          "oneClickMode": "off",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "panelId": 2,
+          "refId": "A"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "A-series": true,
+              "A-series - A-series2": true,
+              "A-series1": true,
+              "A-series2": true,
+              "batch_count": true,
+              "cap_pick_in_cyc": true,
+              "cap_press_in_cyc": true,
+              "cy_min": true,
+              "denester_in_cycle": true,
+              "filler_cyc_time": true,
+              "filler_stage": true,
+              "film_adv_i": true,
+              "film_adv_rdy": true,
+              "film_adv_run": true,
+              "film_supply_i": false,
+              "film_supply_rdy": false,
+              "film_supply_run": false,
+              "heater1_setpoint": true,
+              "heater1_temp": true,
+              "insert_timestamp": true,
+              "machine_state": true,
+              "outfeed_conv_i": true,
+              "outfeed_conv_rdy": true,
+              "outfeed_conv_run": true,
+              "rotary_index_i": true,
+              "rotary_index_rdy": true,
+              "rotary_index_run": true,
+              "row_id": true,
+              "run_hours": true,
+              "seal_cyc_time": true,
+              "seal_storage": true,
+              "serial_number": true,
+              "time": false,
+              "timestamp": true,
+              "tsd_id": true,
+              "tsd_name": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "A-series2": "",
+              "A-series3": "Amperage",
+              "film_adv_i": "",
+              "film_adv_rdy": "",
+              "film_adv_run": "",
+              "film_supply_i": "Amperage",
+              "film_supply_rdy": "Ready",
+              "film_supply_run": "Running"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Dashboard --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Ready"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 0,
+                        "text": "Not Ready"
+                      },
+                      "1": {
+                        "index": 1,
+                        "text": "Ready"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Running"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 0,
+                        "text": "Stopped"
+                      },
+                      "1": {
+                        "index": 1,
+                        "text": "Running"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Amperage"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "amp"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "text",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 2
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "thresholds"
+                }
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 3,
+        "x": 15,
+        "y": 3
+      },
+      "id": null,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": false,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            },
+            "image": {
+              "field": "",
+              "fixed": "",
+              "mode": "fixed"
+            },
+            "size": "cover"
+          },
+          "border": {
+            "color": {
+              "fixed": "dark-green"
+            },
+            "width": 0
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                },
+                "image": {
+                  "fixed": ""
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "field": "Amperage",
+                  "fixed": "text"
+                },
+                "size": 24,
+                "text": {
+                  "field": "Amperage",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Current",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 40,
+                "left": 40,
+                "rotation": 0,
+                "top": 210,
+                "width": 150
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "Running",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "size": 20,
+                "text": {
+                  "field": "Running",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Running Status",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 40,
+                "left": 40,
+                "rotation": 0,
+                "top": 160,
+                "width": 150
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "Ready",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "size": 20,
+                "text": {
+                  "field": "Ready",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Ready Status",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 40,
+                "left": 40,
+                "rotation": 0,
+                "top": 110,
+                "width": 150
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "fill": {
+                  "fixed": "#D9D9D9"
+                },
+                "path": {
+                  "field": "",
+                  "fixed": "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/9e04201d4557e729822fb57f62a316c3dea1d4a8/svg/exit-to-app.svg",
+                  "mode": "fixed"
+                }
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Icon",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 80,
+                "left": 40,
+                "rotation": 0,
+                "top": 30,
+                "width": 150
+              },
+              "type": "icon"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "rgb(204, 204, 220)"
+                },
+                "size": 16,
+                "text": {
+                  "fixed": "Film Advance"
+                },
+                "valign": "bottom"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Label",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 30,
+                "left": 40,
+                "rotation": 0,
+                "top": 0,
+                "width": 150
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1715690993925",
+          "oneClickMode": "off",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "panelId": 2,
+          "refId": "A"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "A-series": true,
+              "A-series - A-series2": true,
+              "A-series1": true,
+              "A-series2": true,
+              "batch_count": true,
+              "cap_pick_in_cyc": true,
+              "cap_press_in_cyc": true,
+              "cy_min": true,
+              "denester_in_cycle": true,
+              "filler_cyc_time": true,
+              "filler_stage": true,
+              "film_adv_i": false,
+              "film_adv_rdy": false,
+              "film_adv_run": false,
+              "film_supply_i": true,
+              "film_supply_rdy": true,
+              "film_supply_run": true,
+              "heater1_setpoint": true,
+              "heater1_temp": true,
+              "insert_timestamp": true,
+              "machine_state": true,
+              "outfeed_conv_i": true,
+              "outfeed_conv_rdy": true,
+              "outfeed_conv_run": true,
+              "rotary_index_i": true,
+              "rotary_index_rdy": true,
+              "rotary_index_run": true,
+              "row_id": true,
+              "run_hours": true,
+              "seal_cyc_time": true,
+              "seal_storage": true,
+              "serial_number": true,
+              "time": false,
+              "timestamp": true,
+              "tsd_id": true,
+              "tsd_name": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "A-series2": "",
+              "A-series3": "Amperage",
+              "film_adv_i": "Amperage",
+              "film_adv_rdy": "Ready",
+              "film_adv_run": "Running",
+              "film_supply_i": "",
+              "film_supply_rdy": "",
+              "film_supply_run": ""
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Dashboard --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Ready"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 0,
+                        "text": "Not Ready"
+                      },
+                      "1": {
+                        "index": 1,
+                        "text": "Ready"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Running"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 0,
+                        "text": "Stopped"
+                      },
+                      "1": {
+                        "index": 1,
+                        "text": "Running"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Amperage"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "amp"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "text",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 2
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "thresholds"
+                }
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 3,
+        "x": 18,
+        "y": 3
+      },
+      "id": null,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": false,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            },
+            "image": {
+              "field": "",
+              "fixed": "",
+              "mode": "fixed"
+            },
+            "size": "cover"
+          },
+          "border": {
+            "color": {
+              "fixed": "dark-green"
+            },
+            "width": 0
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                },
+                "image": {
+                  "fixed": ""
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "field": "Amperage",
+                  "fixed": "text"
+                },
+                "size": 24,
+                "text": {
+                  "field": "Amperage",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Current",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 40,
+                "left": 40,
+                "rotation": 0,
+                "top": 210,
+                "width": 150
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "Running",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "size": 20,
+                "text": {
+                  "field": "Running",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Running Status",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 40,
+                "left": 40,
+                "rotation": 0,
+                "top": 160,
+                "width": 150
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "Ready",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "size": 20,
+                "text": {
+                  "field": "Ready",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Ready Status",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 40,
+                "left": 40,
+                "rotation": 0,
+                "top": 110,
+                "width": 150
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "fill": {
+                  "fixed": "#D9D9D9"
+                },
+                "path": {
+                  "field": "",
+                  "fixed": "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/9e04201d4557e729822fb57f62a316c3dea1d4a8/svg/rotate-360.svg",
+                  "mode": "fixed"
+                }
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Icon",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 80,
+                "left": 40,
+                "rotation": 0,
+                "top": 30,
+                "width": 150
+              },
+              "type": "icon"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "rgb(204, 204, 220)"
+                },
+                "size": 16,
+                "text": {
+                  "fixed": "Rotary Index"
+                },
+                "valign": "bottom"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Label",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 30,
+                "left": 40,
+                "rotation": 0,
+                "top": 0,
+                "width": 150
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1715690993925",
+          "oneClickMode": "off",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "panelId": 2,
+          "refId": "A"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "A-series": true,
+              "A-series - A-series2": true,
+              "A-series1": true,
+              "A-series2": true,
+              "batch_count": true,
+              "cap_pick_in_cyc": true,
+              "cap_press_in_cyc": true,
+              "cy_min": true,
+              "denester_in_cycle": true,
+              "filler_cyc_time": true,
+              "filler_stage": true,
+              "film_adv_i": true,
+              "film_adv_rdy": true,
+              "film_adv_run": true,
+              "film_supply_i": true,
+              "film_supply_rdy": true,
+              "film_supply_run": true,
+              "heater1_setpoint": true,
+              "heater1_temp": true,
+              "insert_timestamp": true,
+              "machine_state": true,
+              "outfeed_conv_i": true,
+              "outfeed_conv_rdy": true,
+              "outfeed_conv_run": true,
+              "rotary_index_i": false,
+              "rotary_index_rdy": false,
+              "rotary_index_run": false,
+              "row_id": true,
+              "run_hours": true,
+              "seal_cyc_time": true,
+              "seal_storage": true,
+              "serial_number": true,
+              "time": false,
+              "timestamp": true,
+              "tsd_id": true,
+              "tsd_name": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "A-series2": "",
+              "A-series3": "Amperage",
+              "film_adv_i": "",
+              "film_adv_rdy": "",
+              "film_adv_run": "",
+              "film_supply_i": "",
+              "film_supply_rdy": "",
+              "film_supply_run": "",
+              "rotary_index_i": "Amperage",
+              "rotary_index_rdy": "Ready",
+              "rotary_index_run": "Running"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Dashboard --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Ready"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 0,
+                        "text": "Not Ready"
+                      },
+                      "1": {
+                        "index": 1,
+                        "text": "Ready"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Running"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 0,
+                        "text": "Stopped"
+                      },
+                      "1": {
+                        "index": 1,
+                        "text": "Running"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Amperage"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "amp"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "text",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 2
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "thresholds"
+                }
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 3,
+        "x": 21,
+        "y": 3
+      },
+      "id": null,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": false,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            },
+            "image": {
+              "field": "",
+              "fixed": "",
+              "mode": "fixed"
+            },
+            "size": "cover"
+          },
+          "border": {
+            "color": {
+              "fixed": "dark-green"
+            },
+            "width": 0
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                },
+                "image": {
+                  "fixed": ""
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "field": "Amperage",
+                  "fixed": "text"
+                },
+                "size": 24,
+                "text": {
+                  "field": "Amperage",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Current",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 40,
+                "left": 40,
+                "rotation": 0,
+                "top": 210,
+                "width": 150
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "Running",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "size": 20,
+                "text": {
+                  "field": "Running",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Running Status",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 40,
+                "left": 40,
+                "rotation": 0,
+                "top": 160,
+                "width": 150
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "Ready",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "size": 20,
+                "text": {
+                  "field": "Ready",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Ready Status",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 40,
+                "left": 40,
+                "rotation": 0,
+                "top": 110,
+                "width": 150
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "fill": {
+                  "fixed": "#D9D9D9"
+                },
+                "path": {
+                  "field": "",
+                  "fixed": "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/9e04201d4557e729822fb57f62a316c3dea1d4a8/svg/location-exit.svg",
+                  "mode": "fixed"
+                }
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Icon",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 60,
+                "left": 40,
+                "rotation": 0,
+                "top": 40,
+                "width": 150
+              },
+              "type": "icon"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "rgb(204, 204, 220)"
+                },
+                "size": 16,
+                "text": {
+                  "fixed": "Outfeed Conveyor"
+                },
+                "valign": "bottom"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Label",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 30,
+                "left": 40,
+                "rotation": 0,
+                "top": 0,
+                "width": 150
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1715690993925",
+          "oneClickMode": "off",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "panelId": 2,
+          "refId": "A"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "A-series": true,
+              "A-series - A-series2": true,
+              "A-series1": true,
+              "A-series2": true,
+              "batch_count": true,
+              "cap_pick_in_cyc": true,
+              "cap_press_in_cyc": true,
+              "cy_min": true,
+              "denester_in_cycle": true,
+              "filler_cyc_time": true,
+              "filler_stage": true,
+              "film_adv_i": true,
+              "film_adv_rdy": true,
+              "film_adv_run": true,
+              "film_supply_i": true,
+              "film_supply_rdy": true,
+              "film_supply_run": true,
+              "heater1_setpoint": true,
+              "heater1_temp": true,
+              "insert_timestamp": true,
+              "machine_state": true,
+              "outfeed_conv_i": false,
+              "outfeed_conv_rdy": false,
+              "outfeed_conv_run": false,
+              "rotary_index_i": true,
+              "rotary_index_rdy": true,
+              "rotary_index_run": true,
+              "row_id": true,
+              "run_hours": true,
+              "seal_cyc_time": true,
+              "seal_storage": true,
+              "serial_number": true,
+              "time": false,
+              "timestamp": true,
+              "tsd_id": true,
+              "tsd_name": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "A-series2": "",
+              "A-series3": "Amperage",
+              "film_adv_i": "",
+              "film_adv_rdy": "",
+              "film_adv_run": "",
+              "film_supply_i": "",
+              "film_supply_rdy": "",
+              "film_supply_run": "",
+              "outfeed_conv_i": "Amperage",
+              "outfeed_conv_rdy": "Ready",
+              "outfeed_conv_run": "Running"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "advperaencnb4e"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 0,
+        "y": 9
+      },
+      "id": null,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "advperaencnb4e"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"type\": \"increments\",\r\n  \"sql\" : \"select increments(insert_timestamp), max(insert_timestamp) as timestamp, avg(heater1_temp) as heater1_temp, avg(heater1_setpoint) as heater1_setpoint from r_50\",\r\n  \"time_column\": \"insert_timestamp\",\r\n  \"grafana\": {\r\n    \"format_as\": \"timeseries\"\r\n  },\r\n  \"interval\": \"dashboard\"\r\n}\r\n",
+          "refId": "A",
+          "target": "orics.r_50"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "heater1_setpoint": "Setpoint",
+              "heater1_temp": "Temperature"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "advperaencnb4e"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 6,
+        "y": 9
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^batch_count$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "advperaencnb4e"
+          },
+          "editorMode": "code",
+          "payload": "{\r\n  \"sql\": \"select * from r_50 order by insert_timestamp desc limit 1\"\r\n}",
+          "refId": "A",
+          "target": "orics.r_50"
+        }
+      ],
+      "title": "Current Batch Count",
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {}
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Dashboard --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "red",
+                  "index": 0,
+                  "text": "Alarms Active"
+                },
+                "1": {
+                  "color": "yellow",
+                  "index": 1,
+                  "text": "Machine Not Ready"
+                },
+                "2": {
+                  "color": "blue",
+                  "index": 2,
+                  "text": "Machine Ready"
+                },
+                "3": {
+                  "color": "green",
+                  "index": 3,
+                  "text": "Machine Starting"
+                },
+                "4": {
+                  "color": "green",
+                  "index": 4,
+                  "text": "Machine Running"
+                },
+                "5": {
+                  "color": "green",
+                  "index": 5,
+                  "text": "Machine Stopping"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 12,
+        "y": 10
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^machine_state$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "valueSize": 40
+        },
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "panelId": 4,
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Dashboard --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "red",
+                  "index": 0,
+                  "text": "Air Pressure Not OK"
+                },
+                "1": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "Air Pressure OK"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 18,
+        "y": 10
+      },
+      "id": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^airpressureok$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "valueSize": 40
+        },
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "panelId": 4,
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": "",
+        "current": {
+          "selected": false,
+          "text": "17415",
+          "value": "17415"
+        },
+        "datasource": {
+          "type": "simpod-json-datasource",
+          "uid": "advperaencnb4e"
+        },
+        "definition": "blockchain get machine  bring.json [*][serial_number]",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "serial_number",
+        "options": [],
+        "query": {
+          "format": "string",
+          "query": "blockchain get machine  bring.json [*][serial_number]"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "System Detail",
+  "uid": "bdvpfhctm3da8e",
+  "version": 19,
+  "weekStart": ""
+}

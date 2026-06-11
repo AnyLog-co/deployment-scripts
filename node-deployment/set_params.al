@@ -31,11 +31,15 @@ else if $NODE_TYPE == master-operator  then node_type = operator
 else if $NODE_TYPE == master-publisher then node_type = publisher
 else set node_type = $NODE_TYPE
 
+
+
 if $NODE_TYPE == master-operator or $NODE_TYPE == master-publisher or $NODE_TYPE == master then set master_configs = true
 if !node_type != operator and $IS_HIDDEN == true or $IS_HIDDEN == True or $IS_HIDDEN == TRUE then is_hidden = true
 
 if $NODE_NAME then node_name = $NODE_NAME
-else node_name = !hostname + " " + !node_type
+else if $NODE_TYPE == master-operator then node_name = !hostname + "-standalone-operator-" + !node_uid
+else if $NODE_TYPE == master-publisher then node_name = !hostname + "-standalone-publisher-" + !node_uid
+else if $NODE_TYPE then  node_name = !hostname + "-standalone-" + $NODE_TYPE + "-" + !node_uid
 
 set node name !node_name
 
@@ -67,10 +71,33 @@ set nic_type = ""
 set enable_dns = false
 
 config_name = !node_type.name + - + !company_name.name + -configs
-if $ANYLOG_BROKER_PORT then config_name = !node_type.name + - + !company_name.name + -configs-broker
-set anylog_server_port = ""
-set anylog_rest_port = ""
-tcp_bind = false
+
+if !node_type == generic then
+do anylog_server_port = 32548
+do anylog_rest_port = 32549
+do anylog_broker_port = 32550
+
+else if !node_type == master then
+do anylog_server_port = 32048
+do anylog_rest_port = 32049
+do anylog_broker_port = ""
+
+else if !node_type == query then
+do anylog_server_port = 32348
+do anylog_rest_port = 32349
+do anylog_broker_port = ""
+
+else if !node_type == operator then
+do anylog_server_port = 32148
+do anylog_rest_port = 32149
+do anylog_broker_port = 32150
+
+else if !node_type == publisher then
+do anylog_server_port = 32248
+do anylog_rest_port = 32249
+do anylog_broker_port = 32250
+
+tcp_bind = true
 tcp_threads=6
 rest_bind = false
 rest_threads=6
@@ -91,21 +118,9 @@ else if $DNS_DOMAIN then dns = !hostname.$DNS_DOMAIN
 
 if $ANYLOG_SERVER_PORT then anylog_server_port = $ANYLOG_SERVER_PORT
 if $ANYLOG_REST_PORT then anylog_rest_port = $ANYLOG_REST_PORT
-
-if !node_type == master and not !anylog_server_port then anylog_server_port = 32048
-if !node_type == master and not !anylog_rest_port then anylog_rest_port = 32049
-if !node_type == operator and not !anylog_server_port then anylog_server_port = 32148
-if !node_type == operator and not !anylog_rest_port then anylog_rest_port = 32149
-if !node_type == query and not !anylog_server_port then anylog_server_port = 32348
-if !node_type == query and not !anylog_rest_port then anylog_rest_port = 32349
-if !node_type == publisher and not !anylog_server_port then anylog_server_port = 32248
-if !node_type == publisher and not !anylog_rest_port then anylog_rest_port = 32249
-if not !anylog_server_port then anylog_server_port = 32548
-if not !anylog_rest_port then anylog_rest_port = 32549
-
 if $ANYLOG_BROKER_PORT then anylog_broker_port = $ANYLOG_BROKER_PORT
 
-if $TCP_BIND == true or $TCP_BIND == True or $TCP_BIND == TRUE then tcp_bind = true
+if $TCP_BIND == false or $TCP_BIND == False or $TCP_BIND == FALSE then tcp_bind = false
 if $TCP_THREADS then tcp_threads = $TCP_THREADS
 if !tcp_threads.int < 1 then tcp_threads = 1
 
@@ -149,8 +164,8 @@ if !is_edgelake == false and ($ENABLE_AUTH == true or $ENABLE_AUTH == True or $E
 if !is_edgelake == true or !enable_auth == false then goto sql-database
 
 if $NODE_PASSWORD then node_password = $NODE_PASSWORD
-if $USERNAME then username = $USERNAME
-if $USER_PASSWORD then user_passsword = $USER_PASSWORD
+# if $USERNAME then username = $USERNAME
+# if $USER_PASSWORD then user_password = $USER_PASSWORD
 
 :sql-database:
 db_type = sqlite
@@ -263,10 +278,8 @@ if $MEMBER and $MEMBER.int then member = $MEMBER
 if $IS_MAIN and ($IS_MAIN == true or $IS_MAIN == True or $IS_MAIN == TRUE) then set is_main = true
 else if $IS_MAIN and ($IS_MAIN == false or $IS_MAIN == False  or $IS_MAIN == FALSE) then set is_main = false
 
-if $ENABLE_PARTITIONS == false or $ENABLE_PARTITIONS == False or $ENABLE_PARTITIONS == FALSE then set enable_partitions=false
-
-if not $CLUSTER_NAME or $CLUSTER_NAME == nc-cluster or $CLUSTER_NAME == new-cluster then cluster_name = !company_name.name + -cluster- + !hostname.name
-else cluster_name = $CLUSTER_NAME
+if $CLUSTER_NAME then cluster_name = $CLUSTER_NAME
+else cluster_name = !hostname + "-cluster-" + !node_uid
 
 if $TABLE_NAME then table_name=$TABLE_NAME
 if $PARTITION_COLUMN then set partition_column = $PARTITION_COLUMN
@@ -275,10 +288,10 @@ if $PARTITION_KEEP then set partition_keep = $PARTITION_KEEP
 if $PARTITION_SYNC then set partition_sync = $PARTITION_SYNC
 
 :operator-ha:
-set enable_ha = false
+set enable_ha = true
 start_date = -30d
 
-if $ENABLE_HA == true or $ENABLE_HA == TRUE or $ENABLE_HA == True then set enable_ha=true
+if $ENABLE_HA == false or $ENABLE_HA == FALSE or $ENABLE_HA == False then set enable_ha=false
 if $START_DATE then start_date = $START_DATE
 if !start_date.int then start_date = - + $START_DATE + d
 
@@ -319,8 +332,6 @@ msg_value_column_type = float
 msg_value_column = "bring [value]"
 
 if $ENABLE_MQTT == true or $ENABLE_MQTT == True or $ENABLE_MQTT == TRUE then set enable_mqtt = true
-if !enable_mqtt == false then goto monitoring
-
 if $MQTT_BROKER then mqtt_broker=$MQTT_BROKER
 if $MQTT_PORT then mqtt_port=$MQTT_PORT
 if $MQTT_USER then mqtt_user=$MQTT_USER
@@ -338,17 +349,28 @@ if $MSG_VALUE_COLUMN then msg_value_column=$MSG_VALUE_COLUMN
 
 
 :monitoring:
+set monitoring_node     = false
 set node_monitoring     = false
 set syslog_monitoring   = false
 set docker_monitoring   = false
-store_monitoring        = false
+set store_monitoring    = false
 store_monitoring_dest   = ""
 view_monitoring_dest    = ""
+monitoring_db = sqlite
 
 monitoring_frequency = "30 seconds"
-docker_frequency = 5
+docker_frequency = 10
 
+if !system_query == true then set monitoring_node = true
+if !node_type == operator then
+do set node_monitoring     = true
+do set syslog_monitoring   = true
+do set docker_monitoring   = true
+do set store_monitoring    = true
 
+if $MONITORING_DB == psql or $MONITORING_DB == sqlite then monitoring_db = $MONITORING_DB
+
+if $MONITORING_NODE == true or  $MONITORING_NODE == True or  $MONITORING_NODE == TRUE then set monitoring_node = $MONITORING_NODE
 if $NODE_MONITORING == true   or $NODE_MONITORING == True   or $NODE_MONITORING == TRUE   then set node_monitoring   = true
 if $SYSLOG_MONITORING == true or $SYSLOG_MONITORING == True or $SYSLOG_MONITORING == TRUE then set syslog_monitoring = true
 if $DOCKER_MONITORING == true or $DOCKER_MONITORING == True or $DOCKER_MONITORING == TRUE then set docker_monitoring = true
@@ -460,6 +482,7 @@ set write_immediate = true
 operator_threads = 3
 query_pool = 6
 archive_delete=30
+operator_helpers = 0
 
 dbms_file_location = file_name[0]
 table_file_location = file_name[1]
@@ -487,6 +510,8 @@ if !query_pool.int < 1 then query_pool = 1
 if $ARCHIVE == false or $ARCHIVE == False or $ARCHIVE == FALSE then set archive=false
 if $ARCHIVE_SQL == true or $ARCHIVE == True or $ARCHIVE == TRUE then set archive_sql=true
 if $ARCHIVE_DELETE then archive_delete=$ARCHIVE_DELETE
+
+if $OPERATOR_HELPERS and $OPERATOR_HELPERS.int and $OPERATOR_HELPERS.int >= 1 then operator_helpers = $OPERATOR_HELPERS
 
 :end-script:
 end script

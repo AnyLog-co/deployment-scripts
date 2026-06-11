@@ -1,0 +1,14 @@
+==========================================================================
+Title:      30 second increments
+Date:       2023-04-06 16:37:41.757159
+Command:    select parentelement, min(value) as min_val, max(value) as max_val, avg(value)::float(6) as avg_value, sum(value)::float(6) as sum_val, count(*) as row_count from ping_sensor where period(second, 30, now(), timestamp) group by parentelement
+DBMS:       test
+Format:     table
+==========================================================================
+parentelement                        min_val max_val avg_value sum_val row_count 
+------------------------------------ ------- ------- --------- ------- --------- 
+1ab3b14e-93b1-11e9-b465-d4856454f4ba    0.01   10.95  5.387875 1901.92       353 
+62e71893-92e0-11e9-b465-d4856454f4ba     0.0    3.99  1.962685  635.91       324 
+68ae8bef-92e1-11e9-b465-d4856454f4ba    0.46   48.97 25.286921 7636.65       302 
+d515dccb-58be-11ea-b46d-d4856454f4ba    0.11   48.63 25.653353 8491.26       331 
+f0bd0832-a81e-11ea-b46d-d4856454f4ba    2.09   36.95 19.795886 6592.03       333 
