@@ -88,7 +88,7 @@ if !node_type == publisher then
     "schedule name=remove_archive and time=1 day and task delete archive where days = !archive_delete",
     "if !system_query == true and !enable_mcp == true then run mcp server",
     "if !enable_aggregations == true then process !local_scripts/sample-scripts/aggregation.al",
-    "if !enable_mqtt == true then process !local_scripts/sample-scripts/data_generator.al",
+    "if !enable_mqtt == true then process !local_scripts/data-generator/data_generator.al",
     "if !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
     "if !is_edgelake == false then process !local_scripts/node-deployment/policies/license_policy.al"
