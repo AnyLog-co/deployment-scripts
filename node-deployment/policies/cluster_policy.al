@@ -18,8 +18,17 @@ on error ignore
 
 set create_policy = false
 
-:check-policy:
+:set-cluster-name:
+if !cluster_name goto check-policy
+cluster_id = 1
+cluster_num = blockchain get cluster where company=!company_name bring.count
+if cluster_num then cluster_id = python !cluster_num.int + 1
+cluster_name = !company_name + "-cluster-" + !cluster_id
 
+goto prep-policy
+
+
+:check-policy:
 on error ignore
 cluster_id = blockchain get cluster where name=!cluster_name and company=!company_name bring.first [*][id] 
 if !cluster_id then goto end-script
