@@ -370,12 +370,12 @@ do set store_monitoring    = true
 
 if $MONITORING_DB == psql or $MONITORING_DB == sqlite then monitoring_db = $MONITORING_DB
 
-if $MONITORING_NODE == true or  $MONITORING_NODE == True or  $MONITORING_NODE == TRUE then set monitoring_node = $MONITORING_NODE
-if $NODE_MONITORING == true   or $NODE_MONITORING == True   or $NODE_MONITORING == TRUE   then set node_monitoring   = true
-if $SYSLOG_MONITORING == true or $SYSLOG_MONITORING == True or $SYSLOG_MONITORING == TRUE then set syslog_monitoring = true
-if $DOCKER_MONITORING == true or $DOCKER_MONITORING == True or $DOCKER_MONITORING == TRUE then set docker_monitoring = true
+if $MONITORING_NODE == false or  $MONITORING_NODE == False or  $MONITORING_NODE == FALSE then set monitoring_node = false
+if $NODE_MONITORING == false  or $NODE_MONITORING == False   or $NODE_MONITORING == FALSE   then set node_monitoring   = false
+if $SYSLOG_MONITORING == false or $SYSLOG_MONITORING == False or $SYSLOG_MONITORING == FALSE then set syslog_monitoring = false
+if $DOCKER_MONITORING == false or $DOCKER_MONITORING == False or $DOCKER_MONITORING == FALSE then set docker_monitoring = false
 
-if $STORE_MONITORING == true or $STORE_MONITORING == True or $STORE_MONITORING == TRUE then set store_monitoring = true
+if $STORE_MONITORING == false or $STORE_MONITORING == False or $STORE_MONITORING == FALSE then set store_monitoring = true
 # if not set - will be declare using `blockchain get operator bring.last`
 if $STORE_MONITORING_DEST then store_monitoring_dest = $STORE_MONITORING_DEST
 # if not set - will be declare using `blockchain get query bring.ip_port`
