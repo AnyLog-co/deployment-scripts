@@ -45,6 +45,7 @@ if $COMPANY_NAME then company_name = $COMPANY_NAME
 
 if $LICENSE_KEY then license_key = $LICENSE_KEY
 
+# Company + hostname used in name definition if no node / cluster name provided
 node_company_name = python !company_name.lower().replace(' ', '_').strip()
 node_hostname     = python !hostname.lower().replace(' ', '_').strip()
 
