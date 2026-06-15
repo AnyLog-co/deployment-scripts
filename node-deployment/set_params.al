@@ -19,7 +19,6 @@ on error ignore
 if $DISABLE_CLI == true or  $DISABLE_CLI == True or $DISABLE_CLI == TRUE then set cli off
 
 :required-params:
-company_name = "New Company"
 hostname = get hostname
 ledger_conn = 127.0.0.1:32048
 
@@ -36,17 +35,24 @@ else set node_type = $NODE_TYPE
 if $NODE_TYPE == master-operator or $NODE_TYPE == master-publisher or $NODE_TYPE == master then set master_configs = true
 if !node_type != operator and $IS_HIDDEN == true or $IS_HIDDEN == True or $IS_HIDDEN == TRUE then is_hidden = true
 
-if $NODE_NAME then node_name = $NODE_NAME
-
-set node name !node_name
-
-if $COMPANY_NAME then company_name = $COMPANY_NAME
-
+if $NODE_NAME then
+do node_name = $NODE_NAME
+do set node name !node_name
 
 if $LICENSE_KEY then license_key = $LICENSE_KEY
 
+# if user specifies company name the use that
+# if there's no company, but there's a license then use the company in the license
+# if there's neither than the default is Acme
+
+if $COMPANY_NAME then company_name = $COMPANY_NAME
+else if not !company_name and !license_key then company_name = from !license_key[256:] bring [company]
+else if not !company_name and not !license_key then
+do company_name = Acme
+do then echo "Warning: Default company_name is set to 'Acme'"
+
 # Company + hostname used in name definition if no node / cluster name provided
-node_company_name = python !company_name.lower().replace(' ', '_').strip()
+if !company_name then node_company_name = python !company_name.lower().replace(' ', '_').replace('.', '_').strip()
 node_hostname     = python !hostname.lower().replace(' ', '_').strip()
 
 :general-params:

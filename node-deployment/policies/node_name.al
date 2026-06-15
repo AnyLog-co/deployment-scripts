@@ -36,29 +36,26 @@ node_name = !node_hostname + "-" + !node_company_name + "-" + !node_type + !poli
 goto set-node-name
 
 :node-name-operator:
-total_count  = blockchain get !node_type where company = !company_name bring.count
-bkup_count   = blockchain get !node_type where company = !company_name and [name] contains "bkup" bring.count
+policy_count  = blockchain get !node_type where company = !company_name and main = true  bring.count
+if !policy_count then policy_count = python !policy_count.int + 1
+else policy_count = 1
 
-if !total_count and !bkup_count then policy_count = python !total_count.int - !bkup_count.int
-else if !total_count then policy_count = !total_count
-else policy_count = 0
-
-policy_count = python !policy_count.int + 1
 node_name = !node_hostname + "-" + !node_company_name + "-operator" + !policy_count
 goto set-node-name
 
 :node-name-operator-bkup:
 # backup operator
-basename      = blockchain get !node_type where cluster = !cluster_id bring.first [*][name]
-policy_count  = blockchain get !node_type where cluster = !cluster_id and [name] contains "bkup" bring.count
+basename      = blockchain get !node_type where cluster = !cluster_id and main = true bring.first [*][name]
+policy_count  = blockchain get !node_type where cluster = !cluster_id and main = false bring.count
 if !policy_count then policy_count = python !policy_count.int + 1
 else policy_count = 1
 
-node_name = !basename + "-bkup" + !policy_count
+node_name  = !basename + "-bkup" + !policy_count
 
 goto set-node-name
 
 :set-node-name:
+
 set node name !node_name
 
 :end-script:
