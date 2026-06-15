@@ -37,9 +37,6 @@ if $NODE_TYPE == master-operator or $NODE_TYPE == master-publisher or $NODE_TYPE
 if !node_type != operator and $IS_HIDDEN == true or $IS_HIDDEN == True or $IS_HIDDEN == TRUE then is_hidden = true
 
 if $NODE_NAME then node_name = $NODE_NAME
-else if $NODE_TYPE == master-operator then node_name = !hostname + "-standalone-operator-" + !node_uid
-else if $NODE_TYPE == master-publisher then node_name = !hostname + "-standalone-publisher-" + !node_uid
-else if $NODE_TYPE then  node_name = !hostname + "-standalone-" + $NODE_TYPE + "-" + !node_uid
 
 set node name !node_name
 
@@ -47,6 +44,9 @@ if $COMPANY_NAME then company_name = $COMPANY_NAME
 
 
 if $LICENSE_KEY then license_key = $LICENSE_KEY
+
+node_company_name = python !company_name.lower().replace(' ', '_').strip()
+node_hostname     = python !hostname.lower().replace(' ', '_').strip()
 
 :general-params:
 loc_info = rest get where url = https://ipinfo.io/json

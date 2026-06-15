@@ -18,6 +18,9 @@ on error ignore
 
 set create_policy = false
 
+if not !cluster_id and not !cluster_name then process !local_scripts/node-deployment/policies/validate_node_policy.al
+if !cluster_id then goto end-script
+
 :set-cluster-name:
 if !cluster_name goto check-policy
 cluster_id = 1
@@ -34,7 +37,6 @@ if !cluster_id then goto end-script
 if not !cluster_id and !create_policy == true then goto declare-policy-error
 
 :prep-policy:
-
 on error ignore
 new_policy = create policy cluster with defaults where company=!company_name and name=!cluster_name
 
