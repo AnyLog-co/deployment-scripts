@@ -29,13 +29,15 @@ if !is_relay == true then set node_type = relay
 
 # checks nodes based on name, company and networking configurations
 process !local_scripts/node-deployment/policies/validate_node_policy.al
+if not !node_name then process !local_scripts/node-deployment/policies/node_name.al
 
 if not !is_policy and !create_policy == false then goto create-policy
 if not !is_policy and !create_policy == true then goto config-policy-error
 else goto node-info
 
-:create-policy:
 
+
+:create-policy:
 set new_policy = ""
 set policy new_policy [!node_type] = {}
 set policy new_policy [!node_type][name] = !node_name
