@@ -27,7 +27,6 @@ cluster_name = !company_name + "-cluster-" + !cluster_id
 
 goto prep-policy
 
-
 :check-policy:
 on error ignore
 cluster_id = blockchain get cluster where name=!cluster_name and company=!company_name bring.first [*][id] 
