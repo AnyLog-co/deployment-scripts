@@ -74,7 +74,6 @@ if !is_policy then node_name = from !is_policy bring [*][name]
 if !node_type == operator and !is_policy then
 do operator_id = from !is_policy bring [*][id]
 do cluster_id = from !is_policy bring [*][cluster]
-do node_name = from !is_policy bring [*}[name]
 
 :end-script:
 end script

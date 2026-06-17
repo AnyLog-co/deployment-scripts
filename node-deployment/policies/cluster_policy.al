@@ -23,7 +23,7 @@ if not !cluster_id and not !cluster_name then process !local_scripts/node-deploy
 if !cluster_id then goto end-script
 
 :set-cluster-name:
-if !cluster_name goto check-policy
+if !cluster_name then goto check-policy
 cluster_id = 1
 cluster_id = blockchain get cluster where company=!company_name bring.count
 if not !cluster_id then cluster_id = 1
