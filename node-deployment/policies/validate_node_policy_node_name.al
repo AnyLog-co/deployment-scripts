@@ -9,7 +9,7 @@
 #
 # for operator validate ID if policy exists
 #-----------------------------------------------------------------------------------------------------------------------
-# process !local_scripts/node-deployment/policies/validate_node_policy_name.al
+# process !local_scripts/node-deployment/policies/validate_node_policy_node_name.al
 
 on error ignore
 

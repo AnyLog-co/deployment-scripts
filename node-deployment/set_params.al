@@ -49,7 +49,7 @@ if $COMPANY_NAME then company_name = $COMPANY_NAME
 else if not !company_name and !license_key then company_name = from !license_key[256:] bring [company]
 else if not !company_name and not !license_key then
 do company_name = Acme
-do then echo "Warning: Default company_name is set to 'Acme'"
+do echo "Warning: Default company_name is set to 'Acme'"
 
 # Company + hostname used in name definition if no node / cluster name provided
 if !company_name then node_company_name = python !company_name.lower().replace(' ', '_').replace('.', '_').strip()
