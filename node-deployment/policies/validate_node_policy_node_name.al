@@ -1,5 +1,5 @@
 #-----------------------------------------------------------------------------------------------------------------------
-# Validate if policy exists
+# Validate if policy exists w/ node provided in the configs
 # - dns not bind      -> ip = !external_dns
 # - dns bound         -> local_ip = !dns
 # - overlay not bound -> local_ip = !overlay_ip
