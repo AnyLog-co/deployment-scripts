@@ -73,6 +73,8 @@ if !node_type == master or !node_type == query then
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
     "if !is_hidden == false then process !local_scripts/node-deployment/policies/node_policy.al",
+    "if !is_hidden == true and not !node_name then process !local_scripts/node-deployment/policies/node_name.al",
+    "if !is_hidden == true then set node name !node_name",
     "run scheduler 1",
     "if !system_query == true and !enable_mcp == true then run mcp server",
 
@@ -89,6 +91,8 @@ if !node_type == publisher then
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
     "if !is_hidden == false then process !local_scripts/node-deployment/policies/node_policy.al",
+    "if !is_hidden == true and not !node_name then process !local_scripts/node-deployment/policies/node_name.al",
+    "if !is_hidden == true then set node name !node_name",
     "run scheduler 1",
     "set buffer threshold where time=!threshold_time and volume=!threshold_volume and write_immediate=false",
     "run streamer",
