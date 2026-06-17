@@ -17,5 +17,5 @@ if [[ "${TAG}" == "main" ]] ; then TAG="latest" ; fi
 if [[ "${LOCAL}" == "true" ]] ; then
   docker build -f Dockerfile . -t ${IMAGE}:${TAG}
 else
-  docker buildx build --platform linux/amd64,linux/arm64 -f Dockerfile . -t ${IMAGE}:${TAG} --push
+  echo docker buildx build --platform linux/amd64,linux/arm64 -f Dockerfile . -t ${IMAGE}:${TAG} --push
 fi
