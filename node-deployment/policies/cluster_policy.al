@@ -26,7 +26,7 @@ cluster_id = 1
 cluster_id = blockchain get cluster where company=!company_name bring.count
 if not !cluster_id then cluster_id = 1
 else cluster_id = python !cluster_id.int + 1
-cluster_name = !node_company_name + "-clusterg" + !cluster_id
+cluster_name = !node_company_name + "-cluster" + !cluster_id
 
 goto prep-policy
 

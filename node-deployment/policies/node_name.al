@@ -55,7 +55,6 @@ node_name  = !basename + "-bkup" + !policy_count
 goto set-node-name
 
 :set-node-name:
-
 set node name !node_name
 
 :end-script:
