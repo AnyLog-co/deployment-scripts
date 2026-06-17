@@ -15,8 +15,6 @@
 # process !local_scripts/node-deployment/policies/declare_cluster_policy.al
 on error ignore
 
-set debug on
-
 set create_policy = false
 
 if not !cluster_id and not !cluster_name then process !local_scripts/node-deployment/policies/validate_node_policy.al

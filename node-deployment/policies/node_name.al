@@ -17,8 +17,6 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/node-deployment/policies/node_name.al
 
-set debug on
-
 :set-params:
 on error ignore
 
