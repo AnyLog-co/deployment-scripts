@@ -1,13 +1,38 @@
 #----------------------------------------------------------------------------------------------------------------------#
-# The following is an active "main" to different topic(s) automatically based on user input.
-# We do not currently support `if X in Y`, thus the topic being processed ends up being [topic]/#
+# Data Generator - MQTT Topic Router
+#
+# Routes incoming data to the appropriate data generator script based on the value of !msg_topic.
+# All topics source data from the public MQTT broker:
+#   broker=172.104.228.251, port=1883, user=anyloguser, password=mqtt4AnyLog!
+#
+# Supported topics and their MQTT subscriptions:
+#   rand-data     --> rand-data
+#   power-plant   --> power-plant and power-plant-pv
+#   water-plant   --> wp-digital  (boolean values) and wp-analog (sensor values)
+#   waste-water   --> wwp-digital (boolean values) and wwp-analog (sensor values)
+#   wind-turbine  --> wind-turbine/#
+#   rig-data      --> rig-data/#
+#   vessel-data   --> vessel-data/#
+#
+# Note: Each sub-topic is subscribed to explicitly, since AnyLog does not support `if X in Y` conditionals.
+#       For example, wind-turbine subscribes to wind-turbine/turbine-1, wind-turbine/turbine-2, ... individually,
+#       and rig-data subscribes to rig-data/rig-1, rig-data/rig-7, rig-data/rig-12, rig-data/rig-23,
+#       rig-data/rig-31, and rig-data/rig-44. Similarly, vessel-data covers vessel-data/DLT and vessel-data/DLB.
+#       The router script selects the correct handler, which in turn registers all relevant sub-topics.
+#
+# Usage:
+#   set msg_topic = [topic]
+#   process !local_scripts/data-generator/data_generator.al
 #----------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/data-generator/data_generator.al
 
 on error ignore
 
 if      !msg_topic == rand-data    then process !local_scripts/data-generator/rand_data.al
-else if !msg_topic == power-plant  then process !local_scripts/data-generator/power_plant.al
+# power-plant will automatically bring data from both power plant topics
+else if !msg_topic == power-plant  then process !local_scripts/data-generator/smart_city_power_plant.al
+else if !msg_topic == waste-water  then process !local_scripts/data-generator/smart_city_waste_water_plant.al
+else if !msg_topic == water-pant   then process !local_scripts/data-generator/smart_city_water_plant.al
 else if !msg_topic == wind-turbine then process !local_scripts/data-generator/wind_turbine_data.al
 else if !msg_topic == rig-data     then process !local_scripts/data-generator/oil_rig_data.al
 else if !msg_topic == wind-turbine then process !local_scripts/data-generator/wind_turbine_data.al
