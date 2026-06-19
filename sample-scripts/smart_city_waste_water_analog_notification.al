@@ -45,7 +45,7 @@ else stale_q = run client () sql !default_dbms format=json:list and stat=false "
 wait 35 for !stale_q
 
 # if data not returned send a push notification & end script
-if !stale_q then stale_q = from !stale_q bring [ro
+if !stale_q then stale_q = from !stale_q bring [row_count]
 if not !stale_q or !stale_q.int <= 0 then
 do message = "Warning: No data returned on !alert_table - script will stop"
 do call send-msg

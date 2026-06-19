@@ -63,109 +63,109 @@ do goto end-script
 :check-data:
 on error goto check-err
 
-cur_v = from !stale_q[0] bring ['atsnormalrdydi']
+cur_v = from !stale_q bring ['atsnormalrdydi']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=atsnormalrdydi value=!cur_v"
 do call send-msg
 
 :check-atsonstandby:
-cur_v = from !stale_q(0) bring ['atsonstandbydi']
+cur_v = from !stale_q bring ['atsonstandbydi']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=atsonstandbydi value=!cur_v"
 do call send-msg
 
 :check-atsstandbyrdydi:
-cur_v = from !stale_q(0) bring ['atsstandybyrdydi']
+cur_v = from !stale_q bring ['atsstandybyrdydi']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=atsstandybyrdydi value=!cur_v"
 do call send-msg
 
 :check-clearwellhigh:
-cur_v = from !stale_q(0) bring ['clearwellhighleveldi']
+cur_v = from !stale_q bring ['clearwellhighleveldi']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=clearwellhighleveldi value=!cur_v"
 do call send-msg
 
 :check-clearwelllow:
-cur_v = from !stale_q(0) bring ['clearwelllowleveldi']
+cur_v = from !stale_q bring ['clearwelllowleveldi']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=clearwelllowleveldi value=!cur_v"
 do call send-msg
 
 :check-generatoralarm:
-cur_v = from !stale_q(0) bring ['generatoralarmdi']
+cur_v = from !stale_q bring ['generatoralarmdi']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=generatoralarmdi value=!cur_v"
 do call send-msg
 
 :check-generatorstatus:
-cur_v = from !stale_q(0) bring ['generatorstatusdi']
+cur_v = from !stale_q bring ['generatorstatusdi']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=generatorstatusdi value=!cur_v"
 do call send-msg
 
 :check-oxygenmonitor:
-cur_v = from !stale_q(0) bring ['oxygenmonitordi']
+cur_v = from !stale_q bring ['oxygenmonitordi']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=oxygenmonitordi value=!cur_v"
 do call send-msg
 
 :check-plantrunning:
-cur_v = from !stale_q(0) bring ['plantrunningdi']
+cur_v = from !stale_q bring ['plantrunningdi']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=plantrunningdi value=!cur_v"
 do call send-msg
 
 :check-plantstart:
-cur_v = from !stale_q(0) bring ['plantstartdi']
+cur_v = from !stale_q bring ['plantstartdi']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=plantstartdi value=!cur_v"
 do call send-msg
 
 :check-servicepump1:
-cur_v = from !stale_q(0) bring ['servicepump1running_di']
+cur_v = from !stale_q bring ['servicepump1running_di']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=servicepump1running_di value=!cur_v"
 do call send-msg
 
 :check-servicepump2:
-cur_v = from !stale_q(0) bring ['servicepump2running_di']
+cur_v = from !stale_q bring ['servicepump2running_di']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=servicepump2running_di value=!cur_v"
 do call send-msg
 
 :check-plantshutdown:
-cur_v = from !stale_q(0) bring ['plantshutdowndo']
+cur_v = from !stale_q bring ['plantshutdowndo']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=plantshutdowndo value=!cur_v"
 do call send-msg
 
 :check-watertower:
-cur_v = from !stale_q(0) bring ['watertowerlevelcommsdi']
+cur_v = from !stale_q bring ['watertowerlevelcommsdi']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=watertowerlevelcommsdi value=!cur_v"
 do call send-msg
 
 :check-chemicals:
-cur_v = from !stale_q(0) bring ['plantenablechemicalsdo']
+cur_v = from !stale_q bring ['plantenablechemicalsdo']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=plantenablechemicalsdo value=!cur_v"
 do call send-msg
 
 :check-combinedchlorinator:
-cur_v = from !stale_q(0) bring ['combinedchlorinatorvacdi']
+cur_v = from !stale_q bring ['combinedchlorinatorvacdi']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=combinedchlorinatorvacdi value=!cur_v"
 do call send-msg
 
 :check-freechlorinator:
-cur_v = from !stale_q(0) bring ['freechlorinatorvacdi']
+cur_v = from !stale_q bring ['freechlorinatorvacdi']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=freechlorinatorvacdi value=!cur_v"
 do call send-msg
 
 :check-carbonfeeder:
-cur_v = from !stale_q(0) bring ['carbonfeeder_runningfwd']
+cur_v = from !stale_q bring ['carbonfeeder_runningfwd']
 if !cur_v != !expect_value then
 do message = "Water plant ALERT name=carbonfeeder_runningfwd value=!cur_v"
 do call send-msg
