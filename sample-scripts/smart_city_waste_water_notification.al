@@ -34,7 +34,7 @@ else alert_table = wwp_digital
 stale_minutes = 5
 if $STALE_MINUTES then stale_minutes = $STALE_MINUTES
 
-expect_value = true
+expect_value = false
 if $EXPECT_VALUE then expect_value = $EXPECT_VALUE
 
 if $MSG_TYPE then msg_type = $MSG_TYPE
