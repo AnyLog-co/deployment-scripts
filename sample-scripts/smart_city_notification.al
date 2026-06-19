@@ -25,13 +25,12 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
 <new_policy = {"schedule": {
     "id": !schedule_id,
     "script": [
-        "schedule name=waste-water and time="15 minutes" task process !local_scripts/sample-scripts/smart_city_waste_water_notification.al",
-        "schedule name=waste-water-analog and time="5 minutes" task process !local_scripts/sample-scripts/smart_city_waste_water_analog_notification.al",
-        "schedule name=waste-water and time="5 minutes" task process !local_scripts/sample-scripts/smart_city_waste_water_notification.al",
-        "schedule name=waste-water-analog and time="5 minutes" task process !local_scripts/sample-scripts/smart_city_waste_water_analog_notification.al"
+        "schedule name=waste-water and time="15 minutes" task thread !local_scripts/sample-scripts/smart_city_waste_water_notification.al",
+        "schedule name=waste-water-analog and time="5 minutes" task thread !local_scripts/sample-scripts/smart_city_waste_water_analog_notification.al",
+        "schedule name=waste-water and time="5 minutes" task thread !local_scripts/sample-scripts/smart_city_waste_water_notification.al",
+        "schedule name=waste-water-analog and time="5 minutes" task thread !local_scripts/sample-scripts/smart_city_waste_water_analog_notification.al"
     ]
 }>
->
 
 
 :publish-policy:
