@@ -8,7 +8,7 @@
 #
 # {"monitor_id":"InconLoadTapChangerAI","timestamp":"2026-04-09T01:04:22.5542990Z","PV":-1.9600000381469727}
 #--------------------------------------------------------------------------------------------------------------------
-# process !local_scripts/data-generator/power_plant.al
+# process !local_scripts/smart-city/power_plant.al
 
 <run msg client where
     broker=172.104.228.251 and port=1883 and

@@ -1,5 +1,5 @@
 #----------------------------------------------------------------------------------------------------------------------#
-# Monitors smart-city water plant analog data and alerts when no rows are received within the expected time window.
+# Monitors smart-city waste water plant analog data and alerts when no rows are received within the expected time window.
 # Queries a row count against the alert table for the given time window; if count is zero, sends a stale-data alert.
 #
 # Environment variables:
@@ -13,9 +13,9 @@
 #   MSG_USER        - Pushover user key (required if MSG_TYPE=pushover)
 #
 # Data generator:
-#   process !local_scripts/data-generator/smart_city_water_plant.al
+#   process !local_scripts/smart-city/smart_city_waste_water_plant.al
 #----------------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/sample-scripts/smart_city_water_analog_notification.al
+# process !local_scripts/sample-scripts/smart_city_waste_water_analog_notification.al
 
 on error ignore
 
@@ -23,7 +23,7 @@ on error ignore
 # logical database + table to gather insight from
 if $ALERT_DB then alert_db = $ALERT_DB
 if $ALERT_TABLE then alert_table = $ALERT_TABLE
-else alert_table = wp_analog
+else alert_table = wwp_analog
 
 # expected delay time
 stale_minutes = 30 minutes
@@ -45,7 +45,7 @@ else stale_q = run client () sql !default_dbms format=json:list and stat=false "
 wait 35 for !stale_q
 
 # if data not returned send a push notification & end script
-if !stale_q then stale_q = from !stale_q bring [ro
+if !stale_q then stale_q = from !stale_q bring [row_count]
 if not !stale_q or !stale_q.int <= 0 then
 do message = "Warning: No data returned on !alert_table - script will stop"
 do call send-msg
@@ -64,31 +64,6 @@ do rest post where url = !msg_url and headers = {"Content-Type": "application/js
 
 :end-script:
 end script
-
-:validate-configs:
-err_code = 0
-
-# connection info to push data notification
-if $MSG_TYPE and $MSG_TYPE != pushover and $MSG_TYPE != telegram then
-do echo "Error: invalid notification push type pushover or telegram. Unable to continue..."
-do err_code = 1
-
-if not !msg_url then
-do echo "Error: Missing msg_url - cannot continue"
-do err_code = 1
-
-if !msg_type == telegram and not !chat_id then
-do echo "Error: Missing chat_id for Telegram - cannot continue"
-do err_code = 1
-
-if !msg_type == pushover and not !msg_token or not !msg_user then
-do echo "Error: Missing token or user for Pushover - cannot continue"
-do err_code = 1
-
-if err_code == 1 then goto end-script
-
-goto get-data
-
 
 :query-err:
 echo "Error: Failed to execute query"

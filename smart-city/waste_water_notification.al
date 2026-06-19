@@ -2,14 +2,9 @@
 # Monitors smart-city waste water plant digital sensor fields and sends alerts when a value deviates from the expected
 # state. Queries the most recent row from the alert table and checks each boolean field against expect_value
 # (default: false). If a field deviates, an alert is sent via Telegram or Pushover before continuing to the next field.
-
-echo off
-set echo queue off
-
 # Smart city waste water notification — env-driven alert script
 #
-# Deploy: /app/deployment-scripts/smart_city_waste_water_notification.al
-# process !scripts_dir/smart_city_waste_water_notification.al
+# Deploy: /app/deployment-scripts/smart-city/waste_water_plant.al
 #
 # Environment variables (optional unless noted):
 #   ALERT_DB      — logical dbms (if unset, uses !default_dbms)
@@ -21,38 +16,23 @@ set echo queue off
 #   CHAT_ID       — Telegram chat id (required for telegram)
 #   MSG_TOKEN     — Pushover app token (required for pushover)
 #   MSG_USER      — Pushover user key (required for pushover)
+#----------------------------------------------------------------------------------------------------------------------#
+# process !local_scripts/smart-city/waste_water_notification.al
 
 on error ignore
 
 :set-params:
-# logical database + table to gather data from
-if $ALERT_DB then alert_db = $ALERT_DB
-if $ALERT_TABLE then alert_table = $ALERT_TABLE
-else alert_table = wwp_digital
+# specify all unique params here prior to `process command`
+alert_table = wwp_digital
 
-# expected delay time
-stale_minutes = 5
-if $STALE_MINUTES then stale_minutes = $STALE_MINUTES
-
-expect_value = false
-if $EXPECT_VALUE then expect_value = $EXPECT_VALUE
-
-if $MSG_TYPE then msg_type = $MSG_TYPE
-if $MSG_URL then msg_url = $MSG_URL
-if $CHAT_ID then chat_id = $CHAT_ID
-if $MSG_TOKEN then msg_token = $MSG_TOKEN
-if $MSG_USER then msg_user = $MSG_USER
-
-print Waste Water ALERT starts
-
-sent_count = 0
-goto validate-configs
-
-:get-data:
-on error goto query-err
+process !local_scripts/smart-city/notification_params.al
 
 if !alert_db then selected_db = !alert_db
 else selected_db = !default_dbms
+
+
+:get-data:
+on error goto query-err
 
 stale_q = run client () sql !selected_db format=json:list and stat=false "select * from wwp_digital where timestamp >= NOW() - !stale_minutes minutes order by timestamp desc limit 1"
 

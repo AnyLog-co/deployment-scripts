@@ -1,5 +1,5 @@
 #----------------------------------------------------------------------------------------------------------------------#
-# Monitors smart-city waste water plant analog data and alerts when no rows are received within the expected time window.
+# Monitors smart-city water plant analog data and alerts when no rows are received within the expected time window.
 # Queries a row count against the alert table for the given time window; if count is zero, sends a stale-data alert.
 #
 # Environment variables:
@@ -13,29 +13,13 @@
 #   MSG_USER        - Pushover user key (required if MSG_TYPE=pushover)
 #
 # Data generator:
-#   process !local_scripts/data-generator/smart_city_waste_water_plant.al
+#   process !local_scripts/smart-city/smart_city_water_plant.al
 #----------------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/sample-scripts/smart_city_waste_water_analog_notification.al
+# process !local_scripts/sample-scripts/smart_city_water_analog_notification.al
 
 on error ignore
 
-:set-params:
-# logical database + table to gather insight from
-if $ALERT_DB then alert_db = $ALERT_DB
-if $ALERT_TABLE then alert_table = $ALERT_TABLE
-else alert_table = wwp_analog
-
-# expected delay time
-stale_minutes = 30 minutes
-if $STABLE_MINUTES then stale_minutes = $STABLE_MINUTES
-
-if $MSG_TYPE then msg_type = $MSG_TYPE
-if $MSG_URL then msg_url = $MSG_URL
-if $CHAT_ID then chat_id = $CHAT_ID
-if $MSG_TOKEN then msg_token = $MSG_TOKEN
-if $MSG_USER then msg_user = $MSG_USER
-
-goto validate-configs
+alert_table = wp_analog
 
 :get-data:
 on error goto query-err
@@ -45,7 +29,7 @@ else stale_q = run client () sql !default_dbms format=json:list and stat=false "
 wait 35 for !stale_q
 
 # if data not returned send a push notification & end script
-if !stale_q then stale_q = from !stale_q bring [row_count]
+if !stale_q then stale_q = from !stale_q bring [ro
 if not !stale_q or !stale_q.int <= 0 then
 do message = "Warning: No data returned on !alert_table - script will stop"
 do call send-msg

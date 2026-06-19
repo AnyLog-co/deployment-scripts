@@ -9,7 +9,7 @@
 # {"SS_SCREENRUN_S":False,"AM_SEQ1A_VALVE":True,"AM_RASAB2_VALVE":False,
 #  "timestamp":"2026-06-17T18:54:06.2992013Z", ...}
 #--------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/data-generator/smart_city_waste_water_plant.al
+# process !local_scripts/smart-city/smart_city_waste_water_plant.al
 
 on error ignore
 

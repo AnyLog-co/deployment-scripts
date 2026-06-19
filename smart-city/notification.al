@@ -27,8 +27,8 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
     "script": [
         "schedule name=waste-water and time="15 minutes" task thread !local_scripts/sample-scripts/smart_city_waste_water_notification.al",
         "schedule name=waste-water-analog and time="5 minutes" task thread !local_scripts/sample-scripts/smart_city_waste_water_analog_notification.al",
-        "schedule name=waste-water and time="5 minutes" task thread !local_scripts/sample-scripts/smart_city_waste_water_notification.al",
-        "schedule name=waste-water-analog and time="5 minutes" task thread !local_scripts/sample-scripts/smart_city_waste_water_analog_notification.al"
+        "schedule name=water-digital and time="5 minutes" task thread !local_scripts/sample-scripts/smart_city_water_notification.al",
+        "schedule name=water-analog and time="5 minutes" task thread !local_scripts/sample-scripts/smart_city_water_analog_notification.al"
     ]
 }>
 
