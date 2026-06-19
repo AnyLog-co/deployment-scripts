@@ -1,5 +1,15 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # Set params for notifications if not specified
+#
+# Environment variables:
+#   ALERT_DB        - logical database to query (default: !default_dbms)
+#   ALERT_TABLE     - table to query (default: wp_analog)
+#   STABLE_MINUTES  - how far back to look for recent data (default: 30 minutes)
+#   MSG_TYPE        - notification channel: telegram or pushover
+#   MSG_URL         - endpoint URL for the selected channel
+#   CHAT_ID         - Telegram chat ID (required if MSG_TYPE=telegram)
+#   MSG_TOKEN       - Pushover app token (required if MSG_TYPE=pushover)
+#   MSG_USER        - Pushover user key (required if MSG_TYPE=pushover)
 #----------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/smart-city/notification_params.al
 

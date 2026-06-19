@@ -4,18 +4,8 @@
 # (default: false). If a field deviates, an alert is sent via Telegram or Pushover before continuing to the next field.
 # Smart city waste water notification — env-driven alert script
 #
-# Deploy: /app/deployment-scripts/smart-city/waste_water_plant.al
-#
-# Environment variables (optional unless noted):
-#   ALERT_DB      — logical dbms (if unset, uses !default_dbms)
-#   ALERT_TABLE   — table name (default: wwp_digital)
-#   STALE_MINUTES — minutes without data = stale (default: 5)
-#   EXPECT_VALUE  — alert when flag != this (default: false)
-#   MSG_TYPE      — telegram or pushover (required)
-#   MSG_URL       — notification API URL (required)
-#   CHAT_ID       — Telegram chat id (required for telegram)
-#   MSG_TOKEN     — Pushover app token (required for pushover)
-#   MSG_USER      — Pushover user key (required for pushover)
+# Data generator:
+#   process !local_scripts/smart-city/waste_water.al
 #----------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/smart-city/waste_water_notification.al
 

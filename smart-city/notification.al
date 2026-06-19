@@ -1,7 +1,7 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # Schedule policy to get insight about water and waste water - to be run from query node
 #----------------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/sample-scripts/smart_city_notification.al
+# process !local_scripts/smart-city/notification.al
 
 
 
@@ -25,10 +25,12 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
 <new_policy = {"schedule": {
     "id": !schedule_id,
     "script": [
-        "schedule name=waste-water and time="15 minutes" task thread !local_scripts/sample-scripts/smart_city_waste_water_notification.al",
-        "schedule name=waste-water-analog and time="5 minutes" task thread !local_scripts/sample-scripts/smart_city_waste_water_analog_notification.al",
-        "schedule name=water-digital and time="5 minutes" task thread !local_scripts/sample-scripts/smart_city_water_notification.al",
-        "schedule name=water-analog and time="5 minutes" task thread !local_scripts/sample-scripts/smart_city_water_analog_notification.al"
+        "schedule name=power-plant and time="15 minutes" task thread !local_scripts/smart-city/power_plant_notification.al",
+        "schedule name=power-pv and time="15 minutes" task thread !local_scripts/smart-city/power_plant_pv_notification.al",
+        "schedule name=waste-water and time="15 minutes" task thread !local_scripts/smart-city/waste_water_notification.al",
+        "schedule name=waste-water-analog and time="5 minutes" task thread !local_scripts/smart-city/waste_water_analog_notification.al",
+        "schedule name=water-digital and time="5 minutes" task thread !local_scripts/smart-city/water_notification.al",
+        "schedule name=water-analog and time="5 minutes" task thread !local_scripts/smart-city/water_analog_notification.al"
     ]
 }>
 

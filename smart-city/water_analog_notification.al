@@ -13,23 +13,29 @@
 #   MSG_USER        - Pushover user key (required if MSG_TYPE=pushover)
 #
 # Data generator:
-#   process !local_scripts/smart-city/smart_city_water_plant.al
+#   process !local_scripts/smart-city/water_plant.al
 #----------------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/sample-scripts/smart_city_water_analog_notification.al
+# process !local_scripts/smart-city/water_analog_notification.al
 
 on error ignore
 
+:set-params:
+# specify all unique params here prior to `process command`
 alert_table = wp_analog
+
+process !local_scripts/smart-city/notification_params.al
+
+if !alert_db then selected_db = !alert_db
+else selected_db = !default_dbms
 
 :get-data:
 on error goto query-err
-if !alert_db then stale_q = run client () sql !alert_db format=json:list and stat=false "select count(*) as row_count from !alert_table where timestamp >= NOW() - !stale_minutes"
-else stale_q = run client () sql !default_dbms format=json:list and stat=false "select count(*) as row_count from !alert_table where timestamp >= NOW() - !stale_minutes"
+stale_q = run client () sql !selected_db format=json:list and stat=false "select count(*) as row_count from !alert_table where timestamp >= NOW() - !stale_minutes"
 
 wait 35 for !stale_q
 
 # if data not returned send a push notification & end script
-if !stale_q then stale_q = from !stale_q bring [ro
+if !stale_q then stale_q = from !stale_q bring [row_count]
 if not !stale_q or !stale_q.int <= 0 then
 do message = "Warning: No data returned on !alert_table - script will stop"
 do call send-msg
