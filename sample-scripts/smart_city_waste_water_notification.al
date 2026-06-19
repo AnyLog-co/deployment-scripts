@@ -2,39 +2,40 @@
 # Monitors smart-city waste water plant digital sensor fields and sends alerts when a value deviates from the expected
 # state. Queries the most recent row from the alert table and checks each boolean field against expect_value
 # (default: false). If a field deviates, an alert is sent via Telegram or Pushover before continuing to the next field.
+
+echo off
+set echo queue off
+
+# Smart city waste water notification — env-driven alert script
 #
-# Environment variables:
-#   ALERT_DB        - logical database to query (default: !default_dbms)
-#   ALERT_TABLE     - table to query (default: wp_digital)
-#   STABLE_MINUTES  - how far back to look for recent data (default: 5 minutes)
-#   EXPECT_VALUE    - value fields are expected to hold (default: false)
-#   MSG_TYPE        - notification channel: telegram or pushover
-#   MSG_URL         - endpoint URL for the selected channel
-#   CHAT_ID         - Telegram chat ID (required if MSG_TYPE=telegram)
-#   MSG_TOKEN       - Pushover app token (required if MSG_TYPE=pushover)
-#   MSG_USER        - Pushover user key (required if MSG_TYPE=pushover)
+# Deploy: /app/deployment-scripts/smart_city_waste_water_notification.al
+# process !scripts_dir/smart_city_waste_water_notification.al
 #
-# Data generator:
-#   process !local_scripts/data-generator/smart_city_waste_water_plant.al
-#----------------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/sample-scripts/smart_city_waste_water_notification.al
+# Environment variables (optional unless noted):
+#   ALERT_DB      — logical dbms (if unset, uses !default_dbms)
+#   ALERT_TABLE   — table name (default: wwp_digital)
+#   STALE_MINUTES — minutes without data = stale (default: 5)
+#   EXPECT_VALUE  — alert when flag != this (default: false)
+#   MSG_TYPE      — telegram or pushover (required)
+#   MSG_URL       — notification API URL (required)
+#   CHAT_ID       — Telegram chat id (required for telegram)
+#   MSG_TOKEN     — Pushover app token (required for pushover)
+#   MSG_USER      — Pushover user key (required for pushover)
 
 on error ignore
 
 :set-params:
-# logical database + table to gather insight from
+# logical database + table to gather data from
 if $ALERT_DB then alert_db = $ALERT_DB
 if $ALERT_TABLE then alert_table = $ALERT_TABLE
 else alert_table = wwp_digital
 
 # expected delay time
-stale_minutes = 5 minutes
-if $STABLE_MINUTES then stale_minutes = $STABLE_MINUTES
+stale_minutes = 5
+if $STALE_MINUTES then stale_minutes = $STALE_MINUTES
 
-
-# expected value
-expect_value = false
-if $EXPECT_VALUE then set expect_value = $EXPECT_VALUE
+expect_value = true
+if $EXPECT_VALUE then expect_value = $EXPECT_VALUE
 
 if $MSG_TYPE then msg_type = $MSG_TYPE
 if $MSG_URL then msg_url = $MSG_URL
@@ -42,195 +43,463 @@ if $CHAT_ID then chat_id = $CHAT_ID
 if $MSG_TOKEN then msg_token = $MSG_TOKEN
 if $MSG_USER then msg_user = $MSG_USER
 
-sent_count = 0
+print Waste Water ALERT starts
 
+sent_count = 0
 goto validate-configs
 
 :get-data:
 on error goto query-err
-if !alert_db then stale_q = run client () sql !alert_db format=json:list and stat=false "select * from !alert_table where timestamp >= NOW() - !stale_minutes ORDER BY timestamp DESC LIMIT 1"
-else stale_q = run client () sql !default_dbms format=json:list and stat=false "select * from !alert_table where timestamp >= NOW() - !stale_minutes ORDER BY timestamp DESC LIMIT 1"
+
+if !alert_db then selected_db = !alert_db
+else selected_db = !default_dbms
+
+stale_q = run client () sql !selected_db format=json:list and stat=false "select * from wwp_digital where timestamp >= NOW() - !stale_minutes minutes order by timestamp desc limit 1"
 
 wait 35 for !stale_q
+#get !stale_q
 
-# if data not returned send a push notification & end script
-if not !stale_q then
-do message = "Warning: No data returned on !alert_table - script will stop"
+# No rows in stale window — notify and stop (repeat if on new line; do return fails after call)
+if !stale_q == "" or !stale_q contains "Empty data set" then
+do message = "Warning: NO DATA returned on " + !alert_table + " in " + !stale_minutes + " minutes - script will stop"
+do print !message
 do call send-msg
-do goto end-script
-
+do goto end-script 
 
 :check-data:
 on error goto check-err
 
-cur_v = from !stale_q[0] bring ['atsnormalrdydi']
+cur_v = from !stale_q(0) bring ['ss_screenrun_s']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=atsnormalrdydi value=!cur_v"
+do message = "Waste Water plant ALERT name=ss_screenrun_s value=" + !cur_v
 do call send-msg
 
-:check-atsonstandby:
-cur_v = from !stale_q bring ['atsonstandbydi']
+cur_v = from !stale_q(0) bring ['ss_jam_a_alarm']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=atsonstandbydi value=!cur_v"
+do message = "Waste Water plant ALERT name=ss_jam_a_alarm value=" + !cur_v
 do call send-msg
 
-:check-atsstandbyrdydi:
-cur_v = from !stale_q bring ['atsstandybyrdydi']
+cur_v = from !stale_q(0) bring ['am_rasab2_valve']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=atsstandybyrdydi value=!cur_v"
+do message = "Waste Water plant ALERT name=am_rasab2_valve value=" + !cur_v
 do call send-msg
 
-:check-clearwellhigh:
-cur_v = from !stale_q bring ['clearwellhighleveldi']
+cur_v = from !stale_q(0) bring ['uv_lf2_a_alarm']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=clearwellhighleveldi value=!cur_v"
+do message = "Waste Water plant ALERT name=uv_lf2_a_alarm value=" + !cur_v
 do call send-msg
 
-:check-clearwelllow:
-cur_v = from !stale_q bring ['clearwelllowleveldi']
+cur_v = from !stale_q(0) bring ['am_was1_thr_pb']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=clearwelllowleveldi value=!cur_v"
+do message = "Waste Water plant ALERT name=am_was1_thr_pb value=" + !cur_v
 do call send-msg
 
-:check-generatoralarm:
-cur_v = from !stale_q bring ['generatoralarmdi']
+cur_v = from !stale_q(0) bring ['am_seq1a_valve']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=generatoralarmdi value=!cur_v"
+do message = "Waste Water plant ALERT name=am_seq1a_valve value=" + !cur_v
 do call send-msg
 
-:check-generatorstatus:
-cur_v = from !stale_q bring ['generatorstatusdi']
+cur_v = from !stale_q(0) bring ['am_seq1b_valve']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=generatorstatusdi value=!cur_v"
+do message = "Waste Water plant ALERT name=am_seq1b_valve value=" + !cur_v
 do call send-msg
 
-:check-oxygenmonitor:
-cur_v = from !stale_q bring ['oxygenmonitordi']
+cur_v = from !stale_q(0) bring ['am_seq2a_valve']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=oxygenmonitordi value=!cur_v"
+do message = "Waste Water plant ALERT name=am_seq2a_valve value=" + !cur_v
 do call send-msg
 
-:check-plantrunning:
-cur_v = from !stale_q bring ['plantrunningdi']
+cur_v = from !stale_q(0) bring ['mcc_brfrng_s']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=plantrunningdi value=!cur_v"
+do message = "Waste Water plant ALERT name=mcc_brfrng_s value=" + !cur_v
 do call send-msg
 
-:check-plantstart:
-cur_v = from !stale_q bring ['plantstartdi']
+cur_v = from !stale_q(0) bring ['am_seq2b_valve']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=plantstartdi value=!cur_v"
+do message = "Waste Water plant ALERT name=am_seq2b_valve value=" + !cur_v
 do call send-msg
 
-:check-servicepump1:
-cur_v = from !stale_q bring ['servicepump1running_di']
+cur_v = from !stale_q(0) bring ['am_thickenera_alarm']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=servicepump1running_di value=!cur_v"
+do message = "Waste Water plant ALERT name=am_thickenera_alarm value=" + !cur_v
 do call send-msg
 
-:check-servicepump2:
-cur_v = from !stale_q bring ['servicepump2running_di']
+cur_v = from !stale_q(0) bring ['am_thickenera_status']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=servicepump2running_di value=!cur_v"
+do message = "Waste Water plant ALERT name=am_thickenera_status value=" + !cur_v
 do call send-msg
 
-:check-plantshutdown:
-cur_v = from !stale_q bring ['plantshutdowndo']
+cur_v = from !stale_q(0) bring ['gk_shand_s']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=plantshutdowndo value=!cur_v"
+do message = "Waste Water plant ALERT name=gk_shand_s value=" + !cur_v
 do call send-msg
 
-:check-watertower:
-cur_v = from !stale_q bring ['watertowerlevelcommsdi']
+cur_v = from !stale_q(0) bring ['am_thickenerb_alarm']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=watertowerlevelcommsdi value=!cur_v"
+do message = "Waste Water plant ALERT name=am_thickenerb_alarm value=" + !cur_v
 do call send-msg
 
-:check-chemicals:
-cur_v = from !stale_q bring ['plantenablechemicalsdo']
+cur_v = from !stale_q(0) bring ['uv_wf2_a_alarm']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=plantenablechemicalsdo value=!cur_v"
+do message = "Waste Water plant ALERT name=uv_wf2_a_alarm value=" + !cur_v
 do call send-msg
 
-:check-combinedchlorinator:
-cur_v = from !stale_q bring ['combinedchlorinatorvacdi']
+cur_v = from !stale_q(0) bring ['am_thickenerb_status']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=combinedchlorinatorvacdi value=!cur_v"
+do message = "Waste Water plant ALERT name=am_thickenerb_status value=" + !cur_v
 do call send-msg
 
-:check-freechlorinator:
-cur_v = from !stale_q bring ['freechlorinatorvacdi']
+cur_v = from !stale_q(0) bring ['am_was1_tue_pb']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=freechlorinatorvacdi value=!cur_v"
+do message = "Waste Water plant ALERT name=am_was1_tue_pb value=" + !cur_v
 do call send-msg
 
-:check-carbonfeeder:
-cur_v = from !stale_q bring ['carbonfeeder_runningfwd']
+cur_v = from !stale_q(0) bring ['uv_gfd1_s_alarm']
 if !cur_v != !expect_value then
-do message = "Water plant ALERT name=carbonfeeder_runningfwd value=!cur_v"
+do message = "Waste Water plant ALERT name=uv_gfd1_s_alarm value=" + !cur_v
 do call send-msg
 
+cur_v = from !stale_q(0) bring ['uv_gfd2_s_alarm']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=uv_gfd2_s_alarm value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['uv_cabht1_a_alarm']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=uv_cabht1_a_alarm value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['uv_cabht2_a_alarm']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=uv_cabht2_a_alarm value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['mcc_gen_a_alarm']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=mcc_gen_a_alarm value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_airpress_notok']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_airpress_notok value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['cg_a_in']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=cg_a_in value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_auger_alarm']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_auger_alarm value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_auger_status']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_auger_status value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_beltpress_alarm']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_beltpress_alarm value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_beltpress_status']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_beltpress_status value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['ss_hl_a_alarm']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=ss_hl_a_alarm value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['mcc_npwprng1_s']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=mcc_npwprng1_s value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_diga_valve']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_diga_valve value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_digb_valve']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_digb_valve value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_estop']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_estop value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_hfla_valve']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_hfla_valve value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['mcc_tstdbyrdy_s']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=mcc_tstdbyrdy_s value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['mcc_genrng_s']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=mcc_genrng_s value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_hflb_valve']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_hflb_valve value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_hvefrng_s']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_hvefrng_s value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_hvgas_a_in']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_hvgas_a_in value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_maindrum_alarm']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_maindrum_alarm value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_was1_wed_pb']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_was1_wed_pb value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_maindrum_status']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_maindrum_status value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_mx1_running']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_mx1_running value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['mcc_npwprng2_s']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=mcc_npwprng2_s value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_mx2_running']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_mx2_running value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['cg_fwdrev_s']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=cg_fwdrev_s value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_polymer_alarm']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_polymer_alarm value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_polymer_status']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_polymer_status value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_was1_fri_pb']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_was1_fri_pb value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_sludgepump_alarm']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_sludgepump_alarm value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_sludgepump_status']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_sludgepump_status value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_srg_ab_valve']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_srg_ab_valve value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['gk_classrng_s']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=gk_classrng_s value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_surge_high_alarm']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_surge_high_alarm value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_tanka_high_alarm']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_tanka_high_alarm value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_tankb_high_alarm']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_tankb_high_alarm value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['cg_start_s']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=cg_start_s value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_wasa_valve']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_wasa_valve value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['mcc_srfrng_s']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=mcc_srfrng_s value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_wasb_valve']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_wasb_valve value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_waterpump_alarm']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_waterpump_alarm value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_was1_mon_pb']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_was1_mon_pb value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_waterpump_status']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_waterpump_status value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['mcc_tsnprdy_s']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=mcc_tsnprdy_s value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['gk_fvo_s']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=gk_fvo_s value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['mcc_tsstdby_s']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=mcc_tsstdby_s value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_was1_sat_pb']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_was1_sat_pb value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['uv_lf1_a_alarm']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=uv_lf1_a_alarm value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_was1_sun_pb']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_was1_sun_pb value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['gk_gsf_s_in']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=gk_gsf_s_in value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['gk_pmprng_s']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=gk_pmprng_s value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['ss_auto_s']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=ss_auto_s value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['uv_wf1_a_alarm']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=uv_wf1_a_alarm value=" + !cur_v
+do call send-msg
+
+cur_v = from !stale_q(0) bring ['am_rasab1_valve']
+if !cur_v != !expect_value then
+do message = "Waste Water plant ALERT name=am_rasab1_valve value=" + !cur_v
+do call send-msg
+
+print Waste Water plant ALERT completed sent=!sent_count
 goto end-script
 
-
 :send-msg:
-if !msg_type == telegram then
+if !msg_type == "telegram" then
 do on error goto telegram-err
-do telegram_body = {"chat_id": !chat_id, "text": !message}
-do rest post where url = !msg_url and headers = {"Content-Type": "application/json"} and body = !telegram_body
+do telegram_body = json{"chat_id":!chat_id,"text":!message}
+do rest post where url = !msg_url and headers = {"Content-Type":"application/json"} and body = !telegram_body
+do sent_count = incr !sent_count
+return
 
-else if !msg_type == pushover then
+if !msg_type == "pushover" then
 do on error goto pushover-err
-do pushover_body = {"token": !msg_token, "user": !msg_user, "message": !message}
-do rest post where url = !msg_url and headers = {"Content-Type": "application/json"} and body = !pushover_body
+do pushover_body = json{"token":!msg_token,"user":!msg_user,"message":!message }
+do rest post where url = !msg_url and headers = {"Content-Type":"application/json"} and body = !pushover_body
+do sent_count = incr !sent_count
+return
 
-sent_count = python sent_count.int + 1
+print Unknown msg_type=!msg_type
 return
 
 :end-script:
+print "Waste Water ALERT done"
 end script
 
 :validate-configs:
 err_code = 0
 
-# connection info to push data notification
-if $MSG_TYPE and $MSG_TYPE != pushover and $MSG_TYPE != telegram then
-do echo "Error: invalid notification push type pushover or telegram. Unable to continue..."
-do err_code = 1
-
-if not !expect_value then
-do echo "Error: Missing calculation info - cannot continue"
+if $MSG_TYPE and $MSG_TYPE != "pushover" and $MSG_TYPE != "telegram" then
+do echo Error: invalid notification type - use pushover or telegram
 do err_code = 1
 
 if not !msg_url then
-do echo "Error: Missing msg_url - cannot continue"
+do echo Error: Missing msg_url - cannot continue
 do err_code = 1
 
-if !msg_type == telegram and not !chat_id then
-do echo "Error: Missing chat_id for Telegram - cannot continue"
+if !msg_type == "telegram" and not !chat_id then
+do echo Error: Missing chat_id for Telegram - cannot continue
 do err_code = 1
 
-if !msg_type == pushover and not !msg_token or not !msg_user then
-do echo "Error: Missing token or user for Pushover - cannot continue"
+if !msg_type == "pushover" and (not !msg_token or not !msg_user) then
+do echo Error: Missing token or user for Pushover - cannot continue
 do err_code = 1
 
-if err_code == 1 then goto end-script
+if !err_code == 1 then goto end-script
 
 goto get-data
 
-
 :query-err:
-echo "Error: Failed to execute query"
+echo Error: Failed to execute query
 goto end-script
 
 :check-err:
-echo "Error: Failed to extract insight"
+echo Error: Failed to extract insight
 goto end-script
 
 :telegram-err:
-echo "Error: Failed to send Telegram alert: !message"
+echo Error: Failed to send Telegram alert: !message
 goto end-script
 
 :pushover-err:
-echo "Error: Failed to send Pushover alert: !message"
+echo Error: Failed to send Pushover alert: !message
 goto end-script
+
