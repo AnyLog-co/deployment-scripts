@@ -22,11 +22,10 @@ if !cluster_id then goto end-script
 
 :set-cluster-name:
 if !cluster_name then goto check-policy
-cluster_id = 1
-cluster_id = blockchain get cluster where company=!company_name bring.count
-if not !cluster_id then cluster_id = 1
-else cluster_id = python !cluster_id.int + 1
-cluster_name = !node_company_name + "-cluster" + !cluster_id
+cluster_num = blockchain get cluster where company=!company_name bring.count
+if not !cluster_num then cluster_num = 1
+else cluster_num = python !cluster_num.int + 1
+cluster_name = !node_company_name + "-cluster" + !cluster_num
 
 goto prep-policy
 
