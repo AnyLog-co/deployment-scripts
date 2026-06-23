@@ -286,7 +286,6 @@ if $IS_MAIN and ($IS_MAIN == true or $IS_MAIN == True or $IS_MAIN == TRUE) then 
 else if $IS_MAIN and ($IS_MAIN == false or $IS_MAIN == False  or $IS_MAIN == FALSE) then set is_main = false
 
 if $CLUSTER_NAME then cluster_name = $CLUSTER_NAME
-else cluster_name = !hostname + "-cluster-" + !node_uid
 
 if $TABLE_NAME then table_name=$TABLE_NAME
 if $PARTITION_COLUMN then set partition_column = $PARTITION_COLUMN
