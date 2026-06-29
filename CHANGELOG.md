@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 60c299c -->
+<!-- last-processed: 1eac7db -->
+
+<!-- os-dev: 1eac7db (2026-06-29) -->
+
+* **Ori Shadmon** (2026-06-29)
+  * Node deployment / Policies: cluster name
 
 <!-- os-dev: 60c299c (2026-06-29) -->
 
