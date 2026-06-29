@@ -9,24 +9,20 @@ layout: page
 
 <!-- os-dev: bf794d5 (2026-06-23) -->
 
-* **Ori Shadmon** (2026-04-29 – 2026-06-22)
-  * Archive: removed ori specific files
-  * Customers: customer use casess; removed ori specific files
-  * Customers / Machine builder: removed ori specific files
-  * Customers / ProveIt: removed ori specific files
-  * Customers / Smart city: removed ori specific files
-  * Data generator: reorg smart city + updating notifications; bring= -> value=bring; improved MQTT logic to better support smart city data; config policy path updated; automatic processing for MQTT - enhanced; node monitoring + param configs; missing then/true; missing then; removed ori specific files
-  * Docker: working docker builder; dockerfile wrong; docker
-  * General: reorg smart city + updating notifications; file naming; working docker builder; image builder command; version #; pre-develop -> main; in progress look @ no configs; git version ID; git ID; Update setup.cfg; changelog + remove unneeded files
-  * Node deployment: rm license from cluster name; minor changes to support zero-touch; default company name + blockchain operator for main logic; rewrote node naming; node deployment; config policy path updated; automatic processing for MQTT - enhanced; zero-touch support; update to support version for configs; improve logical support for missing node / cluster name using unique ids from keys; node monitroing logic updated to support monitoring policy; improve params; node monitoring + param configs; if/else logic for default ports - include msg broker for operator + publisher; tmp added set debug in policy
-  * Node deployment / Database: improve params; helpers for operator - in progress; contains logical datbase; moved monitoring db creation + added support to use psql
-  * Node deployment / Policies: cluster numbering; node name for hidden; resolve syntax bugs; missing node name at restart; syntax errors; debug cluster; cluster name; minor changes to support zero-touch; file naming; default company name + blockchain operator for main logic; tmp; rewrote node naming; cluster naming; config policy path updated; automatic processing for MQTT - enhanced; zero-touch support; improve logical support for missing node / cluster name using unique ids from keys; simplification of monitoring policies in order to better gurantee actual monitoring; license key if condition moved only into script; added calls into config policy script - master/query only support node monitoring (need to look again at docker /syslog logic for remote machines); moved monitoring db creation + added support to use psql; missing 	hen on line 62/63; tmp added set debug in policy; missing if statement
-  * Sample scripts: reorg smart city + updating notifications; format issues for query; smart city monitorig
-  * Southbound / Industrial: modbus mapping; mapping logic 'issue'; modbus base logic
-  * Southbound / Monitoring: node monitoring; zero-touch support; docker monitoring; monitoring logic to support monitoring ID; node monitroing logic updated to support monitoring policy; syslog to support any ip / port; node monitoring + param configs; simplification of monitoring policies in order to better gurantee actual monitoring; msg broker connection is built into configs for publisher / operator || env param; moved monitoring db creation + added support to use psql
-  * Test: removed ori specific files
-* **pintomax** (2026-06-19)
-  * Sample scripts: Put back false as expected value; Fix waste plan notifications
+### [bf794d5] · 2026-06-23 (latest)
+
+| Date | Commit | Author | Summary |
+|------|--------|--------|---------|
+| 2026-06-22 | — | Ori Shadmon | Removed customer- and Ori-specific files (Archive, Customers, Test) |
+| 2026-06-22 | — | Ori Shadmon | Smart city data generator reorg — improved MQTT logic, notifications, node monitoring + param configs |
+| 2026-06-22 | — | Ori Shadmon | Node deployment — zero-touch support, node/cluster naming rework, monitoring policy integration |
+| 2026-06-22 | — | Ori Shadmon | Node deployment / Database — operator helpers, monitoring DB creation, PSQL support |
+| 2026-06-22 | — | Ori Shadmon | Node deployment / Policies — cluster numbering and naming fixes, monitoring policy simplification |
+| 2026-06-22 | — | Ori Shadmon | Southbound / Industrial — Modbus mapping logic |
+| 2026-06-22 | — | Ori Shadmon | Southbound / Monitoring — node monitoring, zero-touch support, syslog and Docker monitoring |
+| 2026-06-22 | — | Ori Shadmon | Docker — working docker builder |
+| 2026-06-22 | — | Ori Shadmon | General — file naming, image builder command, versioning, changelog cleanup |
+| 2026-06-19 | — | pintomax | Sample scripts — fixed waste plan notifications |
 
 <!-- Developers: add bullets below as changes land in your branch -->
 
