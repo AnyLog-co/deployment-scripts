@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 331542b -->
+<!-- last-processed: 60c299c -->
+
+<!-- os-dev: 60c299c (2026-06-29) -->
+
+* **Ori Shadmon** (2026-06-29)
+  * General: water plant was missing variables integrated into it
 
 <!-- os-dev: bf794d5 (2026-06-23) -->
 
