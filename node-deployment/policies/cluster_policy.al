@@ -17,9 +17,6 @@ on error ignore
 
 set create_policy = false
 
-if not !cluster_id and not !cluster_name then process !local_scripts/node-deployment/policies/validate_node_policy.al
-if !cluster_id then goto end-script
-
 :set-cluster-name:
 if !cluster_name then goto check-policy
 cluster_num = blockchain get cluster where company=!company_name bring.count
