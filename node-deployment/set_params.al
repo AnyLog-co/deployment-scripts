@@ -41,15 +41,16 @@ do set node name !node_name
 
 if $LICENSE_KEY then license_key = $LICENSE_KEY
 
-# if user specifies company name the use that
-# if there's no company, but there's a license then use the company in the license
-# if there's neither than the default is Acme
+# if user specifies company name then use that
+# else use license company when it is not Guest
+# else default to acme
 
 if $COMPANY_NAME then company_name = $COMPANY_NAME
-else if not !company_name and !license_key then company_name = from !license_key[256:] bring [company]
-else if not !company_name and not !license_key then
-do company_name = Acme
-do echo "Warning: Default company_name is set to 'Acme'"
+else if !license_key then
+<do license_company = from !license_key[256:] bring [company]
+if !license_company != Guest then company_name = !license_company
+else company_name = acme>
+else company_name = acme
 
 # Company + hostname used in name definition if no node / cluster name provided
 if !company_name then node_company_name = python !company_name.lower().replace(' ', '_').replace('.', '_').strip()
@@ -146,22 +147,25 @@ if $NIC_TYPE then set internal ip with $NIC_TYPE
 if not $NIC_TYPE and $OVERLAY_IP then overlay_ip = $OVERLAY_IP
 if $CONFIG_NAME then config_name = $CONFIG_NAME
 
+# Docker / default: resolve !ip before ledger_conn (no NIC_TYPE in compose deployments)
+if not $NIC_TYPE and not $OVERLAY_IP then
+do on error ignore
+do set internal ip with eth0
+
 :ledger-config:
-# option to not set ledger_conn for master
-if $LEDGER_CONN then
-do set env_ledger = $LEDGER_CONN
-do if !env_ledger then env_ledger_start = python !env_ledger.split(":")[0]
+if $LEDGER_CONN then ledger_conn = $LEDGER_CONN
+if $LEDGER_CONN then goto authentication
 
-if !env_ledger_start != "127.0.0.1" and $LEDGER_CONN then
-do set ledger_conn = $LEDGER_CONN
-do goto authentication
+# Auto-detect only when LEDGER_CONN is not set
+master_tcp_port = 32048
+if !master_configs == true then master_tcp_port = !anylog_server_port
 
-if !master_configs == true and !enable_dns == true then ledger_conn = !external_dns + ":" + !anylog_server_port
-else if !master_configs == false and !enable_dns == true then ledger_conn = !external_dns + ":32048"
-else if !master_configs == true and !overlay_ip then ledger_conn = !overlay_ip + ":" + !anylog_server_port
-else if !master_configs == false and !overlay_ip then ledger_conn = !overlay_ip + ":32048"
-else if !master_configs == true then ledger_conn = !ip + ":" + !anylog_server_port
-else if !master_configs == false then ledger_conn = !ip + ":32048"
+if !master_configs == true and !enable_dns == true then ledger_conn = !external_dns + ":" + master_tcp_port
+else if !master_configs == false and !enable_dns == true then ledger_conn = !external_dns + ":" + master_tcp_port
+else if !master_configs == true and !overlay_ip then ledger_conn = !overlay_ip + ":" + master_tcp_port
+else if !master_configs == false and !overlay_ip then ledger_conn = !overlay_ip + ":" + master_tcp_port
+else if !master_configs == true then ledger_conn = !ip + ":" + master_tcp_port
+else if !master_configs == false then ledger_conn = !ip + ":" + master_tcp_port
 
 config_version = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
 
@@ -256,6 +260,7 @@ set is_relay=false
 
 if $BLOCKCHAIN_SYNC then blockchain_sync = $BLOCKCHAIN_SYNC
 if $BLOCKCHAIN_SOURCE then blockchain_source=$BLOCKCHAIN_SOURCE
+if $BLOCKCHAIN_DESTINATION then blockchain_destination = $BLOCKCHAIN_DESTINATION
 if $DESTINATION then set blockchain_destination=$DESTINATION
 if !node_type == master and !blockchain_source != master then set is_relay = true
 if blockchain_source == master then goto operator-settings
@@ -286,6 +291,16 @@ if $IS_MAIN and ($IS_MAIN == true or $IS_MAIN == True or $IS_MAIN == TRUE) then 
 else if $IS_MAIN and ($IS_MAIN == false or $IS_MAIN == False  or $IS_MAIN == FALSE) then set is_main = false
 
 if $CLUSTER_NAME then cluster_name = $CLUSTER_NAME
+if !node_type == operator and not !cluster_name then goto generate-cluster-name
+goto operator-cluster-done
+
+:generate-cluster-name:
+# Unique per node (gen_keys.al); set CLUSTER_NAME explicitly for HA / shared cluster
+if !node_uid then cluster_name = !node_company_name + "-cluster-" + !node_uid
+else cluster_name = !node_company_name + "-cluster-" + !node_hostname
+echo "Auto-generated CLUSTER_NAME=" + !cluster_name
+
+:operator-cluster-done:
 
 if $TABLE_NAME then table_name=$TABLE_NAME
 if $PARTITION_COLUMN then set partition_column = $PARTITION_COLUMN
@@ -324,18 +339,13 @@ if $VIDEO_GRPC_DIR then video_grpc_dir = $VIDEO_GRPC_DIR
 
 :mqtt:
 set enable_mqtt = false
-mqtt_broker = 139.144.46.246
+mqtt_broker = 172.104.228.251
 mqtt_port = 1883
 mqtt_user = anyloguser
 mqtt_passwd = mqtt4AnyLog!
 
-msg_topic = anylog-demo
+msg_topic = ""
 set msg_log = false
-set msg_dbms = "bring [dbms]"
-msg_table = "bring [table]"
-msg_timestamp_column = "bring [timestamp]"
-msg_value_column_type = float
-msg_value_column = "bring [value]"
 
 if $ENABLE_MQTT == true or $ENABLE_MQTT == True or $ENABLE_MQTT == TRUE then set enable_mqtt = true
 if $MQTT_BROKER then mqtt_broker=$MQTT_BROKER
@@ -344,14 +354,6 @@ if $MQTT_USER then mqtt_user=$MQTT_USER
 if $MQTT_PASSWD then mqtt_passwd=$MQTT_PASSWD
 if $MQTT_LOG == true or $MQTT_LOG == True or $MQTT_LOG == TRUE then set msg_log =true
 if $MSG_TOPIC then msg_topic=$MSG_TOPIC
-
-if $DEFAULT_DBMS then msg_dbms=$DEFAULT_DBMS
-else if $MSG_DBMS then msg_dbms=$MSG_DBMS
-
-if $MSG_TABLE then msg_table=$MSG_TABLE
-if $MSG_TIMESTAMP_COLUMN then msg_timestamp_column=$MSG_TIMESTAMP_COLUMN
-if $MSG_VALUE_COLUMN_TYPE then msg_value_column_type=$MSG_VALUE_COLUMN_TYPE
-if $MSG_VALUE_COLUMN then msg_value_column=$MSG_VALUE_COLUMN
 
 
 :monitoring:
@@ -381,7 +383,7 @@ if $NODE_MONITORING == false  or $NODE_MONITORING == False   or $NODE_MONITORING
 if $SYSLOG_MONITORING == false or $SYSLOG_MONITORING == False or $SYSLOG_MONITORING == FALSE then set syslog_monitoring = false
 if $DOCKER_MONITORING == false or $DOCKER_MONITORING == False or $DOCKER_MONITORING == FALSE then set docker_monitoring = false
 
-if $STORE_MONITORING == false or $STORE_MONITORING == False or $STORE_MONITORING == FALSE then set store_monitoring = true
+if $STORE_MONITORING == false or $STORE_MONITORING == False or $STORE_MONITORING == FALSE then set store_monitoring = false
 # if not set - will be declare using `blockchain get operator bring.last`
 if $STORE_MONITORING_DEST then store_monitoring_dest = $STORE_MONITORING_DEST
 # if not set - will be declare using `blockchain get query bring.ip_port`
@@ -518,6 +520,10 @@ if $ARCHIVE_SQL == true or $ARCHIVE == True or $ARCHIVE == TRUE then set archive
 if $ARCHIVE_DELETE then archive_delete=$ARCHIVE_DELETE
 
 if $OPERATOR_HELPERS and $OPERATOR_HELPERS.int and $OPERATOR_HELPERS.int >= 1 then operator_helpers = $OPERATOR_HELPERS
+
+# Final override — auto-detect above must not win over node_configs.env
+if $LEDGER_CONN then ledger_conn = $LEDGER_CONN
+if $MSG_TOPIC then msg_topic = $MSG_TOPIC
 
 :end-script:
 end script

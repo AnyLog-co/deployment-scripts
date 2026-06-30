@@ -130,21 +130,20 @@ if not $NIC_TYPE and $OVERLAY_IP then overlay_ip = $OVERLAY_IP
 if $CONFIG_NAME then config_name = $CONFIG_NAME
 
 :ledger-config:
-# option to not set ledger_conn for master
-if $LEDGER_CONN then
-do set env_ledger = $LEDGER_CONN
-do if !env_ledger then env_ledger_start = python !env_ledger.split(":")[0]
+# Always honor explicit LEDGER_CONN from node_configs.env (skip auto-detect)
+if $LEDGER_CONN then ledger_conn = $LEDGER_CONN
+if $LEDGER_CONN then goto authentication
 
-if !env_ledger_start != "127.0.0.1" and $LEDGER_CONN then
-do set ledger_conn = $LEDGER_CONN
-do goto authentication
+# Auto-detect only when LEDGER_CONN is not set
+master_tcp_port = 32048
+if !master_configs == true then master_tcp_port = !anylog_server_port
 
-if !master_configs == true and !enable_dns == true then ledger_conn = !external_dns + ":" + !anylog_server_port
-else if !master_configs == false and !enable_dns == true then ledger_conn = !external_dns + ":32048"
-else if !master_configs == true and !overlay_ip then ledger_conn = !overlay_ip + ":" + !anylog_server_port
-else if !master_configs == false and !overlay_ip then ledger_conn = !overlay_ip + ":32048"
-else if !master_configs == true then ledger_conn = !ip + ":" + !anylog_server_port
-else if !master_configs == false then ledger_conn = !ip + ":32048"
+if !master_configs == true and !enable_dns == true then ledger_conn = !external_dns + ":" + master_tcp_port
+else if !master_configs == false and !enable_dns == true then ledger_conn = !external_dns + ":" + master_tcp_port
+else if !master_configs == true and !overlay_ip then ledger_conn = !overlay_ip + ":" + master_tcp_port
+else if !master_configs == false and !overlay_ip then ledger_conn = !overlay_ip + ":" + master_tcp_port
+else if !master_configs == true then ledger_conn = !ip + ":" + master_tcp_port
+else if !master_configs == false then ledger_conn = !ip + ":" + master_tcp_port
 
 config_version = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
 
@@ -310,18 +309,13 @@ if $VIDEO_GRPC_DIR then video_grpc_dir = $VIDEO_GRPC_DIR
 
 :mqtt:
 set enable_mqtt = false
-mqtt_broker = 139.144.46.246
+mqtt_broker = 172.104.228.251
 mqtt_port = 1883
 mqtt_user = anyloguser
 mqtt_passwd = mqtt4AnyLog!
 
-msg_topic = anylog-demo
+msg_topic = ""
 set msg_log = false
-set msg_dbms = "bring [dbms]"
-msg_table = "bring [table]"
-msg_timestamp_column = "bring [timestamp]"
-msg_value_column_type = float
-msg_value_column = "bring [value]"
 
 if $ENABLE_MQTT == true or $ENABLE_MQTT == True or $ENABLE_MQTT == TRUE then set enable_mqtt = true
 if !enable_mqtt == false then goto monitoring
@@ -332,14 +326,6 @@ if $MQTT_USER then mqtt_user=$MQTT_USER
 if $MQTT_PASSWD then mqtt_passwd=$MQTT_PASSWD
 if $MQTT_LOG == true or $MQTT_LOG == True or $MQTT_LOG == TRUE then set msg_log =true
 if $MSG_TOPIC then msg_topic=$MSG_TOPIC
-
-if $DEFAULT_DBMS then msg_dbms=$DEFAULT_DBMS
-else if $MSG_DBMS then msg_dbms=$MSG_DBMS
-
-if $MSG_TABLE then msg_table=$MSG_TABLE
-if $MSG_TIMESTAMP_COLUMN then msg_timestamp_column=$MSG_TIMESTAMP_COLUMN
-if $MSG_VALUE_COLUMN_TYPE then msg_value_column_type=$MSG_VALUE_COLUMN_TYPE
-if $MSG_VALUE_COLUMN then msg_value_column=$MSG_VALUE_COLUMN
 
 
 :monitoring:
@@ -497,6 +483,9 @@ if $ARCHIVE_SQL == true or $ARCHIVE == True or $ARCHIVE == TRUE then set archive
 if $ARCHIVE_DELETE then archive_delete=$ARCHIVE_DELETE
 
 if $OPERATOR_HELPERS and $OPERATOR_HELPERS.int and $OPERATOR_HELPERS.int >= 1 then operator_helpers = $OPERATOR_HELPERS
+
+if $LEDGER_CONN then ledger_conn = $LEDGER_CONN
+if $MSG_TOPIC then msg_topic = $MSG_TOPIC
 
 :end-script:
 end script

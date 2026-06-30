@@ -37,9 +37,12 @@
 :set-params:
 schedule_id = node-monitoring
 set create_policy = false
+set force_policy_recreate = false
 
 :check-policy:
 is_policy = blockchain get schedule where id=!schedule_id
+
+if !force_policy_recreate == true then goto create-policy
 
 # just created the policy + exists
 if !is_policy then goto config-policy
@@ -116,8 +119,10 @@ exit scripts
 :store-monitoring-error:
 print "Failed to store "
 :config-policy-error:
-print "Failed to configure node based on Schedule ID"
-goto terminate-scripts
+if !force_policy_recreate == true then goto terminate-scripts
+print "Failed to configure node based on Schedule ID - recreating policy"
+set force_policy_recreate = true
+goto create-policy
 
 :sign-policy-error:
 print "Failed to sign schedule policy"

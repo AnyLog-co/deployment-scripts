@@ -18,13 +18,14 @@ on error ignore
 set create_policy = false
 
 :set-cluster-name:
-if !cluster_name then goto check-policy
-cluster_num = blockchain get cluster where company=!company_name bring.count
-if not !cluster_num then cluster_num = 1
-else cluster_num = python !cluster_num.int + 1
-cluster_name = !node_company_name + "-cluster" + !cluster_num
+if !cluster_name then goto auto-cluster-name
+goto check-policy
 
-goto prep-policy
+:auto-cluster-name:
+if !node_uid then cluster_name = !node_company_name + "-cluster-" + !node_uid
+else cluster_name = !node_company_name + "-cluster-" + !node_hostname
+echo "Auto-generated CLUSTER_NAME=" + !cluster_name
+goto check-policy
 
 :check-policy:
 on error ignore

@@ -1,7 +1,7 @@
 #--------------------------------------------------------------------------------------------------------------#
-# Legacy hook — cached config policies still call this path. Route to the topic-specific MQTT handlers.
+# Legacy hook — older cached config policies reference connectors/basic_msg_client.al
 #--------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/sample-scripts/basic_msg_client.al
+# process !local_scripts/connectors/basic_msg_client.al
 
 on error ignore
 

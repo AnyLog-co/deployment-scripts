@@ -11,9 +11,9 @@
 # process !local_scripts/smart-city/power_plant.al
 
 <run msg client where
-    broker=172.104.228.251 and port=1883 and
-    user=anyloguser and password=mqtt4AnyLog! and
-    log=false and topic=(
+    broker=!mqtt_broker and port=!mqtt_port and
+    user=!mqtt_user and password=!mqtt_passwd and
+    log=!msg_log and topic=(
         name=power-plant and
         dbms=!default_dbms and
         table=pp_pm and

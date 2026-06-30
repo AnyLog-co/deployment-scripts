@@ -74,6 +74,7 @@ create work directories
 :set-params:
 process !local_scripts/node-deployment/authentication/gen_keys.al
 process !local_scripts/node-deployment/set_params.al
+if $LEDGER_CONN then ledger_conn = $LEDGER_CONN
 
 :set-configs:
 on error ignore
