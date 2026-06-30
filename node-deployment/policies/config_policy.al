@@ -31,7 +31,9 @@ set create_config = false
 :check-policy:
 
 config_id = blockchain get config where company=!company_name and name=!config_name and node_type=!node_type bring.first [*][id]
-if !config_id then goto config-policy
+stored_version = blockchain get config where company=!company_name and name=!config_name and node_type=!node_type bring.first [*][version]
+if !config_id and !stored_version == !config_version then goto config-policy
+if !config_id and !stored_version != !config_version then goto prepare-new-policy
 if not !config_id and !create_config == true then goto declare-policy-error
 
 
@@ -57,8 +59,13 @@ if !node_type == generic then
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "run scheduler 1",
     "if !system_query == true and !enable_mcp == true then run mcp server",
+
+    "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
+    "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
+
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "if !is_edgelake == false then process !local_scripts/node-deployment/policies/license_policy.al"
+    "process !local_scripts/node-deployment/policies/license_policy.al"
 ]>
 do goto publish-policy
 
@@ -68,10 +75,15 @@ if !node_type == master or !node_type == query then
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
     "if !is_hidden == false then process !local_scripts/node-deployment/policies/node_policy.al",
+    "if !is_hidden == true and not !node_name then process !local_scripts/node-deployment/policies/node_name.al",
+    "if !is_hidden == true then set node name !node_name",
     "run scheduler 1",
     "if !system_query == true and !enable_mcp == true then run mcp server",
+
+    "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/policy_node_monitoring.al",
+
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "if !is_edgelake == false then process !local_scripts/node-deployment/policies/license_policy.al"
+    "process !local_scripts/node-deployment/policies/license_policy.al"
 ]>
 do goto publish-policy
 
@@ -80,7 +92,9 @@ if !node_type == publisher then
 <do set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
-    "!is_hidden == false then process !local_scripts/node-deployment/policies/node_policy.al",
+    "if !is_hidden == false then process !local_scripts/node-deployment/policies/node_policy.al",
+    "if !is_hidden == true and not !node_name then process !local_scripts/node-deployment/policies/node_name.al",
+    "if !is_hidden == true then set node name !node_name",
     "run scheduler 1",
     "set buffer threshold where time=!threshold_time and volume=!threshold_volume and write_immediate=false",
     "run streamer",
@@ -88,10 +102,15 @@ if !node_type == publisher then
     "schedule name=remove_archive and time=1 day and task delete archive where days = !archive_delete",
     "if !system_query == true and !enable_mcp == true then run mcp server",
     "if !enable_aggregations == true then process !local_scripts/sample-scripts/aggregation.al",
-    "if !enable_mqtt == true then process !local_scripts/sample-scripts/basic_msg_client.al",
+
+    "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
+    "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
+
+    "process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
     "if !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "if !is_edgelake == false then process !local_scripts/node-deployment/policies/license_policy.al"
+    "process !local_scripts/node-deployment/policies/license_policy.al"
 ]>
 do goto publish-policy
 
@@ -110,11 +129,16 @@ do goto publish-policy
     "if !operator_id and !blockchain_source == master then run operator where create_table=!create_table and update_tsd_info=!update_tsd_info and compress_json=!compress_file and compress_sql=!compress_sql and archive_json=!archive and archive_sql=!archive_sql and master_node=!ledger_conn and policy=!operator_id and threads=!operator_threads",
     "if !system_query == true and !enable_mcp == true then run mcp server",
     "if !enable_aggregations == true then process !local_scripts/sample-scripts/aggregation.al",
-    "if !enable_mqtt == true then process !local_scripts/sample-scripts/basic_msg_client.al",
     "if !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
-    "process !local_scripts/southbound-monitoring/deploy_monitoring.al",
+
+    "process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
+    "if !node_monitoring == true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "if !monitoring_node == true then process !local_scripts/southbound-monitoring/monitoring_node.al",
+    "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
+    "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
+
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "if !is_edgelake == false then process !local_scripts/node-deployment/policies/license_policy.al"
+    "process !local_scripts/node-deployment/policies/license_policy.al"
 ]>
 
 :publish-policy:
@@ -134,6 +158,9 @@ goto check-policy
 
 on error goto config-policy-error
 config from policy where id = !config_id
+
+# Always last — overrides any basic_msg_client left in cached config-policy scripts.
+if !enable_mqtt == true then process !local_scripts/node-deployment/mqtt_post_config.al
 
 :end-script:
 end script

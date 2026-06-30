@@ -20,31 +20,36 @@ on error ignore
 process !local_scripts/data-generator/mapping/rig_rig-data.al
 
 :msg-client:
+wait 5
 on error goto msg-client-error
+exit msg client all
 <run msg client where
     broker=172.104.228.251 and port=1883 and
     user=anyloguser and password=mqtt4AnyLog! and
-    log=false and topic=(
-        name=rig-data/rig-1 and
-        policy = rig-data
+    master_node = !ledger_conn and
+    log=!msg_log and topic=(
+        name="rig-data/rig-1" and
+        policy="rig-data"
     ) and topic=(
-        name=rig-data/rig-7 and
-        policy = rig-data
+        name="rig-data/rig-7" and
+        policy="rig-data"
     ) and topic=(
-        name=rig-data/rig-12 and
-        policy = rig-data
+        name="rig-data/rig-12" and
+        policy="rig-data"
     ) and topic=(
-        name=rig-data/rig-23 and
-        policy = rig-data
+        name="rig-data/rig-23" and
+        policy="rig-data"
     ) and topic=(
-        name=rig-data/rig-31 and
-        policy = rig-data
+        name="rig-data/rig-31" and
+        policy="rig-data"
     ) and topic=(
-        name=rig-data/rig-44 and
-        policy = rig-data
+        name="rig-data/rig-44" and
+        policy="rig-data"
     )>
-
-get msg client
 
 :end-script:
 end script
+
+:msg-client-error:
+echo "Failed to start oil rig MQTT client"
+goto end-script

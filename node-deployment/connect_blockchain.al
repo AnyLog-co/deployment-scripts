@@ -10,6 +10,8 @@
 
 on error ignore
 
+if $LEDGER_CONN then ledger_conn = $LEDGER_CONN
+
 if !blockchain_source == master then goto blockchain-sync
 
 :blockchain-connect:
@@ -52,9 +54,14 @@ do print !contract
     platform=!blockchain_source>
 do process !local_scripts/node-deployment/policies/blockchain_policy.al
 do get platforms
+else if !blockchain_source == master and !master_configs == true then
+<do run blockchain sync where
+    source=master and
+    time=!blockchain_sync and
+    dest=!blockchain_destination>
 else if !blockchain_source == master then
 <do run blockchain sync where
-    source=!blockchain_source and
+    source=master and
     time=!blockchain_sync and
     dest=!blockchain_destination and
     connection=!ledger_conn>

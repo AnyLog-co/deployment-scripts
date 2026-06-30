@@ -15,23 +15,29 @@
 # process !local_scripts/node-deployment/policies/declare_cluster_policy.al
 on error ignore
 
-
 set create_policy = false
 
-:check-policy:
+:set-cluster-name:
+if !cluster_name then goto auto-cluster-name
+goto check-policy
 
+:auto-cluster-name:
+if !node_uid then cluster_name = !node_company_name + "-cluster-" + !node_uid
+else cluster_name = !node_company_name + "-cluster-" + !node_hostname
+echo "Auto-generated CLUSTER_NAME=" + !cluster_name
+goto check-policy
+
+:check-policy:
 on error ignore
 cluster_id = blockchain get cluster where name=!cluster_name and company=!company_name bring.first [*][id] 
 if !cluster_id then goto end-script
 if not !cluster_id and !create_policy == true then goto declare-policy-error
 
 :prep-policy:
-
 on error ignore
 new_policy = create policy cluster with defaults where company=!company_name and name=!cluster_name
 
 :publish-policy:
-
 set is_node_policy = true
 process !local_scripts/node-deployment/policies/publish_policy.al
 if !error_code == 1 then goto sign-policy-error

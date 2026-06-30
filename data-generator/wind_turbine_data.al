@@ -13,8 +13,6 @@
 #--------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/data-generator/wind_turbine_data.al
 
-set debug on
-
 on error ignore
 
 :publish-policies:
@@ -26,69 +24,71 @@ process !local_scripts/data-generator/mapping/wind_turbine_reactive-power.al
 
 :msg-client:
 on error goto msg-client-error
+exit msg client all
 <run msg client where
     broker=172.104.228.251 and port=1883 and
     user=anyloguser and password=mqtt4AnyLog! and
-    log=false and topic=(
-        name=wind-turbine/turbine-1 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
+    master_node = !ledger_conn and
+    log=!msg_log and topic=(
+        name="wind-turbine/turbine-1" and
+        policy="available-power" and
+        policy="blade-pitch" and
+        policy="energy" and
+        policy="reactive-power"
     ) and topic=(
-        name=wind-turbine/turbine-2 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
+        name="wind-turbine/turbine-2" and
+        policy="available-power" and
+        policy="blade-pitch" and
+        policy="energy" and
+        policy="reactive-power"
     ) and topic=(
-        name=wind-turbine/turbine-3 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
+        name="wind-turbine/turbine-3" and
+        policy="available-power" and
+        policy="blade-pitch" and
+        policy="energy" and
+        policy="reactive-power"
     ) and topic=(
-        name=wind-turbine/turbine-5 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
+        name="wind-turbine/turbine-5" and
+        policy="available-power" and
+        policy="blade-pitch" and
+        policy="energy" and
+        policy="reactive-power"
     ) and topic=(
-        name=wind-turbine/turbine-6 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
+        name="wind-turbine/turbine-6" and
+        policy="available-power" and
+        policy="blade-pitch" and
+        policy="energy" and
+        policy="reactive-power"
     ) and topic=(
-        name=wind-turbine/turbine-7 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
+        name="wind-turbine/turbine-7" and
+        policy="available-power" and
+        policy="blade-pitch" and
+        policy="energy" and
+        policy="reactive-power"
     ) and topic=(
-        name=wind-turbine/turbine-8 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
+        name="wind-turbine/turbine-8" and
+        policy="available-power" and
+        policy="blade-pitch" and
+        policy="energy" and
+        policy="reactive-power"
     ) and topic=(
-        name=wind-turbine/turbine-9 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
+        name="wind-turbine/turbine-9" and
+        policy="available-power" and
+        policy="blade-pitch" and
+        policy="energy" and
+        policy="reactive-power"
     ) and topic=(
-        name=wind-turbine/turbine-10 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
+        name="wind-turbine/turbine-10" and
+        policy="available-power" and
+        policy="blade-pitch" and
+        policy="energy" and
+        policy="reactive-power"
     ) and topic=(
-        name=wind-turbine/turbine-11 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
+        name="wind-turbine/turbine-11" and
+        policy="available-power" and
+        policy="blade-pitch" and
+        policy="energy" and
+        policy="reactive-power"
     )>
 
 get msg client

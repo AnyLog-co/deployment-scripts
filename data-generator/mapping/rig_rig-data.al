@@ -9,7 +9,7 @@ on error ignore
 set create_policy = false
 
 :check-policy:
-is_policy = blockchain get (mapping, transform) where id = rig-data
+is_policy = blockchain get (mapping, transform) where id = "rig-data"
 if not !is_policy and !create_policy == false then goto declare-policy
 else if !is_policy then goto end-script
 else if not !is_policy and !create_policy == true then goto declare-policy-error

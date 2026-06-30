@@ -5,7 +5,40 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 4f8345a (2026-04-29) -->
+<!-- last-processed: 14a735a -->
+
+<!-- os-dev: 14a735a (2026-06-30) -->
+
+* **Ori Shadmon** (2026-06-30)
+  * General: run schedule -> schedule
+  * Southbound / Monitoring: run schedule -> schedule; missing comma
+
+<!-- os-dev: 1eac7db (2026-06-29) -->
+
+* **Ori Shadmon** (2026-06-29)
+  * Node deployment / Policies: cluster name
+
+<!-- os-dev: 60c299c (2026-06-29) -->
+
+* **Ori Shadmon** (2026-06-29)
+  * General: water plant was missing variables integrated into it
+
+<!-- os-dev: bf794d5 (2026-06-23) -->
+
+### [bf794d5] · 2026-06-23 (latest)
+
+| Date | Commit | Author | Summary |
+|------|--------|--------|---------|
+| 2026-06-22 | — | Ori Shadmon | Removed customer- and Ori-specific files (Archive, Customers, Test) |
+| 2026-06-22 | — | Ori Shadmon | Smart city data generator reorg — improved MQTT logic, notifications, node monitoring + param configs |
+| 2026-06-22 | — | Ori Shadmon | Node deployment — zero-touch support, node/cluster naming rework, monitoring policy integration |
+| 2026-06-22 | — | Ori Shadmon | Node deployment / Database — operator helpers, monitoring DB creation, PSQL support |
+| 2026-06-22 | — | Ori Shadmon | Node deployment / Policies — cluster numbering and naming fixes, monitoring policy simplification |
+| 2026-06-22 | — | Ori Shadmon | Southbound / Industrial — Modbus mapping logic |
+| 2026-06-22 | — | Ori Shadmon | Southbound / Monitoring — node monitoring, zero-touch support, syslog and Docker monitoring |
+| 2026-06-22 | — | Ori Shadmon | Docker — working docker builder |
+| 2026-06-22 | — | Ori Shadmon | General — file naming, image builder command, versioning, changelog cleanup |
+| 2026-06-19 | — | pintomax | Sample scripts — fixed waste plan notifications |
 
 <!-- Developers: add bullets below as changes land in your branch -->
 
