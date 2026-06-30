@@ -20,7 +20,8 @@ set create_policy = false
 
 :set-cluster-name:
 if !cluster_name then goto check-policy
-cluster_num = blockchain get root policies include cluster where company=!company_name bring.count
+cluster_num = blockchain get cluster where company = !company_name bring.count
+# cluster_num = blockchain get root policies include cluster where company=!company_name bring.count
 if not !cluster_num then cluster_num = 1
 else cluster_num = python !cluster_num.int + 1
 cluster_name = !node_company_name + "-cluster" + !cluster_num
