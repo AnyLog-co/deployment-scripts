@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 14a735a -->
+<!-- last-processed: e121903 -->
+
+<!-- os-dev: e121903 (2026-06-30) -->
+
+* **Ori Shadmon** (2026-06-30)
+  * Node deployment / Policies: root policies
 
 <!-- os-dev: 14a735a (2026-06-30) -->
 
