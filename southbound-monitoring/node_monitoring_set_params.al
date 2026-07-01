@@ -22,7 +22,7 @@ if not !store_monitoring_dest and !node_type != operator and !store_monitoring =
 <do schedule
     name=store-monitoring-dest and
     time = !schedule_time and
-    task if not !store_monitoring_dest then store_monitoring_dest = blockchain get operator bring.last [*][ip] : [*][port]>
+    task store_monitoring_dest = blockchain get operator bring.last [*][ip] : [*][port]>
 
 if !view_monitoring_dest then goto end-script
 
@@ -31,16 +31,16 @@ if $NODE_TYPE == master-operator or  $NODE_TYPE == master-publisher then
 <do schedule
     name = view-monitoring-dest1 and
     time = !schedule_time and
-    task if not !view_monitoring_dest then view_monitoring_dest = blockchain get (operator, publisher, query) bring.ip_port>
+    task view_monitoring_dest = blockchain get (operator, publisher, query) bring.ip_port>
 else if !node_type == master and !system_query == true then
 <do schedule
     name = view-monitoring-dest2 and
     time = !schedule_time and
-    task if not !view_monitoring_dest then view_monitoring_dest = blockchain get (master, query) bring.ip_port>
+    task view_monitoring_dest = blockchain get (master, query) bring.ip_port>
 <else schedule
     name = view-monitoring-dest3 and
     time = !schedule_time and
-    task if not !view_monitoring_dest then view_monitoring_dest = blockchain get query bring.ip_port>
+    task view_monitoring_dest = blockchain get query bring.ip_port>
 
 
 :end-script:
