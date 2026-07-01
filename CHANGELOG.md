@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 6aa21a8 -->
+<!-- last-processed: 45f7b7b -->
+
+<!-- os-dev: 45f7b7b (2026-07-01) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Node deployment / Policies: cluster num info; rm debug + add a wait
 
 <!-- os-dev: 6aa21a8 (2026-07-01) -->
 
