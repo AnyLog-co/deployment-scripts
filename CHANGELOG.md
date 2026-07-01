@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: e121903 -->
+<!-- last-processed: c8de36c -->
+
+<!-- os-dev: c8de36c (2026-06-30) -->
+
+* **Ori Shadmon** (2026-06-30)
+  * Node deployment / Policies: blockchain get cluster non-root (waiting for bug: AB-175)
 
 <!-- os-dev: e121903 (2026-06-30) -->
 
