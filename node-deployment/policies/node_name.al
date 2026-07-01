@@ -23,10 +23,10 @@ on error ignore
 if !node_type != operator then goto node-name-count
 
 policy_count = blockchain get !node_type where cluster = !cluster_id bring.count
-if !policy_count then
-do policy_count = python !policy_count.int
-do goto node-name-operator-bkup
-else policy_count = 1
+if !policy_count then policy_count = python !policy_count.int
+else policy_count = 0
+
+if !policy_count > 0 then goto node-name-operator-bkup
 
 main_filter = "and main = true"
 goto node-name-count
