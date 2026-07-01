@@ -19,6 +19,9 @@ set debug on
 on error ignore
 set create_policy = false
 
+run blockchain sync
+blockchain reload metadata
+
 :set-cluster-name:
 if !cluster_name then goto check-policy
 cluster_num = blockchain get cluster where company = !company_name bring.count
