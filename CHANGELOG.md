@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: a801c25 -->
+<!-- last-processed: 2972824 -->
+
+<!-- os-dev: 2972824 (2026-07-01) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Node deployment: blockchain sync enhanced
 
 <!-- os-dev: a801c25 (2026-07-01) -->
 
