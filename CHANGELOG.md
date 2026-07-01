@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 4a07563 -->
+<!-- last-processed: afb919b -->
+
+<!-- os-dev: afb919b (2026-07-01) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Node deployment / Policies: node name
 
 <!-- os-dev: 4a07563 (2026-07-01) -->
 
