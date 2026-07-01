@@ -45,11 +45,9 @@ if $LICENSE_KEY then license_key = $LICENSE_KEY
 # if there's no company, but there's a license then use the company in the license
 # if there's neither than the default is Acme
 
-if $COMPANY_NAME then company_name = $COMPANY_NAME
-else if not !company_name and !license_key then company_name = from !license_key[256:] bring [company]
-else if not !company_name and not !license_key then
-do company_name = Acme
-do echo "Warning: Default company_name is set to 'Acme'"
+company_name = Acme
+if $COMPANY_NAME then set company_name = $COMPANY_NAME
+else if not !company_name and !license_key then set company_name = from !license_key[256:] bring [company]
 
 # Company + hostname used in name definition if no node / cluster name provided
 if !company_name then node_company_name = python !company_name.lower().replace(' ', '_').replace('.', '_').strip()
