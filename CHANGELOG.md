@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: ca20e07 -->
+<!-- last-processed: 0320f43 -->
+
+<!-- os-dev: 0320f43 (2026-07-01) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Node deployment: remove set when using license for name
 
 <!-- os-dev: ca20e07 (2026-07-01) -->
 
