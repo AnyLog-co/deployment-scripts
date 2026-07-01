@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 5ae05ff -->
+<!-- last-processed: 7763793 -->
+
+<!-- os-dev: 7763793 (2026-07-01) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Node deployment / Policies: rm debug + add a wait
 
 <!-- os-dev: 5ae05ff (2026-07-01) -->
 
