@@ -117,6 +117,7 @@ do goto publish-policy
 <set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
+    "wait 30",
     "process !local_scripts/node-deployment/policies/cluster_policy.al",
     "process !local_scripts/node-deployment/policies/node_policy.al",
     "run scheduler 1",

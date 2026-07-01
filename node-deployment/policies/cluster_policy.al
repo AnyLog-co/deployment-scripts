@@ -12,9 +12,7 @@
 # }}
 # ---- Sample Policy ---
 #-----------------------------------------------------------------------------------------------------------------------
-# process !local_scripts/node-deployment/policies/declare_cluster_policy.al
-
-set debug on
+# process !local_scripts/node-deployment/policies/cluster_policy.al
 
 on error ignore
 set create_policy = false
@@ -29,8 +27,6 @@ cluster_num = blockchain get cluster where company = !company_name bring.count
 if not !cluster_num then cluster_num = 1
 else cluster_num = python !cluster_num.int + 1
 cluster_name = !node_company_name + "-cluster" + !cluster_num
-
-set debug off
 
 goto prep-policy
 
