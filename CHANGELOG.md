@@ -5,7 +5,13 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 2972824 -->
+<!-- last-processed: 5a3e1b4 -->
+
+<!-- os-dev: 5a3e1b4 (2026-07-01) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Node deployment: blockchain sync enhanced
+  * Node deployment / Policies: blockchain sync enhanced
 
 <!-- os-dev: 2972824 (2026-07-01) -->
 
