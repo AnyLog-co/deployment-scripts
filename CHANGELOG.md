@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: c8de36c -->
+<!-- last-processed: 50409a0 -->
+
+<!-- os-dev: 50409a0 (2026-07-01) -->
+
+* **Ori Shadmon** (2026-06-30)
+  * Southbound / Monitoring: set monitoring policies
 
 <!-- os-dev: c8de36c (2026-06-30) -->
 
