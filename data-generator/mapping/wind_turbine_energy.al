@@ -17,7 +17,7 @@ else if not !is_policy and !create_policy == true then goto declare-policy-error
 <new_policy = {
     "mapping" : {
         "id" : "energy",
-        "dbms" : !default_dbms,
+        "dbms" : !msg_dbms,
         "table" : "energy",
         "readings" : "",
         "schema" : {

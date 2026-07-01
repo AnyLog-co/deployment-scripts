@@ -4,7 +4,7 @@
     user=anyloguser and password=mqtt4AnyLog! and
     log=false and topic=(
         name=wp-analog and
-        dbms=!default_dbms and
+        dbms=!msg_dbms and
         table=wp_analog and
         column.timestamp.timestamp = "bring [timestamp]"  and
         column.chemicalscale1ai_pv = (type=float and value="bring [ChemicalScale1AI_PV]") and
@@ -25,7 +25,7 @@
         column.carbonfeeder_speedai_pv = (type=float and value="bring [CarbonFeeder_SpeedAI_PV]")
     ) and topic =(
         name=wp-digital and
-        dbms=!default_dbms and
+        dbms=!msg_dbms and
         table=wp_digital and
         column.timestamp.timestamp = "bring [timestamp]"  and
         column.atsnormalrdydi = (type=bool and value="bring [ATSNormalRdyDI]") and

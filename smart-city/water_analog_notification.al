@@ -3,7 +3,7 @@
 # Queries a row count against the alert table for the given time window; if count is zero, sends a stale-data alert.
 #
 # Environment variables:
-#   ALERT_DB        - logical database to query (default: !default_dbms)
+#   ALERT_DB        - logical database to query (default: !msg_dbms)
 #   ALERT_TABLE     - table to query (default: wp_analog)
 #   STABLE_MINUTES  - how far back to look for recent data (default: 30 minutes)
 #   MSG_TYPE        - notification channel: telegram or pushover
@@ -26,7 +26,7 @@ alert_table = wp_analog
 process !local_scripts/smart-city/notification_params.al
 
 if !alert_db then selected_db = !alert_db
-else selected_db = !default_dbms
+else selected_db = !msg_dbms
 
 :get-data:
 on error goto query-err

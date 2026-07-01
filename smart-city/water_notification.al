@@ -5,7 +5,7 @@
 # Smart city drinking water notification — env-driven alert script
 #
 # Environment variables (optional unless noted):
-#   ALERT_DB      — logical dbms (if unset, uses !default_dbms)
+#   ALERT_DB      — logical dbms (if unset, uses !msg_dbms)
 #   ALERT_TABLE   — table name (default: wp_digital)
 #   STALE_MINUTES — minutes without data = stale (default: 5)
 #   EXPECT_VALUE  — alert when flag != this (default: false)
@@ -29,7 +29,7 @@ alert_table = wp_digital
 process !local_scripts/smart-city/notification_params.al
 
 if !alert_db then selected_db = !alert_db
-else selected_db = !default_dbms
+else selected_db = !msg_dbms
 
 :get-data:
 on error goto query-err

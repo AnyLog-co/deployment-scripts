@@ -16,7 +16,7 @@ alert_table = wwp_analog
 process !local_scripts/smart-city/notification_params.al
 
 if !alert_db then selected_db = !alert_db
-else selected_db = !default_dbms
+else selected_db = !msg_dbms
 
 :get-data:
 on error goto query-err

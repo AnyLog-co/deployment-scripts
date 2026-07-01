@@ -2,7 +2,7 @@
 # Set params for notifications if not specified
 #
 # Environment variables:
-#   ALERT_DB        - logical database to query (default: !default_dbms)
+#   ALERT_DB        - logical database to query (default: !msg_dbms)
 #   ALERT_TABLE     - table to query (default: wp_analog)
 #   STABLE_MINUTES  - how far back to look for recent data (default: 30 minutes)
 #   MSG_TYPE        - notification channel: telegram or pushover

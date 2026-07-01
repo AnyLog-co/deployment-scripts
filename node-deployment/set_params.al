@@ -327,7 +327,7 @@ mqtt_port = 1883
 mqtt_user = anyloguser
 mqtt_passwd = mqtt4AnyLog!
 
-msg_topic = anylog-demo
+msg_topic = rand-data
 set msg_log = false
 set msg_dbms = "bring [dbms]"
 msg_table = "bring [table]"

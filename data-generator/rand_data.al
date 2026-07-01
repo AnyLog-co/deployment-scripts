@@ -13,7 +13,7 @@ on error ignore
     user=anyloguser and password=mqtt4AnyLog! and
     log=false and topic=(
         name=rand-data and
-        dbms=!default_dbms and
+        dbms=!msg_dbms and
         table = "bring [table]" and
         column.timestamp.timestamp = "bring [timestamp]" and
         column.value = (type=float and value="bring [value]")

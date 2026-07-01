@@ -17,7 +17,7 @@ else if not !is_policy and !create_policy == true then goto declare-policy-error
 <new_policy = {
     "mapping" : {
         "id" : "blade-pitch",
-        "dbms" : !default_dbms,
+        "dbms" : !msg_dbms,
         "table" : "blade_pitch",
         "readings" : "",
         "schema" : {

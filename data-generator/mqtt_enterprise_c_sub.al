@@ -30,7 +30,7 @@ on error goto msg-client-error
     master_node = !ledger_conn and log=false and
     topic=(
         name=Enterprise C/sub/# and
-        dbms = !default_dbms and
+        dbms = !msg_dbms and
         dynamic = true
     )>
 
