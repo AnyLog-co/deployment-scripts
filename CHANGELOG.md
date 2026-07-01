@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: d519a78 -->
+<!-- last-processed: 5ae05ff -->
+
+<!-- os-dev: 5ae05ff (2026-07-01) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Node deployment / Policies: missing comma
 
 <!-- os-dev: d519a78 (2026-07-01) -->
 
