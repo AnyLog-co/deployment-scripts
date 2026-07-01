@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 0320f43 -->
+<!-- last-processed: a801c25 -->
+
+<!-- os-dev: a801c25 (2026-07-01) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Node deployment / Policies: debug on /off
 
 <!-- os-dev: 0320f43 (2026-07-01) -->
 
