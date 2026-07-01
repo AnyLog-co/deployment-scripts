@@ -20,15 +20,11 @@
 :set-params:
 on error ignore
 
-if !node_type != operator then goto node-name
-
-policy_count = blockchain get !node_type where cluster = !cluster_id bring.count
-if not !policy_count then goto node-name-operator
-else goto node-name-operator-bkup
-
 :node-name:
 # not operator node define policies
-policy_count = blockchain get !node_type where company = !company_name bring.count
+if !cluster_id then policy_count = blockchain get !node_type where cluster = !cluster_id bring.count
+else policy_count = blockchain get !node_type where company = !company_name bring.count
+
 if !policy_count then
 do tmp_policy_count = python !policy_count.int + 1
 do set policy_count = !tmp_policy_count
