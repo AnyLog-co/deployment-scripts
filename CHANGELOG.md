@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 45f7b7b -->
+<!-- last-processed: 96aea35 -->
+
+<!-- os-dev: 96aea35 (2026-07-01) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Node deployment / Policies: operator num info
 
 <!-- os-dev: 45f7b7b (2026-07-01) -->
 
