@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: e27a245 -->
+<!-- last-processed: ca20e07 -->
+
+<!-- os-dev: ca20e07 (2026-07-01) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Node deployment: company from license if not manually provided
 
 <!-- os-dev: e27a245 (2026-07-01) -->
 
