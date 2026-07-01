@@ -5,7 +5,15 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 7763793 -->
+<!-- last-processed: 5bbfdc1 -->
+
+<!-- os-dev: 5bbfdc1 (2026-07-01) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Data generator: default_dbms -> msg_dbms
+  * Data generator / Mapping: default_dbms -> msg_dbms
+  * General: default_dbms -> msg_dbms
+  * Node deployment: default_dbms -> msg_dbms
 
 <!-- os-dev: 7763793 (2026-07-01) -->
 
