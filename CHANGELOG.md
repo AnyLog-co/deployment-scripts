@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: ec2af46 -->
+<!-- last-processed: 62f9ba7 -->
+
+<!-- os-dev: 62f9ba7 (2026-07-01) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Node deployment / Policies: policy_count for operator
 
 <!-- os-dev: ec2af46 (2026-07-01) -->
 
