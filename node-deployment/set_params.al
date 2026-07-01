@@ -47,7 +47,7 @@ if $LICENSE_KEY then license_key = $LICENSE_KEY
 
 company_name = Acme
 if $COMPANY_NAME then set company_name = $COMPANY_NAME
-else if not !company_name and !license_key then set company_name = from !license_key[256:] bring [company]
+else if !license_key then set company_name = from !license_key[256:] bring [company]
 
 # Company + hostname used in name definition if no node / cluster name provided
 if !company_name then node_company_name = python !company_name.lower().replace(' ', '_').replace('.', '_').strip()
