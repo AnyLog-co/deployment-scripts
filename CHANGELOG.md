@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 50409a0 -->
+<!-- last-processed: e27a245 -->
+
+<!-- os-dev: e27a245 (2026-07-01) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Node deployment: comapny name
 
 <!-- os-dev: 50409a0 (2026-07-01) -->
 
