@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 96aea35 -->
+<!-- last-processed: ec2af46 -->
+
+<!-- os-dev: ec2af46 (2026-07-01) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Data generator: proveit data
 
 <!-- os-dev: 96aea35 (2026-07-01) -->
 
