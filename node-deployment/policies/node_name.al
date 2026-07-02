@@ -33,7 +33,9 @@ goto node-name-operator
 
 :node-name:
 policy_count = blockchain get !node_type where company = !company_name bring.count
-if !policy_count then policy_count = python !policy_count.int + 1
+if !policy_count then
+do tmp_policy_count = python !policy_count.int + 1
+do set policy_count = !tmp_policy_count
 else policy_count = 1
 
 node_name = !node_hostname + "-" + !node_company_name + "-" + !node_type + !policy_count
