@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 5ceccec -->
+<!-- last-processed: c133b73 -->
+
+<!-- os-dev: c133b73 (2026-07-02) -->
+
+* **Mark Davidson** (2026-07-01)
+  * Data generator: Rename vessel-data topic to vessel-data-agg
 
 <!-- os-dev: 5ceccec (2026-07-02) -->
 
