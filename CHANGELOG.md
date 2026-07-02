@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: c404d01 -->
+<!-- last-processed: 6391cec -->
+
+<!-- os-dev: 6391cec (2026-07-02) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Node deployment / Policies: bug w/ else if
 
 <!-- os-dev: c404d01 (2026-07-02) -->
 
