@@ -28,7 +28,7 @@ policy_count = blockchain get !node_type where cluster = !cluster_id bring.count
 if !policy_count then policy_count = python !policy_count.int
 else policy_count = 0
 
-if !policy_count > 0 then goto node-name-operator-bkup
+if !policy_count.int > 0 then goto node-name-operator-bkup
 goto node-name-operator
 
 :node-name:

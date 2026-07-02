@@ -14,8 +14,6 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # process !local_scripts/node-deployment/policies/cluster_policy.al
 
-set debug on
-
 on error ignore
 set create_policy = false
 
@@ -31,8 +29,6 @@ else if !cluster_num then
 do tmp_cluster_num = python !cluster_num.int + 1
 do set cluster_num = !tmp_cluster_num
 cluster_name = !node_company_name + "-cluster" + !cluster_num
-
-set debug off
 
 goto prep-policy
 
