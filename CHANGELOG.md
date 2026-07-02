@@ -5,7 +5,13 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: d732a8a -->
+<!-- last-processed: 035d310 -->
+
+<!-- os-dev: 035d310 (2026-07-02) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Data generator: rm hard coded for MQTT
+  * Node deployment: rm hard coded for MQTT
 
 <!-- os-dev: d732a8a (2026-07-02) -->
 
