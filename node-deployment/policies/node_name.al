@@ -17,8 +17,6 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/node-deployment/policies/node_name.al
 
-set debug on
-
 :node-count:
 on error ignore
 
@@ -57,5 +55,4 @@ goto set-node-name
 set node name !node_name
 
 :end-script:
-set debug off
 end script
