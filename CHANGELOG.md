@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 0477b9a -->
+<!-- last-processed: 5560b56 -->
+
+<!-- os-dev: 5560b56 (2026-07-02) -->
+
+* **Ori Shadmon** (2026-07-02)
+  * Data generator: proveit mqtt calls
 
 <!-- os-dev: 0477b9a (2026-07-02) -->
 
