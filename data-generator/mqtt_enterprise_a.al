@@ -20,7 +20,7 @@
 #   "ledger" : "local"
 # }}
 #----------------------------------------------------------------------------------------------------------------------
-# process !local_scripts/data-generator/mqtt_enterprise_c.al
+# process !local_scripts/data-generator/mqtt_enterprise_a.al
 
 :msg-client:
 on error goto msg-client-error
@@ -29,19 +29,11 @@ on error goto msg-client-error
     user=!mqtt_user and password=!mqtt_passwd and
     master_node = !ledger_conn and log=false and
     topic=(
-        name="proveit/Enterprise C/sub/#" and
+        name="proveit/Enterprise A/opto22/#" and
         dbms = !msg_dbms and
         dynamic = true
     ) and topic=(
-        name="proveit/Enterprise C/tff/#" and
-        dbms = !msg_dbms and
-        dynamic = true
-    ) and topic=(
-        name="proveit/Enterprise C/sum/#" and
-        dbms = !msg_dbms and
-        dynamic = true
-    ) and topic=(
-        name="proveit/Enterprise C/chrom/#" and
+        name="proveit/Enterprise A/Dallas/#" and
         dbms = !msg_dbms and
         dynamic = true
     )>
