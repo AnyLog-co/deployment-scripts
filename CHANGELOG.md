@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 6f8bc04 -->
+<!-- last-processed: ebf533f -->
+
+<!-- os-dev: ebf533f (2026-07-02) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Node deployment / Policies: simplify naming logic
 
 <!-- os-dev: 6f8bc04 (2026-07-02) -->
 
