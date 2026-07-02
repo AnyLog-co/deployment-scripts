@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 6391cec -->
+<!-- last-processed: d3b6735 -->
+
+<!-- os-dev: d3b6735 (2026-07-02) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Node deployment / Policies: policy configs missing \!
 
 <!-- os-dev: 6391cec (2026-07-02) -->
 
