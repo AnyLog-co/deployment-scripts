@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 035d310 -->
+<!-- last-processed: 0477b9a -->
+
+<!-- os-dev: 0477b9a (2026-07-02) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Data generator: get msg client moved to main
 
 <!-- os-dev: 035d310 (2026-07-02) -->
 
