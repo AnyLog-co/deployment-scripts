@@ -22,21 +22,25 @@ set debug on
 :set-params:
 on error ignore
 
-if !node_type != operator then goto node-name-count
+if !node_type != operator then goto node-name
 
 policy_count = blockchain get !node_type where cluster = !cluster_id bring.count
 if !policy_count then policy_count = python !policy_count.int
 else policy_count = 0
 
 if !policy_count > 0 then goto node-name-operator-bkup
+goto node-name-operator
 
-main_filter = "and main = true"
-goto node-name-count
+:node-name:
+policy_count = blockchain get !node_type where company = !company_name bring.count
+if !policy_count then policy_count = python !policy_count.int + 1
+else policy_count = 1
 
-:node-name-count:
-if not !main_filter then main_filter = ""
+node_name = !node_hostname + "-" + !node_company_name + "-" + !node_type + !policy_count
+goto set-node-name
 
-policy_count = blockchain get !node_type where company = !company_name !main_filter bring.count
+:node-name-operator:
+policy_count = blockchain get !node_type where company = !company_name and main = true bring.count
 if !policy_count then policy_count = python !policy_count.int + 1
 else policy_count = 1
 
