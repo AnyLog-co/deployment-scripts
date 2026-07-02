@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: d3b6735 -->
+<!-- last-processed: d1fd67f -->
+
+<!-- os-dev: d1fd67f (2026-07-02) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Node deployment / Policies: policy configs - if 1st operator second cluster
 
 <!-- os-dev: d3b6735 (2026-07-02) -->
 
