@@ -22,7 +22,7 @@ set debug on
 :set-params:
 on error ignore
 
-if !node_type != operator then goto node-name
+if !node_type != operator or not !cluster_id then goto node-name
 
 policy_count = blockchain get !node_type where cluster = !cluster_id bring.count
 if !policy_count then policy_count = python !policy_count.int
