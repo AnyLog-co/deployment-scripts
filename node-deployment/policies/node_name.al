@@ -22,23 +22,16 @@ set debug on
 :node-count:
 on error ignore
 
-if !node_type != operator or not !cluster_id then
-do policy_count = blockchain get !node_type where company=!company_name bring.count
-do print A
-if !cluster_id then
-do policy_count = blockchain get !node_type where cluster=!cluster_id bring.count
-do print B
+if !node_type != operator or not !cluster_id then policy_count = blockchain get !node_type where company=!company_name bring.count
+if !cluster_id then policy_count = blockchain get !node_type where cluster=!cluster_id bring.count
 
 if !policy_count then
 do inc_policy_count = python !policy_count.int + 1
 do set policy_count = !inc_policy_count
-do print C
-if not policy_count then
-do policy_count = 1
-do print D
+
+if not !policy_count then policy_count = 1
 
 if !cluster_id then goto node-name-operator-bkup
-
 
 :node-name:
 
