@@ -44,7 +44,5 @@ on error goto msg-client-error
         policy = rig-data
     )>
 
-get msg client
-
 :end-script:
 end script

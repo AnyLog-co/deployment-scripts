@@ -41,6 +41,7 @@ else if !msg_topic == enterprise-b then process  !local_scripts/data-generator/m
 else if !msg_topic == enterprise-c then process  !local_scripts/data-generator/mqtt_enterprise_c.al
 else echo "Support for topic: " + !msg_topic + " not found"
 
+get msg client
 
 :end-script:
 end script

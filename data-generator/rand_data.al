@@ -19,7 +19,6 @@ on error ignore
         column.value = (type=float and value="bring [value]")
     )>
 
-get msg client
 
 :end-script:
 end script

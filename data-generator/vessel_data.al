@@ -54,7 +54,6 @@ on error goto msg-client-error
         policy = VESSEL-STATE-LOGS
     )>
 
-get msg client
 
 :end-script:
 end script

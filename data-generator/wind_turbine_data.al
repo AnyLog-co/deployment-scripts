@@ -13,8 +13,6 @@
 #--------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/data-generator/wind_turbine_data.al
 
-set debug on
-
 on error ignore
 
 :publish-policies:
@@ -90,8 +88,6 @@ on error goto msg-client-error
         policy = energy and
         policy = reactive-power
     )>
-
-get msg client
 
 :end-script:
 end script
