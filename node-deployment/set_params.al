@@ -322,7 +322,7 @@ if $VIDEO_GRPC_DIR then video_grpc_dir = $VIDEO_GRPC_DIR
 
 :mqtt:
 set enable_mqtt = false
-mqtt_broker = 139.144.46.246
+mqtt_broker = 172.104.228.251
 mqtt_port = 1883
 mqtt_user = anyloguser
 mqtt_passwd = mqtt4AnyLog!

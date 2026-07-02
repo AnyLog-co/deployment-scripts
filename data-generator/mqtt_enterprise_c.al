@@ -25,8 +25,8 @@
 :msg-client:
 on error goto msg-client-error
 <run msg client where
-    broker=virtualfactory.proveit.services and port=1883 and
-    user=proveitreadonly and password=proveitreadonlypassword and
+    broker=!mqtt_broker and port=!mqtt_port and
+    user=!mqtt_user and password=!mqtt_passwd and
     master_node = !ledger_conn and log=false and
     topic=(
         name="Enterprise C/sub/#" and

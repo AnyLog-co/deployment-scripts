@@ -9,8 +9,8 @@
 on error ignore
 
 <run msg client where
-    broker=172.104.228.251 and port=1883 and
-    user=anyloguser and password=mqtt4AnyLog! and
+    broker=!mqtt_broker and port=!mqtt_port and
+    user=!mqtt_user and password=!mqtt_passwd and
     log=false and topic=(
         name=rand-data and
         dbms=!msg_dbms and
