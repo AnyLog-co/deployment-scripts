@@ -22,8 +22,16 @@ set debug on
 :node-count:
 on error ignore
 
-if !cluster_id then policy_count = blockchain get !node_type where cluster=!cluster_id bring.count
+# Use case 1: if cluster - check if primary
+# Use case 2: if cluster & policy_count - check if there are other non-primary
+# Use case 3: If cluster & no policy_id (ie not main) - check overall main
+# Use case 4: if not cluster or policy_count (ie all other cases) - check alone
+
+if !cluster_id then policy_count = blockchain get !node_type where cluster=!cluster_id and main=true bring.count
+if !cluster_id and !policy_count then  policy_count = blockchain get !node_type where cluster=!cluster_id and main=false bring.count
+if !cluster_id and not !policy_count then policy_count = blockchain get !node_type where company=!company_name and main=true bring.count
 if not !cluster_id or not !policy_count then policy_count = blockchain get !node_type where company=!company_name bring.count
+
 
 if !policy_count then
 do inc_policy_count = python !policy_count.int + 1
