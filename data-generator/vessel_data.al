@@ -34,8 +34,8 @@ process !local_scripts/data-generator/mapping/vessel_VESSEL-STATE-LOGS.al
 :msg-client:
 on error goto msg-client-error
 <run msg client where
-    broker=172.104.228.251 and port=1883 and
-    user=anyloguser and password=mqtt4AnyLog! and
+    broker=!mqtt_broker and port=!mqtt_port and
+    user=!mqtt_user and password=!mqtt_passwd and
     log=false and topic=(
         name=vessel-data/DLT and
         policy = BATTERY-PACK-DEVICE-LOGS and
@@ -54,7 +54,6 @@ on error goto msg-client-error
         policy = VESSEL-STATE-LOGS
     )>
 
-get msg client
 
 :end-script:
 end script
