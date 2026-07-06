@@ -37,6 +37,7 @@ else if !msg_topic == rig-data     then process !local_scripts/data-generator/oi
 else if !msg_topic == wind-turbine then process !local_scripts/data-generator/wind_turbine_data.al
 else if !msg_topic == vessel-data-agg  then process !local_scripts/data-generator/vessel_aggregation_demo.al
 else if !msg_topic == vessel-data  then process !local_scripts/data-generator/vessel_data.al
+else if !msg_topic == enterprise-a then process  !local_scripts/data-generator/mqtt_enterprise_a.al
 else if !msg_topic == enterprise-b then process  !local_scripts/data-generator/mqtt_enterprise_b.al
 else if !msg_topic == enterprise-c then process  !local_scripts/data-generator/mqtt_enterprise_c.al
 else echo "Support for topic: " + !msg_topic + " not found"
