@@ -5,7 +5,13 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 82e2673 -->
+<!-- last-processed: 12deaa3 -->
+
+<!-- os-dev: 12deaa3 (2026-07-07) -->
+
+* **Ori Shadmon** (2026-07-06)
+  * General: working notificiation code for all tables in the network
+  * Sample scripts: working notificiation code for all tables in the network
 
 <!-- os-dev: 82e2673 (2026-07-06) -->
 
