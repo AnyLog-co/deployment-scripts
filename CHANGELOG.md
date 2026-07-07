@@ -5,7 +5,14 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 5560b56 -->
+<!-- last-processed: 82e2673 -->
+
+<!-- os-dev: 82e2673 (2026-07-06) -->
+
+* **Ori Shadmon** (2026-07-06)
+  * Data generator: simplify notifications
+  * General: simplify notifications
+  * Sample scripts: simplify notifications
 
 <!-- os-dev: 5560b56 (2026-07-02) -->
 
