@@ -17,28 +17,30 @@
 #   2. update params
 #   3. run as a scheduled process
 #----------------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/smart-city/smart_city_sensor_state.al
-# schedule name = sensor-state and time = 15 minutes and task process !local_scripts/smart-city/smart_city_sensor_state.al
+# process !local_scripts/smart-city/wp_digital_notification.al
+# schedule name = [service name] and time = 15 minutes and task process !local_scripts/smart-city/wp_digital_notification.al
 
 on error ignore
 
 :set-params:
 # query configs
 # target database (dbms) name to query, e.g. wp_digital or wwp_digital
-alert_dbms = ""
+alert_dbms = !default_dbms
 # target table name within alert_dbms to check for sensor state
-alert_table = ""
+alert_table = wp_digital
 # value that triggers an alert when a column's value matches this (e.g. "true")
 expected_value = false
+# specify a column you want to use query
+query_column = ""
 
 # publish msg configs
 # which notification backend to use: "telegram" or "pushover"
-msg_type = telegram
+msg_type = ""
 
 # REST endpoint for the notification service (Telegram/Pushover API URL)
-msg_url = https://api.telegram.org/bot8467071399:AAENyAUsijwjvzOTg3USMWg1UEya2hcCWuk/sendMessage
+msg_url = ""
 # Telegram chat ID to send the alert message to (telegram only)
-chat_id = 6549755921
+chat_id = ""
 # Pushover application token (pushover only)
 msg_token = ""
 # Pushover user key (pushover only)
@@ -47,24 +49,26 @@ msg_user = ""
 :query-data:
 on error goto query-err
 set query_result = ""
-query_result = run client () sql !alert_dbms format=json:list and stat=false select * from !alert_table where period(minute, 1, now(), timestamp) order by timestamp desc limit 1;"
+
+if !query_column then query_result = run client () sql !alert_dbms format=json:list and stat=false select !query_column from !alert_table where period(hour, 1, now(), timestamp) order by timestamp desc limit 1
+else query_result = run client () sql !alert_dbms format=json:list and stat=false select * from !alert_table where period(hour, 1, now(), timestamp) order by timestamp desc limit 1
 
 wait 30 for !query_result        # Wait up to 30 seconds
 
 :analyze-data:
 
+if not !query_result then print "results not found"
 on error goto analyze-err
 
 for loop start where list = !query_result
-    value = ""
     keys = json !query_result[+] keys
     for loop start where list = !keys
-        set value = ""
+        act_value = ""
         key = !keys[+]
         if !key != row_id and !key != insert_timestamp and !key != tsd_name and !key != tsd_id and !key != timestamp then
-        do value = from !query_result[+] bring [!key]
-        if !value and !value == !expected_value then
-        do message = "Water plant ALERT name=" + !key + value=" + !value
+        do act_value = from !query_result[+] bring [!key]
+        if !act_value != "" and !act_value != !expected_value then
+        do message = "Ori - Water plant ALERT name=" + !key + " value=" + !act_value
         do call send-msg
     for loop end
 for loop end
@@ -74,7 +78,7 @@ goto end-script
 :send-msg:
 if !msg_type == telegram then
 do on error goto telegram-err
-do telegram_body = {"chat_id": !chat_id, "text": !message}
+do telegram_body = json {"chat_id": !chat_id, "text": !message}
 do rest post where url = !msg_url and headers = {"Content-Type": "application/json"} and body = !telegram_body
 
 else if !msg_type == pushover then
