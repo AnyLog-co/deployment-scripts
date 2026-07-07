@@ -19,6 +19,12 @@
 #     :send-msg: is defined but never called from the table-scan loop.
 #   - adjust the 5-minute / row-count=0 threshold below if a different staleness window is needed.
 #
+# Because AnyLog variables are shared across scripts running on the same node, every deployed copy of a notification
+# script needs its own variable namespace (e.g. a prefix unique to that instance: rowcount_msg_url, wwp_msg_url,
+# torque_msg_url, etc.) for all set-params variables — not just the message config, but the query config too
+# (alert_dbms, alert_table) if multiple copies run concurrently. A generic name like msg_type is fine only if you're
+# certain no other active script on the node reuses it.
+#
 #:steps:
 #   1. review/adjust the staleness window (insert_timestamp >= NOW() - 5 minutes) and row-count threshold
 #   2. configure msg_type / msg_url / chat_id / msg_token / msg_user for the desired notification target
@@ -30,13 +36,9 @@
 on error ignore
 
 :set-params:
-# query configs
-# target database (dbms) name to query, e.g. wp_digital or wwp_digital
+# logical database or database and table combinations to check rather than all tables on the blockchain
 alert_dbms = ""
-# target table name within alert_dbms to check for sensor state
 alert_table = ""
-# value that triggers an alert when a column's value matches this (e.g. "true")
-expected_value = ""
 
 # publish msg configs
 # which notification backend to use: "telegram" or "pushover"
@@ -51,12 +53,15 @@ msg_token = ""
 # Pushover user key (pushover only)
 msg_user = ""
 
-tables = blockchain get table bring.json [*][dbms] [*][name]
+if not !alert_dbms then tables = blockchain get table bring.json [*][dbms] [*][name]
+else if !alert_dbms and !alert_table then tables = blockchain get table where dbms=!alert_dbms and name=!alert_table bring.json [*][dbms] [*][name]
+else if !alert_dbms then tables = blockchain get table where dbms=!alert_dbms bring.json [*][dbms] [*][name]
+else goto query-err
 
 for loop start where list = !tables
-    alert_dbms = from !tables[+] bring [dbms]
-    alert_table = from !tables[+] bring [name]
-    query_result = run client () sql !alert_dbms format=json:list and stat=false select count(*) from !alert_table where insert_timestamp >= NOW() - 5 minutes
+    query_alert_dbms = from !tables[+] bring [dbms]
+    query_alert_table = from !tables[+] bring [name]
+    query_result = run client () sql !query_alert_dbms format=json:list and stat=false select count(*) from !query_alert_table where insert_timestamp >= NOW() - 5 minutes
 
     wait 30 for !query_result        # Wait up to 30 seconds
 
@@ -64,7 +69,7 @@ for loop start where list = !tables
         value = json !query_result[+] values
         if !value then act_value = !value[0]
         if not !act_value or !act_value.int <= 0 then
-        do message = "Table " + !alert_dbms + "." + !alert_table + " has no data"
+        do message = "Table " + !query_alert_dbms + "." + !query_alert_table + " has no data"
         do call send-msg
     for loop end
 for loop end
@@ -75,12 +80,12 @@ goto end-script
 :send-msg:
 if !msg_type == telegram then
 do on error goto telegram-err
-do telegram_body = {"chat_id": !chat_id, "text": !message}
+do telegram_body = json {"chat_id": !chat_id, "text": !message}
 do rest post where url = !msg_url and headers = {"Content-Type": "application/json"} and body = !telegram_body
 
 else if !msg_type == pushover then
 else do on error goto pushover-err
-else do pushover_body = {"token": !msg_token, "user": !msg_user, "message": !message}
+else do pushover_body = json  {"token": !msg_token, "user": !msg_user, "message": !message}
 else do rest post where url = !msg_url and headers = {"Content-Type": "application/json"} and body = !pushover_body
 
 else goto missing-type
