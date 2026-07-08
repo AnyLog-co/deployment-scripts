@@ -473,12 +473,6 @@ if $OPCUA_FREQUENCY then opcua_frequency = $OPCUA_FREQUENCY
 # if $ENCODING_TYPE then encoding_type = $ENCODING_TYPE
 
 
-#------------------------#
-# Notification System    #
-#------------------------#
-
-
-
 :other-settings:
 set deploy_local_script = false
 set create_table = true
