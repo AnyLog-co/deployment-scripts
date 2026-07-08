@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 12deaa3 -->
+<!-- last-processed: 13fe46c -->
+
+<!-- os-dev: 13fe46c (2026-07-07) -->
+
+* **Ori Shadmon** (2026-07-06)
+  * General: wp/wwp data notifications
 
 <!-- os-dev: 12deaa3 (2026-07-07) -->
 
