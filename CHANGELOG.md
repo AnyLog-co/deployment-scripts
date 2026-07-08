@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 13fe46c -->
+<!-- last-processed: fc8e1f5 -->
+
+<!-- os-dev: fc8e1f5 (2026-07-08) -->
+
+* **Ori Shadmon** (2026-07-07)
+  * Node deployment: configs - in progress
 
 <!-- os-dev: 13fe46c (2026-07-07) -->
 
