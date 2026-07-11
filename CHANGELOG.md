@@ -5,7 +5,15 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: e5d7684 -->
+<!-- last-processed: e36c5d3 -->
+
+<!-- os-dev: e36c5d3 (2026-07-11) -->
+
+* **Ori Shadmon** (2026-07-10)
+  * Data generator: vessel data
+  * Data generator / Mapping: vessel data
+  * Node deployment: smaple script for row count / node
+  * Sample scripts: smaple script for row count / node
 
 <!-- os-dev: e5d7684 (2026-07-08) -->
 
