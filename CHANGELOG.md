@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: e36c5d3 -->
+<!-- last-processed: 01707e9 -->
+
+<!-- os-dev: 01707e9 (2026-07-14) -->
+
+* **Ori Shadmon** (2026-07-14)
+  * Southbound / Industrial: dnp3 example
 
 <!-- os-dev: e36c5d3 (2026-07-11) -->
 
