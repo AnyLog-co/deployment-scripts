@@ -17,7 +17,7 @@ else if not !is_policy and !create_policy == true then goto declare-policy-error
 <new_policy = {
     "mapping" : {
         "id" : "VESSEL-STATE-LOGS",
-        "dbms" : !default_dbms,
+        "dbms" : !msg_dbms,
         "table" : "vessel_state_logs",
         "readings" : "",
         "schema" : {

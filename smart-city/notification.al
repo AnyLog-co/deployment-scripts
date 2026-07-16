@@ -1,19 +1,14 @@
 #----------------------------------------------------------------------------------------------------------------------#
-# Configure docker monitoring
-# NOTE: not supported for non-operator nodes - can work with publisher if user defines distribution
+# Schedule policy to get insight about water and waste water - to be run from query node
 #----------------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/southbound-monitoring/policy_docker_monitoring.al
+# process !local_scripts/smart-city/notification.al
 
 
 
 on error ignore
 
-:check-socket:
-is_docker = file check /var/run/docker.sock
-if not !is_docker then goto missing-socket-error
-
 :set-params:
-schedule_id = docker-monitoring
+schedule_id = smart-city-notification
 set create_policy = false
 
 
@@ -27,14 +22,16 @@ if !is_policy then goto config-policy
 if not !is_policy and !create_policy == true then goto declare-policy-error
 
 :create-policy
-<new_policy = {
-    "schedule": {
-        "id": !schedule_id,
-        "name": "Docker Monitoring Schedule",
-        "script": [
-            "run scheduled pull where name = docker_insights and type = docker and frequency = !docker_frequency and continuous = false and dbms = monitoring and table = docker_insight"
-        ]
-    }
+<new_policy = {"schedule": {
+    "id": !schedule_id,
+    "script": [
+        "schedule name=power-plant and time="15 minutes" task thread !local_scripts/smart-city/power_plant_notification.al",
+        "schedule name=power-pv and time="15 minutes" task thread !local_scripts/smart-city/power_plant_pv_notification.al",
+        "schedule name=waste-water and time="15 minutes" task thread !local_scripts/smart-city/waste_water_notification.al",
+        "schedule name=waste-water-analog and time="5 minutes" task thread !local_scripts/smart-city/waste_water_analog_notification.al",
+        "schedule name=water-digital and time="5 minutes" task thread !local_scripts/smart-city/water_notification.al",
+        "schedule name=water-analog and time="5 minutes" task thread !local_scripts/smart-city/water_analog_notification.al"
+    ]
 }>
 
 
@@ -80,4 +77,7 @@ goto terminate-scripts
 :declare-policy-error:
 print "Failed to declare schedule policy on blockchain"
 goto terminate-scripts
+
+
+
 

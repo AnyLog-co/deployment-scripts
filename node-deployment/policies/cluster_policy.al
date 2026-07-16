@@ -12,26 +12,37 @@
 # }}
 # ---- Sample Policy ---
 #-----------------------------------------------------------------------------------------------------------------------
-# process !local_scripts/node-deployment/policies/declare_cluster_policy.al
+# process !local_scripts/node-deployment/policies/cluster_policy.al
+
 on error ignore
-
-
 set create_policy = false
 
-:check-policy:
+run blockchain sync
+blockchain reload metadata
 
+:set-cluster-name:
+if !cluster_name then goto check-policy
+cluster_num = blockchain get cluster where company = !company_name bring.count
+# cluster_num = blockchain get root policies include cluster where company=!company_name bring.count
+if not !cluster_num then cluster_num = 1
+else if !cluster_num then
+do tmp_cluster_num = python !cluster_num.int + 1
+do set cluster_num = !tmp_cluster_num
+cluster_name = !node_company_name + "-cluster" + !cluster_num
+
+goto prep-policy
+
+:check-policy:
 on error ignore
 cluster_id = blockchain get cluster where name=!cluster_name and company=!company_name bring.first [*][id] 
 if !cluster_id then goto end-script
 if not !cluster_id and !create_policy == true then goto declare-policy-error
 
 :prep-policy:
-
 on error ignore
 new_policy = create policy cluster with defaults where company=!company_name and name=!cluster_name
 
 :publish-policy:
-
 set is_node_policy = true
 process !local_scripts/node-deployment/policies/publish_policy.al
 if !error_code == 1 then goto sign-policy-error
