@@ -79,7 +79,6 @@ process !local_scripts/node-deployment/set_params.al
 on error ignore
 process !local_scripts/node-deployment/policies/config_policy.al
 
-process !local_scripts/node-deployment/setup_msg_client.al
 
 :end-script:
 
