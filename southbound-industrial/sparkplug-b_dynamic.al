@@ -46,6 +46,7 @@ sparkplug_topic=spBv1.0/#
   decode = sparkplugb and
   dbms = !default_dbms and
   dynamic=true and
+  master_node=!ledger_conn and
   column.timestamp.timestamp = "bring [timestamp]" and
   column.group_id.str = "bring [group_id]" and
   column.edge.str = "bring [edge_node_id]" and
