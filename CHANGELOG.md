@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 32666bd -->
+<!-- last-processed: 6aebfa2 -->
+
+<!-- os-dev: 6aebfa2 (2026-08-19) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * Southbound / Industrial: sparkplug
 
 <!-- os-dev: 32666bd (2026-08-19) -->
 
