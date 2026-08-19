@@ -87,7 +87,7 @@ process !local_scripts/node-deployment/policies/publish_policy.al
     user=anyloguser and password=mqtt4AnyLog! and
     log=false and topic=(
         name=power-plant and
-        dbms=default_dbms and
+        dbms=!default_dbms and
         table=pp_pm and
         policy="power-plant"
     )>
