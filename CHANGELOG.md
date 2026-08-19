@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 3017e7b -->
+<!-- last-processed: c133e21 -->
+
+<!-- os-dev: c133e21 (2026-08-19) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * Southbound / Industrial: for dynamic in correct location of master_node param
 
 <!-- os-dev: 3017e7b (2026-08-19) -->
 
