@@ -40,7 +40,7 @@
 
 on error ignore
 
-sparkplug_topic=spBv1.0/#
+sparkplug_topic="spBv1.0/#"
 
 
 :set-mapping:
