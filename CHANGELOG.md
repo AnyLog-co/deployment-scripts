@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: c133e21 -->
+<!-- last-processed: 1b6bc36 -->
+
+<!-- os-dev: 1b6bc36 (2026-08-19) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * Southbound / Industrial: in progress mapping for sparkplug
 
 <!-- os-dev: c133e21 (2026-08-19) -->
 
