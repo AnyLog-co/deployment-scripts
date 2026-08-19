@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 773f8a8 -->
+<!-- last-processed: 32666bd -->
+
+<!-- os-dev: 32666bd (2026-08-19) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * General: power plant / mqtt bug
 
 <!-- os-dev: 773f8a8 (2026-08-19) -->
 
