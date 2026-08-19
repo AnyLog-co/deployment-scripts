@@ -5,7 +5,13 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 1b6bc36 -->
+<!-- last-processed: 199f1fc -->
+
+<!-- os-dev: 199f1fc (2026-08-19) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * General: power plant / mqtt bug
+  * Southbound / Industrial: power plant / mqtt bug
 
 <!-- os-dev: 1b6bc36 (2026-08-19) -->
 
