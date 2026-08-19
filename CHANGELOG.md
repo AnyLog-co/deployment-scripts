@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 01707e9 -->
+<!-- last-processed: 285ec27 -->
+
+<!-- os-dev: 285ec27 (2026-08-19) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * Southbound / Industrial: sparkplug code
 
 <!-- os-dev: 01707e9 (2026-07-14) -->
 
