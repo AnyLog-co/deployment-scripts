@@ -5,7 +5,14 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 285ec27 -->
+<!-- last-processed: ef13dc7 -->
+
+<!-- os-dev: ef13dc7 (2026-08-19) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * Node deployment: comment on sparkplug + license key support
+  * Node deployment / Policies: comment on sparkplug + license key support
+  * Southbound / Industrial: comment on sparkplug + license key support
 
 <!-- os-dev: 285ec27 (2026-08-19) -->
 
