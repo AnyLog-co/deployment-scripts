@@ -3,6 +3,7 @@ set debug interactive
 <new_policy = {
     "mapping": {
         "id": "power-plant",
+        "dbms": !default_dbms,
         "readings": "",
         "schema": {
             "timestamp": {
@@ -84,11 +85,10 @@ process !local_scripts/node-deployment/policies/publish_policy.al
 
 <run msg client where
     broker=172.104.228.251 and port=1883 and
-    user=anyloguser and password=mqtt4AnyLog! and
+    user=anyloguser and password=mqtt4AnyLog! and master_node=!ledger_conn and
     log=false and topic=(
         name=power-plant and
-        dbms=!default_dbms and
-        table=pp_pm and
+        table="pp_pm" and
         policy="power-plant"
     )>
 
