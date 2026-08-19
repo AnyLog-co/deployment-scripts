@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: ef13dc7 -->
+<!-- last-processed: 3017e7b -->
+
+<!-- os-dev: 3017e7b (2026-08-19) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * Southbound / Industrial: dynamic=true
 
 <!-- os-dev: ef13dc7 (2026-08-19) -->
 
