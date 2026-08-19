@@ -39,7 +39,7 @@ if $NODE_NAME then
 do node_name = $NODE_NAME
 do set node name !node_name
 
-if $LICENSE_KEY then license_key = $LICENSE_KEY
+if not $LICENSE_KEY then goto missing-license-key
 
 # if user specifies company name the use that
 # if there's no company, but there's a license then use the company in the license
