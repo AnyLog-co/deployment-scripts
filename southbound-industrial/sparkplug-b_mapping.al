@@ -1,21 +1,23 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # Sample mapping for Sparkplug based on the
 #----------------------------------------------------------------------------------------------------------------------#
+# process !local_scripts/southbound-industrial-opcua/sparkplug-b_mapping.al
 
-policy_id = "sparkplug-mapping"
+sparkplug_mapping_id = "sparkplug-mapping"
 
 set create_policy = false
 
 :check-policy:
-is_policy = blockchain get (mapping, transform) where id = !policy_id
+is_policy = blockchain get (mapping, transform) where id = !sparkplug_mapping_id
 if not !is_policy and !create_policy == false then goto declare-policy
 else if !is_policy then goto end-script
 else if not !is_policy and !create_policy == true then goto declare-policy-error
 
 
 :declare-policy:
+set new_policy = {}
 set policy new_policy [mapping] = {}
-set policy new_policy [mapping][id] = !policy_id
+set policy new_policy [mapping][id] = !sparkplug_mapping_id
 set policy new_policy [mapping][dbms] = '!default_dbms'
 if !sparkplug_dynamic == true then set policy new_policy [mapping][dynamic] = true
 else set policy new_policy [mapping][table] = "sparkplug"
@@ -91,3 +93,31 @@ set policy new_policy [mapping][readings] = ""
         "optional": true
     }
 }>
+
+:publish-policy:
+process !local_scripts/node-deployment/policies/publish_policy.al
+if not !error_code.int then
+do set create_policy = true
+goto check-policy
+
+if !error_code == 1 then goto sign-policy-error
+else if !error_code == 2 then goto prepare-policy-error
+else if !error_code == 3 then goto declare-policy-error
+
+:end-script:
+end script
+
+:terminate-scripts:
+exit scripts
+
+:sign-policy-error:
+print "Failed to sign mapping policy"
+goto terminate-scripts
+
+:prepare-policy-error:
+print "Failed to prepare mapping policy for publishing on blockchain"
+goto terminate-scripts
+
+:declare-policy-error:
+print "Failed to declare mapping policy on blockchain"
+goto terminate-scripts

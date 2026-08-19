@@ -39,16 +39,26 @@
 # process !local_scripts/southbound-industrial-opcua/sparkplug-b_dynmaic.al
 
 
+on error ignore
+
 sparkplug_topic=spBv1.0/#
+
+
+:set-mapping:
+process !local_scripts/southbound-industrial-opcua/sparkplug-b_mapping.al
+
+:set-msg-client:
+on error call msg-client-err
 
 <run msg client where broker=local and log=false and master_node=!ledger_conn and topic=(
   name = !sparkplug_topic and
   decode = sparkplugb and
-  dbms = !default_dbms and
-  dynamic=true and
-
-  column. = (type = float and value = "bring []" and optional = true) and
-  column. = (type = float and value = "bring []" and optional = true) and
-  column. = (type = float and value = "bring [Admin/ProdDefectiveCount/0/Count]" and optional = true) and
-  column.processed = (type = float and value = "bring [Admin/ProdProcessedCount/0/Count]" and optional = true)
+  policy=!sparkplug_mapping_id
 )>
+
+:end-script:
+end script
+
+:msg-client-err:
+echo "Failed to define msg client for sparkplug-b"
+goto end-script
