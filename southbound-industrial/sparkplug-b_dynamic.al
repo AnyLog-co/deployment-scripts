@@ -46,15 +46,9 @@ sparkplug_topic=spBv1.0/#
   decode = sparkplugb and
   dbms = !default_dbms and
   dynamic=true and
-  column.timestamp.timestamp = "bring [timestamp]" and
-  column.group_id.str = "bring [group_id]" and
-  column.edge.str = "bring [edge_node_id]" and
-  column.device.str = "bring [device_id]" and
-  column.msg_type.str = "bring [message_type]" and
-  column.mach_design_speed = (type = float and value = "bring [Admin/MachDesignSpeed]" and optional = true) and
-  column.mach_speed = (type = float and value = "bring [Status/MachSpeed]" and optional = true) and
-  column.cur_mach_speed = (type = float and value = "bring [Status/CurMachSpeed]" and optional = true) and
-  column.consumed = (type = float and value = "bring [Admin/ProdConsumedCount/0/Count]" and optional = true) and
-  column.defective = (type = float and value = "bring [Admin/ProdDefectiveCount/0/Count]" and optional = true) and
+
+  column. = (type = float and value = "bring []" and optional = true) and
+  column. = (type = float and value = "bring []" and optional = true) and
+  column. = (type = float and value = "bring [Admin/ProdDefectiveCount/0/Count]" and optional = true) and
   column.processed = (type = float and value = "bring [Admin/ProdProcessedCount/0/Count]" and optional = true)
 )>
