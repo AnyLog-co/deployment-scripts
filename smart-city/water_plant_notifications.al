@@ -59,7 +59,10 @@ wait 30 for !query_result        # Wait up to 30 seconds
 
 :analyze-data:
 
-if not !query_result then print "results not found"
+if not !query_result then
+do message = "results not found for " + !alert_dbms + "." + !alert_table
+do call send-msg
+do goto end-script
 on error goto analyze-err
 for loop start where list = !query_result
     keys = json !query_result[+] keys
