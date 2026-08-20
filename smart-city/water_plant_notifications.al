@@ -4,8 +4,9 @@
 #   <schedule
 #       time = "15 minute" and
 #       name = water-alerts and
-#       task process !local_scripts/smart-city/water_plant_notifications.al
+#       task process !local_scripts/smart-city/water_plant_notifications.al>
 #----------------------------------------------------------------------------------------------------------------------#
+# process !local_scripts/smart-city/water_plant_notifications.al
 
 :set-params:
 
