@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: c5d61fa -->
+<!-- last-processed: a913cc5 -->
+
+<!-- os-dev: a913cc5 (2026-08-20) -->
+
+* **Ori Shadmon** (2026-08-20)
+  * Southbound / Industrial: sparkplug examples using mapping
 
 <!-- os-dev: c5d61fa (2026-08-20) -->
 
