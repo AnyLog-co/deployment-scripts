@@ -5,7 +5,13 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 6aebfa2 -->
+<!-- last-processed: 580a920 -->
+
+<!-- os-dev: 580a920 (2026-08-20) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * General: water plant processing
+  * Southbound / Industrial: sparkplug bugs
 
 <!-- os-dev: 6aebfa2 (2026-08-19) -->
 
