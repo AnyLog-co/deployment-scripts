@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 580a920 -->
+<!-- last-processed: 7f0943b -->
+
+<!-- os-dev: 7f0943b (2026-08-20) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * General: water plant processing
 
 <!-- os-dev: 580a920 (2026-08-20) -->
 
