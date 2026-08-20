@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 7f0943b -->
+<!-- last-processed: 2f45d47 -->
+
+<!-- os-dev: 2f45d47 (2026-08-20) -->
+
+* **Ori Shadmon** (2026-08-20)
+  * General: integrated relative -> actual tags
 
 <!-- os-dev: 7f0943b (2026-08-20) -->
 
