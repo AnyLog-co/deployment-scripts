@@ -49,9 +49,8 @@ process !local_scripts/southbound-industrial-opcua/sparkplug-b_mapping.al
 :set-msg-client:
 on error call msg-client-err
 
-<run msg client where broker=local and log=false and topic=(
+<run msg client where broker=local and decode = sparkplugb and log=false  and topic=(
   name = !sparkplug_topic and
-  decode = sparkplugb and
   policy=!sparkplug_mapping_id
 )>
 
