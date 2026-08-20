@@ -45,14 +45,15 @@ sparkplug_topic=spBv1.0/#
 
 
 :set-mapping:
-process !local_scripts/southbound-industrial-opcua/sparkplug-b_mapping.al
+process !local_scripts/southbound-industrial/sparkplug-b_mapping.al
 
 :set-msg-client:
 on error call msg-client-err
 
 <run msg client where broker=local and   decode = sparkplugb and log=false and master_node=!ledger_conn and topic=(
   name = !sparkplug_topic and
-  policy=!sparkplug_mapping_id
+  policy=!sparkplug_mapping_id and
+  dynamic = true
 )>
 
 :end-script:

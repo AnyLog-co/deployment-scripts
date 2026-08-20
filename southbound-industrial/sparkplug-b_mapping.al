@@ -20,7 +20,7 @@ set policy new_policy [mapping] = {}
 set policy new_policy [mapping][id] = !sparkplug_mapping_id
 set policy new_policy [mapping][dbms] = !default_dbms
 # if !sparkplug_dynamic == true then set policy new_policy [mapping][dynamic] = true
-set policy new_policy [mapping][table] = "sparkplug"
+# set policy new_policy [mapping][table] = "sparkplug"
 
 set policy new_policy [mapping][readings] = ""
 <set policy new_policy [mapping][schema] =  {
