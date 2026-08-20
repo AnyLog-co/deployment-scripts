@@ -36,7 +36,7 @@
 #   {"timestamp":"2026-08-18 18:22:42.000000","group_id":"Site","edge":"Area","device":"Line","msg_type":"DDATA","cur_mach_speed":0}
 #   {"timestamp":"2026-08-18 18:22:42.000000","group_id":"Site","edge":"Area","device":"Line","msg_type":"DDATA","consumed_id":1}
 #----------------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/southbound-industrial-opcua/sparkplug-b_dynmaic.al
+# process !local_scripts/southbound-industrial/sparkplug-b_dynmaic.al
 
 
 on error ignore

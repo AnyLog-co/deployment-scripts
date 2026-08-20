@@ -1,7 +1,7 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # Sample mapping for Sparkplug based on the
 #----------------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/southbound-industrial-opcua/sparkplug-b_mapping.al
+# process !local_scripts/southbound-industrial/sparkplug-b_mapping.al
 
 sparkplug_mapping_id = "sparkplug-mapping"
 
