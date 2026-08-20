@@ -10,10 +10,20 @@
 
 :set-params:
 
+
+<tag_mapping = {
+    "clearwellhighleveldi": "ClearWellHighLevelA",
+    "clearwelllowleveldi": "ClearWellLowLevelA",
+    "combinedchlorinatorvacdi": "CombinedChlorinatorVacA",
+    "freechlorinatorvacdi": "FreeChlorinatorVacA",
+    "generatoralarmdi": "GeneratorA",
+    "oxygenmonitordi": "OxygenMonitorA",
+    "watertowerlevelcommsdi": "WaterTowerLevelCommsA",
+}>
+
 alert_dbms = cos
 alert_table = wp_digital
 expected_value = false
-query_column = ""
 
 # publish msg configs
 # which notification backend to use: "telegram" or "pushover"
@@ -31,7 +41,6 @@ msg_user = "uc4cwexgst196sdmz8n9tqyevhuj9h"
 
 :query-data:
 on error goto query-err
-query_columns =
 set query_result = ""
 
 
@@ -57,10 +66,11 @@ for loop start where list = !query_result
     for loop start where list = !keys
         act_value = ""
         key = !keys[+]
+        value = from !tag_mapping bring [!key]
         if !key != row_id and !key != insert_timestamp and !key != tsd_name and !key != tsd_id and !key != timestamp then
         do act_value = from !query_result[+] bring [!key]
         if !act_value != "" and !act_value != !expected_value then
-        do message = "Water plant ALERT name=" + !key + " value=" + !act_value
+        do message = "Water plant ALERT name=" + !value + " value=" + !act_value
         do call send-msg
     for loop end
 for loop end
