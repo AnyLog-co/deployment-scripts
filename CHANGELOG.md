@@ -5,7 +5,13 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 92beae4 -->
+<!-- last-processed: 3561220 -->
+
+<!-- os-dev: 3561220 (2026-08-20) -->
+
+* **Ori Shadmon** (2026-08-20)
+  * General: dynamic testing
+  * Southbound / Industrial: dynamic testing
 
 <!-- os-dev: 92beae4 (2026-08-20) -->
 
