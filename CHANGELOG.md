@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 2f45d47 -->
+<!-- last-processed: 4e13d25 -->
+
+<!-- os-dev: 4e13d25 (2026-08-20) -->
+
+* **Ori Shadmon** (2026-08-20)
+  * General: msg if no data found
 
 <!-- os-dev: 2f45d47 (2026-08-20) -->
 
