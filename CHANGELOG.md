@@ -5,9 +5,15 @@ layout: page
 ---
 
 ## Unreleased
+<<<<<<< HEAD
 <!-- last-processed: bd7b642 -->
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
+=======
+<!-- last-processed: e728a5a -->
+
+<!-- os-dev: e728a5a (2026-08-24) -->
+>>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
 
 * **Ori Shadmon** (2026-08-24)
   * General: power plant dynamic
