@@ -12,10 +12,10 @@
 
 <run msg client where
     broker=172.104.228.251 and port=1883 and
-    user=anyloguser and password=mqtt4AnyLog! and master_node=!ledger_conn and
+    user=anyloguser and password=mqtt4AnyLog! and master_node = !ledger_conn and
     log=false and topic=(
         name=power-plant and
-        dbms=!default_dbms and
+        dbms=!msg_dbms and
         table=pp_pm and
         dynamic=true and
         column.timestamp.timestamp = "bring [timestamp]" and
@@ -32,6 +32,14 @@
         column.power_factor.float = "bring [PowerFactor]" and
         column.reactive_power.float = "bring [ReactivePower]" and
         column.real_power.float = "bring [RealPower]"
+    ) and topic = (
+        name = power-plant-pv and
+        dbms = !msg_dbms and
+        dynamic=true and
+        table = pv and
+        column.timestamp.timestamp = "bring [timestamp]" and
+        column.monitor_id = (type=string and value="bring [monitor_id]") and
+        column.pv.float = "bring [PV]"
     )>
 
 
