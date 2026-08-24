@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: d9bd464 -->
+<!-- last-processed: bd7b642 -->
+
+<!-- os-dev: bd7b642 (2026-08-24) -->
+
+* **Ori Shadmon** (2026-08-24)
+  * General: power plant dynamic
 
 <!-- os-dev: d9bd464 (2026-08-24) -->
 
