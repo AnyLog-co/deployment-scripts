@@ -1,13 +1,13 @@
 <new_policy = {
     "mapping": {
-        "id": "my-data", 
+        "id": "my-data",
         "dbms": !default_dbms,
         "table": "my_data",
         "reading": "",
-        "schema: {
+        "schema": {
             "timestamp": {
                 "type": "timestamp",
-                "default" "now()",
+                "default": "now()",
                 "bring": "[timestamp]"
             },
             "str_val": {
@@ -17,7 +17,7 @@
             },
             "val": {
                 "type": "float",
-                "default" : Null,
+                "default": null,
                 "bring": "[val]"
             }
         }
