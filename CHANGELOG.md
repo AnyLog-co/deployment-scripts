@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 65cf644 -->
+<!-- last-processed: 2babf06 -->
+
+<!-- os-dev: 2babf06 (2026-08-25) -->
+
+* **Ori Shadmon** (2026-08-24)
+  * General: supprot use for pre-defined ID code
 
 <!-- os-dev: 65cf644 (2026-08-25) -->
 
@@ -25,7 +30,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 65cf644 -->
+<!-- last-processed: 2babf06 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
