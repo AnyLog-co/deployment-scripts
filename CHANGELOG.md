@@ -6,11 +6,16 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: bd7b642 -->
+<!-- last-processed: 3851ee4 -->
+
+<!-- os-dev: 3851ee4 (2026-08-24) -->
+
+* **Ori Shadmon** (2026-08-24)
+  * General: bug; changelog
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: e728a5a -->
+<!-- last-processed: 3851ee4 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
