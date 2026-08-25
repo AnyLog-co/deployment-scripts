@@ -35,7 +35,6 @@
     ) and topic = (
         name = power-plant-pv and
         dbms = !msg_dbms and
-        dynamic=true and
         table = pv and
         column.timestamp.timestamp = "bring [timestamp]" and
         column.monitor_id = (type=string and value="bring [monitor_id]") and
