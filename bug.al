@@ -17,13 +17,13 @@
             },
             "val": {
                 "type": "float",
-                "default": null,
+                "default" : Null,
                 "bring": "[val]"
             }
         }
     }
 }>
 
-blockchain insert where policy=!new_policy and local=true
+blockchain insert where policy=!new_policy and local=true and master=!ledger_conn
 
 run msg client where broker=rest and user-agent=anylog and log=false and topic=(name=my-data and policy=my-data)
