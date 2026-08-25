@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 3851ee4 -->
+<!-- last-processed: 168bd8f -->
+
+<!-- os-dev: 168bd8f (2026-08-25) -->
+
+* **Ori Shadmon** (2026-08-24)
+  * General: bug
 
 <!-- os-dev: 3851ee4 (2026-08-24) -->
 
@@ -15,7 +20,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 3851ee4 -->
+<!-- last-processed: 168bd8f -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
