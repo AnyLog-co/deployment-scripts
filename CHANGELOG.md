@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 2babf06 -->
+<!-- last-processed: c0f0cfd -->
+
+<!-- os-dev: c0f0cfd (2026-08-26) -->
+
+* **Ori Shadmon** (2026-08-25)
+  * Customers: dados script
 
 <!-- os-dev: 2babf06 (2026-08-25) -->
 
@@ -30,7 +35,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 2babf06 -->
+<!-- last-processed: c0f0cfd -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
