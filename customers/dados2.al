@@ -11,7 +11,7 @@
                 "bring": "[timestamp]"
             },
             "snapshot_id": {
-                "type": "int",
+                "type": "string",
                 "default": null,
                 "bring": "[snapshot_id]"
             },
