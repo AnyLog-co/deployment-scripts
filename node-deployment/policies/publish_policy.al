@@ -31,11 +31,13 @@ policy_type = from !new_policy  bring [*]
 if !policy_type == config or !master_configs == true then
 do blockchain insert where policy=!new_policy and local=true
 do config_policy = !new_policy
-else blockchain insert where policy=!new_policy and local=true and master=!ledger_conn
+else
+do blockchain insert where policy=!new_policy and local=true and master=!ledger_conn
+do blockchain wait where id = !policy_id
 
 # Pause current process until the local copy of the blockchain is updated with the policy (with a time threshold limit
 # which is based on the sync time of the synchronizer).
-blockchain wait where id = !policy_id
+
 
 :end-script:
 end script
