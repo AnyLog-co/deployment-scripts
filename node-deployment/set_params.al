@@ -272,7 +272,7 @@ if $CHAIN_ID then chain_id = $CHAIN_ID
 if $CONTRACT then contract = $CONTRACT
 
 :operator-settings:
-set enable_partitions = true
+set disable_partitions = false
 table_name=*
 partition_column = insert_timestamp
 partition_interval = 14 days
@@ -285,6 +285,7 @@ else if $IS_MAIN and ($IS_MAIN == false or $IS_MAIN == False  or $IS_MAIN == FAL
 
 if $CLUSTER_NAME then cluster_name = $CLUSTER_NAME
 
+if $DISABLE_PARTITIONS == true or $DISABLE_PARTITIONS == True or $DISABLE_PARTITIONS == TRUE then set disable_partitions = true
 if $TABLE_NAME then table_name=$TABLE_NAME
 if $PARTITION_COLUMN then set partition_column = $PARTITION_COLUMN
 if $PARTITION_INTERVAL then set partition_interval = $PARTITION_INTERVAL
