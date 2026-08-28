@@ -6,7 +6,14 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 1189809 -->
+<!-- last-processed: eb5cbaf -->
+
+<!-- os-dev: eb5cbaf (2026-08-28) -->
+
+* **Ori Shadmon** (2026-08-28)
+  * Node deployment: disable paritions
+  * Node deployment / Database: blockchain sync logic updated; disable paritions
+  * Node deployment / Policies: blockchain sync logic updated
 
 <!-- os-dev: 1189809 (2026-08-27) -->
 
@@ -50,7 +57,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 1189809 -->
+<!-- last-processed: eb5cbaf -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
