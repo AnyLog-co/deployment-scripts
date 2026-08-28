@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 9e5f76f -->
+<!-- last-processed: 8477ee2 -->
+
+<!-- os-dev: 8477ee2 (2026-08-28) -->
+
+* **Ori Shadmon** (2026-08-28)
+  * Customers: roy bug
 
 <!-- os-dev: 9e5f76f (2026-08-28) -->
 
@@ -62,7 +67,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 9e5f76f -->
+<!-- last-processed: 8477ee2 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
