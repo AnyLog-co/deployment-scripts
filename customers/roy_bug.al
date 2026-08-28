@@ -4,7 +4,7 @@
   master_node = !ledger_conn and
   topic = (
     name = smartcity/metroville/power/west-power-plant/generators/# and
-    dbms = "mydb" and
+    dbms = default_dbms and
     table = "power_generator_telemetry" and
     column.schema_version = (type = int and value = "bring [schema_version]") and
     column.timestamp.timestamp = "bring [timestamp]" and
