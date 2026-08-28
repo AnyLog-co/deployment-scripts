@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: eb5cbaf -->
+<!-- last-processed: 9e5f76f -->
+
+<!-- os-dev: 9e5f76f (2026-08-28) -->
+
+* **Ori Shadmon** (2026-08-28)
+  * Node deployment / Policies: wait on non-config policies
 
 <!-- os-dev: eb5cbaf (2026-08-28) -->
 
@@ -57,7 +62,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: eb5cbaf -->
+<!-- last-processed: 9e5f76f -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
