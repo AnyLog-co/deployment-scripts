@@ -6,7 +6,13 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 8477ee2 -->
+<!-- last-processed: 646cfbd -->
+
+<!-- os-dev: 646cfbd (2026-08-28) -->
+
+* **Ori Shadmon** (2026-08-28)
+  * Customers: if/else + db path
+  * Node deployment / Policies: if/else + db path
 
 <!-- os-dev: 8477ee2 (2026-08-28) -->
 
@@ -67,7 +73,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 8477ee2 -->
+<!-- last-processed: 646cfbd -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
