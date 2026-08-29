@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 646cfbd -->
+<!-- last-processed: abcbcfc -->
+
+<!-- os-dev: abcbcfc (2026-08-29) -->
+
+* **Ori Shadmon** (2026-08-29)
+  * Node deployment: commnet gen keys
 
 <!-- os-dev: 646cfbd (2026-08-28) -->
 
@@ -73,7 +78,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 646cfbd -->
+<!-- last-processed: abcbcfc -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
