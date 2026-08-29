@@ -12,7 +12,7 @@
 on error ignore
 
 :set-param:
-agg_dbms = agg_ + !default_dbms
+agg_dbms = agg_ + !msg_dbms
 
 :connect-dbms:
 on error goto connect-dbms-err
@@ -21,7 +21,7 @@ connect dbms !agg_dbms where type=sqlite
 :set-aggregation:
 on error goto aggregation-err
 <set aggregation where
-    dbms = !default_dbms and
+    dbms = !msg_dbms and
     table = battery_pack_logs and
     target_dbms =  !agg_dbms and
     target_table = battery_pack_logs_gcurrent and
@@ -32,7 +32,7 @@ on error goto aggregation-err
 
 on error goto aggregation-encoding-err
 <set aggregation encoding where
-    dbms = !default_dbms and
+    dbms = !msg_dbms and
     table = battery_pack_logs and
     value_column = gcurrent and
     encoding = bounds and
@@ -40,7 +40,7 @@ on error goto aggregation-encoding-err
 
 on error goto aggregation-ingest-err
 <set aggregation ingest where
-    dbms = !default_dbms  and
+    dbms = !msg_dbms  and
     table = battery_pack_logs and
     source = true and
     derived = true>

@@ -19,7 +19,6 @@ on error ignore
 if $DISABLE_CLI == true or  $DISABLE_CLI == True or $DISABLE_CLI == TRUE then set cli off
 
 :required-params:
-company_name = "New Company"
 hostname = get hostname
 ledger_conn = 127.0.0.1:32048
 
@@ -36,16 +35,22 @@ else set node_type = $NODE_TYPE
 if $NODE_TYPE == master-operator or $NODE_TYPE == master-publisher or $NODE_TYPE == master then set master_configs = true
 if !node_type != operator and $IS_HIDDEN == true or $IS_HIDDEN == True or $IS_HIDDEN == TRUE then is_hidden = true
 
-if $NODE_NAME then node_name = $NODE_NAME
+if $NODE_NAME then
+do node_name = $NODE_NAME
+do set node name !node_name
 
-set node name !node_name
+if not $LICENSE_KEY then goto missing-license-key
 
-if $COMPANY_NAME then company_name = $COMPANY_NAME
+# if user specifies company name the use that
+# if there's no company, but there's a license then use the company in the license
+# if there's neither than the default is Acme
 
+company_name = Acme
+if $COMPANY_NAME then set company_name = $COMPANY_NAME
+else if !license_key then company_name = from !license_key[256:] bring [company]
 
-if $LICENSE_KEY then license_key = $LICENSE_KEY
-
-node_company_name = python !company_name.lower().replace(' ', '_').strip()
+# Company + hostname used in name definition if no node / cluster name provided
+if !company_name then node_company_name = python !company_name.lower().replace(' ', '_').replace('.', '_').strip()
 node_hostname     = python !hostname.lower().replace(' ', '_').strip()
 
 :general-params:
@@ -267,7 +272,7 @@ if $CHAIN_ID then chain_id = $CHAIN_ID
 if $CONTRACT then contract = $CONTRACT
 
 :operator-settings:
-set enable_partitions = true
+set disable_partitions = false
 table_name=*
 partition_column = insert_timestamp
 partition_interval = 14 days
@@ -279,8 +284,8 @@ if $IS_MAIN and ($IS_MAIN == true or $IS_MAIN == True or $IS_MAIN == TRUE) then 
 else if $IS_MAIN and ($IS_MAIN == false or $IS_MAIN == False  or $IS_MAIN == FALSE) then set is_main = false
 
 if $CLUSTER_NAME then cluster_name = $CLUSTER_NAME
-else cluster_name = !hostname + "-cluster-" + !node_uid
 
+if $DISABLE_PARTITIONS == true or $DISABLE_PARTITIONS == True or $DISABLE_PARTITIONS == TRUE then set disable_partitions = true
 if $TABLE_NAME then table_name=$TABLE_NAME
 if $PARTITION_COLUMN then set partition_column = $PARTITION_COLUMN
 if $PARTITION_INTERVAL then set partition_interval = $PARTITION_INTERVAL
@@ -318,12 +323,12 @@ if $VIDEO_GRPC_DIR then video_grpc_dir = $VIDEO_GRPC_DIR
 
 :mqtt:
 set enable_mqtt = false
-mqtt_broker = 139.144.46.246
+mqtt_broker = 172.104.228.251
 mqtt_port = 1883
 mqtt_user = anyloguser
 mqtt_passwd = mqtt4AnyLog!
 
-msg_topic = anylog-demo
+msg_topic = rand-data
 set msg_log = false
 set msg_dbms = "bring [dbms]"
 msg_table = "bring [table]"
@@ -370,12 +375,12 @@ do set store_monitoring    = true
 
 if $MONITORING_DB == psql or $MONITORING_DB == sqlite then monitoring_db = $MONITORING_DB
 
-if $MONITORING_NODE == true or  $MONITORING_NODE == True or  $MONITORING_NODE == TRUE then set monitoring_node = $MONITORING_NODE
-if $NODE_MONITORING == true   or $NODE_MONITORING == True   or $NODE_MONITORING == TRUE   then set node_monitoring   = true
-if $SYSLOG_MONITORING == true or $SYSLOG_MONITORING == True or $SYSLOG_MONITORING == TRUE then set syslog_monitoring = true
-if $DOCKER_MONITORING == true or $DOCKER_MONITORING == True or $DOCKER_MONITORING == TRUE then set docker_monitoring = true
+if $MONITORING_NODE == false or  $MONITORING_NODE == False or  $MONITORING_NODE == FALSE then set monitoring_node = false
+if $NODE_MONITORING == false  or $NODE_MONITORING == False   or $NODE_MONITORING == FALSE   then set node_monitoring   = false
+if $SYSLOG_MONITORING == false or $SYSLOG_MONITORING == False or $SYSLOG_MONITORING == FALSE then set syslog_monitoring = false
+if $DOCKER_MONITORING == false or $DOCKER_MONITORING == False or $DOCKER_MONITORING == FALSE then set docker_monitoring = false
 
-if $STORE_MONITORING == true or $STORE_MONITORING == True or $STORE_MONITORING == TRUE then set store_monitoring = true
+if $STORE_MONITORING == false or $STORE_MONITORING == False or $STORE_MONITORING == FALSE then set store_monitoring = true
 # if not set - will be declare using `blockchain get operator bring.last`
 if $STORE_MONITORING_DEST then store_monitoring_dest = $STORE_MONITORING_DEST
 # if not set - will be declare using `blockchain get query bring.ip_port`
@@ -467,6 +472,7 @@ if $OPCUA_FREQUENCY then opcua_frequency = $OPCUA_FREQUENCY
 # if $ENABLE_ENCODING and ($ENABLE_ENCODING == true or $ENABLE_ENCODING == True or $ENABLE_ENCODING == TRUE) then set enable_encoding = true
 # if $ENCODING_TOLERANCE then set encoding_tolerance = $ENCODING_TOLERANCE
 # if $ENCODING_TYPE then encoding_type = $ENCODING_TYPE
+
 
 :other-settings:
 set deploy_local_script = false

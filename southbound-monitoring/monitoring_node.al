@@ -16,6 +16,7 @@ else if not !is_policy and !create_policy == true then goto declare-policy-error
 set new_policy = ""
 set policy new_policy [monitoring-node] = {}
 set policy new_policy [monitoring-node][name] = !node_name
+set policy new_policy [monitoring-node][type] = !node_type
 
 :ip-config:
 if $DNS_DOMAIN or $DNS then

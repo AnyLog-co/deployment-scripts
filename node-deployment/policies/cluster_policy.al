@@ -12,21 +12,23 @@
 # }}
 # ---- Sample Policy ---
 #-----------------------------------------------------------------------------------------------------------------------
-# process !local_scripts/node-deployment/policies/declare_cluster_policy.al
+# process !local_scripts/node-deployment/policies/cluster_policy.al
+
 on error ignore
-
-
 set create_policy = false
 
-if not !cluster_id and not !cluster_name then process !local_scripts/node-deployment/policies/validate_node_policy.al
-if !cluster_id then goto end-script
+run blockchain sync
+blockchain reload metadata
 
 :set-cluster-name:
-if !cluster_name goto check-policy
-cluster_id = 1
-cluster_num = blockchain get cluster where company=!company_name bring.count
-if cluster_num then cluster_id = python !cluster_num.int + 1
-cluster_name = !company_name + "-cluster-" + !cluster_id
+if !cluster_name then goto check-policy
+cluster_num = blockchain get cluster where company = !company_name bring.count
+# cluster_num = blockchain get root policies include cluster where company=!company_name bring.count
+if not !cluster_num then cluster_num = 1
+else if !cluster_num then
+do tmp_cluster_num = python !cluster_num.int + 1
+do set cluster_num = !tmp_cluster_num
+cluster_name = !node_company_name + "-cluster" + !cluster_num
 
 goto prep-policy
 
@@ -41,7 +43,6 @@ on error ignore
 new_policy = create policy cluster with defaults where company=!company_name and name=!cluster_name
 
 :publish-policy:
-
 set is_node_policy = true
 process !local_scripts/node-deployment/policies/publish_policy.al
 if !error_code == 1 then goto sign-policy-error
@@ -50,7 +51,6 @@ if !error_code == 3 then goto declare-policy-error
 set create_policy = true
 set is_node_policy = false
 
-wait 5
 goto check-policy
 
 :end-script:

@@ -1,5 +1,5 @@
 #-----------------------------------------------------------------------------------------------------------------------
-# Validate if policy exists
+# Validate if policy exists w/ node provided in the configs
 # - dns not bind      -> ip = !external_dns
 # - dns bound         -> local_ip = !dns
 # - overlay not bound -> local_ip = !overlay_ip
@@ -9,7 +9,7 @@
 #
 # for operator validate ID if policy exists
 #-----------------------------------------------------------------------------------------------------------------------
-# process !local_scripts/node-deployment/policies/validate_node_policy_name.al
+# process !local_scripts/node-deployment/policies/validate_node_policy_node_name.al
 
 on error ignore
 
@@ -74,6 +74,8 @@ if !node_type == operator and !is_policy then
 do operator_id = from !is_policy bring [*][id]
 do cluster_id = from !is_policy bring [*][cluster]
 
+:set-node-name:
+set node name !node_name
 
 :end-script:
 end script

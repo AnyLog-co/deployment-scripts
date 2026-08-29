@@ -17,43 +17,36 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/node-deployment/policies/node_name.al
 
-:set-params:
+:node-count:
 on error ignore
 
-if !node_type != operator then goto node-name
+# Use case 1: if cluster - check if primary
+# Use case 2: if cluster & policy_count - check if there are other non-primary
+# Use case 3: If cluster & no policy_id (ie not main) - check overall main
+# Use case 4: if not cluster or policy_count (ie all other cases) - check alone
 
-policy_count = blockchain get !node_type where cluster = !cluster_id bring.count
-if not !policy_count then goto node-name-operator
-else goto node-name-operator-bkup
+if !cluster_id then policy_count = blockchain get !node_type where cluster=!cluster_id and main=true bring.count
+if !cluster_id and !policy_count then  policy_count = blockchain get !node_type where cluster=!cluster_id and main=false bring.count
+if !cluster_id and not !policy_count then policy_count = blockchain get !node_type where company=!company_name and main=true bring.count
+if not !cluster_id or not !policy_count then policy_count = blockchain get !node_type where company=!company_name bring.count
+
+
+if !policy_count then
+do inc_policy_count = python !policy_count.int + 1
+do set policy_count = !inc_policy_count
+
+if not !policy_count then policy_count = 1
+
+if !cluster_id then goto node-name-operator-bkup
 
 :node-name:
-# not operator node define policies
-policy_count = blockchain get !node_type where company = !company_name bring.count
-if !policy_count then policy_count = python !policy_count.int + 1
-else policy_count = 1
 
 node_name = !node_hostname + "-" + !node_company_name + "-" + !node_type + !policy_count
 goto set-node-name
 
-:node-name-operator:
-total_count  = blockchain get !node_type where company = !company_name bring.count
-bkup_count   = blockchain get !node_type where company = !company_name and [name] contains "bkup" bring.count
-
-if !total_count and !bkup_count then policy_count = python !total_count.int - !bkup_count.int
-else if !total_count then policy_count = !total_count
-else policy_count = 0
-
-policy_count = python !policy_count.int + 1
-node_name = !node_hostname + "-" + !node_company_name + "-operator" + !policy_count
-goto set-node-name
-
 :node-name-operator-bkup:
-# backup operator
-basename      = blockchain get !node_type where cluster = !cluster_id bring.first [*][name]
-policy_count  = blockchain get !node_type where cluster = !cluster_id and [name] contains "bkup" bring.count
-if !policy_count then policy_count = python !policy_count.int + 1
-else policy_count = 1
-
+basename = blockchain get !node_type where cluster = !cluster_id and main = true bring.first [*][name]
+if not !basename then goto node-name
 node_name = !basename + "-bkup" + !policy_count
 
 goto set-node-name

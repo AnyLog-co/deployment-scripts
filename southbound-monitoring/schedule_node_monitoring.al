@@ -8,6 +8,10 @@
 #   4. Send to query node
 #   5. Send to Operator node(s)
 #
+# :key params:
+#   - `store_monitoring_dest`: operator IP:port to send data from master / query / publisher    to be stored remotely using `stream`
+#   - `view_monitoring_dest`:  query    IP:port to send data from master / operator / publisher to be shared in remotely using `monitor operators`
+#
 # :Sample Data:
 # {
 #    'node name' : 'anylog-query@172.232.20.156:32348',
@@ -50,8 +54,12 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "name": "Node Monitoring Schedule",
         "script": [
             "if !monitoring_node == true then process !local_scripts/southbound-monitoring/monitoring_node.al",
-            "schedule name=get_view_monitoring_dest and time=300 seconds and task view_monitoring_dest = blockchain get monitoring-node bring [*][host] : [*][port] separator=,",
             "if !node_type == operator then process !local_scripts/southbound-monitoring/table_node_monitoring.al",
+
+            "if not !view_monitoring_dest  then schedule name=view_monitoring_dest  and time=300 seconds and task view_monitoring_dest = blockchain get monitoring-node where type=query bring.ip_port",
+            "if not !store_monitoring_dest then schedule name=store_monitoring_dest and time=300 seconds and task if not !store_monitoring_dest then store_monitoring_dest = blockchain get monitoring-node where type=operator bring.last [*][ip] : [*][port]",
+
+            "schedule name=get_view_monitoring_dest and time=300 seconds and task view_monitoring_dest = blockchain get monitoring-node bring [*][host] : [*][port] separator=,",
 
             "schedule name = get_stats and time=!monitoring_frequency and task node_insight = get stats where service = operator and topic = summary  and format = json",
             "schedule name = get_timestamp and time=!monitoring_frequency and task node_insight[timestamp] = get datetime local now()",

@@ -11,11 +11,10 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # process !local_scripts/node-deployment/policies/validate_node_policy.al
 
-
 on error ignore
 
 if !node_name then
-do process !local_scripts/node-deployment/policies/validate_node_policy_name.al
+do process !local_scripts/node-deployment/policies/validate_node_policy_node_name.al
 do goto end-script
 
 if !enable_dns == false and not !overlay_ip then goto generic-check
@@ -73,6 +72,12 @@ if !is_policy then node_name = from !is_policy bring [*][name]
 if !node_type == operator and !is_policy then
 do operator_id = from !is_policy bring [*][id]
 do cluster_id = from !is_policy bring [*][cluster]
+
+:set-node-name:
+set node name !node_name
+
+
+
 :end-script:
 end script
 
