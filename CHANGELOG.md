@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 7f48021 -->
+<!-- last-processed: 0954a1f -->
+
+<!-- os-dev: 0954a1f (2026-08-31) -->
+
+* **Ori Shadmon** (2026-08-30)
+  * Southbound / Monitoring: replace host -> ip
 
 <!-- os-dev: 7f48021 (2026-08-29) -->
 
@@ -52,7 +57,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 7f48021 -->
+<!-- last-processed: 0954a1f -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
