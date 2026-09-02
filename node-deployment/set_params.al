@@ -136,7 +136,7 @@ if $REST_TIMEOUT then rest_timeout = $REST_TIMEOUT
 if !rest_timeout.int < 0 then rest_timeout = 0 # continuous
 
 if $BROKER_BIND == true or $BROKER_BIND == True or $BROKER_BIND == TRUE then broker_bind = true
-if !broker_threads.int < 1 then broker_threads = 1
+if $BROKER_THREADS and $BROKER_THREADS.int >= 1  then broker_threads = $BROKER_THREADS
 
 # update !ip based on $NIC_TYPE
 if $NIC_TYPE then set internal ip with $NIC_TYPE
@@ -363,7 +363,6 @@ set syslog_monitoring   = false
 set docker_monitoring   = false
 set store_monitoring    = false
 store_monitoring_dest   = ""
-view_monitoring_dest    = ""
 monitoring_db = sqlite
 
 monitoring_frequency = "30 seconds"
@@ -517,7 +516,7 @@ if $QUERY_POOL and $QUERY_POOL.int then query_pool=$QUERY_POOL
 if !query_pool.int < 1 then query_pool = 1
 
 if $ARCHIVE == false or $ARCHIVE == False or $ARCHIVE == FALSE then set archive=false
-if $ARCHIVE_SQL == true or $ARCHIVE == True or $ARCHIVE == TRUE then set archive_sql=true
+if $ARCHIVE_SQL == true or $ARCHIVE_SQL == True or $ARCHIVE_SQL == TRUE then set archive_sql=true
 if $ARCHIVE_DELETE then archive_delete=$ARCHIVE_DELETE
 
 if $OPERATOR_HELPERS and $OPERATOR_HELPERS.int and $OPERATOR_HELPERS.int >= 1 then operator_helpers = $OPERATOR_HELPERS

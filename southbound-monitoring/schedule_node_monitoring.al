@@ -47,6 +47,8 @@ if !is_policy then goto config-policy
 # failure show created policy
 if not !is_policy and !create_policy == true then goto declare-policy-error
 
+# "if not !store_monitoring_dest then schedule name=store_monitoring_dest and time=300 seconds and task if not !store_monitoring_dest then store_monitoring_dest = blockchain get monitoring-node where type=operator bring.last [*][ip] : [*][port]",
+
 :create-policy
 <new_policy = {
     "schedule": {
@@ -56,8 +58,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
             "if !monitoring_node == true then process !local_scripts/southbound-monitoring/monitoring_node.al",
             "if !node_type == operator then process !local_scripts/southbound-monitoring/table_node_monitoring.al",
 
-            "if not !view_monitoring_dest  then schedule name=view_monitoring_dest  and time=300 seconds and task view_monitoring_dest = blockchain get monitoring-node where type=query bring.ip_port",
-            "if not !store_monitoring_dest then schedule name=store_monitoring_dest and time=300 seconds and task if not !store_monitoring_dest then store_monitoring_dest = blockchain get monitoring-node where type=operator bring.last [*][ip] : [*][port]",
+            "if not !view_monitoring_dest  then schedule name=view_monitoring_dest  and time=300 seconds and task view_monitoring_dest = blockchain get query bring.ip_port",
 
             "schedule name=get_view_monitoring_dest and time=300 seconds and task view_monitoring_dest = blockchain get monitoring-node bring [*][host] : [*][port] separator=,",
 
