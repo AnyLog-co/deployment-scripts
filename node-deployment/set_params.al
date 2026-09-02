@@ -292,11 +292,14 @@ if $PARTITION_INTERVAL then set partition_interval = $PARTITION_INTERVAL
 if $PARTITION_KEEP then set partition_keep = $PARTITION_KEEP
 if $PARTITION_SYNC then set partition_sync = $PARTITION_SYNC
 
+if $ALMGM_DB == sqlite or $ALMGM_DB == psql then almgm_db = $ALMGM_DB
+
 :operator-ha:
-set enable_ha = true
+set disable_ha = false
 start_date = -30d
 
-if $ENABLE_HA == false or $ENABLE_HA == FALSE or $ENABLE_HA == False then set enable_ha=false
+
+if $DISABLE_HA == true or $DISABLE_HA == TRUE or $DISABLE_HA == True then set disable_ha=true
 if $START_DATE then start_date = $START_DATE
 if !start_date.int then start_date = - + $START_DATE + d
 
