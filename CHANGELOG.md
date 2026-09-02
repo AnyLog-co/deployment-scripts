@@ -6,7 +6,16 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 0954a1f -->
+<!-- last-processed: 25cbd10 -->
+
+<!-- os-dev: 25cbd10 (2026-09-02) -->
+
+* **Ori Shadmon** (2026-09-02)
+  * General: version
+  * Node deployment: monitoring nodes logic; almgm db type & disable_ha option
+  * Node deployment / Database: almgm db type & disable_ha option
+  * Node deployment / Policies: almgm db type & disable_ha option
+  * Southbound / Monitoring: monitoring nodes logic
 
 <!-- os-dev: 0954a1f (2026-08-31) -->
 
@@ -57,7 +66,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 0954a1f -->
+<!-- last-processed: 25cbd10 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
