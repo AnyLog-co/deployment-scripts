@@ -57,11 +57,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "script": [
             "if !monitoring_node == true then process !local_scripts/southbound-monitoring/monitoring_node.al",
             "if !node_type == operator then process !local_scripts/southbound-monitoring/table_node_monitoring.al",
-
             "if not !view_monitoring_dest  then schedule name=view_monitoring_dest  and time=300 seconds and task view_monitoring_dest = blockchain get query bring.ip_port",
-
-            "schedule name=get_view_monitoring_dest and time=300 seconds and task view_monitoring_dest = blockchain get monitoring-node bring [*][host] : [*][port] separator=,",
-
             "schedule name = get_stats and time=!monitoring_frequency and task node_insight = get stats where service = operator and topic = summary  and format = json",
             "schedule name = get_timestamp and time=!monitoring_frequency and task node_insight[timestamp] = get datetime local now()",
             "schedule name = set_node_type and time=!monitoring_frequency and task set node_insight[node type] = !node_type",
