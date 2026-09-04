@@ -59,6 +59,8 @@ else if !blockchain_source == master then
     dest=!blockchain_destination and
     connection=!ledger_conn>
 
+run blockchain sync
+blockchain reload metadata
 goto end-script
 
 :end-script:
