@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 25cbd10 -->
+<!-- last-processed: 3ae272a -->
+
+<!-- os-dev: 3ae272a (2026-09-02) -->
+
+* **Ori Shadmon** (2026-09-02)
+  * Southbound / Monitoring: duplicate command
 
 <!-- os-dev: 25cbd10 (2026-09-02) -->
 
@@ -66,7 +71,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 25cbd10 -->
+<!-- last-processed: 3ae272a -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
