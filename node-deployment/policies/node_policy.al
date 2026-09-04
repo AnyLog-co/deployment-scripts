@@ -26,7 +26,7 @@ set create_policy = false
 if !is_relay == true then set node_type = relay
 
 :check-policy:
-
+wait 30
 # checks nodes based on name, company and networking configurations
 process !local_scripts/node-deployment/policies/validate_node_policy.al
 if not !node_name then process !local_scripts/node-deployment/policies/node_name.al
