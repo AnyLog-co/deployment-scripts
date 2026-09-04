@@ -11,6 +11,7 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # process !local_scripts/node-deployment/policies/validate_node_policy_node_name.al
 
+set debug on
 on error ignore
 
 
@@ -78,6 +79,7 @@ do cluster_id = from !is_policy bring [*][cluster]
 set node name !node_name
 
 :end-script:
+set debug off
 end script
 
 :terminate-scripts:
