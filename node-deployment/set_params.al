@@ -30,8 +30,6 @@ else if $NODE_TYPE == master-operator  then node_type = operator
 else if $NODE_TYPE == master-publisher then node_type = publisher
 else set node_type = $NODE_TYPE
 
-
-
 if $NODE_TYPE == master-operator or $NODE_TYPE == master-publisher or $NODE_TYPE == master then set master_configs = true
 if !node_type != operator and $IS_HIDDEN == true or $IS_HIDDEN == True or $IS_HIDDEN == TRUE then is_hidden = true
 
@@ -560,6 +558,6 @@ goto terminate-scripts
 print "Invalid SQL database type " $DB_TYPE ", cannot continue..."
 goto terminate-scripts
 
-:invalid-nosql-database:
-print "Invalid NoSQL database type " $NOSQL_TYPE ", cannot continue..."
-goto terminate-scripts
+#:invalid-nosql-database:
+#print "Invalid NoSQL database type " $NOSQL_TYPE ", cannot continue..."
+#goto terminate-scripts
