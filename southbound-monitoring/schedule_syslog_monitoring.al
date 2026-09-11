@@ -32,6 +32,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "id": !config_id,
         "name": "Syslog Monitoring",
         "script": [
+            "process !local_scripts/southbound-monitoring/node_monitoring_set_params.al",
             "process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
             "if !node_type == operator then process !local_scripts/southbound-monitoring/table_syslog_monitoring.al",
             "set msg rule !syslog_name if ip = * then dbms = monitoring and table = syslog and extend = ip and syslog = true"

@@ -9,8 +9,6 @@
 #------------------------------------------------------------------------------------#
 # process !local_scripts/southbound-monitoring/node_monitoring_set_params.al
 
-if !monitoring_node == true then process !local_scripts/southbound-monitoring/monitoring_node.al
-
 schedule_time = 300 seconds
 
 :get-view-monitoring-dest:

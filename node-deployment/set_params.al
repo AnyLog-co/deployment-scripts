@@ -358,22 +358,15 @@ if $MSG_VALUE_COLUMN then msg_value_column=$MSG_VALUE_COLUMN
 
 :monitoring:
 set monitoring_node     = false
-set node_monitoring     = false
-set syslog_monitoring   = false
-set docker_monitoring   = false
-set store_monitoring    = false
+set node_monitoring     = true
+set syslog_monitoring   = true
+set docker_monitoring   = true
+set store_monitoring    = true
 store_monitoring_dest   = ""
 monitoring_db = sqlite
 
 monitoring_frequency = "30 seconds"
 docker_frequency = 10
-
-# if !system_query == true then set monitoring_node = true
-if !node_type == operator then
-do set node_monitoring     = true
-do set syslog_monitoring   = true
-do set docker_monitoring   = true
-do set store_monitoring    = true
 
 if not $MONITORING_DB then  monitoring_db = $DB_TYPE
 else if $MONITORING_DB == psql or $MONITORING_DB == sqlite then monitoring_db = $MONITORING_DB
