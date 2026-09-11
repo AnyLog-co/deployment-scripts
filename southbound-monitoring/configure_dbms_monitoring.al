@@ -7,8 +7,8 @@
 # process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al
 
 on error ignore
-
-if !node_monitoring == false and !syslog_monitoring == false and !docker_monitoring == false then goto end-script
+:set-params;
+if !monitoring_db_configured == true then goto end-script
 
 :connect-dbms:
 db_name = monitoring
@@ -45,6 +45,7 @@ do partition monitoring * using insert_timestamp by 12 hours
 set db_name = ""
 
 :end-script:
+if not !monitoring_db_configured then set monitoring_db_configured = true
 end script
 
 :terminate-scripts:

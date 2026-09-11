@@ -290,7 +290,9 @@ if $PARTITION_INTERVAL then set partition_interval = $PARTITION_INTERVAL
 if $PARTITION_KEEP then set partition_keep = $PARTITION_KEEP
 if $PARTITION_SYNC then set partition_sync = $PARTITION_SYNC
 
-if $ALMGM_DB == sqlite or $ALMGM_DB == psql then almgm_db = $ALMGM_DB
+if not $ALMGM_DB then almgm_db = $DB_TYPE
+else if $ALMGM_DB == sqlite or $ALMGM_DB == psql then almgm_db = $ALMGM_DB
+else almgm_db = sqlite
 
 :operator-ha:
 set disable_ha = false
@@ -366,14 +368,15 @@ monitoring_db = sqlite
 monitoring_frequency = "30 seconds"
 docker_frequency = 10
 
-if !system_query == true then set monitoring_node = true
+# if !system_query == true then set monitoring_node = true
 if !node_type == operator then
 do set node_monitoring     = true
 do set syslog_monitoring   = true
 do set docker_monitoring   = true
 do set store_monitoring    = true
 
-if $MONITORING_DB == psql or $MONITORING_DB == sqlite then monitoring_db = $MONITORING_DB
+if not $MONITORING_DB then  monitoring_db = $DB_TYPE
+else if $MONITORING_DB == psql or $MONITORING_DB == sqlite then monitoring_db = $MONITORING_DB
 
 if $MONITORING_NODE == false or  $MONITORING_NODE == False or  $MONITORING_NODE == FALSE then set monitoring_node = false
 if $NODE_MONITORING == false  or $NODE_MONITORING == False   or $NODE_MONITORING == FALSE   then set node_monitoring   = false
