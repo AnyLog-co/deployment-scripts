@@ -7,16 +7,24 @@
 #   - all other cases                           `view_monitoring_dest = blockchain get query`
 # if a variable is not set, then enable a scheduled process to configure it.
 #------------------------------------------------------------------------------------#
-# process !local_scripts/southbound-monitoring/node_monitoring_set_params.al
+# process !local_scripts/southbound-monitoring/scheduled_params.al
 
 schedule_time = 300 seconds
+if !is_scheduled_dest == true goto end-script
 
 :get-view-monitoring-dest:
-if not !view_monitoring_dest then schedule name=view_monitoring_dest and time=!schedule_time and task view_monitoring_dest = blockchain get monitoring-node where type=query bring.ip_port
+<if not !view_monitoring_dest then
+    schedule name=view_monitoring_dest and time=!schedule_time and task
+        view_monitoring_dest = blockchain get query where type=query bring.ip_port>
+
 
 :store-monitoring-dest:
-if not !store_monitoring_dest then schedule name=store_monitoring_dest and time=!schedule_time and task if not !store_monitoring_dest then store_monitoring_dest = blockchain get monitoring-node where type=operator bring.last [*][ip] : [*][port]
+<if not !store_monitoring_dest then
+    schedule name=store_monitoring_dest and time=!schedule_time and task
+        if not !store_monitoring_dest then
+            store_monitoring_dest = blockchain get monitoring-node where type=operator bring.last [*][ip] : [*][port]>
 
 
 :end-script:
+set is_scheduled_dest = true
 end script

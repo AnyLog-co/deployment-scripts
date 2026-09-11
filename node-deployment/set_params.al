@@ -362,8 +362,12 @@ set node_monitoring     = true
 set syslog_monitoring   = true
 set docker_monitoring   = true
 set store_monitoring    = true
+
 store_monitoring_dest   = ""
 monitoring_db = sqlite
+
+set is_scheduled_dest = false
+set monitoring_db_configured = false
 
 monitoring_frequency = "30 seconds"
 docker_frequency = 10
