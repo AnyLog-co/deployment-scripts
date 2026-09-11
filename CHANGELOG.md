@@ -6,7 +6,13 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 6f33692 -->
+<!-- last-processed: 40a77e4 -->
+
+<!-- os-dev: 40a77e4 (2026-09-11) -->
+
+* **Ori Shadmon** (2026-09-10)
+  * Node deployment: monitoring; set params
+  * Southbound / Monitoring: monitoring
 
 <!-- os-dev: 6f33692 (2026-09-04) -->
 
@@ -91,7 +97,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 6f33692 -->
+<!-- last-processed: 40a77e4 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
