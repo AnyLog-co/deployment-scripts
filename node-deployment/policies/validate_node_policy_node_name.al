@@ -11,7 +11,7 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # process !local_scripts/node-deployment/policies/validate_node_policy_node_name.al
 
-set debug on
+# set debug on
 on error ignore
 
 

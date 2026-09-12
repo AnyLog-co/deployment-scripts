@@ -30,7 +30,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
 <new_policy = {
     "schedule": {
         "id": !schedule_id,
-        "name": "Docker Monitoring Schedule",,
+        "name": "Docker Monitoring Schedule",
         "script": [
             "process !local_scripts/southbound-monitoring/scheduled_params.al",
             "process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
