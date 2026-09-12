@@ -44,8 +44,9 @@ partition monitoring * using insert_timestamp by 12 hours
 
 set db_name = ""
 
+set monitoring_db_configured = true
+
 :end-script:
-if not !monitoring_db_configured then set monitoring_db_configured = true
 end script
 
 :terminate-scripts:
