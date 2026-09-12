@@ -34,10 +34,10 @@ on error goto connect-error
 else connect dbms !db_name where type=!monitoring_db
 
 :data-partitioning:
-if !enable_partitions == true then
-do on error goto partitioning-error
-do partition monitoring * using insert_timestamp by 12 hours
-<do schedule time=12 hours and name="Monitoring - Drop Partitions"
+# if !enable_partitions == true then
+on error goto partitioning-error
+partition monitoring * using insert_timestamp by 12 hours
+<schedule time=12 hours and name="Monitoring - Drop Partitions"
     task drop partition where dbms=monitoring and table="*" and keep=3>
 
 # schedule name=remove_archive and time=1 day and task delete archive where days = 3
