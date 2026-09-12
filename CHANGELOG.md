@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: ade232a -->
+<!-- last-processed: ea28e65 -->
+
+<!-- os-dev: ea28e65 (2026-09-12) -->
+
+* **Ori Shadmon** (2026-09-11)
+  * Southbound / Monitoring: scheduler fix; monitoring
 
 <!-- os-dev: ade232a (2026-09-12) -->
 
@@ -115,7 +120,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: ade232a -->
+<!-- last-processed: ea28e65 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
