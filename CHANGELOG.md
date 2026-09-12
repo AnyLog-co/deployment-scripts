@@ -6,7 +6,13 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: ea28e65 -->
+<!-- last-processed: cf347f0 -->
+
+<!-- os-dev: cf347f0 (2026-09-12) -->
+
+* **Ori Shadmon** (2026-09-11)
+  * Node deployment / Policies: fix monitoring issue
+  * Southbound / Monitoring: fix monitoring issue
 
 <!-- os-dev: ea28e65 (2026-09-12) -->
 
@@ -120,7 +126,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: ea28e65 -->
+<!-- last-processed: cf347f0 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
