@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: e4cb6c5 -->
+<!-- last-processed: ade232a -->
+
+<!-- os-dev: ade232a (2026-09-12) -->
+
+* **Ori Shadmon** (2026-09-11)
+  * Southbound / Monitoring: if / else bug
 
 <!-- os-dev: e4cb6c5 (2026-09-11) -->
 
@@ -110,7 +115,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: e4cb6c5 -->
+<!-- last-processed: ade232a -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
