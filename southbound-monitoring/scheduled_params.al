@@ -10,7 +10,7 @@
 # process !local_scripts/southbound-monitoring/scheduled_params.al
 
 schedule_time = 300 seconds
-if !is_scheduled_dest == true goto end-script
+if !is_scheduled_dest == true then goto end-script
 
 :get-view-monitoring-dest:
 <if not !view_monitoring_dest then
