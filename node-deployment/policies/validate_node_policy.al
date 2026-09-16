@@ -67,7 +67,10 @@ else goto network-config-error
 
 :check-operator:
 on error ignore
-if !is_policy then node_name = from !is_policy bring [*][name]
+if !is_policy then
+do node_name = from !is_policy bring [*][name]
+
+if !is_policy and not !node_conn then node_conn = from !is_policy bring [*][ip] : [*][port]
 
 if !node_type == operator and !is_policy then
 do operator_id = from !is_policy bring [*][id]
