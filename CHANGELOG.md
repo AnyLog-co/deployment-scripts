@@ -6,7 +6,15 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: cf347f0 -->
+<!-- last-processed: 0d4b9e5 -->
+
+<!-- os-dev: 0d4b9e5 (2026-09-17) -->
+
+* **Ori Shadmon** (2026-09-16)
+  * General: improve naming logic for operator + automation for is primary
+  * Node deployment: improve naming logic for operator + automation for is primary
+  * Node deployment / Policies: improve naming logic for operator + automation for is primary; node_conn
+  * Southbound / Monitoring: if node type != publisher / operator and not generic node monitoring skip
 
 <!-- os-dev: cf347f0 (2026-09-12) -->
 
@@ -126,7 +134,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: cf347f0 -->
+<!-- last-processed: 0d4b9e5 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
