@@ -26,10 +26,14 @@ set create_policy = false
 if !is_relay == true then set node_type = relay
 
 :check-policy:
-wait 30
+run blockchain sync
+blockchain reload metadata
+
 # checks nodes based on name, company and networking configurations
 process !local_scripts/node-deployment/policies/validate_node_policy.al
-if not !node_name then process !local_scripts/node-deployment/policies/node_name.al
+
+is_primary = blockchain get operator where cluster=!cluster_id bring.count
+if !is_primary then set is_main = false
 
 if not !is_policy and !create_policy == false then goto create-policy
 if not !is_policy and !create_policy == true then goto config-policy-error
