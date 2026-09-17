@@ -5,8 +5,12 @@
 # process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al
 
 
-
 on error ignore
+
+# due to a missing destination logic if node_type  != publisher or operator then process cannot be executed
+if !node_type != publisher and !node_type != operator then
+do echo "missing destination logic for monitoring docker info cannot process at this time"
+do goto-end-script
 
 :check-socket:
 is_docker = file test /var/run/docker.sock
@@ -33,7 +37,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "name": "Docker Monitoring Schedule",
         "script": [
             "process !local_scripts/southbound-monitoring/scheduled_params.al",
-            "process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
+            "if !node_type == operator then process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
             "if !node_type == operator then process !local_scripts/southbound-monitoring/table_docker_monitoring.al",
 
             "run scheduled pull where name = docker_insights and type = docker and frequency = !docker_frequency and continuous = false and dbms = monitoring and table = docker_insight",

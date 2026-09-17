@@ -9,6 +9,9 @@
 
 on error ignore
 
+if !node_type != publisher and !node_type != operator then goto end-script
+
+
 :preset-params:
 syslog_ip = *
 #if !overlay_ip then set syslog_ip = !overlay_ip
