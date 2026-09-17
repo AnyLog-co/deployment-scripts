@@ -22,7 +22,7 @@ blockchain reload metadata
 
 :check-policy:
 on error ignore
-cluster_id = blockchain get cluster where name=!cluster_name and company=!company_name bring.first [*][id]
+if !cluster_name and not !cluster_id then cluster_id = blockchain get cluster where name=!cluster_name and company=!company_name bring.first [*][id]
 
 if !cluster_id then operator_count = blockchain get operator where cluster = !cluster_id
 

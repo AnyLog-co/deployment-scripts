@@ -67,7 +67,7 @@ if !is_policy then
 do node_name = from !is_policy bring [*][name]
 do set node name !node_name
 
-if !is_policy and not !node_conn then node_conn = from !is_policy bring [*][ip] : [*][port]
+if !is_policy and not !node_conn then node_conn = from !is_policy bring.ip_port
 
 if !node_type == operator and !is_policy then
 do operator_id = from !is_policy bring [*][id]

@@ -44,11 +44,13 @@ if !cluster_id and !node_name then goto set-params
 if $NODE_NAME then node_name = $NODE_NAME
 else if not $NODE_NAME then node_name = !node_hostname + "-" + !node_company_name + "-" + !node_type + "-" + !rand_int
 
-if $CLUSTER_NAME then cluster_name = $CLUSTER_NAME
+if !cluster_id then cluster_name = blockchain get cluster where id = !cluster_id bring [*][name]
+else if $CLUSTER_NAME then cluster_name = $CLUSTER_NAME
 else if not !cluster_name and !node_name then  cluster_name = "cluster-" + !node_name
 
 :set-params:
 set node name !node_name
 
 :end-script:
+set debug off
 end script
