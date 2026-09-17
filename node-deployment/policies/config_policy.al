@@ -55,6 +55,7 @@ else if !node_type == master or node_type == query then goto master-query
 if !node_type == generic then
 <do set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
+    "process !local_scripts/node-deployment/node_name.al",
     "run scheduler 1",
     "if !system_query == true and !enable_mcp == true then run mcp server",
 
@@ -72,6 +73,7 @@ if !node_type == master or !node_type == query then
 <do set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
+    "process !local_scripts/node-deployment/node_name.al",
     "if !is_hidden == false then process !local_scripts/node-deployment/policies/node_policy.al",
     "if !is_hidden == true and not !node_name then process !local_scripts/node-deployment/policies/node_name.al",
     "if !is_hidden == true then set node name !node_name",
@@ -90,6 +92,7 @@ if !node_type == publisher then
 <do set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
+    "process !local_scripts/node-deployment/node_name.al",
     "if !is_hidden == false then process !local_scripts/node-deployment/policies/node_policy.al",
     "if !is_hidden == true and not !node_name then process !local_scripts/node-deployment/policies/node_name.al",
     "if !is_hidden == true then set node name !node_name",
@@ -116,7 +119,7 @@ do goto publish-policy
 <set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
-    "wait 30",
+    "process !local_scripts/node-deployment/node_name.al",
     "process !local_scripts/node-deployment/policies/cluster_policy.al",
     "process !local_scripts/node-deployment/policies/node_policy.al",
     "run scheduler 1",

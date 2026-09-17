@@ -17,41 +17,37 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/node-deployment/policies/node_name.al
 
-:node-count:
+
+:blockchain-check:
 on error ignore
 
-# Use case 1: if cluster - check if primary
-# Use case 2: if cluster & policy_count - check if there are other non-primary
-# Use case 3: If cluster & no policy_id (ie not main) - check overall main
-# Use case 4: if not cluster or policy_count (ie all other cases) - check alone
+# blockchain sync
+run blockchain sync
+blockchain reload metadata
 
-if !cluster_id then policy_count = blockchain get !node_type where cluster=!cluster_id and main=true bring.count
-if !cluster_id and !policy_count then  policy_count = blockchain get !node_type where cluster=!cluster_id and main=false bring.count
-if !cluster_id and not !policy_count then policy_count = blockchain get !node_type where company=!company_name and main=true bring.count
-if not !cluster_id or not !policy_count then policy_count = blockchain get !node_type where company=!company_name bring.count
+# check if policy exists
+process !local_scripts/node-deployment/policies/validate_node_policy.al
 
+# extract policy ID, name and cluster ID
+if !is_policy then
+do policy_id = from !is_policy bring [*][id]
+do node_name = from !is_policy bring [*][name]
+if !node_type == operator and !is_policy then  cluster_id = from !is_policy bring [*][cluster]
 
-if !policy_count then
-do inc_policy_count = python !policy_count.int + 1
-do set policy_count = !inc_policy_count
+# add warning if the blockchain defined node name differs from the user defined ENV param
+if !node_name and $NODE_NAME and $NODE_NAME != !node_name then
+do echo "Warning: the pre-defined node name for this is not the same as the requested node name"
 
-if not !policy_count then policy_count = 1
+:define-params;
+if !cluster_id and !node_name then goto set-params
 
-if !cluster_id then goto node-name-operator-bkup
+if $NODE_NAME then node_name = $NODE_NAME
+else if not $NODE_NAME then node_name = !node_hostname + "-" + !node_company_name + "-" + !node_type + "-" + !rand_int
 
-:node-name:
+if $CLUSTER_NAME then cluster_name = $CLUSTER_NAME
+else if not !cluster_name and !node_name then  cluster_name = "cluster-" + !node_name
 
-node_name = !node_hostname + "-" + !node_company_name + "-" + !node_type + !policy_count
-goto set-node-name
-
-:node-name-operator-bkup:
-basename = blockchain get !node_type where cluster = !cluster_id and main = true bring.first [*][name]
-if not !basename then goto node-name
-node_name = !basename + "-bkup" + !policy_count
-
-goto set-node-name
-
-:set-node-name:
+:set-params:
 set node name !node_name
 
 :end-script:

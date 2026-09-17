@@ -44,8 +44,6 @@ node_hostname     = python !hostname.lower().replace(' ', '_').strip()
 if !company_name then node_company_name = python !company_name.lower().replace(' ', '_').replace('.', '_').strip()
 
 
-if $NODE_NAME then node_name = $NODE_NAME
-else if not $NODE_NAME then node_name = !node_hostname + "-" + !node_company_name + "-" + !node_type + "-" + !rand_int
 
 
 :general-params:
@@ -273,14 +271,9 @@ partition_column = insert_timestamp
 partition_interval = 14 days
 partition_keep = 3
 partition_sync = 1 day
+is_main = ""
 
 if $MEMBER and $MEMBER.int then member = $MEMBER
-if $IS_MAIN and ($IS_MAIN == true or $IS_MAIN == True or $IS_MAIN == TRUE) then set is_main = true
-else if $IS_MAIN and ($IS_MAIN == false or $IS_MAIN == False  or $IS_MAIN == FALSE) then set is_main = false
-
-if $CLUSTER_NAME then cluster_name = $CLUSTER_NAME
-else if not !cluster_name and !node_name then  cluster_name = "cluster-" + !node_name
-
 
 if $DISABLE_PARTITIONS == true or $DISABLE_PARTITIONS == True or $DISABLE_PARTITIONS == TRUE then set disable_partitions = true
 if $TABLE_NAME then table_name=$TABLE_NAME

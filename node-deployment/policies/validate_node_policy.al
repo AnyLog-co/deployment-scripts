@@ -13,10 +13,6 @@
 
 on error ignore
 
-if !node_name then
-do process !local_scripts/node-deployment/policies/validate_node_policy_node_name.al
-do goto end-script
-
 if !enable_dns == false and not !overlay_ip then goto generic-check
 if !enable_dns == false and !overlay_ip then goto overlay-check
 

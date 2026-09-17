@@ -22,7 +22,14 @@ blockchain reload metadata
 
 :check-policy:
 on error ignore
-cluster_id = blockchain get cluster where name=!cluster_name and company=!company_name bring.first [*][id] 
+cluster_id = blockchain get cluster where name=!cluster_name and company=!company_name bring.first [*][id]
+
+if !cluster_id then operator_count = blockchain get operator where cluster = !cluster_id
+
+if $IS_MAIN and ($IS_MAIN == true or $IS_MAIN == True or $IS_MAIN == TRUE) then set is_main = true
+else if $IS_MAIN and ($IS_MAIN == false or $IS_MAIN == False  or $IS_MAIN == FALSE) then set is_main = false
+else if !operator_count then set is_main = false
+
 if !cluster_id then goto end-script
 if not !cluster_id and !create_policy == true then goto declare-policy-error
 
