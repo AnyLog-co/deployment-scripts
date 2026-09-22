@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: df552e9 -->
+<!-- last-processed: feb3b9c -->
+
+<!-- os-dev: feb3b9c (2026-09-22) -->
+
+* **Ori Shadmon** (2026-09-22)
+  * Node deployment / Policies: simplified licnese process
 
 <!-- os-dev: df552e9 (2026-09-22) -->
 
@@ -152,7 +157,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: df552e9 -->
+<!-- last-processed: feb3b9c -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
