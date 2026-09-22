@@ -23,6 +23,7 @@ if !is_edgelake == true then goto end-script
 
 :check-policy:
 
+
 activation_key =  blockchain get license bring.last [license][activation_key] "{'company':'"  [license][company] "','expiration':'"  [license][expiration] "','type':'" [license][type] "'}"
 if !activation_key then goto set-license
 if not !activation_key and not $LICENSE_KEY then goto missing-license-key
