@@ -79,16 +79,21 @@ process !local_scripts/node-deployment/set_params.al
 on error ignore
 process !local_scripts/node-deployment/policies/config_policy.al
 
-:end-script:
+:finish-deployment:
+if !node_type != generic then
+do run blockchain sync
+do blockchain reload metadata
 
+get processes
+
+if !enable_mqtt == true then get msg client
+
+:end-script:
 on error ignore
 if !debug_mode == true then
 do set exception traceback off
 do trace level = 0
 
-
-get processes
-if !enable_mqtt == true then get msg client
 end script
 
 :set-debug-error:
