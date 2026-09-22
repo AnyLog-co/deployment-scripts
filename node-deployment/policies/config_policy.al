@@ -43,6 +43,8 @@ set policy new_policy [config][name] = !config_name
 set policy new_policy [config][company] = !company_name
 set policy new_policy [config][node_type] = !node_type
 set policy new_policy [config][version] = !config_version
+if not !config_version then
+do set policy new_policy [config][version] = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
 
 :network-configs:
 process !local_scripts/node-deployment/policies/config_policy_networking.al
