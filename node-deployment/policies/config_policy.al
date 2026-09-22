@@ -84,9 +84,10 @@ if !node_type == master or !node_type == query then
 
     "if !node_monitoring == true then process  !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
 
-    "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "process !local_scripts/node-deployment/policies/license_policy.al"
+    "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al"
 ]>
+#     "process !local_scripts/node-deployment/policies/license_policy.al"
+
 do goto publish-policy
 
 :publisher-scripts:
