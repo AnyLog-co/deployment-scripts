@@ -22,8 +22,8 @@
 on error ignore
 
 # blockchain sync
-run blockchain sync
-blockchain reload metadata
+# run blockchain sync
+# blockchain reload metadata
 
 # check if policy exists
 process !local_scripts/node-deployment/policies/validate_node_policy.al
