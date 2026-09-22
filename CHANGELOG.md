@@ -6,7 +6,13 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 514186b -->
+<!-- last-processed: 19d58f2 -->
+
+<!-- os-dev: 19d58f2 (2026-09-22) -->
+
+* **Ori Shadmon** (2026-09-17 – 2026-09-22)
+  * Node deployment: paths fixed
+  * Node deployment / Policies: paths fixed; working zero-touch naming
 
 <!-- os-dev: 514186b (2026-09-17) -->
 
@@ -141,7 +147,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 514186b -->
+<!-- last-processed: 19d58f2 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
