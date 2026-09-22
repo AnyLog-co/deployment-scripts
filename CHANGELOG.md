@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: feb3b9c -->
+<!-- last-processed: e0631aa -->
+
+<!-- os-dev: e0631aa (2026-09-22) -->
+
+* **Ori Shadmon** (2026-09-22)
+  * Node deployment: rm set
 
 <!-- os-dev: feb3b9c (2026-09-22) -->
 
@@ -157,7 +162,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: feb3b9c -->
+<!-- last-processed: e0631aa -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
