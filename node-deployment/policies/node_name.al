@@ -17,9 +17,12 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/node-deployment/policies/node_name.al
 
+on error ignore
+
+:set-debug:
+if !enable_debug == true then set debug on
 
 :blockchain-check:
-on error ignore
 
 # blockchain sync
 # run blockchain sync

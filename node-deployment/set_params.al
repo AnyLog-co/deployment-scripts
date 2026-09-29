@@ -16,6 +16,9 @@
 # process !local_scripts/node-deployment//set_params.al
 on error ignore
 
+:set-debug:
+if !enable_debug == true then set debug on
+
 if $DISABLE_CLI == true or  $DISABLE_CLI == True or $DISABLE_CLI == TRUE then set cli off
 rand_int = random int
 

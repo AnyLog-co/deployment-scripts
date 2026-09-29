@@ -1,3 +1,6 @@
+:set-debug:
+if !enable_debug == true then set debug on
+
 set create_policy = false
 
 :check-policy:

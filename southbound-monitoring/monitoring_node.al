@@ -4,6 +4,9 @@
 # process !local_scripts/southbound-monitoring/monitoring_node.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
 
 set create_policy = false
 

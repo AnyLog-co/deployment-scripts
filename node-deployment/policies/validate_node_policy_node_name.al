@@ -14,6 +14,10 @@
 # set debug on
 on error ignore
 
+:set-debug:
+if !enable_debug == true then set debug on
+
+:dns-select:
 
 if !enable_dns == false and not !overlay_ip then goto generic-check
 if !enable_dns == false and !overlay_ip then goto overlay-check

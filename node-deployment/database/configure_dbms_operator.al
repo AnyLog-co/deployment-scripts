@@ -4,6 +4,9 @@
 # process !local_scripts/node-deployment/database/configure_dbms_operator.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
 :connect-dbms:
 if not !default_dbms then goto connect-dbms-error
 db_name = !default_dbms

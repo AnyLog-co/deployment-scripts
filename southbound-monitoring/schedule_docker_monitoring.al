@@ -6,6 +6,9 @@
 
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
 
 # due to a missing destination logic if node_type  != publisher or operator then process cannot be executed
 if !node_type != publisher and !node_type != operator then

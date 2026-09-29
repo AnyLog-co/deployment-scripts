@@ -8,6 +8,9 @@
 # process !local_scripts/southbound-monitoring/policy_syslog_monitoring.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
 
 if !node_type != publisher and !node_type != operator then goto end-script
 

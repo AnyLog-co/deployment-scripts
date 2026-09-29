@@ -19,6 +19,10 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # process !local_scripts/node-deployment/policies/license_policy.al
 
+:set-debug:
+if !enable_debug == true then set debug on
+
+:is-edgelake
 if !is_edgelake == true then goto end-script
 
 :check-policy:

@@ -5,7 +5,11 @@
 
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
 if section == broker then goto broker-params
+
 :tcp-params:
 # public/advertised ip
 

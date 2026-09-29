@@ -15,6 +15,9 @@
 # process !local_scripts/node-deployment/policies/cluster_policy.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
 set create_policy = false
 
 run blockchain sync

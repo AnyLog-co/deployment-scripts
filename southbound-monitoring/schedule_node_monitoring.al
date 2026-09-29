@@ -34,6 +34,9 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/southbound-monitoring/schedule_node_monitoring.al
 
+:set-debug:
+if !enable_debug == true then set debug on
+
 :set-params:
 schedule_id = node-monitoring
 set create_policy = false

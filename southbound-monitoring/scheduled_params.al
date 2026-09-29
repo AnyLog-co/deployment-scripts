@@ -9,6 +9,9 @@
 #------------------------------------------------------------------------------------#
 # process !local_scripts/southbound-monitoring/scheduled_params.al
 
+:set-debug:
+if !enable_debug == true then set debug on
+
 schedule_time = 300 seconds
 if !is_scheduled_dest == true then goto end-script
 

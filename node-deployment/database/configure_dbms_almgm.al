@@ -4,6 +4,9 @@
 # process !local_scripts/node-deployment/database/configure_dbms_almgm.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
 :connect-dbms:
 db_name = almgm
 if !almgm_db and !db_type != !almgm_db then

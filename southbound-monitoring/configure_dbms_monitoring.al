@@ -7,6 +7,9 @@
 # process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
 :set-params;
 if !monitoring_db_configured == true then goto end-script
 

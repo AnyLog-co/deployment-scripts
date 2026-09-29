@@ -10,6 +10,10 @@
 # process !local_scripts/authentication/gen_keys.al
 
 on error ignore
+
+:set-debug:
+if !enable_debug == true then set debug on
+
 :set-params:
 node_password = 123
 if $NODE_PASSWORD then node_password = $NODE_PASSWORD

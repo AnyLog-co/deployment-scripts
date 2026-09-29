@@ -25,6 +25,9 @@
 # process !local_scripts/node-deployment/policies/config_policy.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
 set create_config = false
 
 
