@@ -73,7 +73,7 @@ config_name = !node_type.name + - + !company_name.name + -configs
 if !node_type == generic then
 do anylog_server_port = 32548
 do anylog_rest_port = 32549
-do anylog_broker_port = ""
+do anylog_broker_port = 32550
 
 else if !node_type == master then
 do anylog_server_port = 32048
