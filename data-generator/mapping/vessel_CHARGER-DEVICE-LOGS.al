@@ -17,7 +17,7 @@ else if not !is_policy and !create_policy == true then goto declare-policy-error
 <new_policy = {
     "mapping" : {
         "id" : "CHARGER-DEVICE-LOGS",
-        "dbms" : !default_dbms,
+        "dbms" : !msg_dbms,
         "table" : "charger_device_logs",
         "readings" : "",
         "schema" : {

@@ -4,6 +4,9 @@
 # process !local_scripts/node-deployment/database/configure_dbms_almgm.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
 :connect-dbms:
 set db_name = blockchain
 process !local_scripts/node-deployment/database/connect_dbms_sql.al

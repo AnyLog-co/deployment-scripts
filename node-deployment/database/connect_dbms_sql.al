@@ -6,12 +6,18 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # process !local_scripts/node-deployment/database/connect_dbms_sql.al
 
+:set-debug:
+if !enable_debug == true then set debug on
+
 :check-db:
 err_code = 0
 
 if not !db_name then
 do err_code = 1
 do goto end-script
+
+list_dbs = get databases where format=json
+if !list_dbs contains !db_name then goto end-script
 
 :connect:
 on error goto connect-error

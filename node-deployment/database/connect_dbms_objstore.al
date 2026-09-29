@@ -7,6 +7,9 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/node-deployment/database/connect_dbms_objstore.al
 
+:set-debug:
+if !enable_debug == true then set debug on
+
 :declare-provider:
 on error goto declare-provider-error
 

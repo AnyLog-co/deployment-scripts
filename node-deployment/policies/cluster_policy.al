@@ -12,26 +12,35 @@
 # }}
 # ---- Sample Policy ---
 #-----------------------------------------------------------------------------------------------------------------------
-# process !local_scripts/node-deployment/policies/declare_cluster_policy.al
-on error ignore
+# process !local_scripts/node-deployment/policies/cluster_policy.al
 
+on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
 
 set create_policy = false
 
-:check-policy:
+run blockchain sync
+blockchain reload metadata
 
+:check-policy:
 on error ignore
-cluster_id = blockchain get cluster where name=!cluster_name and company=!company_name bring.first [*][id] 
+if !cluster_name and not !cluster_id then cluster_id = blockchain get cluster where name=!cluster_name and company=!company_name bring.first [*][id]
+
+if !cluster_id then operator_count = blockchain get operator where cluster = !cluster_id
+
+if $IS_MAIN and ($IS_MAIN == true or $IS_MAIN == True or $IS_MAIN == TRUE) then set is_main = true
+else if $IS_MAIN and ($IS_MAIN == false or $IS_MAIN == False  or $IS_MAIN == FALSE) then set is_main = false
+else if !operator_count then set is_main = false
+
 if !cluster_id then goto end-script
 if not !cluster_id and !create_policy == true then goto declare-policy-error
 
 :prep-policy:
-
 on error ignore
 new_policy = create policy cluster with defaults where company=!company_name and name=!cluster_name
 
 :publish-policy:
-
 set is_node_policy = true
 process !local_scripts/node-deployment/policies/publish_policy.al
 if !error_code == 1 then goto sign-policy-error

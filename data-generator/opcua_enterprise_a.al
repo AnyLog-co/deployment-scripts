@@ -18,7 +18,7 @@ if !is_file == true then goto process-tags
 <get opcua struct where
     url = opc.tcp://172.233.108.122:4841/freeopcua/data-generator and
     node = "ns=2;i=1" and
-    dbms = !default_dbms and
+    dbms = !msg_dbms and
     format = policy and
     schema = true and
     class = variable and
@@ -41,7 +41,7 @@ if !is_file == true then goto process-client
 <get opcua struct where
     url = opc.tcp://172.233.108.122:4841/freeopcua/data-generator and
     node = "ns=2;i=1" and
-    dbms = !default_dbms and
+    dbms = !msg_dbms and
     frequency = 5 and
     format = run_client  and
     class = variable and

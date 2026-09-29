@@ -8,16 +8,23 @@
 # process !local_scripts/southbound-monitoring/policy_syslog_monitoring.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
+
+if !node_type != publisher and !node_type != operator then goto end-script
+
 
 :preset-params:
-if !overlay_ip then set syslog_ip = !overlay_ip
-else set syslog_ip = !ip
+syslog_ip = *
+#if !overlay_ip then set syslog_ip = !overlay_ip
+#else set syslog_ip = !ip
 set syslog_name = !node_name
 set create_policy = false
 config_id = syslog-monitoring
 
 :check-policy:
-is_policy = blockchain get config where id=!config_id
+is_policy = blockchain get schedule where id=!config_id
 
 # just created the policy + exists
 if !is_policy then goto config-policy
@@ -27,13 +34,16 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
 
 :create-policy
 <new_policy = {
-    "config": {
+    "schedule": {
         "id": !config_id,
         "name": "Syslog Monitoring",
         "script": [
-            "if !node_type == operator then process !local_scripts/southbound-monitoring/configure_message_broker.al",
-            "if !node_type == operator then process !local_scripts/southbound-monitoring/create_syslog_monitoring_table.al",
-            "set msg rule !syslog_name if ip = !syslog_ip then dbms = monitoring and table = syslog and extend = ip and syslog = true"
+            "process !local_scripts/southbound-monitoring/scheduled_params.al",
+            "process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
+            "if !node_type == operator then process !local_scripts/southbound-monitoring/table_syslog_monitoring.al",
+
+            "set msg rule !syslog_name if ip = * then dbms = monitoring and table = syslog and extend = ip and syslog = true",
+            "get msg rules"
         ]
     }
 }>

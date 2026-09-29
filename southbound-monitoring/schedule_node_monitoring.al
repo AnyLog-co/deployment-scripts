@@ -8,6 +8,10 @@
 #   4. Send to query node
 #   5. Send to Operator node(s)
 #
+# :key params:
+#   - `store_monitoring_dest`: operator IP:port to send data from master / query / publisher    to be stored remotely using `stream`
+#   - `view_monitoring_dest`:  query    IP:port to send data from master / operator / publisher to be shared in remotely using `monitor operators`
+#
 # :Sample Data:
 # {
 #    'node name' : 'anylog-query@172.232.20.156:32348',
@@ -28,7 +32,10 @@
 #    'Network Error' : 0
 # }
 #----------------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/southbound-monitoring/policy_node_monitoring.al
+# process !local_scripts/southbound-monitoring/schedule_node_monitoring.al
+
+:set-debug:
+if !enable_debug == true then set debug on
 
 :set-params:
 schedule_id = node-monitoring
@@ -43,14 +50,17 @@ if !is_policy then goto config-policy
 # failure show created policy
 if not !is_policy and !create_policy == true then goto declare-policy-error
 
+# "if not !store_monitoring_dest then schedule name=store_monitoring_dest and time=300 seconds and task if not !store_monitoring_dest then store_monitoring_dest = blockchain get monitoring-node where type=operator bring.last [*][ip] : [*][port]",
+
 :create-policy
 <new_policy = {
     "schedule": {
         "id": !schedule_id,
         "name": "Node Monitoring Schedule",
         "script": [
-            "if !node_type == operator then process !local_scripts/southbound-monitoring/create_node_monitoring_table.al",
-            "process !local_scripts/southbound-monitoring/node_monitoring_set_params.al",
+            "process !local_scripts/southbound-monitoring/scheduled_params.al",
+            "process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
+            "if !node_type == operator then process !local_scripts/southbound-monitoring/table_node_monitoring.al",
 
             "schedule name = get_stats and time=!monitoring_frequency and task node_insight = get stats where service = operator and topic = summary  and format = json",
             "schedule name = get_timestamp and time=!monitoring_frequency and task node_insight[timestamp] = get datetime local now()",
