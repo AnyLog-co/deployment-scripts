@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 013ab46 -->
+<!-- last-processed: 4971215 -->
+
+<!-- os-dev: 4971215 (2026-09-29) -->
+
+* **Ori Shadmon** (2026-09-29)
+  * Node deployment: broker configs
 
 <!-- os-dev: 013ab46 (2026-09-22) -->
 
@@ -178,7 +183,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 013ab46 -->
+<!-- last-processed: 4971215 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
