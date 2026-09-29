@@ -35,7 +35,8 @@
 # process !local_scripts/southbound-monitoring/table_docker_monitoring.al
 on error ignore
 
-set debug interactive
+:set-debug:
+if !enable_debug == true then set debug on
 
 set create_policy = false
 

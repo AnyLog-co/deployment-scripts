@@ -13,10 +13,10 @@
 
 on error ignore
 
-if !node_name then
-do process !local_scripts/node-deployment/policies/validate_node_policy_node_name.al
-do goto end-script
+:set-debug:
+if !enable_debug == true then set debug on
 
+:process-select:
 if !enable_dns == false and not !overlay_ip then goto generic-check
 if !enable_dns == false and !overlay_ip then goto overlay-check
 
@@ -67,7 +67,11 @@ else goto network-config-error
 
 :check-operator:
 on error ignore
-if !is_policy then node_name = from !is_policy bring [*][name]
+if !is_policy then
+do node_name = from !is_policy bring [*][name]
+do set node name !node_name
+
+if !is_policy and not !node_conn then node_conn = from !is_policy bring.ip_port
 
 if !node_type == operator and !is_policy then
 do operator_id = from !is_policy bring [*][id]

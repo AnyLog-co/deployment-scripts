@@ -5,7 +5,342 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 035d310 -->
+<<<<<<< HEAD
+<!-- last-processed: 013ab46 -->
+
+<!-- os-dev: 013ab46 (2026-09-22) -->
+
+* **Ori Shadmon** (2026-09-22)
+  * Node deployment: wait for blockchian sync
+
+<!-- os-dev: 21f3577 (2026-09-22) -->
+
+* **Ori Shadmon** (2026-09-22)
+  * Node deployment: blockchain sync at the end
+
+<!-- os-dev: 2e3ac83 (2026-09-22) -->
+
+* **Ori Shadmon** (2026-09-22)
+  * Node deployment: moved blockchain sync
+  * Node deployment / Policies: moved blockchain sync
+
+<!-- os-dev: e0631aa (2026-09-22) -->
+
+* **Ori Shadmon** (2026-09-22)
+  * Node deployment: rm set
+
+<!-- os-dev: feb3b9c (2026-09-22) -->
+
+* **Ori Shadmon** (2026-09-22)
+  * Node deployment / Policies: simplified licnese process
+
+<!-- os-dev: df552e9 (2026-09-22) -->
+
+* **Ori Shadmon** (2026-09-22)
+  * Node deployment / Policies: config policy
+
+<!-- os-dev: 19d58f2 (2026-09-22) -->
+
+* **Ori Shadmon** (2026-09-17 – 2026-09-22)
+  * Node deployment: paths fixed
+  * Node deployment / Policies: paths fixed; working zero-touch naming
+
+<!-- os-dev: 514186b (2026-09-17) -->
+
+* **Ori Shadmon** (2026-09-17)
+  * General: generic node naming
+  * Node deployment: generic node naming
+  * Node deployment / Policies: generic node naming
+
+<!-- os-dev: 0d4b9e5 (2026-09-17) -->
+
+* **Ori Shadmon** (2026-09-16)
+  * General: improve naming logic for operator + automation for is primary
+  * Node deployment: improve naming logic for operator + automation for is primary
+  * Node deployment / Policies: improve naming logic for operator + automation for is primary; node_conn
+  * Southbound / Monitoring: if node type != publisher / operator and not generic node monitoring skip
+
+<!-- os-dev: cf347f0 (2026-09-12) -->
+
+* **Ori Shadmon** (2026-09-11)
+  * Node deployment / Policies: fix monitoring issue
+  * Southbound / Monitoring: fix monitoring issue
+
+<!-- os-dev: ea28e65 (2026-09-12) -->
+
+* **Ori Shadmon** (2026-09-11)
+  * Southbound / Monitoring: scheduler fix; monitoring
+
+<!-- os-dev: ade232a (2026-09-12) -->
+
+* **Ori Shadmon** (2026-09-11)
+  * Southbound / Monitoring: if / else bug
+
+<!-- os-dev: e4cb6c5 (2026-09-11) -->
+
+* **Ori Shadmon** (2026-09-11)
+  * Node deployment: set params
+  * Node deployment / Policies: set params
+  * Southbound / Monitoring: set params
+
+<!-- os-dev: 3770962 (2026-09-11) -->
+
+* **Ori Shadmon** (2026-09-10)
+  * Node deployment: config monitoring
+  * Southbound / Monitoring: config monitoring
+
+<!-- os-dev: 40a77e4 (2026-09-11) -->
+
+* **Ori Shadmon** (2026-09-10)
+  * Node deployment: monitoring; set params
+  * Southbound / Monitoring: monitoring
+
+<!-- os-dev: 6f33692 (2026-09-04) -->
+
+* **Ori Shadmon** (2026-09-04)
+  * Node deployment / Policies: wait 30
+
+<!-- os-dev: 3b6c1d0 (2026-09-04) -->
+
+* **Ori Shadmon** (2026-09-04)
+  * Node deployment: blockchain sync / reload
+
+<!-- os-dev: 1a25743 (2026-09-04) -->
+
+* **Ori Shadmon** (2026-09-04)
+  * Node deployment: blockchain sync / reload
+
+<!-- os-dev: e8e9378 (2026-09-04) -->
+
+* **Ori Shadmon** (2026-09-04)
+  * Node deployment / Policies: debug mode
+
+<!-- os-dev: 3ae272a (2026-09-02) -->
+
+* **Ori Shadmon** (2026-09-02)
+  * Southbound / Monitoring: duplicate command
+
+<!-- os-dev: 25cbd10 (2026-09-02) -->
+
+* **Ori Shadmon** (2026-09-02)
+  * General: version
+  * Node deployment: monitoring nodes logic; almgm db type & disable_ha option
+  * Node deployment / Database: almgm db type & disable_ha option
+  * Node deployment / Policies: almgm db type & disable_ha option
+  * Southbound / Monitoring: monitoring nodes logic
+
+<!-- os-dev: 0954a1f (2026-08-31) -->
+
+* **Ori Shadmon** (2026-08-30)
+  * Southbound / Monitoring: replace host -> ip
+
+<!-- os-dev: 7f48021 (2026-08-29) -->
+
+* **Ori Shadmon** (2026-08-27 – 2026-08-29)
+  * Customers: revert to only have disable partitions; dados script
+  * Node deployment: disable paritions
+  * Node deployment / Database: disable paritions
+
+<!-- os-dev: 5c69010 (2026-08-27) -->
+
+* **Ori Shadmon** (2026-08-27)
+  * Customers: dados script
+
+<!-- os-dev: a7ef9f5 (2026-08-27) -->
+
+* **Ori Shadmon** (2026-08-27)
+  * Customers: dados script
+
+<!-- os-dev: c0f0cfd (2026-08-26) -->
+
+* **Ori Shadmon** (2026-08-25)
+  * Customers: dados script
+
+<!-- os-dev: 2babf06 (2026-08-25) -->
+
+* **Ori Shadmon** (2026-08-24)
+  * General: supprot use for pre-defined ID code
+
+<!-- os-dev: 65cf644 (2026-08-25) -->
+
+* **Ori Shadmon** (2026-08-24)
+  * General: bug
+
+<!-- os-dev: 168bd8f (2026-08-25) -->
+
+* **Ori Shadmon** (2026-08-24)
+  * General: bug
+
+<!-- os-dev: 3851ee4 (2026-08-24) -->
+
+* **Ori Shadmon** (2026-08-24)
+  * General: bug; changelog
+
+<!-- os-dev: bd7b642 (2026-08-24) -->
+=======
+<!-- last-processed: 013ab46 -->
+
+<!-- os-dev: e728a5a (2026-08-24) -->
+>>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
+
+* **Ori Shadmon** (2026-08-24)
+  * General: power plant dynamic
+
+<!-- os-dev: d9bd464 (2026-08-24) -->
+
+* **Ori Shadmon** (2026-08-24)
+  * General: test dynamic
+
+<!-- os-dev: 7732907 (2026-08-20) -->
+
+* **Ori Shadmon** (2026-08-20)
+  * General: dynamic testing
+
+<!-- os-dev: 3561220 (2026-08-20) -->
+
+* **Ori Shadmon** (2026-08-20)
+  * General: dynamic testing
+  * Southbound / Industrial: dynamic testing
+
+<!-- os-dev: 92beae4 (2026-08-20) -->
+
+* **Ori Shadmon** (2026-08-20)
+  * Southbound / Industrial: dynamic options
+
+<!-- os-dev: 337c00b (2026-08-20) -->
+
+* **Ori Shadmon** (2026-08-20)
+  * Southbound / Industrial: sparkplug examples using mapping
+
+<!-- os-dev: a913cc5 (2026-08-20) -->
+
+* **Ori Shadmon** (2026-08-20)
+  * Southbound / Industrial: sparkplug examples using mapping
+
+<!-- os-dev: c5d61fa (2026-08-20) -->
+
+* **Ori Shadmon** (2026-08-20)
+  * Southbound / Industrial: sparkplug
+
+<!-- os-dev: 4e13d25 (2026-08-20) -->
+
+* **Ori Shadmon** (2026-08-20)
+  * General: msg if no data found
+
+<!-- os-dev: 2f45d47 (2026-08-20) -->
+
+* **Ori Shadmon** (2026-08-20)
+  * General: integrated relative -> actual tags
+
+<!-- os-dev: 7f0943b (2026-08-20) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * General: water plant processing
+
+<!-- os-dev: 580a920 (2026-08-20) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * General: water plant processing
+  * Southbound / Industrial: sparkplug bugs
+
+<!-- os-dev: 6aebfa2 (2026-08-19) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * Southbound / Industrial: sparkplug
+
+<!-- os-dev: 32666bd (2026-08-19) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * General: power plant / mqtt bug
+
+<!-- os-dev: 773f8a8 (2026-08-19) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * General: power plant / mqtt bug
+
+<!-- os-dev: 199f1fc (2026-08-19) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * General: power plant / mqtt bug
+  * Southbound / Industrial: power plant / mqtt bug
+
+<!-- os-dev: 1b6bc36 (2026-08-19) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * Southbound / Industrial: in progress mapping for sparkplug
+
+<!-- os-dev: c133e21 (2026-08-19) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * Southbound / Industrial: for dynamic in correct location of master_node param
+
+<!-- os-dev: 3017e7b (2026-08-19) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * Southbound / Industrial: dynamic=true
+
+<!-- os-dev: ef13dc7 (2026-08-19) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * Node deployment: comment on sparkplug + license key support
+  * Node deployment / Policies: comment on sparkplug + license key support
+  * Southbound / Industrial: comment on sparkplug + license key support
+
+<!-- os-dev: 285ec27 (2026-08-19) -->
+
+* **Ori Shadmon** (2026-08-19)
+  * Southbound / Industrial: sparkplug code
+
+<!-- os-dev: 01707e9 (2026-07-14) -->
+
+* **Ori Shadmon** (2026-07-14)
+  * Southbound / Industrial: dnp3 example
+
+<!-- os-dev: e36c5d3 (2026-07-11) -->
+
+* **Ori Shadmon** (2026-07-10)
+  * Data generator: vessel data
+  * Data generator / Mapping: vessel data
+  * Node deployment: smaple script for row count / node
+  * Sample scripts: smaple script for row count / node
+
+<!-- os-dev: e5d7684 (2026-07-08) -->
+
+* **Ori Shadmon** (2026-07-07)
+  * Node deployment: configs - in progress
+
+<!-- os-dev: fc8e1f5 (2026-07-08) -->
+
+* **Ori Shadmon** (2026-07-07)
+  * Node deployment: configs - in progress
+
+<!-- os-dev: 13fe46c (2026-07-07) -->
+
+* **Ori Shadmon** (2026-07-06)
+  * General: wp/wwp data notifications
+
+<!-- os-dev: 12deaa3 (2026-07-07) -->
+
+* **Ori Shadmon** (2026-07-06)
+  * General: working notificiation code for all tables in the network
+  * Sample scripts: working notificiation code for all tables in the network
+
+<!-- os-dev: 82e2673 (2026-07-06) -->
+
+* **Ori Shadmon** (2026-07-06)
+  * Data generator: simplify notifications
+  * General: simplify notifications
+  * Sample scripts: simplify notifications
+
+<!-- os-dev: 5560b56 (2026-07-02) -->
+
+* **Ori Shadmon** (2026-07-02)
+  * Data generator: proveit mqtt calls
+
+<!-- os-dev: 0477b9a (2026-07-02) -->
+
+* **Ori Shadmon** (2026-07-01)
+  * Data generator: get msg client moved to main
 
 <!-- os-dev: 035d310 (2026-07-02) -->
 

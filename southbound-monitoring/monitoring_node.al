@@ -4,6 +4,9 @@
 # process !local_scripts/southbound-monitoring/monitoring_node.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
 
 set create_policy = false
 
@@ -20,15 +23,15 @@ set policy new_policy [monitoring-node][type] = !node_type
 
 :ip-config:
 if $DNS_DOMAIN or $DNS then
-do set policy new_policy [monitoring-node][host] = !dns
+do set policy new_policy [monitoring-node][ip] = !dns
 do goto port-config
 else if !tcp_bind == true and !overlay_ip then
-do set policy new_policy [monitoring-node][host] = !overlay_ip
+do set policy new_policy [monitoring-node][ip] = !overlay_ip
 do goto port-config
 else if !tcp_bind == true then
-do set policy new_policy [monitoring-node][host] = !ip
+do set policy new_policy [monitoring-node][ip] = !ip
 do goto port-config
-else set policy new_policy [monitoring-node][host] = !external_ip
+else set policy new_policy [monitoring-node][ip] = !external_ip
 
 :port-config:
 set policy new_policy [monitoring-node][port] = !anylog_server_port

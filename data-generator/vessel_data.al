@@ -19,6 +19,7 @@
 #   To enable aggregation example against batter_pack_logs - use: process !local_scripts/data-generator/vessel_aggregation_demo.al
 #--------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/data-generator/vessel_data.al
+# !local_scripts\\data-generator\\vessel_data.al
 
 on error ignore
 

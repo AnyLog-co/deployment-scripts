@@ -11,8 +11,13 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # process !local_scripts/node-deployment/policies/validate_node_policy_node_name.al
 
+# set debug on
 on error ignore
 
+:set-debug:
+if !enable_debug == true then set debug on
+
+:dns-select:
 
 if !enable_dns == false and not !overlay_ip then goto generic-check
 if !enable_dns == false and !overlay_ip then goto overlay-check
@@ -78,6 +83,7 @@ do cluster_id = from !is_policy bring [*][cluster]
 set node name !node_name
 
 :end-script:
+set debug off
 end script
 
 :terminate-scripts:

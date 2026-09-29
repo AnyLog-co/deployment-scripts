@@ -15,26 +15,24 @@
 # process !local_scripts/node-deployment/policies/cluster_policy.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
 set create_policy = false
 
 run blockchain sync
 blockchain reload metadata
 
-:set-cluster-name:
-if !cluster_name then goto check-policy
-cluster_num = blockchain get cluster where company = !company_name bring.count
-# cluster_num = blockchain get root policies include cluster where company=!company_name bring.count
-if not !cluster_num then cluster_num = 1
-else if !cluster_num then
-do tmp_cluster_num = python !cluster_num.int + 1
-do set cluster_num = !tmp_cluster_num
-cluster_name = !node_company_name + "-cluster" + !cluster_num
-
-goto prep-policy
-
 :check-policy:
 on error ignore
-cluster_id = blockchain get cluster where name=!cluster_name and company=!company_name bring.first [*][id] 
+if !cluster_name and not !cluster_id then cluster_id = blockchain get cluster where name=!cluster_name and company=!company_name bring.first [*][id]
+
+if !cluster_id then operator_count = blockchain get operator where cluster = !cluster_id
+
+if $IS_MAIN and ($IS_MAIN == true or $IS_MAIN == True or $IS_MAIN == TRUE) then set is_main = true
+else if $IS_MAIN and ($IS_MAIN == false or $IS_MAIN == False  or $IS_MAIN == FALSE) then set is_main = false
+else if !operator_count then set is_main = false
+
 if !cluster_id then goto end-script
 if not !cluster_id and !create_policy == true then goto declare-policy-error
 

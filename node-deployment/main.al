@@ -13,25 +13,10 @@
 # python3.11 AnyLog-Network/anylog_enterprise/anylog.py process $ANYLOG_PATH/deployment-scripts/node-deployment/main.al
 
 :set-debug:
-on error call set-debug-error
-if $ENABLE_TRACEBACK == true or $ENABLE_TRACEBACK == True or $ENABLE_TRACEBACK == TRUE then
-do set exception traceback on
-do set debug_mode = true
+set enable_debug = false
+if $SCRIPT_DEBUG == true or $SCRIPT_DEBUG == True or $SCRIPT_DEBUG == TRUE then set enable_debug = true
 
-# replace with with `if $TRACE_LEVEL then trace level = $TRACE_LEVEL` but not currently supported
-if $TRACE_LEVEL == 1 then
-do trace level = 1
-do set debug_mode = true
-else if $TRACE_LEVEL == 2 then
-do trace level = 1
-do set debug_mode = true
-else if $TRACE_LEVEL == 3 then
-do trace level = 1
-do set debug_mode = true
-
-
-# if $TRACE_LEVEL then trace level = $TRACE_LEVEL
-# if $TRACE_LEVEL and !debug_mode == false then do set debug_mode = true
+if !enable_debug == true then set debug on
 
 :disable-auth:
 set echo queue on
@@ -72,23 +57,28 @@ do goto terminate-scripts
 create work directories
 
 :set-params:
-process !local_scripts/node-deployment/authentication/gen_keys.al
+if !is_edgelake == false then  process !local_scripts/node-deployment/authentication/gen_keys.al
 process !local_scripts/node-deployment/set_params.al
 
 :set-configs:
 on error ignore
 process !local_scripts/node-deployment/policies/config_policy.al
 
-:end-script:
+:finish-deployment:
+if !node_type != generic then
+do run blockchain sync
+do blockchain reload metadata
 
+get processes
+
+if !enable_mqtt == true then get msg client
+
+:end-script:
 on error ignore
 if !debug_mode == true then
 do set exception traceback off
 do trace level = 0
 
-
-get processes
-if !enable_mqtt == true then get msg client
 end script
 
 :set-debug-error:
