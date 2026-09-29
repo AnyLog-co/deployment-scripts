@@ -6,7 +6,15 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 4971215 -->
+<!-- last-processed: 8b6f6fa -->
+
+<!-- os-dev: 8b6f6fa (2026-09-29) -->
+
+* **Ori Shadmon** (2026-09-29)
+  * Node deployment: integration into SCRIPT_DEBUG - wheere if enable will do set debug on on each file
+  * Node deployment / Database: integration into SCRIPT_DEBUG - wheere if enable will do set debug on on each file
+  * Node deployment / Policies: integration into SCRIPT_DEBUG - wheere if enable will do set debug on on each file
+  * Southbound / Monitoring: integration into SCRIPT_DEBUG - wheere if enable will do set debug on on each file
 
 <!-- os-dev: 4971215 (2026-09-29) -->
 
@@ -183,7 +191,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 4971215 -->
+<!-- last-processed: 8b6f6fa -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
