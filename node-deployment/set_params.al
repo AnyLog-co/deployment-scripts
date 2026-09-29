@@ -16,7 +16,11 @@
 # process !local_scripts/node-deployment//set_params.al
 on error ignore
 
+:set-debug:
+if !enable_debug == true then set debug on
+
 if $DISABLE_CLI == true or  $DISABLE_CLI == True or $DISABLE_CLI == TRUE then set cli off
+rand_int = random int
 
 :required-params:
 hostname = get hostname
@@ -24,34 +28,26 @@ ledger_conn = 127.0.0.1:32048
 
 set is_hidden =false
 set master_configs = false
+company_name = Acme
 
 if not $NODE_TYPE then goto missing-node-type
 else if $NODE_TYPE == master-operator  then node_type = operator
 else if $NODE_TYPE == master-publisher then node_type = publisher
 else set node_type = $NODE_TYPE
 
-
-
 if $NODE_TYPE == master-operator or $NODE_TYPE == master-publisher or $NODE_TYPE == master then set master_configs = true
 if !node_type != operator and $IS_HIDDEN == true or $IS_HIDDEN == True or $IS_HIDDEN == TRUE then is_hidden = true
 
-if $NODE_NAME then
-do node_name = $NODE_NAME
-do set node name !node_name
-
-if $LICENSE_KEY then license_key = $LICENSE_KEY
-
-# if user specifies company name the use that
-# if there's no company, but there's a license then use the company in the license
-# if there's neither than the default is Acme
-
-company_name = Acme
+if not $LICENSE_KEY then goto missing-license-key
 if $COMPANY_NAME then set company_name = $COMPANY_NAME
 else if !license_key then company_name = from !license_key[256:] bring [company]
 
 # Company + hostname used in name definition if no node / cluster name provided
-if !company_name then node_company_name = python !company_name.lower().replace(' ', '_').replace('.', '_').strip()
 node_hostname     = python !hostname.lower().replace(' ', '_').strip()
+if !company_name then node_company_name = python !company_name.lower().replace(' ', '_').replace('.', '_').strip()
+
+
+
 
 :general-params:
 loc_info = rest get where url = https://ipinfo.io/json
@@ -136,7 +132,7 @@ if $REST_TIMEOUT then rest_timeout = $REST_TIMEOUT
 if !rest_timeout.int < 0 then rest_timeout = 0 # continuous
 
 if $BROKER_BIND == true or $BROKER_BIND == True or $BROKER_BIND == TRUE then broker_bind = true
-if !broker_threads.int < 1 then broker_threads = 1
+if $BROKER_THREADS and $BROKER_THREADS.int >= 1  then broker_threads = $BROKER_THREADS
 
 # update !ip based on $NIC_TYPE
 if $NIC_TYPE then set internal ip with $NIC_TYPE
@@ -272,30 +268,33 @@ if $CHAIN_ID then chain_id = $CHAIN_ID
 if $CONTRACT then contract = $CONTRACT
 
 :operator-settings:
-set enable_partitions = true
+set disable_partitions = false
 table_name=*
 partition_column = insert_timestamp
 partition_interval = 14 days
 partition_keep = 3
 partition_sync = 1 day
+is_main = ""
 
 if $MEMBER and $MEMBER.int then member = $MEMBER
-if $IS_MAIN and ($IS_MAIN == true or $IS_MAIN == True or $IS_MAIN == TRUE) then set is_main = true
-else if $IS_MAIN and ($IS_MAIN == false or $IS_MAIN == False  or $IS_MAIN == FALSE) then set is_main = false
 
-if $CLUSTER_NAME then cluster_name = $CLUSTER_NAME
-
+if $DISABLE_PARTITIONS == true or $DISABLE_PARTITIONS == True or $DISABLE_PARTITIONS == TRUE then set disable_partitions = true
 if $TABLE_NAME then table_name=$TABLE_NAME
 if $PARTITION_COLUMN then set partition_column = $PARTITION_COLUMN
 if $PARTITION_INTERVAL then set partition_interval = $PARTITION_INTERVAL
 if $PARTITION_KEEP then set partition_keep = $PARTITION_KEEP
 if $PARTITION_SYNC then set partition_sync = $PARTITION_SYNC
 
+if not $ALMGM_DB then almgm_db = $DB_TYPE
+else if $ALMGM_DB == sqlite or $ALMGM_DB == psql then almgm_db = $ALMGM_DB
+else almgm_db = sqlite
+
 :operator-ha:
-set enable_ha = true
+set disable_ha = false
 start_date = -30d
 
-if $ENABLE_HA == false or $ENABLE_HA == FALSE or $ENABLE_HA == False then set enable_ha=false
+
+if $DISABLE_HA == true or $DISABLE_HA == TRUE or $DISABLE_HA == True then set disable_ha=true
 if $START_DATE then start_date = $START_DATE
 if !start_date.int then start_date = - + $START_DATE + d
 
@@ -354,25 +353,22 @@ if $MSG_VALUE_COLUMN then msg_value_column=$MSG_VALUE_COLUMN
 
 :monitoring:
 set monitoring_node     = false
-set node_monitoring     = false
-set syslog_monitoring   = false
-set docker_monitoring   = false
-set store_monitoring    = false
+set node_monitoring     = true
+set syslog_monitoring   = true
+set docker_monitoring   = true
+set store_monitoring    = true
+
 store_monitoring_dest   = ""
-view_monitoring_dest    = ""
 monitoring_db = sqlite
+
+set is_scheduled_dest = false
+set monitoring_db_configured = false
 
 monitoring_frequency = "30 seconds"
 docker_frequency = 10
 
-if !system_query == true then set monitoring_node = true
-if !node_type == operator then
-do set node_monitoring     = true
-do set syslog_monitoring   = true
-do set docker_monitoring   = true
-do set store_monitoring    = true
-
-if $MONITORING_DB == psql or $MONITORING_DB == sqlite then monitoring_db = $MONITORING_DB
+if not $MONITORING_DB then  monitoring_db = $DB_TYPE
+else if $MONITORING_DB == psql or $MONITORING_DB == sqlite then monitoring_db = $MONITORING_DB
 
 if $MONITORING_NODE == false or  $MONITORING_NODE == False or  $MONITORING_NODE == FALSE then set monitoring_node = false
 if $NODE_MONITORING == false  or $NODE_MONITORING == False   or $NODE_MONITORING == FALSE   then set node_monitoring   = false
@@ -472,6 +468,7 @@ if $OPCUA_FREQUENCY then opcua_frequency = $OPCUA_FREQUENCY
 # if $ENCODING_TOLERANCE then set encoding_tolerance = $ENCODING_TOLERANCE
 # if $ENCODING_TYPE then encoding_type = $ENCODING_TYPE
 
+
 :other-settings:
 set deploy_local_script = false
 set create_table = true
@@ -512,7 +509,7 @@ if $QUERY_POOL and $QUERY_POOL.int then query_pool=$QUERY_POOL
 if !query_pool.int < 1 then query_pool = 1
 
 if $ARCHIVE == false or $ARCHIVE == False or $ARCHIVE == FALSE then set archive=false
-if $ARCHIVE_SQL == true or $ARCHIVE == True or $ARCHIVE == TRUE then set archive_sql=true
+if $ARCHIVE_SQL == true or $ARCHIVE_SQL == True or $ARCHIVE_SQL == TRUE then set archive_sql=true
 if $ARCHIVE_DELETE then archive_delete=$ARCHIVE_DELETE
 
 if $OPERATOR_HELPERS and $OPERATOR_HELPERS.int and $OPERATOR_HELPERS.int >= 1 then operator_helpers = $OPERATOR_HELPERS
@@ -556,6 +553,6 @@ goto terminate-scripts
 print "Invalid SQL database type " $DB_TYPE ", cannot continue..."
 goto terminate-scripts
 
-:invalid-nosql-database:
-print "Invalid NoSQL database type " $NOSQL_TYPE ", cannot continue..."
-goto terminate-scripts
+#:invalid-nosql-database:
+#print "Invalid NoSQL database type " $NOSQL_TYPE ", cannot continue..."
+#goto terminate-scripts

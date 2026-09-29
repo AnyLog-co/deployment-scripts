@@ -4,6 +4,9 @@
 # process !local_scripts/node-deployment/policies/publish_policy.al
 on error ignore
 
+:set-debug:
+if !enable_debug == true then set debug on
+
 :set-params:
 error_code = 0
 

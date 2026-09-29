@@ -4,6 +4,8 @@
 # process !local_scripts/node-deployment/database/configure_dbms_system_query.al
 on error ignore
 
+:set-debug:
+if !enable_debug == true then set debug on
 
 :system-query-dbms:
 on error goto system-query-db-error

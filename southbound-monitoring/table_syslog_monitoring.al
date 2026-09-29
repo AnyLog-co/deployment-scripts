@@ -23,6 +23,9 @@
 # process  !local_scripts/southbound-monitoring/table_syslog_monitoring.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
 set create_table = false
 
 :check-table-policy:

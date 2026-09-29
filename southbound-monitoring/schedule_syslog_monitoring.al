@@ -8,6 +8,12 @@
 # process !local_scripts/southbound-monitoring/policy_syslog_monitoring.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
+
+if !node_type != publisher and !node_type != operator then goto end-script
+
 
 :preset-params:
 syslog_ip = *
@@ -32,8 +38,12 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "id": !config_id,
         "name": "Syslog Monitoring",
         "script": [
+            "process !local_scripts/southbound-monitoring/scheduled_params.al",
+            "process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
             "if !node_type == operator then process !local_scripts/southbound-monitoring/table_syslog_monitoring.al",
-            "set msg rule !syslog_name if ip = * then dbms = monitoring and table = syslog and extend = ip and syslog = true"
+
+            "set msg rule !syslog_name if ip = * then dbms = monitoring and table = syslog and extend = ip and syslog = true",
+            "get msg rules"
         ]
     }
 }>
