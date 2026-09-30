@@ -27,11 +27,8 @@ on error ignore
 if !enable_debug == true then set debug on
 
 :check-policy:
-blockchain get *
 if !node_type == operator then
-do blockchain get *
 do wait 65
-do blockchain get *
 
 if not !cluster_id and !node_type == operator then cluster_id = blockchain get cluster where name=!cluster_name bring.first [*][id]
 if not !cluster_id and !node_type == operator then goto operator-cluster-error

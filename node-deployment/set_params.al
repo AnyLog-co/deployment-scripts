@@ -157,7 +157,8 @@ else if !master_configs == false and !overlay_ip then ledger_conn = !overlay_ip 
 else if !master_configs == true then ledger_conn = !ip + ":" + !anylog_server_port
 else if !master_configs == false then ledger_conn = !ip + ":32048"
 
-config_version = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
+# config_version = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
+config_version = 2.1.2609
 
 :authentication:
 set enable_auth = false
