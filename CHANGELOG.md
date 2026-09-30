@@ -6,7 +6,13 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 93cb600 -->
+<!-- last-processed: 0414415 -->
+
+<!-- os-dev: 0414415 (2026-09-30) -->
+
+* **Ori Shadmon** (2026-09-30)
+  * Node deployment: minor debug changes
+  * Node deployment / Policies: minor debug changes
 
 <!-- os-dev: 93cb600 (2026-09-30) -->
 
@@ -202,7 +208,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 93cb600 -->
+<!-- last-processed: 0414415 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
