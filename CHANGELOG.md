@@ -6,7 +6,13 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 8b6f6fa -->
+<!-- last-processed: 0b4707b -->
+
+<!-- os-dev: 0b4707b (2026-09-30) -->
+
+* **Ori Shadmon** (2026-09-30)
+  * Node deployment: cluster / operator sync
+  * Node deployment / Policies: cluster / operator sync
 
 <!-- os-dev: 8b6f6fa (2026-09-29) -->
 
@@ -191,7 +197,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 8b6f6fa -->
+<!-- last-processed: 0b4707b -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
