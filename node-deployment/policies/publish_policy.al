@@ -21,10 +21,13 @@ do if not !node_private_key then goto private-key-error
 
 on error goto sign-policy-error
 if !enable_auth == true then new_policy = id sign !new_policy where key = !node_private_key and password = !node_password
+
 validate_policy = json !new_policy
 if not !validate_policy then goto prepare-policy-error
 
 :declare-policy:
+
+exit scripts
 
 on error call declare-policy-error
 blockchain prepare policy !new_policy
@@ -35,7 +38,7 @@ do blockchain insert where policy=!new_policy and local=true
 do config_policy = !new_policy
 else blockchain insert where policy=!new_policy and local=true and master=!ledger_conn
 
-if $NODE_TYPE == operator then wait 65
+if !policy_type == cluster then wait 65
 
 :end-script:
 end script
