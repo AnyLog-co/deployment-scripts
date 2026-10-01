@@ -26,16 +26,13 @@ on error ignore
 :set-debug:
 if !enable_debug == true then set debug on
 
-:check-policy:
-if !node_type == operator then
-do wait 65
-
-if not !cluster_id and !node_type == operator then cluster_id = blockchain get cluster where name=!cluster_name bring.first [*][id]
-if not !cluster_id and !node_type == operator then goto operator-cluster-error
-
 :is-node-policy:
 set create_policy = false
 if !is_relay == true then set node_type = relay
+
+:check-policy:
+run blockchain sync
+blockchain reload metadata
 
 # checks nodes based on name, company and networking configurations
 process !local_scripts/node-deployment/policies/validate_node_policy.al

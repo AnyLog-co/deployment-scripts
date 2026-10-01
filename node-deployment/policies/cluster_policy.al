@@ -14,7 +14,6 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # process !local_scripts/node-deployment/policies/cluster_policy.al
 
-set debug on
 on error ignore
 :set-debug:
 if !enable_debug == true then set debug on
