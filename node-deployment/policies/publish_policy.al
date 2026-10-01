@@ -43,7 +43,10 @@ else blockchain insert where policy=!new_policy and local=true and master=!ledge
 if !policy_type == cluster then
 do cluster_id = blockchain get cluster where name=!cluster_name bring.first [*][id]
 do print !cluster_id
-do exit scripts
+do reset error log
+do run blockchain sync
+do blockchain reload metadata
+do get error log
 
 :end-script:
 end script
