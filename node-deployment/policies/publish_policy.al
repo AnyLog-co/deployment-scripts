@@ -27,12 +27,13 @@ if not !validate_policy then goto prepare-policy-error
 
 :declare-policy:
 
-exit scripts
-
 on error call declare-policy-error
 blockchain prepare policy !new_policy
 
 policy_type = from !new_policy  bring [*]
+
+if !policy_type == cluster then exit scripts
+
 if !policy_type == config or !master_configs == true then
 do blockchain insert where policy=!new_policy and local=true
 do config_policy = !new_policy
