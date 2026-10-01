@@ -29,8 +29,8 @@ if !cluster_name and not !cluster_id then cluster_id = blockchain get cluster wh
 
 if !cluster_id then operator_count = blockchain get operator where cluster = !cluster_id
 
-if $IS_MAIN and ($IS_MAIN == true or $IS_MAIN == True or $IS_MAIN == TRUE) then set is_main = true
-else if $IS_MAIN and ($IS_MAIN == false or $IS_MAIN == False  or $IS_MAIN == FALSE) then set is_main = false
+if $IS_MAIN and $IS_MAIN == true then set is_main = true
+else if $IS_MAIN and $IS_MAIN == false then set is_main = false
 else if !operator_count then set is_main = false
 
 if !cluster_id then goto end-script
