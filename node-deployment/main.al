@@ -14,7 +14,7 @@
 
 :set-debug:
 set enable_debug = false
-if $SCRIPT_DEBUG == true or $SCRIPT_DEBUG == True or $SCRIPT_DEBUG == TRUE then set enable_debug = true
+if $SCRIPT_DEBUG == true then set enable_debug = true
 
 if !enable_debug == true then set debug on
 

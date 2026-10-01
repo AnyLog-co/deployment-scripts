@@ -19,7 +19,7 @@ on error ignore
 :set-debug:
 if !enable_debug == true then set debug on
 
-if $DISABLE_CLI == true or  $DISABLE_CLI == True or $DISABLE_CLI == TRUE then set cli off
+if $DISABLE_CLI == true then set cli off
 rand_int = random int
 
 :required-params:
@@ -36,7 +36,7 @@ else if $NODE_TYPE == master-publisher then node_type = publisher
 else set node_type = $NODE_TYPE
 
 if $NODE_TYPE == master-operator or $NODE_TYPE == master-publisher or $NODE_TYPE == master then set master_configs = true
-if !node_type != operator and $IS_HIDDEN == true or $IS_HIDDEN == True or $IS_HIDDEN == TRUE then is_hidden = true
+if !node_type != operator and $IS_HIDDEN == true then is_hidden = true
 
 if not $LICENSE_KEY then goto missing-license-key
 if $COMPANY_NAME then set company_name = $COMPANY_NAME
@@ -48,24 +48,29 @@ if !company_name then node_company_name = python !company_name.lower().replace('
 
 
 
-
 :general-params:
-loc_info = rest get where url = https://ipinfo.io/json
+# check if user inputted env variables + utilize that
+if $BRANCH then branch = $BRANCH
+if $DEPT then dept = $DEPT
+
 if $LOCATION then loc = $LOCATION
 if $COUNTRY then country = $COUNTRY
 if $STATE then state = $STATE
 if $CITY then city = $CITY
-if $BRANCH then branch= $BRANCH
-if $DEPT then dept = $DEPT
 
-if !loc_info and not !loc then loc = from !loc_info bring [loc]
-if not !loc_info and not !loc then loc = 0.0, 0.0
-if !loc_info and not !country then country = from !loc_info bring [country]
-if not !loc_info and not !country then country = Unknown
-if !loc_info and not !state then state = from !loc_info bring [region]
-if not !loc_info and not !state then state = Unknown
-if !loc_info and not !city then city = from !loc_info bring [city]
-if not !loc_info and not !city then city = Unknown
+if !loc and !country and !state and !city then goto networking
+
+# attempt to extract form website - if fails use defaults
+loc_info = rest get where url = https://ipinfo.io/json
+
+if not !loc_info and not !loc then loc = "0.0, 0.0"
+else if not !loc then loc = from !loc_info bring [loc]
+if not !loc_info and not !country then country = "Unknown"
+else if not !country then country = from !loc_info bring [country]
+if not !loc_info and not !state then state = "Unknown"
+else if not !state then state = from !loc_info bring [region]
+if not !loc_info and not !city then city = "Unknown"
+else if not !city then city = from !loc_info bring [city]
 
 :networking:
 set nic_type = ""
@@ -112,7 +117,7 @@ do on error call nic-error
 do set internal ip with !nic_type
 do on error ignore
 
-if $ENABLE_DNS == true  or $ENABLE_DNS == True or $ENABLE_DNS == TRUE then set  enable_dns = true
+if $ENABLE_DNS == true then set  enable_dns = true
 if $EXTERNAL_DNS then set external_dns = $EXTERNAL_DNS
 if $DNS then set dns = $DNS
 else if $DNS_DOMAIN then dns = !hostname.$DNS_DOMAIN
@@ -121,21 +126,20 @@ if $ANYLOG_SERVER_PORT then anylog_server_port = $ANYLOG_SERVER_PORT
 if $ANYLOG_REST_PORT then anylog_rest_port = $ANYLOG_REST_PORT
 if $ANYLOG_BROKER_PORT then anylog_broker_port = $ANYLOG_BROKER_PORT
 
-if $TCP_BIND == false or $TCP_BIND == False or $TCP_BIND == FALSE then tcp_bind = false
+if $TCP_BIND == false then tcp_bind = false
 if $TCP_THREADS then tcp_threads = $TCP_THREADS
 if !tcp_threads.int < 1 then tcp_threads = 1
 
-if $REST_BIND == true or $REST_BIND == True or $REST_BIND == TRUE then rest_bind = true
+if $REST_BIND == true then rest_bind = true
 if $REST_THREADS then rest_threads = $REST_THREADS
 if !rest_threads.int < 1 then rest_threads = 1
 if $REST_TIMEOUT then rest_timeout = $REST_TIMEOUT
 if !rest_timeout.int < 0 then rest_timeout = 0 # continuous
 
-if $BROKER_BIND == true or $BROKER_BIND == True or $BROKER_BIND == TRUE then broker_bind = true
+if $BROKER_BIND == true then broker_bind = true
 if $BROKER_THREADS and $BROKER_THREADS.int >= 1  then broker_threads = $BROKER_THREADS
 
 # update !ip based on $NIC_TYPE
-if $NIC_TYPE then set internal ip with $NIC_TYPE
 # useer OVERLAY IP address
 if not $NIC_TYPE and $OVERLAY_IP then overlay_ip = $OVERLAY_IP
 if $CONFIG_NAME then config_name = $CONFIG_NAME
@@ -157,11 +161,12 @@ else if !master_configs == false and !overlay_ip then ledger_conn = !overlay_ip 
 else if !master_configs == true then ledger_conn = !ip + ":" + !anylog_server_port
 else if !master_configs == false then ledger_conn = !ip + ":32048"
 
-config_version = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
+# config_version = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
+config_version = "2.1.2609"
 
 :authentication:
 set enable_auth = false
-if !is_edgelake == false and ($ENABLE_AUTH == true or $ENABLE_AUTH == True or $ENABLE_AUTH == TRUE) then set enable_auth = true
+if !is_edgelake == false and $ENABLE_AUTH == true then set enable_auth = true
 if !is_edgelake == true or !enable_auth == false then goto sql-database
 
 if $NODE_PASSWORD then node_password = $NODE_PASSWORD
@@ -185,13 +190,13 @@ if $DB_PASSWD then set db_passwd = $DB_PASSWD
 if $DB_IP then db_ip = $DB_IP
 if $DB_PORT then db_port = $DB_PORT
 
-if $AUTOCOMMIT == false or $AUTOCOMMIT == False or $AUTOCOMMIT == FALSE then set autocommit = false
-if !node_type == query or $SYSTEM_QUERY == true or $SYSTEM_QUERY == True or $SYSTEM_QUERY == TRUE  then
+if $AUTOCOMMIT == false then set autocommit = false
+if !node_type == query or $SYSTEM_QUERY == true  then
 do set system_query = true
-do if $MEMORY == false or $MEMORY == False or $MEMORY == FALSE then set memory=false
+do if $MEMORY == false then set memory=false
 
 set enable_mcp = false
-if $ENABLE_MCP == true or $ENABLE_MCP == True or $ENABLE_MCP == TRUE then set enable_mcp = true
+if $ENABLE_MCP == true then set enable_mcp = true
 
 system_query_db = sqlite
 if $SYSTEM_QUERY_DB == psql or $SYSTEM_QUERY_DB == sqlite then system_query_db = $SYSTEM_QUERY_DB
@@ -206,20 +211,20 @@ set blobs_compress = true
 set blobs_reuse = true
 
 # store blobs in storage that's not local file system
-if $BLOBS_STORAGE == true or $BLOBS_STORAGE == True or $BLOBS_STORAGE == TRUE then
+if $BLOBS_STORAGE == true then
 do set blobs_storage = true
 do set blobs_folder = false
 
 # by default we're storing blobs to local files, so disable that option - either by user or us
 # - user can force disable by setting folder as False
 # - user can force enable by setting  folder as True
-if  !blobs_storage == false or ($BLOBS_FOLDER == true or $BLOBS_FOLDER == True or $BLOBS_FOLDER == TRUE) then set blobs_folder=true
+if  !blobs_storage == false or $BLOBS_FOLDER == true then set blobs_folder=true
 
 # compress blob content when stored (true by default)
-if $BLOBS_COMPRESS == false or $BLOBS_COMPRESS == False or $BLOBS_COMPRESS == FALSE then set blobs_compress = false
+if $BLOBS_COMPRESS == false then set blobs_compress = false
 
 # reuse blob content if it contains the same hash value (true by default)
-if $BLOBS_REUSE == false or $BLOBS_REUSE == False or $BLOBS_REUSE == FALSE then set blobs_reuse = false
+if $BLOBS_REUSE == false then set blobs_reuse = false
 
 # Storage type (mongo, akave, s3 , etc)
 if $BLOB_STORAGE_TYPE then blob_storage_type = $BLOB_STORAGE_TYPE
@@ -278,7 +283,7 @@ is_main = ""
 
 if $MEMBER and $MEMBER.int then member = $MEMBER
 
-if $DISABLE_PARTITIONS == true or $DISABLE_PARTITIONS == True or $DISABLE_PARTITIONS == TRUE then set disable_partitions = true
+if $DISABLE_PARTITIONS == true then set disable_partitions = true
 if $TABLE_NAME then table_name=$TABLE_NAME
 if $PARTITION_COLUMN then set partition_column = $PARTITION_COLUMN
 if $PARTITION_INTERVAL then set partition_interval = $PARTITION_INTERVAL
@@ -294,7 +299,7 @@ set disable_ha = false
 start_date = -30d
 
 
-if $DISABLE_HA == true or $DISABLE_HA == TRUE or $DISABLE_HA == True then set disable_ha=true
+if $DISABLE_HA == true then set disable_ha=true
 if $START_DATE then start_date = $START_DATE
 if !start_date.int then start_date = - + $START_DATE + d
 
@@ -309,8 +314,8 @@ video_port = 32800
 video_grpc_dir = !anylog_path/AnyLog-Network/external_lib/frame_modeling
 # video_dbms = !default_dbms + "_blobs"
 
-if $ENABLE_VIDEO_STREAMING == true or $ENABLE_VIDEO_STREAMING == True or $ENABLE_VIDEO_STREAMING == TRUE then enable_video_streaming=true
-if $ENABLE_DETECTIONS == true or $ENABLE_DETECTIONS == True or $ENABLE_DETECTIONS == TRUE then set enable_detections=true
+if $ENABLE_VIDEO_STREAMING == true then enable_video_streaming=true
+if $ENABLE_DETECTIONS == true then set enable_detections=true
 
 if $VIDEO_URL then set video_url = $VIDEO_URL
 if $VIDEO_PORT then set video_port = $VIDEO_PORT
@@ -334,12 +339,12 @@ msg_timestamp_column = "bring [timestamp]"
 msg_value_column_type = float
 msg_value_column = "bring [value]"
 
-if $ENABLE_MQTT == true or $ENABLE_MQTT == True or $ENABLE_MQTT == TRUE then set enable_mqtt = true
+if $ENABLE_MQTT == true then set enable_mqtt = true
 if $MQTT_BROKER then mqtt_broker=$MQTT_BROKER
 if $MQTT_PORT then mqtt_port=$MQTT_PORT
 if $MQTT_USER then mqtt_user=$MQTT_USER
 if $MQTT_PASSWD then mqtt_passwd=$MQTT_PASSWD
-if $MQTT_LOG == true or $MQTT_LOG == True or $MQTT_LOG == TRUE then set msg_log =true
+if $MQTT_LOG == true then set msg_log =true
 if $MSG_TOPIC then msg_topic=$MSG_TOPIC
 
 if $DEFAULT_DBMS then msg_dbms=$DEFAULT_DBMS
@@ -356,7 +361,7 @@ set monitoring_node     = false
 set node_monitoring     = true
 set syslog_monitoring   = true
 set docker_monitoring   = true
-set store_monitoring    = true
+set store_monitoring    = false
 
 store_monitoring_dest   = ""
 monitoring_db = sqlite
@@ -370,12 +375,12 @@ docker_frequency = 10
 if not $MONITORING_DB then  monitoring_db = $DB_TYPE
 else if $MONITORING_DB == psql or $MONITORING_DB == sqlite then monitoring_db = $MONITORING_DB
 
-if $MONITORING_NODE == false or  $MONITORING_NODE == False or  $MONITORING_NODE == FALSE then set monitoring_node = false
-if $NODE_MONITORING == false  or $NODE_MONITORING == False   or $NODE_MONITORING == FALSE   then set node_monitoring   = false
-if $SYSLOG_MONITORING == false or $SYSLOG_MONITORING == False or $SYSLOG_MONITORING == FALSE then set syslog_monitoring = false
-if $DOCKER_MONITORING == false or $DOCKER_MONITORING == False or $DOCKER_MONITORING == FALSE then set docker_monitoring = false
+if $MONITORING_NODE == false then set monitoring_node = false
+if $NODE_MONITORING == false   then set node_monitoring   = false
+if $SYSLOG_MONITORING == false then set syslog_monitoring = false
+if $DOCKER_MONITORING == false then set docker_monitoring = false
 
-if $STORE_MONITORING == false or $STORE_MONITORING == False or $STORE_MONITORING == FALSE then set store_monitoring = true
+if $STORE_MONITORING == true then set store_monitoring = true
 # if not set - will be declare using `blockchain get operator bring.last`
 if $STORE_MONITORING_DEST then store_monitoring_dest = $STORE_MONITORING_DEST
 # if not set - will be declare using `blockchain get query bring.ip_port`
@@ -388,7 +393,7 @@ if $DOCKER_FREQUENCY     then docker_frequency     = $DOCKER_FREQUENCY
 set enable_opcua = false
 opcua_frequency = 5
 
-if $ENABLE_OPCUA == true or $ENABLE_OPCUA == True or $ENABLE_OPCUA == TRUE then enable_opcua = true
+if $ENABLE_OPCUA == true then enable_opcua = true
 if $OPCUA_URL then opcua_url = $OPCUA_URL
 if $OPCUA_NODE then opcua_node = $OPCUA_NODE
 
@@ -410,7 +415,7 @@ if $OPCUA_FREQUENCY then opcua_frequency = $OPCUA_FREQUENCY
 #-----------------------------------------------------------------------------#
 # enable aggregations
 # set enable_aggregations = false
-# if $ENABLE_AGGREGATIONS and ($ENABLE_AGGREGATIONS == true or $ENABLE_AGGREGATIONS == True or $ENABLE_AGGREGATIONS == TRUE) then set enable_aggregations = true
+# if $ENABLE_AGGREGATIONS and $ENABLE_AGGREGATIONS == true then set enable_aggregations = true
 # else goto other-settings
 
 
@@ -464,7 +469,7 @@ if $OPCUA_FREQUENCY then opcua_frequency = $OPCUA_FREQUENCY
 # arle - Approximated Run-Length Encoding, the entries in the time interval are represented in a sequence of entries. Each entry includes:
 # encoding_type = bounds
 
-# if $ENABLE_ENCODING and ($ENABLE_ENCODING == true or $ENABLE_ENCODING == True or $ENABLE_ENCODING == TRUE) then set enable_encoding = true
+# if $ENABLE_ENCODING and $ENABLE_ENCODING == true then set enable_encoding = true
 # if $ENCODING_TOLERANCE then set encoding_tolerance = $ENCODING_TOLERANCE
 # if $ENCODING_TYPE then encoding_type = $ENCODING_TYPE
 
@@ -490,11 +495,11 @@ table_file_location = file_name[1]
 threshold_time = 60 seconds
 threshold_volume = 10KB
 
-if $DEPLOY_LOCAL_SCRIPT == true or $DEPLOY_LOCAL_SCRIPT == True or $DEPLOY_LOCAL_SCRIPT == TRUE then set deploy_local_script=true
+if $DEPLOY_LOCAL_SCRIPT == true then set deploy_local_script=true
 
 
-if $COMPRESS_FILE == false or $COMPRESS_FILE == False or $COMPRESS_FILE == FALSE then set compress_file=false
-if $WRITE_IMMEDIATE == false or $WRITE_IMMEDIATE == False or $WRITE_IMMEDIATE == FALSE then set write_immediate=false
+if $COMPRESS_FILE == false then set compress_file=false
+if $WRITE_IMMEDIATE == false then set write_immediate=false
 
 #if $DBMS_FILE_LOCATION then dbms_file_location = $DBMS_FILE_LOCATION
 #if $TABLE_FILE_LOCATION then table_file_location = $TABLE_FILE_LOCATION
@@ -508,8 +513,8 @@ if !operator_threads.int < 1 then operator_threads=1
 if $QUERY_POOL and $QUERY_POOL.int then query_pool=$QUERY_POOL
 if !query_pool.int < 1 then query_pool = 1
 
-if $ARCHIVE == false or $ARCHIVE == False or $ARCHIVE == FALSE then set archive=false
-if $ARCHIVE_SQL == true or $ARCHIVE_SQL == True or $ARCHIVE_SQL == TRUE then set archive_sql=true
+if $ARCHIVE == false then set archive=false
+if $ARCHIVE_SQL == true then set archive_sql=true
 if $ARCHIVE_DELETE then archive_delete=$ARCHIVE_DELETE
 
 if $OPERATOR_HELPERS and $OPERATOR_HELPERS.int and $OPERATOR_HELPERS.int >= 1 then operator_helpers = $OPERATOR_HELPERS
