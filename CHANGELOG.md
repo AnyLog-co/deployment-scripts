@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: f2443e7 -->
+<!-- last-processed: d61ce55 -->
+
+<!-- os-dev: d61ce55 (2026-10-01) -->
+
+* **Ori Shadmon** (2026-09-30)
+  * Node deployment / Policies: readded exit scripts - for bug
 
 <!-- os-dev: f2443e7 (2026-10-01) -->
 
@@ -239,7 +244,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: f2443e7 -->
+<!-- last-processed: d61ce55 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
