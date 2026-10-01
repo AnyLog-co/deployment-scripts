@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 102ed9a -->
+<!-- last-processed: 36ac737 -->
+
+<!-- os-dev: 36ac737 (2026-10-01) -->
+
+* **Ori Shadmon** (2026-09-30)
+  * Node deployment / Policies: blockchain sync
 
 <!-- os-dev: 102ed9a (2026-10-01) -->
 
@@ -229,7 +234,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 102ed9a -->
+<!-- last-processed: 36ac737 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
