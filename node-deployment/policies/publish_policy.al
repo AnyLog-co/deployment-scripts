@@ -21,7 +21,6 @@ do if not !node_private_key then goto private-key-error
 
 on error goto sign-policy-error
 if !enable_auth == true then new_policy = id sign !new_policy where key = !node_private_key and password = !node_password
-
 validate_policy = json !new_policy
 if not !validate_policy then goto prepare-policy-error
 
@@ -31,24 +30,10 @@ on error call declare-policy-error
 blockchain prepare policy !new_policy
 
 policy_type = from !new_policy  bring [*]
-
-# if !policy_type == cluster then exit scripts
-
 if !policy_type == config or !master_configs == true then
 do blockchain insert where policy=!new_policy and local=true
 do config_policy = !new_policy
 else blockchain insert where policy=!new_policy and local=true and master=!ledger_conn
-
-
-if !policy_type == cluster then set debug on
-if !policy_type == cluster then
-do cluster_id = blockchain get cluster where name=!cluster_name bring.first [*][id]
-do print !cluster_id
-do reset error log
-do run blockchain sync
-do blockchain reload metadata
-do get error log
-if !policy_type == cluster then set debug off
 
 :end-script:
 end script
