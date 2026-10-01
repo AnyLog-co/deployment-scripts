@@ -38,6 +38,8 @@ if !policy_type == config or !master_configs == true then
 do blockchain insert where policy=!new_policy and local=true
 do config_policy = !new_policy
 else blockchain insert where policy=!new_policy and local=true and master=!ledger_conn
+
+
 if !policy_type == cluster then
 do cluster_id = blockchain get cluster where name=!cluster_name bring.first [*][id]
 do print !cluster_id
