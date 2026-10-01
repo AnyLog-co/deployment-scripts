@@ -40,7 +40,7 @@ do config_policy = !new_policy
 else blockchain insert where policy=!new_policy and local=true and master=!ledger_conn
 
 
-if !policy_type == cluster do set debug on
+if !policy_type == cluster then set debug on
 if !policy_type == cluster then
 do cluster_id = blockchain get cluster where name=!cluster_name bring.first [*][id]
 do print !cluster_id
@@ -48,7 +48,7 @@ do reset error log
 do run blockchain sync
 do blockchain reload metadata
 do get error log
-if !policy_type == cluster do set debug off
+if !policy_type == cluster then set debug off
 
 :end-script:
 end script
