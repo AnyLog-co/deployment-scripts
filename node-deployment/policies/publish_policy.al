@@ -3,7 +3,6 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # process !local_scripts/node-deployment/policies/publish_policy.al
 on error ignore
-set debug on
 
 :set-debug:
 if !enable_debug == true then set debug on
@@ -37,7 +36,6 @@ do config_policy = !new_policy
 else blockchain insert where policy=!new_policy and local=true and master=!ledger_conn
 
 :end-script:
-set debug off
 end script
 
 :private-key-error:
