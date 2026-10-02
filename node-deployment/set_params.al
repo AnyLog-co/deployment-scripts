@@ -86,12 +86,12 @@ do anylog_broker_port = 32550
 else if !node_type == master then
 do anylog_server_port = 32048
 do anylog_rest_port = 32049
-do anylog_broker_port = ""
+do anylog_broker_port = 32050
 
 else if !node_type == query then
 do anylog_server_port = 32348
 do anylog_rest_port = 32349
-do anylog_broker_port = ""
+do anylog_broker_port = 32350
 
 else if !node_type == operator then
 do anylog_server_port = 32148

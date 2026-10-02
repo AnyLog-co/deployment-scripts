@@ -37,7 +37,7 @@ blockchain reload metadata
 # checks nodes based on name, company and networking configurations
 process !local_scripts/node-deployment/policies/validate_node_policy.al
 
-is_primary = blockchain get operator where cluster=!cluster_id bring.count
+if !node_type == operator then is_primary = blockchain get operator where cluster=!cluster_id bring.count
 if !is_primary then set is_main = false
 
 if not !is_policy and !create_policy == false then goto create-policy
