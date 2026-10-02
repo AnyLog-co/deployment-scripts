@@ -60,7 +60,7 @@ do goto terminate-scripts
 create work directories
 
 :set-params:
-if !is_edgelake == false then  process !local_scripts/node-deployment/authentication/gen_keys.al
+# if !is_edgelake == false then  process !local_scripts/node-deployment/authentication/gen_keys.al
 process !local_scripts/node-deployment/set_params.al
 
 :set-configs:
