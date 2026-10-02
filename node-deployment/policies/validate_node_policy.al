@@ -67,9 +67,11 @@ else goto network-config-error
 
 :check-operator:
 on error ignore
-if !is_policy then
-do node_name = from !is_policy bring [*][name]
-do set node name !node_name
+if !is_policy then tmp_node_name = from !is_policy bring [*][name]
+
+if $NODE_NAME and !tmp_node_name and !tmp_node_name != $NODE_NAME then
+do echo "user defined node name doesn't match this node - Node Name:" !node_name
+do node_name = !tmp_node_name
 
 if !is_policy and not !node_conn then node_conn = from !is_policy bring.ip_port
 
@@ -78,9 +80,7 @@ do operator_id = from !is_policy bring [*][id]
 do cluster_id = from !is_policy bring [*][cluster]
 
 :set-node-name:
-set node name !node_name
-
-
+if !node_name then set node name !node_name
 
 :end-script:
 end script

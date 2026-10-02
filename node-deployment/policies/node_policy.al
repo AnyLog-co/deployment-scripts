@@ -105,12 +105,16 @@ else if $HZN_NODE_ID then set policy new_policy [!node_type][hzn_node_id] = $HZN
 if $HZN_ORGANIZATION then set policy new_policy [!node_type][hzn_org] = $HZN_ORGANIZATION
 
 :publish-policy:
-
+set debug on
 process !local_scripts/node-deployment/policies/publish_policy.al
 if !error_code == 1 then goto sign-policy-error
 if !error_code == 2 then goto prepare-policy-error
 if !error_code == 3 then goto declare-policy-error
+
+if !node_type == operator then blockchain wait where policy=!new_policy
+
 set create_policy = true
+set debug off
 goto check-policy
 
 :node-info:

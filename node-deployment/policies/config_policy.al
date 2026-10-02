@@ -46,15 +46,15 @@ set policy new_policy [config][name] = !config_name
 set policy new_policy [config][company] = !company_name
 set policy new_policy [config][node_type] = !node_type
 set policy new_policy [config][version] = !config_version
-if not !config_version then
-do set policy new_policy [config][version] = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
+#if not !config_version then
+#do set policy new_policy [config][version] = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
 
 :network-configs:
 process !local_scripts/node-deployment/policies/config_policy_networking.al
 
 if !node_type == operator then goto operator-scripts
 else if !node_type == publisher then goto publisher-scripts
-else if !node_type == master or node_type == query then goto master-query
+else if !node_type == master or !node_type == query then goto master-query
 
 :generic-node:
 if !node_type == generic then
@@ -150,16 +150,19 @@ do goto publish-policy
 ]>
 
 :publish-policy:
-
+set debug on
 set is_config = true
 process !local_scripts/node-deployment/policies/publish_policy.al
 if !error_code == 1 then goto sign-policy-error
 if !error_code == 2 then goto prepare-policy-error
 if !error_code == 3 then goto declare-policy-error
+
+blockchain wait where policy=!new_policy
+
 set create_config = true
-wait 5
-blockchain reload metadata
 set is_config = false
+
+set debug off
 goto check-policy
 
 :config-policy:

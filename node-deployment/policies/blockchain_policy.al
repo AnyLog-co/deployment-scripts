@@ -23,13 +23,13 @@ on error ignore
 }}>
 
 :publish-policy:
-
+set debug on
 process !local_scripts/node-deployment/policies/publish_policy.al
 if !error_code == 1 then goto sign-policy-error
 if !error_code == 2 then goto prepare-policy-error
 if !error_code == 3 then goto declare-policy-error
 set create_policy = true
-
+set debug off
 goto check-policy
 
 :end-script:

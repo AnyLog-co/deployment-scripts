@@ -14,9 +14,12 @@
 
 :set-debug:
 set enable_debug = false
-if $SCRIPT_DEBUG == true then set enable_debug = true
-
-if !enable_debug == true then set debug on
+if      $TRACE_LEVEL and $TRACE_LEVEL == 1 then trace level = 1
+else if $TRACE_LEVEL and $TRACE_LEVEL == 2 then trace level = 2
+else if $TRACE_LEVEL and $TRACE_LEVEL == 3 then trace level = 3
+else if $SCRIPT_DEBUG == true              then
+do set enable_debug = true
+do set debug on
 
 :disable-auth:
 set echo queue on

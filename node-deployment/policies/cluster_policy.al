@@ -41,6 +41,7 @@ on error ignore
 new_policy = create policy cluster with defaults where company=!company_name and name=!cluster_name
 
 :publish-policy:
+set debug on
 set is_node_policy = true
 process !local_scripts/node-deployment/policies/publish_policy.al
 if !error_code == 1 then goto sign-policy-error
@@ -49,7 +50,9 @@ if !error_code == 3 then goto declare-policy-error
 set create_policy = true
 set is_node_policy = false
 
-wait 5
+blockchain wait where policy=!new_policy
+set debug off
+
 goto check-policy
 
 :end-script:
