@@ -6,7 +6,13 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: c32f11f -->
+<!-- last-processed: d0e82b2 -->
+
+<!-- os-dev: d0e82b2 (2026-10-02) -->
+
+* **Ori Shadmon** (2026-10-01 – 2026-10-02)
+  * Node deployment: in progress - improve behavior for faster performance + removal of sleeps; cleaned setting configs; revert
+  * Node deployment / Policies: in progress - improve behavior for faster performance + removal of sleeps; simplified if true; revert
 
 <!-- os-dev: c32f11f (2026-10-01) -->
 
@@ -254,7 +260,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: c32f11f -->
+<!-- last-processed: d0e82b2 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
