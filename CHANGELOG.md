@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 12dd6b6 -->
+<!-- last-processed: a43699b -->
+
+<!-- os-dev: a43699b (2026-10-02) -->
+
+* **Ori Shadmon** (2026-10-02)
+  * Southbound / Monitoring: scheduler = 2
 
 <!-- os-dev: 12dd6b6 (2026-10-02) -->
 
@@ -265,7 +270,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 12dd6b6 -->
+<!-- last-processed: a43699b -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
