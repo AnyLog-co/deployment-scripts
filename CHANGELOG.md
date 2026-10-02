@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: d0e82b2 -->
+<!-- last-processed: 12dd6b6 -->
+
+<!-- os-dev: 12dd6b6 (2026-10-02) -->
+
+* **Ori Shadmon** (2026-10-02)
+  * Node deployment / Policies: debug for policies rm
 
 <!-- os-dev: d0e82b2 (2026-10-02) -->
 
@@ -260,7 +265,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: d0e82b2 -->
+<!-- last-processed: 12dd6b6 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
