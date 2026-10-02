@@ -150,7 +150,6 @@ do goto publish-policy
 ]>
 
 :publish-policy:
-set debug on
 set is_config = true
 process !local_scripts/node-deployment/policies/publish_policy.al
 if !error_code == 1 then goto sign-policy-error
@@ -162,7 +161,6 @@ blockchain wait where policy=!new_policy
 set create_config = true
 set is_config = false
 
-set debug off
 goto check-policy
 
 :config-policy:
