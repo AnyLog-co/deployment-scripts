@@ -6,7 +6,13 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 70f890e -->
+<!-- last-processed: 5d8814d -->
+
+<!-- os-dev: 5d8814d (2026-10-02) -->
+
+* **Ori Shadmon** (2026-10-02)
+  * Node deployment: defaults + node policy cluster issue
+  * Node deployment / Policies: defaults + node policy cluster issue
 
 <!-- os-dev: 70f890e (2026-10-02) -->
 
@@ -275,7 +281,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 70f890e -->
+<!-- last-processed: 5d8814d -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
