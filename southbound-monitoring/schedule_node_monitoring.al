@@ -59,7 +59,6 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "name": "Node Monitoring Schedule",
         "script": [
             "run scheduler 2",
-            "process !local_scripts/southbound-monitoring/scheduled_params.al",
             "process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
             "if !node_type == operator then process !local_scripts/southbound-monitoring/table_node_monitoring.al",
 
