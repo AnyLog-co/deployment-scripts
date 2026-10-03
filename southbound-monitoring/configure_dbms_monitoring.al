@@ -49,6 +49,12 @@ set db_name = ""
 
 set monitoring_db_configured = true
 
+:define tables:
+on error ignore
+process !local_scripts/southbound-monitoring/table_node_monitoring.al
+process !local_scripts/southbound-monitoring/table_syslog_monitoring.al"
+process !local_scripts/southbound-monitoring/table_docker_monitoring.al
+
 :end-script:
 end script
 

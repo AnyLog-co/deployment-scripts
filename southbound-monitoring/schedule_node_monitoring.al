@@ -59,9 +59,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "name": "Node Monitoring Schedule",
         "script": [
             "run scheduler 2",
-            "process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
-            "if !node_type == operator then process !local_scripts/southbound-monitoring/table_node_monitoring.al",
-
+            "if !node_type == operator and !store_ then process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
             "schedule scheduler = 2 and name = get_stats and time=!monitoring_frequency and task node_insight = get stats where service = operator and topic = summary  and format = json",
             "schedule scheduler = 2 and name = get_timestamp and time=!monitoring_frequency and task node_insight[timestamp] = get datetime local now()",
             "schedule scheduler = 2 and name = set_node_type and time=!monitoring_frequency and task set node_insight[node type] = !node_type",

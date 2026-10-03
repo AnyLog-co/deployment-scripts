@@ -41,8 +41,6 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "script": [
             "process !local_scripts/southbound-monitoring/scheduled_params.al",
             "if !node_type == operator then process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
-            "if !node_type == operator then process !local_scripts/southbound-monitoring/table_docker_monitoring.al",
-
             "run scheduled pull where name = docker_insights and type = docker and frequency = !docker_frequency and continuous = false and dbms = monitoring and table = docker_insight",
             "get scheduled pull"
         ]
