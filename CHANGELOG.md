@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: aced0d2 -->
+<!-- last-processed: aff5054 -->
+
+<!-- os-dev: aff5054 (2026-10-03) -->
+
+* **Ori Shadmon** (2026-10-02)
+  * Southbound / Monitoring: monitoring
 
 <!-- os-dev: aced0d2 (2026-10-02) -->
 
@@ -301,7 +306,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: aced0d2 -->
+<!-- last-processed: aff5054 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
