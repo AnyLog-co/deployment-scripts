@@ -51,9 +51,9 @@ set monitoring_db_configured = true
 
 :define tables:
 on error ignore
-process !local_scripts/southbound-monitoring/table_node_monitoring.al
-process !local_scripts/southbound-monitoring/table_syslog_monitoring.al"
-process !local_scripts/southbound-monitoring/table_docker_monitoring.al
+if !store_monitoring == true and !node_monitoring   == true then process !local_scripts/southbound-monitoring/table_node_monitoring.al
+if !store_monitoring == true and !syslog_monitoring == true then process !local_scripts/southbound-monitoring/table_syslog_monitoring.al
+if !store_monitoring == true and !docker_monitoring == true then process !local_scripts/southbound-monitoring/table_docker_monitoring.al
 
 :end-script:
 end script
