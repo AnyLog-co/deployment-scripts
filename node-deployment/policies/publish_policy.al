@@ -35,6 +35,8 @@ do blockchain insert where policy=!new_policy and local=true
 do config_policy = !new_policy
 else blockchain insert where policy=!new_policy and local=true and master=!ledger_conn
 
+blockchain wait where policy=!new_policy
+
 :end-script:
 end script
 

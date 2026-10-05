@@ -111,8 +111,6 @@ if !error_code == 1 then goto sign-policy-error
 if !error_code == 2 then goto prepare-policy-error
 if !error_code == 3 then goto declare-policy-error
 
-if !node_type == operator then blockchain wait where policy=!new_policy
-
 set create_policy = true
 goto check-policy
 

@@ -50,8 +50,6 @@ if !error_code == 3 then goto declare-policy-error
 set create_policy = true
 set is_node_policy = false
 
-blockchain wait where policy=!new_policy
-
 goto check-policy
 
 :end-script:
