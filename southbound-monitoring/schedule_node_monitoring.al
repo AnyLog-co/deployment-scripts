@@ -58,7 +58,6 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "id": !schedule_id,
         "name": "Node Monitoring Schedule",
         "script": [
-            "set debug on",
             "run scheduler 2",
             "if !node_type == operator and !store_monitoring == true then process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
             "schedule scheduler = 2 and name = get_stats and time=!monitoring_frequency and task node_insight = get stats where service = operator and topic = summary  and format = json",
@@ -86,9 +85,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
 
             "if !store_monitoring == true and !node_type == operator then schedule scheduler = 2 and name = operator_monitor_node and time = 30 seconds task stream !node_insight where dbms=monitoring and table=node_insight",
             "schedule scheduler = 2 and name = monitor_node and time = 30 seconds task if !view_monitoring_dest then run client (!view_monitoring_dest) monitor operators where info = !node_insight",
-            "if !store_monitoring == true and !node_type != operator then schedule scheduler = 2 and name = operator_monitor_node and time = 30 seconds task if !store_monitoring_dest then run client (!store_monitoring_dest) stream !node_insight where dbms=monitoring and table=node_insight",
-            "set debug off"
-
+            "if !store_monitoring == true and !node_type != operator then schedule scheduler = 2 and name = operator_monitor_node and time = 30 seconds task if !store_monitoring_dest then run client (!store_monitoring_dest) stream !node_insight where dbms=monitoring and table=node_insight"
 
         ]
     }
