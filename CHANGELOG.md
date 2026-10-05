@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: aff5054 -->
+<!-- last-processed: c0ae6f4 -->
+
+<!-- os-dev: c0ae6f4 (2026-10-03) -->
+
+* **Ori Shadmon** (2026-10-02)
+  * Southbound / Monitoring: blockchain table reset
 
 <!-- os-dev: aff5054 (2026-10-03) -->
 
@@ -306,7 +311,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: aff5054 -->
+<!-- last-processed: c0ae6f4 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
