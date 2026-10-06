@@ -23,6 +23,9 @@ if $DISABLE_CLI == true then set cli off
 rand_int = random int
 
 :required-params:
+# config_version = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
+config_version = "2.1.2609"
+
 hostname = get hostname
 ledger_conn = 127.0.0.1:32048
 
@@ -146,14 +149,18 @@ if $CONFIG_NAME then config_name = $CONFIG_NAME
 
 :ledger-config:
 # option to not set ledger_conn for master
-if $LEDGER_CONN then
-do set env_ledger = $LEDGER_CONN
-do if !env_ledger then env_ledger_start = python !env_ledger.split(":")[0]
+if $LEDGER_CONN then set env_ledger = $LEDGER_CONN
 
-if !env_ledger_start != "127.0.0.1" and $LEDGER_CONN then
+if !env_ledger then
+do env_ledger_ip = python !env_ledger.split(":")[0]
+do env_ledger_port = python !env_ledger.split(":")[1]
+
+if !tcp_bind == true and (!env_ledger_ip == host.docker.internal or !env_ledger_ip == "127.0.0.1") and !env_ledger_port == !anylog_server_port then goto select-ledger
+else if $LEDGER_CONN then
 do set ledger_conn = $LEDGER_CONN
 do goto authentication
 
+:select-ledger:
 if !master_configs == true and !enable_dns == true then ledger_conn = !external_dns + ":" + !anylog_server_port
 else if !master_configs == false and !enable_dns == true then ledger_conn = !external_dns + ":32048"
 else if !master_configs == true and !overlay_ip then ledger_conn = !overlay_ip + ":" + !anylog_server_port
@@ -161,8 +168,6 @@ else if !master_configs == false and !overlay_ip then ledger_conn = !overlay_ip 
 else if !master_configs == true then ledger_conn = !ip + ":" + !anylog_server_port
 else if !master_configs == false then ledger_conn = !ip + ":32048"
 
-# config_version = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
-config_version = "2.1.2609"
 
 :authentication:
 set enable_auth = false
