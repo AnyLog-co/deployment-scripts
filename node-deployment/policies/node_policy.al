@@ -62,7 +62,7 @@ if !enable_dns == true and !external_dns   then set policy new_policy [!node_typ
 else if !tcp_bind == true and !overlay_ip  then set policy new_policy [!node_type][ip] = !overlay_ip
 else if !tcp_bind == true                  then set policy new_policy [!node_type][ip] = !ip
 
-if !enable_dns == true and ($DNS_DOMAIN or $DNS) then set policy new_policy [!node_type][local_ip] = !dns
+if !enable_dns == true and !dns then set policy new_policy [!node_type][local_ip] = !dns
 else if !tcp_bind == false and !overlay_ip       then set policy new_policy [!node_type][local_ip] = !overlay_ip
 else if !tcp_bind == false                        then set policy new_policy [!node_type][local_ip] = !ip
 
@@ -95,8 +95,8 @@ if !country then set policy new_policy [!node_type][country] = !country
 if !state then set policy new_policy [!node_type][state] = !state
 if !city then set policy new_policy [!node_type][city] = !city
 
-if !node_type == operator and !branch then set policy new_policy [!node_type][branch]
-if !node_type == operator and !dept then set policy new_policy [!node_type][dept]
+if !node_type == operator and !branch then set policy new_policy [!node_type][branch] = !branch
+if !node_type == operator and !dept then set policy new_policy [!node_type][dept] = !dept
 
 :set-hzn-info:
 

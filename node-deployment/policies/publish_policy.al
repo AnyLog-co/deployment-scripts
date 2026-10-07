@@ -46,11 +46,14 @@ goto end-script
 :sign-policy-error:
 # error code 1 - failed to sign policy
 error_code = 1
+goto end-script
 
 :prepare-policy-error:
 # error code 2 - policy is not in the correct format
 error_code = 2
+goto end-script
 
 :declare-policy-error:
 # error code 3 - failed to publish policy on the blockchain
 error_code = 3
+goto end-script

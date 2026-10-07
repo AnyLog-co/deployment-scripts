@@ -36,7 +36,7 @@ deployment_type = python !version.split(" ")[0]
 if !deployment_type == AnyLog then release_type = python !version.split("(")[-1].split(")")
 if !deployment_type != AnyLog or !release_type == "RTS" then set is_edgelake = true
 
-if !is_edgelake == true and $NODE_TYPE == publisher then edgelake-error
+if !is_edgelake == true and $NODE_TYPE == publisher then goto edgelake-error
 
 :directories:
 
@@ -78,19 +78,23 @@ if !enable_mqtt == true then get msg client
 
 :end-script:
 on error ignore
-if !debug_mode == true then
-do set exception traceback off
-do trace level = 0
+if $TRACE_LEVEL and $TRACE_LEVEL.int > 0 then trace level = 0
+else if !enable_debug == true then set debug off
 
 end script
+
+:terminate-scripts:
+on error ignore
+
+if $TRACE_LEVEL and $TRACE_LEVEL.int > 0 then trace level = 0
+else if !enable_debug == true then set debug off
+
+exit scripts
 
 :set-debug-error:
 echo "Failed to set enable debug state"
 return
 
-:terminate-scripts:
-if $TRACE_LEVEL == 1 or $TRACE_LEVEL == 3 then  trace level = 0
-exit scripts
 
 
 :edgelake-error:

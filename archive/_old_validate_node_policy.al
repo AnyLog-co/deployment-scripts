@@ -17,7 +17,6 @@ on error ignore
 if !enable_debug == true then set debug on
 
 :process-select:
-set is_policy = ""
 if !enable_dns == false and not !overlay_ip then goto generic-check
 if !enable_dns == false and !overlay_ip then goto overlay-check
 
@@ -27,13 +26,13 @@ if !external_dns then
     company=!company_name and
     ip = !external_dns and
     port = !anylog_server_port bring.first>
-do goto check-policy
+do goto check-operator
 else if !tcp_bind == true and !dns then
 <do is_policy = blockchain get !node_type where
     company=!company_name and
     ip = !dns and
     port = !anylog_server_port bring.first>
-do goto check-policy
+do goto check-operator
 else goto mismatch-error
 
 :overlay-check:
@@ -42,13 +41,13 @@ if !tcp_bind == false and !overlay_ip then
     company=!company_name and
     local_ip = !overlay_ip and
     port = !anylog_server_port bring.first>
-do goto check-policy
+do goto check-operator
 else if !tcp_bind == true and !overlay_ip then
 <do is_policy = blockchain get !node_type where
     company=!company_name and
     ip = !overlay_ip and
     port = !anylog_server_port bring.first>
-do goto check-policy
+do goto check-operator
 else goto mismatch-error
 
 :generic-check:
@@ -57,31 +56,30 @@ if !tcp_bind == false then
     company=!company_name and
     local_ip = !ip and
     port = !anylog_server_port bring.first>
-do goto check-policy
+do goto check-operator
 else if !tcp_bind == true then
 <do is_policy = blockchain get !node_type where
     company=!company_name and
     ip = !ip and
     port = !anylog_server_port bring.first>
-do goto check-policy
+do goto check-operator
 else goto network-config-error
 
-:check-policy:
+:check-operator:
 on error ignore
-
-if not !is_policy then
+if !is_policy then tmp_node_name = from !is_policy bring [*][name]
+else if not !is_policy and not $NODE_NAME then
 do process !local_scripts/node-deployment/policies/node_name.al
-# do goto set-node-name
 
-if !is_policy and !node_type == operator then
-do cluster_id = from !is_policy bring [*][cluster]
+if $NODE_NAME and !tmp_node_name and !tmp_node_name != $NODE_NAME then
+do echo "user defined node name doesn't match this node - Node Name:" $NODE_NAME
+do node_name = !tmp_node_name
+
+# if !is_policy and not !node_conn then node_conn = from !is_policy bring.ip_port
+
+if !node_type == operator and !is_policy then
 do operator_id = from !is_policy bring [*][id]
-
-if !cluster_id then cluster_name = blockchain get cluster where id = !cluster_id bring.first [*][name]
-
-if !is_policy then node_name = from !is_policy bring [*][name]
-if !node_name and $NODE_NAME and !node_name != $NODE_NAME then
-do echo "Warning: NODE_NAME (" $NODE_NAME ") ignored - this node already has a policy named " !node_name ". To rename it, remove the existing node policy first."
+do cluster_id = from !is_policy bring [*][cluster]
 
 :set-node-name:
 if !node_name then set node name !node_name

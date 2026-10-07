@@ -20,7 +20,6 @@ on error ignore
 if !enable_debug == true then set debug on
 
 if $DISABLE_CLI == true then set cli off
-rand_int = random int
 
 :required-params:
 # config_version = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
@@ -42,6 +41,8 @@ if $NODE_TYPE == master-operator or $NODE_TYPE == master-publisher or $NODE_TYPE
 if !node_type != operator and $IS_HIDDEN == true then is_hidden = true
 
 if not $LICENSE_KEY then goto missing-license-key
+
+set license_key = $LICENSE_KEY
 if $COMPANY_NAME then set company_name = $COMPANY_NAME
 else if !license_key then company_name = from !license_key[256:] bring [company]
 
@@ -262,7 +263,7 @@ if $BLOCKCHAIN_SYNC then blockchain_sync = $BLOCKCHAIN_SYNC
 if $BLOCKCHAIN_SOURCE then blockchain_source=$BLOCKCHAIN_SOURCE
 if $DESTINATION then set blockchain_destination=$DESTINATION
 if !node_type == master and !blockchain_source != master then set is_relay = true
-if blockchain_source == master then goto operator-settings
+if !blockchain_source == master then goto operator-settings
 
 :blockchain-connect:
 # live blockchain configuration
@@ -539,7 +540,7 @@ goto terminate-scripts
 # goto terminate-scripts
 
 :nic-error:
-echo "Invalid NIC type " + !nic_Type
+echo "Invalid NIC type " + !nic_type
 return
 
 
