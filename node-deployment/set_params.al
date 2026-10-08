@@ -134,7 +134,7 @@ if $ANYLOG_BROKER_PORT then anylog_broker_port = $ANYLOG_BROKER_PORT
 if $TCP_BIND == false then tcp_bind = false
 if $TCP_THREADS then tcp_threads = $TCP_THREADS
 if !tcp_threads.int < 1 then tcp_threads = 1
-if $POLICY_BIND = true then set policy_tcp_bind = true
+if $POLICY_BIND == true then set policy_tcp_bind = true
 
 
 if $REST_BIND == true then rest_bind = true
