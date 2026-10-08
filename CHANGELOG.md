@@ -6,7 +6,14 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 623757c -->
+<!-- last-processed: b26e102 -->
+
+<!-- os-dev: b26e102 (2026-10-08) -->
+
+* **Ori Shadmon** (2026-10-07)
+  * Archive: improvements with the deployment scripts
+  * Node deployment: improvements with the deployment scripts
+  * Node deployment / Policies: improvements with the deployment scripts
 
 <!-- os-dev: 623757c (2026-10-06) -->
 
@@ -318,7 +325,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 623757c -->
+<!-- last-processed: b26e102 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
