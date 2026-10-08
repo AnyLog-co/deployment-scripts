@@ -20,6 +20,7 @@
 on error ignore
 
 :set-debug:
+set debug on
 if !enable_debug == true then set debug on
 
 if !node_type == operator and not !cluster_name then goto cluster-name
@@ -34,8 +35,7 @@ else if not $CLUSTER_NAME and not !cluster_name then cluster_name = "cluster-" +
 
 :node-name:
 if $NODE_NAME and not !node_name then node_name = $NODE_NAME
-else if not !node_name and not $NODE_NAME then
-do node_name = !node_hostname + "-" + !node_company_name + "-" + !node_type + "-" + !rand_int
+else if not !node_name and not $NODE_NAME then node_name = !node_hostname + "-" + !node_company_name + "-" + !node_type + "-" + !rand_int
 
 :set-node-name:
 if not !set_node_name or !set_node_name != true then
@@ -44,4 +44,5 @@ do set set_node_name = true
 
 :end-script:
 if !enable_debug == true then set debug off
+set debug off
 end script
