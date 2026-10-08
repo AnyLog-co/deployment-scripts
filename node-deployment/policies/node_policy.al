@@ -58,13 +58,13 @@ if $HZN_DEVICE_ID then set policy new_policy [!node_type][hzn_device_id] = $HZN_
 :network-node_type:
 
 set policy new_policy [!node_type][ip] = !external_ip
-if !enable_dns == true and !external_dns   then set policy new_policy [!node_type][ip] = !external_dns
-else if !tcp_bind == true and !overlay_ip  then set policy new_policy [!node_type][ip] = !overlay_ip
-else if !tcp_bind == true                  then set policy new_policy [!node_type][ip] = !ip
+if !enable_dns == true and !external_dns                               then set policy new_policy [!node_type][ip] = !external_dns
+else if !tcp_bind == true or !policy_tcp_bind == true and !overlay_ip  then set policy new_policy [!node_type][ip] = !overlay_ip
+else if !tcp_bind == true or !policy_tcp_bind == true                  then set policy new_policy [!node_type][ip] = !ip
 
-if !enable_dns == true and !dns then set policy new_policy [!node_type][local_ip] = !dns
-else if !tcp_bind == false and !overlay_ip       then set policy new_policy [!node_type][local_ip] = !overlay_ip
-else if !tcp_bind == false                        then set policy new_policy [!node_type][local_ip] = !ip
+if !enable_dns == true and !dns                                                then set policy new_policy [!node_type][local_ip] = !dns
+else if !tcp_bind == false and !policy_tcp_bind == false and !overlay_ip       then set policy new_policy [!node_type][local_ip] = !overlay_ip
+else if !tcp_bind == false and !policy_tcp_bind == false                       then set policy new_policy [!node_type][local_ip] = !ip
 
 set policy new_policy [!node_type][port] = !anylog_server_port.int
 set policy new_policy [!node_type][rest_port] = !anylog_rest_port.int

@@ -108,6 +108,7 @@ do anylog_rest_port = 32249
 do anylog_broker_port = 32250
 
 tcp_bind = true
+policy_tcp_bind = false
 tcp_threads=6
 rest_bind = false
 rest_threads=6
@@ -133,12 +134,15 @@ if $ANYLOG_BROKER_PORT then anylog_broker_port = $ANYLOG_BROKER_PORT
 if $TCP_BIND == false then tcp_bind = false
 if $TCP_THREADS then tcp_threads = $TCP_THREADS
 if !tcp_threads.int < 1 then tcp_threads = 1
+if $POLICY_BIND = true then set policy_tcp_bind = true
+
 
 if $REST_BIND == true then rest_bind = true
 if $REST_THREADS then rest_threads = $REST_THREADS
 if !rest_threads.int < 1 then rest_threads = 1
 if $REST_TIMEOUT then rest_timeout = $REST_TIMEOUT
 if !rest_timeout.int < 0 then rest_timeout = 0 # continuous
+
 
 if $BROKER_BIND == true then broker_bind = true
 if $BROKER_THREADS and $BROKER_THREADS.int >= 1  then broker_threads = $BROKER_THREADS
