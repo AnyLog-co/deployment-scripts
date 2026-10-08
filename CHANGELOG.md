@@ -6,7 +6,14 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: c0ae6f4 -->
+<!-- last-processed: 623757c -->
+
+<!-- os-dev: 623757c (2026-10-06) -->
+
+* **Ori Shadmon** (2026-10-05)
+  * Node deployment: fix ledger sselection for default; publish policy logic + monitoring support with new scheduler; improve monitoring - in progress
+  * Node deployment / Policies: publish policy logic + monitoring support with new scheduler; blockchain wait - moved to be used in every case
+  * Southbound / Monitoring: publish policy logic + monitoring support with new scheduler; improve monitoring - in progress; blockchain wait - moved to be used in every case; monitoring set to scheduler 2
 
 <!-- os-dev: c0ae6f4 (2026-10-03) -->
 
@@ -311,7 +318,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: c0ae6f4 -->
+<!-- last-processed: 623757c -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
