@@ -11,6 +11,7 @@
 #       - support scripts
 #-----------------------------------------------------------------------------------------------------------------------
 # python3.11 AnyLog-Network/anylog_enterprise/anylog.py process $ANYLOG_PATH/deployment-scripts/node-deployment/main.al
+system date
 
 :set-debug:
 set enable_debug = false
@@ -81,6 +82,7 @@ on error ignore
 if $TRACE_LEVEL and $TRACE_LEVEL.int > 0 then trace level = 0
 else if !enable_debug == true then set debug off
 
+system date
 end script
 
 :terminate-scripts:
