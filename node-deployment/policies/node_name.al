@@ -20,7 +20,6 @@
 on error ignore
 
 :set-debug:
-set debug on
 if !enable_debug == true then set debug on
 
 if !node_type == operator and not !cluster_name then goto cluster-name
@@ -44,5 +43,4 @@ do set set_node_name = true
 
 :end-script:
 if !enable_debug == true then set debug off
-set debug off
 end script

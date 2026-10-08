@@ -26,6 +26,11 @@ on error ignore
 :set-debug:
 if !enable_debug == true then set debug on
 
+
+if !is_hidden == true then
+do process !local_scripts/node-deployment/policies/node_name.al
+do goto end-script
+
 :is-node-policy:
 set create_policy = false
 if !is_relay == true then set node_type = relay
