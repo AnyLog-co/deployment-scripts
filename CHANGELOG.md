@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 5b095c9 -->
+<!-- last-processed: fd20772 -->
+
+<!-- os-dev: fd20772 (2026-10-09) -->
+
+* **Ori Shadmon** (2026-10-09)
+  * Node deployment: self loopup simplified
 
 <!-- os-dev: 5b095c9 (2026-10-09) -->
 
@@ -365,7 +370,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 5b095c9 -->
+<!-- last-processed: fd20772 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
