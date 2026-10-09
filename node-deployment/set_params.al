@@ -152,6 +152,21 @@ if $BROKER_THREADS and $BROKER_THREADS.int >= 1  then broker_threads = $BROKER_T
 if not $NIC_TYPE and $OVERLAY_IP then overlay_ip = $OVERLAY_IP
 if $CONFIG_NAME then config_name = $CONFIG_NAME
 
+:self-ip-loopback:
+if not $SELF_IP_LOOPBACK then goto ledger-config
+if $SELF_IP_LOOPBACK == false or $SELF_IP_LOOPBACK == False or $SELF_IP_LOOPBACK == FALSE then goto ledger-config
+if $SELF_IP_LOOPBACK == true or $SELF_IP_LOOPBACK == True or $SELF_IP_LOOPBACK == TRUE then goto set-self-ip
+print "SELF_IP_LOOPBACK must be true or false"
+exit node
+
+:set-self-ip:
+on error goto self-ip-error
+if !tcp_bind == true then goto self-ip-bind-error
+if not !anylog_server_port.int then goto self-ip-port-error
+if !anylog_server_port.int < 1 or !anylog_server_port.int > 65535 then goto self-ip-port-error
+set self ip and port = 127.0.0.1:!anylog_server_port
+on error ignore
+
 :ledger-config:
 # option to not set ledger_conn for master
 if $LEDGER_CONN then set env_ledger = $LEDGER_CONN
@@ -571,3 +586,15 @@ goto terminate-scripts
 #:invalid-nosql-database:
 #print "Invalid NoSQL database type " $NOSQL_TYPE ", cannot continue..."
 #goto terminate-scripts
+
+:self-ip-bind-error:
+print "SELF_IP_LOOPBACK requires TCP_BIND=false"
+exit node
+
+:self-ip-port-error:
+print "SELF_IP_LOOPBACK requires a TCP port between 1 and 65535"
+exit node
+
+:self-ip-error:
+print "Failed to configure loopback self IP"
+exit node
