@@ -6,7 +6,15 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 95d1ea6 -->
+<!-- last-processed: 5b095c9 -->
+
+<!-- os-dev: 5b095c9 (2026-10-09) -->
+
+* **Ori Shadmon** (2026-10-09)
+  * General: orchestrator + other stuff
+  * Node deployment / Policies: orchestrator + other stuff; testing for publisher
+* **Justin Boyd** (2026-10-09)
+  * Node deployment: added self-ip loopback in set_params.al
 
 <!-- os-dev: 95d1ea6 (2026-10-09) -->
 
@@ -357,7 +365,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 95d1ea6 -->
+<!-- last-processed: 5b095c9 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
