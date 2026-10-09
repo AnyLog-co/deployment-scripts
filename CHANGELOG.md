@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: f752f26 -->
+<!-- last-processed: 77a4c34 -->
+
+<!-- os-dev: 77a4c34 (2026-10-08) -->
+
+* **Ori Shadmon** (2026-10-08)
+  * Node deployment: integrate logic where node policy to use local IP but network is not bound
 
 <!-- os-dev: f752f26 (2026-10-08) -->
 
@@ -341,7 +346,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: f752f26 -->
+<!-- last-processed: 77a4c34 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
