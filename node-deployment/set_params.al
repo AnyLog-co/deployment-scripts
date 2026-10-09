@@ -153,19 +153,16 @@ if not $NIC_TYPE and $OVERLAY_IP then overlay_ip = $OVERLAY_IP
 if $CONFIG_NAME then config_name = $CONFIG_NAME
 
 :self-ip-loopback:
-if not $SELF_IP_LOOPBACK then goto ledger-config
-if $SELF_IP_LOOPBACK == false or $SELF_IP_LOOPBACK == False or $SELF_IP_LOOPBACK == FALSE then goto ledger-config
-if $SELF_IP_LOOPBACK == true or $SELF_IP_LOOPBACK == True or $SELF_IP_LOOPBACK == TRUE then goto set-self-ip
-print "SELF_IP_LOOPBACK must be true or false"
-exit node
+# we're configuring the self IP as `127.0.0.1`, when the NIC is either loopback or docker address.
+# Situation(s): (Docker) port-forwarding "forcefully" used in situation where network should be defined or vise-versa.
 
-:set-self-ip:
-on error goto self-ip-error
-if !tcp_bind == true then goto self-ip-bind-error
-if not !anylog_server_port.int then goto self-ip-port-error
-if !anylog_server_port.int < 1 or !anylog_server_port.int > 65535 then goto self-ip-port-error
-set self ip and port = 127.0.0.1:!anylog_server_port
-on error ignore
+if not $SELF_IP_LOOPBACK or $SELF_IP_LOOPBACK == false then goto ledger-config
+
+if !tcp_bind == false and !anylog_server_port then
+do on error call self-ip-error
+do set self ip and port = 127.0.0.1:!anylog_server_port
+do on error ignore
+
 
 :ledger-config:
 # option to not set ledger_conn for master
@@ -587,14 +584,8 @@ goto terminate-scripts
 #print "Invalid NoSQL database type " $NOSQL_TYPE ", cannot continue..."
 #goto terminate-scripts
 
-:self-ip-bind-error:
-print "SELF_IP_LOOPBACK requires TCP_BIND=false"
-exit node
 
-:self-ip-port-error:
-print "SELF_IP_LOOPBACK requires a TCP port between 1 and 65535"
-exit node
 
 :self-ip-error:
 print "Failed to configure loopback self IP"
-exit node
+return
