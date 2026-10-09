@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: ce380b8 -->
+<!-- last-processed: 95d1ea6 -->
+
+<!-- os-dev: 95d1ea6 (2026-10-09) -->
+
+* **Ori Shadmon** (2026-10-08)
+  * Node deployment / Policies: tmp removval of publisher from code
 
 <!-- os-dev: ce380b8 (2026-10-09) -->
 
@@ -352,7 +357,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: ce380b8 -->
+<!-- last-processed: 95d1ea6 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
