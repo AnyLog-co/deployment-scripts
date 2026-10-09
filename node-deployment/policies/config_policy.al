@@ -62,6 +62,7 @@ if !node_type == generic then
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "run scheduler 1",
     "if !system_query == true and !enable_mcp == true then run mcp server",
+    "process !local_scripts/orchestrator/orchestrator.al",
     "process !local_scripts/node-deployment/policies/node_name.al",
     "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
     "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
@@ -77,6 +78,7 @@ if !node_type == master or !node_type == query then
 <do set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
+    "process !local_scripts/orchestrator/orchestrator.al",
     "process !local_scripts/node-deployment/policies/node_policy.al",
     "run scheduler 1",
     "if !system_query == true and !enable_mcp == true then run mcp server",
@@ -95,6 +97,7 @@ if !node_type == publisher then
 <do set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
+    "process !local_scripts/orchestrator/orchestrator.al",
     "process !local_scripts/node-deployment/policies/node_policy.al",
     "run scheduler 1",
     "set buffer threshold where time=!threshold_time and volume=!threshold_volume and write_immediate=false",
@@ -119,6 +122,7 @@ do goto publish-policy
 <set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
+    "process !local_scripts/orchestrator/orchestrator.al",
     "process !local_scripts/node-deployment/policies/cluster_policy.al",
     "process !local_scripts/node-deployment/policies/node_policy.al",
     "run scheduler 1",

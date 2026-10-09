@@ -103,14 +103,10 @@ if !city then set policy new_policy [!node_type][city] = !city
 if !node_type == operator and !branch then set policy new_policy [!node_type][branch] = !branch
 if !node_type == operator and !dept then set policy new_policy [!node_type][dept] = !dept
 
-:set-hzn-info:
-
-if $HZN_DEVICE_ID then set policy new_policy [!node_type][hzn_node_id] = $HZN_DEVICE_ID
-else if $HZN_NODE_ID then set policy new_policy [!node_type][hzn_node_id] = $HZN_NODE_ID
-if $HZN_ORGANIZATION then set policy new_policy [!node_type][hzn_org] = $HZN_ORGANIZATION
+:set-orchestrator-info:
+if !orchestrator_id then set policy new_policy [!node_type][orchestrator] = !orchestrator_id
 
 :publish-policy:
-
 process !local_scripts/node-deployment/policies/publish_policy.al
 if !error_code == 1 then goto sign-policy-error
 if !error_code == 2 then goto prepare-policy-error
