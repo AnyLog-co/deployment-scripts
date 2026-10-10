@@ -1,7 +1,7 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # The following provides an example for accepting video data into MongoDB. The example uses REST broker process, but the
 # same can be applied with MQTT, and the policy is similar to what EdgeX generates. When deploying script on a publisher
-# node, make sure the default logical database (!default_dbms) is set to an existing logical database.
+# node, make sure the default logical database (!msg_dbms) is set to an existing logical database.
 #
 # For the data generator associated with this script please reach out to Roy Shadmon (roy@anylog.co)
 #

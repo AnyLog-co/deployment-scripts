@@ -8,15 +8,16 @@
 #
 # {"monitor_id":"InconLoadTapChangerAI","timestamp":"2026-04-09T01:04:22.5542990Z","PV":-1.9600000381469727}
 #--------------------------------------------------------------------------------------------------------------------
-# process !local_scripts/data-generator/power_plant.al
+# process !local_scripts/smart-city/power_plant.al
 
 <run msg client where
     broker=172.104.228.251 and port=1883 and
-    user=anyloguser and password=mqtt4AnyLog! and
+    user=anyloguser and password=mqtt4AnyLog! and master_node = !ledger_conn and
     log=false and topic=(
         name=power-plant and
-        dbms=!default_dbms and
+        dbms=!msg_dbms and
         table=pp_pm and
+        dynamic=true and
         column.timestamp.timestamp = "bring [timestamp]" and
         column.monitor_id = (type=string and value="bring [monitor_id]") and
         column.a_current.float = "bring [A_Current]" and
@@ -33,7 +34,7 @@
         column.real_power.float = "bring [RealPower]"
     ) and topic = (
         name = power-plant-pv and
-        dbms = !default_dbms and
+        dbms = !msg_dbms and
         table = pv and
         column.timestamp.timestamp = "bring [timestamp]" and
         column.monitor_id = (type=string and value="bring [monitor_id]") and

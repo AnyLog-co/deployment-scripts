@@ -5,6 +5,10 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/node-deployment/database/connect_dbms_nosql.al
 
+:set-debug:
+if !enable_debug == true then set debug on
+
+:connect-nosql:
 if not !blob_storage_ip or not !blob_storage_port then goto missing-conn-info
 
 on error goto connect-dbms-error

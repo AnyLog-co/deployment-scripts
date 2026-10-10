@@ -2,14 +2,21 @@
 # Configure docker monitoring
 # NOTE: not supported for non-operator nodes - can work with publisher if user defines distribution
 #----------------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/southbound-monitoring/policy_docker_monitoring.al
-
+# process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al
 
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
+
+# due to a missing destination logic if node_type  != publisher or operator then process cannot be executed
+if !node_type != publisher and !node_type != operator then
+do echo "missing destination logic for monitoring docker info cannot process at this time"
+do goto-end-script
 
 :check-socket:
-is_docker = file check /var/run/docker.sock
+is_docker = file test /var/run/docker.sock
 if not !is_docker then goto missing-socket-error
 
 :set-params:
@@ -32,7 +39,12 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "id": !schedule_id,
         "name": "Docker Monitoring Schedule",
         "script": [
-            "run scheduled pull where name = docker_insights and type = docker and frequency = !docker_frequency and continuous = false and dbms = monitoring and table = docker_insight"
+            "process !local_scripts/southbound-monitoring/scheduled_params.al",
+            "if !node_type == operator then process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
+            "if !node_type == operator then process !local_scripts/southbound-monitoring/table_docker_monitoring.al",
+
+            "run scheduled pull where name = docker_insights and type = docker and frequency = !docker_frequency and continuous = false and dbms = monitoring and table = docker_insight",
+            "get scheduled pull"
         ]
     }
 }>

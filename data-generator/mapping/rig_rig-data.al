@@ -20,7 +20,7 @@ set new_policy = {}
 <new_policy = {
     "mapping" : {
         "id" : "rig-data",
-        "dbms" : !default_dbms,
+        "dbms" : !msg_dbms,
         "table" : "bring [table]",
         "readings" : "",
         "schema" : {
