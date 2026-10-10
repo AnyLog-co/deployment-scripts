@@ -22,38 +22,25 @@ on error ignore
 :set-debug:
 if !enable_debug == true then set debug on
 
-:blockchain-check:
+if !node_type == operator and not !cluster_name then goto cluster-name
+else if !node_name then goto end-script
 
-# blockchain sync
-# run blockchain sync
-# blockchain reload metadata
+rand_int = random int
 
-# check if policy exists
-process !local_scripts/node-deployment/policies/validate_node_policy.al
+:cluster-name:
+if !cluster_id then cluster_name = blockchain get cluster where id = !cluster_id bring.first [*][name]
+else if $CLUSTER_NAME and not !cluster_name then cluster_name = $CLUSTER_NAME
+else if not $CLUSTER_NAME and not !cluster_name then cluster_name = "cluster-" + !node_hostname + "-" + !node_company_name + "-" + !node_type + "-" + !rand_int
 
-# extract policy ID, name and cluster ID
-if !is_policy then
-do policy_id = from !is_policy bring [*][id]
-do node_name = from !is_policy bring [*][name]
-if !node_type == operator and !is_policy then  cluster_id = from !is_policy bring [*][cluster]
+:node-name:
+if $NODE_NAME and not !node_name then node_name = $NODE_NAME
+else if not !node_name and not $NODE_NAME then node_name = !node_hostname + "-" + !node_company_name + "-" + !node_type + "-" + !rand_int
 
-# add warning if the blockchain defined node name differs from the user defined ENV param
-if !node_name and $NODE_NAME and $NODE_NAME != !node_name then
-do echo "Warning: the pre-defined node name for this is not the same as the requested node name"
-
-:define-params;
-if !cluster_id and !node_name then goto set-params
-
-if $NODE_NAME then node_name = $NODE_NAME
-else if not $NODE_NAME then node_name = !node_hostname + "-" + !node_company_name + "-" + !node_type + "-" + !rand_int
-
-if !cluster_id then cluster_name = blockchain get cluster where id = !cluster_id bring [*][name]
-else if $CLUSTER_NAME then cluster_name = $CLUSTER_NAME
-else if not !cluster_name and !node_name then  cluster_name = "cluster-" + !node_name
-
-:set-params:
-set node name !node_name
+:set-node-name:
+if not !set_node_name or !set_node_name != true then
+do set node name !node_name
+do set set_node_name = true
 
 :end-script:
-set debug off
+if !enable_debug == true then set debug off
 end script

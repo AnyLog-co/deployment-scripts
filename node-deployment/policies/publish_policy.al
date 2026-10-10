@@ -30,10 +30,11 @@ on error call declare-policy-error
 blockchain prepare policy !new_policy
 
 policy_type = from !new_policy  bring [*]
-if !policy_type == config or !master_configs == true then
-do blockchain insert where policy=!new_policy and local=true
-do config_policy = !new_policy
+
+if !policy_type == config and !master_configs == true then blockchain insert where policy=!new_policy and local=true
 else blockchain insert where policy=!new_policy and local=true and master=!ledger_conn
+
+blockchain wait where policy=!new_policy
 
 :end-script:
 end script
@@ -45,11 +46,14 @@ goto end-script
 :sign-policy-error:
 # error code 1 - failed to sign policy
 error_code = 1
+goto end-script
 
 :prepare-policy-error:
 # error code 2 - policy is not in the correct format
 error_code = 2
+goto end-script
 
 :declare-policy-error:
 # error code 3 - failed to publish policy on the blockchain
 error_code = 3
+goto end-script

@@ -17,13 +17,13 @@ if !is_scheduled_dest == true then goto end-script
 
 :get-view-monitoring-dest:
 <if not !view_monitoring_dest then
-    schedule name=view_monitoring_dest and time=!schedule_time and task
-        view_monitoring_dest = blockchain get query where type=query bring.ip_port>
+    schedule scheduler = 2 and name=view_monitoring_dest and time=!schedule_time and task
+        view_monitoring_dest = blockchain get query bring.ip_port>
 
 
 :store-monitoring-dest:
 <if not !store_monitoring_dest then
-    schedule name=store_monitoring_dest and time=!schedule_time and task
+    schedule scheduler = 2 and name=store_monitoring_dest and time=!schedule_time and task
         if not !store_monitoring_dest then
             store_monitoring_dest = blockchain get monitoring-node where type=operator bring.last [*][ip] : [*][port]>
 

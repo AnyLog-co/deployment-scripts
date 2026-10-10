@@ -26,6 +26,11 @@ on error ignore
 :set-debug:
 if !enable_debug == true then set debug on
 
+
+if !is_hidden == true then
+do process !local_scripts/node-deployment/policies/node_name.al
+do goto end-script
+
 :is-node-policy:
 set create_policy = false
 if !is_relay == true then set node_type = relay
@@ -37,7 +42,7 @@ blockchain reload metadata
 # checks nodes based on name, company and networking configurations
 process !local_scripts/node-deployment/policies/validate_node_policy.al
 
-is_primary = blockchain get operator where cluster=!cluster_id bring.count
+if !node_type == operator then is_primary = blockchain get operator where cluster=!cluster_id bring.count
 if !is_primary then set is_main = false
 
 if not !is_policy and !create_policy == false then goto create-policy
@@ -58,13 +63,13 @@ if $HZN_DEVICE_ID then set policy new_policy [!node_type][hzn_device_id] = $HZN_
 :network-node_type:
 
 set policy new_policy [!node_type][ip] = !external_ip
-if !enable_dns == true and !external_dns   then set policy new_policy [!node_type][ip] = !external_dns
-else if !tcp_bind == true and !overlay_ip  then set policy new_policy [!node_type][ip] = !overlay_ip
-else if !tcp_bind == true                  then set policy new_policy [!node_type][ip] = !ip
+if !enable_dns == true and !external_dns                               then set policy new_policy [!node_type][ip] = !external_dns
+else if (!tcp_bind == true or !policy_tcp_bind == true) and !overlay_ip  then set policy new_policy [!node_type][ip] = !overlay_ip
+else if (!tcp_bind == true or !policy_tcp_bind == true)                  then set policy new_policy [!node_type][ip] = !ip
 
-if !enable_dns == true and ($DNS_DOMAIN or $DNS) then set policy new_policy [!node_type][local_ip] = !dns
-else if !tcp_bind == false and !overlay_ip       then set policy new_policy [!node_type][local_ip] = !overlay_ip
-else if !tcp_bind == false                        then set policy new_policy [!node_type][local_ip] = !ip
+if !enable_dns == true and !dns                                                then set policy new_policy [!node_type][local_ip] = !dns
+else if !tcp_bind == false and !policy_tcp_bind == false and !overlay_ip       then set policy new_policy [!node_type][local_ip] = !overlay_ip
+else if !tcp_bind == false and !policy_tcp_bind == false                       then set policy new_policy [!node_type][local_ip] = !ip
 
 set policy new_policy [!node_type][port] = !anylog_server_port.int
 set policy new_policy [!node_type][rest_port] = !anylog_rest_port.int
@@ -95,21 +100,18 @@ if !country then set policy new_policy [!node_type][country] = !country
 if !state then set policy new_policy [!node_type][state] = !state
 if !city then set policy new_policy [!node_type][city] = !city
 
-if !node_type == operator and !branch then set policy new_policy [!node_type][branch]
-if !node_type == operator and !dept then set policy new_policy [!node_type][dept]
+if !node_type == operator and !branch then set policy new_policy [!node_type][branch] = !branch
+if !node_type == operator and !dept then set policy new_policy [!node_type][dept] = !dept
 
-:set-hzn-info:
-
-if $HZN_DEVICE_ID then set policy new_policy [!node_type][hzn_node_id] = $HZN_DEVICE_ID
-else if $HZN_NODE_ID then set policy new_policy [!node_type][hzn_node_id] = $HZN_NODE_ID
-if $HZN_ORGANIZATION then set policy new_policy [!node_type][hzn_org] = $HZN_ORGANIZATION
+:set-orchestrator-info:
+if !orchestrator_id then set policy new_policy [!node_type][orchestrator] = !orchestrator_id
 
 :publish-policy:
-
 process !local_scripts/node-deployment/policies/publish_policy.al
 if !error_code == 1 then goto sign-policy-error
 if !error_code == 2 then goto prepare-policy-error
 if !error_code == 3 then goto declare-policy-error
+
 set create_policy = true
 goto check-policy
 
