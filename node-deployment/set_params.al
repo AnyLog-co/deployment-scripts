@@ -172,10 +172,12 @@ if !env_ledger then
 do env_ledger_ip = python !env_ledger.split(":")[0]
 do env_ledger_port = python !env_ledger.split(":")[1]
 
+set debug on
 if !tcp_bind == true and (!env_ledger_ip == host.docker.internal or !env_ledger_ip == "127.0.0.1") and !env_ledger_port == !anylog_server_port then goto select-ledger
 else if $LEDGER_CONN then
 do set ledger_conn = $LEDGER_CONN
 do goto authentication
+set debug off
 
 :select-ledger:
 if !master_configs == true and !enable_dns == true then ledger_conn = !external_dns + ":" + !anylog_server_port
