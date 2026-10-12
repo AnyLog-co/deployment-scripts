@@ -174,8 +174,8 @@ do env_ledger_port = python !env_ledger.split(":")[1]
 
 if      !tcp_bind == true and  (!env_ledger_ip == host.docker.internal or !env_ledger_ip == 127.0.0.1) and !env_ledger_port and !enable_dns == true then ledger_conn = !dns + ":" + !env_ledger_port
 else if !tcp_bind == false and (!env_ledger_ip == host.docker.internal or !env_ledger_ip == 127.0.0.1) and !env_ledger_port and !enable_dns == true then ledger_conn = !external_dns + ":" + !env_ledger_port
-else if !tcp_bind == true and  (!env_ledger_ip == host.docker.internal or !env_ledger_ip == 127.0.0.1) and !env_ledger_port then ledger_conn = !external_ip + ":" + !env_ledger_port
-else if !tcp_bind == false and (!env_ledger_ip == host.docker.internal or !env_ledger_ip == 127.0.0.1) and !env_ledger_port then ledger_conn = !ip + ":" + !env_ledger_port
+else if !tcp_bind == true and  (!env_ledger_ip == host.docker.internal or !env_ledger_ip == 127.0.0.1) and !env_ledger_port then ledger_conn = !ip + ":" + !env_ledger_port
+else if !tcp_bind == false and (!env_ledger_ip == host.docker.internal or !env_ledger_ip == 127.0.0.1) and !env_ledger_port then ledger_conn = !external_ip + ":" + !env_ledger_port
 else if $LEDGER_CONN then ledger_conn = $LEDGER_CONN
 
 :authentication:
