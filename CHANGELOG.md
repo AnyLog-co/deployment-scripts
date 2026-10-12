@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: e5146c9 -->
+<!-- last-processed: 916ab5e -->
+
+<!-- os-dev: 916ab5e (2026-10-12) -->
+
+* **Ori Shadmon** (2026-10-12)
+  * Node deployment: fix logic for 127 on ledger conn for different ports
 
 <!-- os-dev: e5146c9 (2026-10-12) -->
 
@@ -375,7 +380,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: e5146c9 -->
+<!-- last-processed: 916ab5e -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
