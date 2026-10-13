@@ -6,7 +6,15 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 2d86610 -->
+<!-- last-processed: a492acf -->
+
+<!-- os-dev: a492acf (2026-10-13) -->
+
+* **Ori Shadmon** (2026-10-13)
+  * Node deployment: instead of enabling node monitoring we disable it if we do not want to - storage + forwarding works the same as before
+  * Node deployment / Database: integrate system_query w/ query node
+  * Node deployment / Policies: instead of enabling node monitoring we disable it if we do not want to - storage + forwarding works the same as before
+  * Southbound / Monitoring: instead of enabling node monitoring we disable it if we do not want to - storage + forwarding works the same as before
 
 <!-- os-dev: 2d86610 (2026-10-12) -->
 
@@ -385,7 +393,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 2d86610 -->
+<!-- last-processed: a492acf -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
