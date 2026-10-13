@@ -33,9 +33,11 @@ set create_config = false
 
 :check-policy:
 
-config_id = blockchain get config where company=!company_name and name=!config_name and node_type=!node_type bring.first [*][id]
+if $CONFIG_ID then config_id = $CONFIG_ID
+else if not !config_id then config_id = blockchain get config where company=!company_name and name=!config_name and node_type=!node_type bring.first [*][id]
+
 if !config_id then goto config-policy
-if not !config_id and !create_config == true then goto declare-policy-error
+else if not !config_id and !create_config == true then goto declare-policy-error
 
 
 :prepare-new-policy:

@@ -27,6 +27,8 @@ config_version = "2.1.2609"
 
 hostname = get hostname
 
+if $CONFIG_ID then config_id = $CONFIG_ID
+
 set is_hidden =false
 set master_configs = false
 company_name = Acme
