@@ -50,8 +50,6 @@ if !is_policy then goto config-policy
 # failure show created policy
 if not !is_policy and !create_policy == true then goto declare-policy-error
 
-# "",
-
 :create-policy
 <new_policy = {
     "schedule": {

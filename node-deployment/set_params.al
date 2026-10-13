@@ -371,8 +371,7 @@ if $MSG_VALUE_COLUMN then msg_value_column=$MSG_VALUE_COLUMN
 
 
 :monitoring:
-set monitoring_node     = false
-set node_monitoring     = true
+set disable_node_monitoring     = false
 set syslog_monitoring   = true
 set docker_monitoring   = true
 set store_monitoring    = false
@@ -389,8 +388,7 @@ docker_frequency = 10
 if not $MONITORING_DB then  monitoring_db = $DB_TYPE
 else if $MONITORING_DB == psql or $MONITORING_DB == sqlite then monitoring_db = $MONITORING_DB
 
-if $MONITORING_NODE == false then set monitoring_node = false
-if $NODE_MONITORING == false   then set node_monitoring   = false
+if $DISABLE_NODE_MONITORING == true   then set disable_node_monitoring   = true
 if $SYSLOG_MONITORING == false then set syslog_monitoring = false
 if $DOCKER_MONITORING == false then set docker_monitoring = false
 

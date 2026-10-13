@@ -64,7 +64,7 @@ if !node_type == generic then
     "if !system_query == true and !enable_mcp == true then run mcp server",
     "process !local_scripts/orchestrator/orchestrator.al",
     "process !local_scripts/node-deployment/policies/node_name.al",
-    "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "if !disable_node_monitoring == false then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
     "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
     "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
 
@@ -83,7 +83,7 @@ if !node_type == master or !node_type == query then
     "run scheduler 1",
     "if !system_query == true and !enable_mcp == true then run mcp server",
 
-    "if !node_monitoring == true then process  !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "if !disable_node_monitoring == false then process  !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
 
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
     "if !is_edgelake == false and $LICENSE_KEY then set license where activation_key=$LICENSE_KEY"
@@ -107,7 +107,7 @@ if !node_type == publisher then
     "if !system_query == true and !enable_mcp == true then run mcp server",
     "if !enable_aggregations == true then process !local_scripts/sample-scripts/aggregation.al",
 
-    "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "if !disable_node_monitoring == false then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
     "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
     "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
 
@@ -137,7 +137,7 @@ do goto publish-policy
     "if !enable_mqtt == true then process !local_scripts/data-generator/data_generator.al",
     "if !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
 
-    "if !node_monitoring == true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "if !disable_node_monitoring == false then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
     "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
     "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
 
