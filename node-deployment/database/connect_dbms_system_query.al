@@ -30,7 +30,7 @@ if !system_query_db == sqlite then connect dbms system_query where type=sqlite a
 #   3. node_type != query
 #   5. is not hidden
 
-if !system_query == true and $REMOTE_GUI == true and !node_type != query and !is_hidden == false then
+if !system_query == true and $ENABLE_REMOTE_GUI == true and !node_type != query and !is_hidden == false then
 do set tmp_node_type = !node_type
 do set node_type = query
 do process !local_scripts/node-deployment/policies/node_policy.al
