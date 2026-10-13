@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: a492acf -->
+<!-- last-processed: 204b5a6 -->
+
+<!-- os-dev: 204b5a6 (2026-10-13) -->
+
+* **Ori Shadmon** (2026-10-13)
+  * Node deployment / Database: integrate system_query w/ query node
 
 <!-- os-dev: a492acf (2026-10-13) -->
 
@@ -393,7 +398,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: a492acf -->
+<!-- last-processed: 204b5a6 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
