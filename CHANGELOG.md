@@ -6,7 +6,13 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 204b5a6 -->
+<!-- last-processed: 0792ab4 -->
+
+<!-- os-dev: 0792ab4 (2026-10-13) -->
+
+* **Ori Shadmon** (2026-10-13)
+  * Node deployment: if config policy ID
+  * Node deployment / Policies: if config policy ID
 
 <!-- os-dev: 204b5a6 (2026-10-13) -->
 
@@ -398,7 +404,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 204b5a6 -->
+<!-- last-processed: 0792ab4 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
