@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: c7d5ca3 -->
+<!-- last-processed: 793296a -->
+
+<!-- os-dev: 793296a (2026-10-14) -->
+
+* **Ori Shadmon** (2026-10-14)
+  * Docker: wrong path
 
 <!-- os-dev: c7d5ca3 (2026-10-14) -->
 
@@ -424,7 +429,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: c7d5ca3 -->
+<!-- last-processed: 793296a -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
