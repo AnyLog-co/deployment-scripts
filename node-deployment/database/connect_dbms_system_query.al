@@ -28,7 +28,7 @@ if !system_query_db == sqlite then connect dbms system_query where type=sqlite a
 #   1. system_query enabled
 #   2. remote-gui would be running on the same machine
 #   3. node_type != query
-#   5. is not hidden
+#   4. is not hidden
 
 if !system_query == true and $ENABLE_REMOTE_GUI == true and !node_type != query and !is_hidden == false then
 do set tmp_node_type = !node_type
