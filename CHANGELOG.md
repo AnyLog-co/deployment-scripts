@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 1a948da -->
+<!-- last-processed: c7d5ca3 -->
+
+<!-- os-dev: c7d5ca3 (2026-10-14) -->
+
+* **Ori Shadmon** (2026-10-14)
+  * General: image build tag naming
 
 <!-- os-dev: 1a948da (2026-10-14) -->
 
@@ -419,7 +424,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 1a948da -->
+<!-- last-processed: c7d5ca3 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
