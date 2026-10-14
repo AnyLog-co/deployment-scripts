@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 42c5382 -->
+<!-- last-processed: 7baf7f1 -->
+
+<!-- os-dev: 7baf7f1 (2026-10-14) -->
+
+* **Ori Shadmon** (2026-10-14)
+  * Node deployment / Database: numbering
 
 <!-- os-dev: 42c5382 (2026-10-14) -->
 
@@ -409,7 +414,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 42c5382 -->
+<!-- last-processed: 7baf7f1 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
