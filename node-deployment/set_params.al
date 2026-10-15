@@ -21,6 +21,13 @@ if !enable_debug == true then set debug on
 
 if $DISABLE_CLI == true then set cli off
 
+
+:check-container:
+set is_docker = false
+set is_k8s = false
+if $KUBERNETES_SERVICE_HOST then set is_k8s = true
+if !is_k8s == false then is_docker = file test /.dockerenv
+
 :required-params:
 # config_version = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
 config_version = "2.1.2609"
@@ -174,11 +181,9 @@ if !env_ledger then
 do env_ledger_ip = python !env_ledger.split(":")[0]
 do env_ledger_port = python !env_ledger.split(":")[1]
 
-if      !tcp_bind == true and  (!env_ledger_ip == host.docker.internal or !env_ledger_ip == 127.0.0.1) and !env_ledger_port and !enable_dns == true then ledger_conn = !dns + ":" + !env_ledger_port
-else if !tcp_bind == false and (!env_ledger_ip == host.docker.internal or !env_ledger_ip == 127.0.0.1) and !env_ledger_port and !enable_dns == true then ledger_conn = !external_dns + ":" + !env_ledger_port
-else if !tcp_bind == true and  (!env_ledger_ip == host.docker.internal or !env_ledger_ip == 127.0.0.1) and !env_ledger_port then ledger_conn = !ip + ":" + !env_ledger_port
-else if !tcp_bind == false and (!env_ledger_ip == host.docker.internal or !env_ledger_ip == 127.0.0.1) and !env_ledger_port then ledger_conn = !external_ip + ":" + !env_ledger_port
-else if $LEDGER_CONN then ledger_conn = $LEDGER_CONN
+if      !is_docker == true and !env_ledger_ip == 127.0.0.1 and !env_ledger_port then ledger_conn = "host.docker.internal:" + !env_ledger_port
+# else if !is_k8s    == true and !env_ledger_ip == 127.0.0.1 and !env_ledger_port then ledger_conn =
+else ledger_conn = !env_ledger
 
 :authentication:
 set enable_auth = false
