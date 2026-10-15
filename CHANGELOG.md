@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 793296a -->
+<!-- last-processed: b1aa431 -->
+
+<!-- os-dev: b1aa431 (2026-10-14) -->
+
+* **Ori Shadmon** (2026-10-14)
+  * General: if hide tag
 
 <!-- os-dev: 793296a (2026-10-14) -->
 
@@ -429,7 +434,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 793296a -->
+<!-- last-processed: b1aa431 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
