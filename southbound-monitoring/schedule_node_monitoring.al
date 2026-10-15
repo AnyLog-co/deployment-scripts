@@ -57,8 +57,6 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "name": "Node Monitoring Schedule",
         "script": [
             "run scheduler 2",
-            "run blockchain sync",
-            "blockchain reload metadata",
             "if not !view_monitoring_dest  then schedule scheduler = 2 and name=view_monitoring_dest  and time=300 seconds and task view_monitoring_dest = blockchain get query bring.ip_port",
             "if not !store_monitoring_dest then schedule scheduler = 2 and name=store_monitoring_dest and time=300 seconds and task if not !store_monitoring_dest then store_monitoring_dest = blockchain get operator bring.last [*][ip] : [*][port]"
             "if !node_type == operator and !store_monitoring == true then process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
