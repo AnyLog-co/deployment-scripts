@@ -6,7 +6,13 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 1b24e3e -->
+<!-- last-processed: 571e2b3 -->
+
+<!-- os-dev: 571e2b3 (2026-10-15) -->
+
+* **Ori Shadmon** (2026-10-15)
+  * Node deployment / Policies: weather
+  * Southbound / Monitoring: weather
 
 <!-- os-dev: 1b24e3e (2026-10-15) -->
 
@@ -444,7 +450,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 1b24e3e -->
+<!-- last-processed: 571e2b3 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
