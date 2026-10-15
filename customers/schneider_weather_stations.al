@@ -172,7 +172,7 @@ else if !error_code == 3 then goto declare-policy-error
 :msg-client:
 on error goto msg-client-err
 <run msg client where broker=local and master_node=!ledger_conn and log=false and topic=(
-    name="schneider/weatherstation/#" and
+    name="weather-station/weatherstation/#" and
     policy=!policy_id and
     dynamic=true
 )>
