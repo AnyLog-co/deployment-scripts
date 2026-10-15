@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: b1aa431 -->
+<!-- last-processed: 767b956 -->
+
+<!-- os-dev: 767b956 (2026-10-15) -->
+
+* **Ori Shadmon** (2026-10-15)
+  * Customers: schneider weather station usecase
 
 <!-- os-dev: b1aa431 (2026-10-14) -->
 
@@ -434,7 +439,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: b1aa431 -->
+<!-- last-processed: 767b956 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
