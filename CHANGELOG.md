@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 658f85e -->
+<!-- last-processed: 6fb9e04 -->
+
+<!-- os-dev: 6fb9e04 (2026-10-15) -->
+
+* **Ori Shadmon** (2026-10-15)
+  * Customers: weather
 
 <!-- os-dev: 658f85e (2026-10-15) -->
 
@@ -455,7 +460,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 658f85e -->
+<!-- last-processed: 6fb9e04 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
