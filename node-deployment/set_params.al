@@ -163,12 +163,13 @@ if $CONFIG_NAME then config_name = $CONFIG_NAME
 :vpn-advertisement:
 # Advertise the node's overlay IP for VPN access when enabled and network requirements are met.
 
-vpn_advertise = false
+set vpn_advertise = false
 if not $VPN_ADVERTISE or $VPN_ADVERTISE == false then goto self-ip-loopback
 
 if not $OVERLAY_IP or $NIC_TYPE or !enable_dns == true or !tcp_bind == true or !rest_bind == true or !broker_bind == true then 
 do on error call vpn-advertise-error
-overlay_ip = $OVERLAY_IP; vpn_advertise = true
+overlay_ip = $OVERLAY_IP
+set vpn_advertise = true
 do on error ignore
 
 :self-ip-loopback:

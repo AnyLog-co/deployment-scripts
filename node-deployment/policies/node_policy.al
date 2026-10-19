@@ -71,7 +71,8 @@ if !enable_dns == true and !dns                                                t
 else if !tcp_bind == false and !policy_tcp_bind == false and !overlay_ip       then set policy new_policy [!node_type][local_ip] = !overlay_ip
 else if !tcp_bind == false and !policy_tcp_bind == false                       then set policy new_policy [!node_type][local_ip] = !ip
 
-if !vpn_advertise == true then
+if !vpn_advertise == true and !overlay_ip then
+do set policy new_policy [!node_type][vpn_advertise] = !vpn_advertise.bool
 do set policy new_policy [!node_type][ip] = !overlay_ip
 do set policy new_policy [!node_type][local_ip] = !overlay_ip
 
