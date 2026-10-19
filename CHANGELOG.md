@@ -6,7 +6,16 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 848aec7 -->
+<!-- last-processed: 43b7c82 -->
+
+<!-- os-dev: 43b7c82 (2026-10-19) -->
+
+* **Ori Shadmon** (2026-10-19)
+  * Node deployment: formatting + noticed IP issues
+  * Node deployment / Policies: formatting + noticed IP issues; comment
+* **Justin Boyd** (2026-10-19)
+  * Node deployment: Added vpn advertise flag to handle VPN configuration
+  * Node deployment / Policies: Added vpn advertise flag to handle VPN configuration
 
 <!-- os-dev: 848aec7 (2026-10-19) -->
 
@@ -470,7 +479,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 848aec7 -->
+<!-- last-processed: 43b7c82 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
