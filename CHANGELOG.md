@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 6fb9e04 -->
+<!-- last-processed: f8e8d2d -->
+
+<!-- os-dev: f8e8d2d (2026-10-15) -->
+
+* **Ori Shadmon** (2026-10-15)
+  * Node deployment: container testing for ledger conn
 
 <!-- os-dev: 6fb9e04 (2026-10-15) -->
 
@@ -460,7 +465,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 6fb9e04 -->
+<!-- last-processed: f8e8d2d -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
