@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: f8e8d2d -->
+<!-- last-processed: 848aec7 -->
+
+<!-- os-dev: 848aec7 (2026-10-19) -->
+
+* **Ori Shadmon** (2026-10-19)
+  * Southbound / Monitoring: missing comma @ store_monitoring_dest
 
 <!-- os-dev: f8e8d2d (2026-10-15) -->
 
@@ -465,7 +470,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: f8e8d2d -->
+<!-- last-processed: 848aec7 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
