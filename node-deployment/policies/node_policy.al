@@ -71,6 +71,10 @@ if !enable_dns == true and !dns                                                t
 else if !tcp_bind == false and !policy_tcp_bind == false and !overlay_ip       then set policy new_policy [!node_type][local_ip] = !overlay_ip
 else if !tcp_bind == false and !policy_tcp_bind == false                       then set policy new_policy [!node_type][local_ip] = !ip
 
+if !vpn_advertise == true then
+do set policy new_policy [!node_type][ip] = !overlay_ip
+do set policy new_policy [!node_type][local_ip] = !overlay_ip
+
 set policy new_policy [!node_type][port] = !anylog_server_port.int
 set policy new_policy [!node_type][rest_port] = !anylog_rest_port.int
 if !anylog_broker_port then set policy new_policy [!node_type][broker_port] = !anylog_broker_port.int

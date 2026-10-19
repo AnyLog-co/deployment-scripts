@@ -160,6 +160,17 @@ if $BROKER_THREADS and $BROKER_THREADS.int >= 1  then broker_threads = $BROKER_T
 if not $NIC_TYPE and $OVERLAY_IP then overlay_ip = $OVERLAY_IP
 if $CONFIG_NAME then config_name = $CONFIG_NAME
 
+:vpn-advertisement:
+# Advertise the node's overlay IP for VPN access when enabled and network requirements are met.
+
+vpn_advertise = false
+if not $VPN_ADVERTISE or $VPN_ADVERTISE == false then goto self-ip-loopback
+
+if not $OVERLAY_IP or $NIC_TYPE or !enable_dns == true or !tcp_bind == true or !rest_bind == true or !broker_bind == true then 
+do on error call vpn-advertise-error
+overlay_ip = $OVERLAY_IP; vpn_advertise = true
+do on error ignore
+
 :self-ip-loopback:
 # we're configuring the self IP as `127.0.0.1`, when the NIC is either loopback or docker address.
 # Situation(s): (Docker) port-forwarding "forcefully" used in situation where network should be defined or vise-versa.
@@ -585,4 +596,8 @@ goto terminate-scripts
 
 :self-ip-error:
 print "Failed to configure loopback self IP"
+return
+
+:vpn-advertise-error:
+print "VPN_ADVERTISE must be true or false. When true, set OVERLAY_IP, leave NIC_TYPE empty, disable ENABLE_DNS, and set TCP_BIND, REST_BIND and BROKER_BIND to false."
 return

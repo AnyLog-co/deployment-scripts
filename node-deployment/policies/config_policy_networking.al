@@ -22,6 +22,13 @@ if      $DNS_DOMAIN or $DNS                 then set policy new_policy [config][
 else if !tcp_bind == false and !overlay_ip  then set policy new_policy [config][local_ip] = '!overlay_ip'
 else if !tcp_bind == false                  then set policy new_policy [config][local_ip] = '!ip'
 
+if !vpn_advertise == true then
+do set policy new_policy [config][vpn_advertise] = true
+do set policy new_policy [config][ip] = '!overlay_ip'
+do set policy new_policy [config][local_ip] = '!overlay_ip'
+do set policy new_policy [config][rest_ip] = '!overlay_ip'
+do set policy new_policy [config][broker_ip] = '!overlay_ip'
+
 if !rest_bind == true then
 do if !enable_dns == true then set policy new_policy [config][rest_ip] = '!external_dns'
 do else if !overlay_ip then set policy new_policy [config][rest_ip] = '!overlay_ip'
