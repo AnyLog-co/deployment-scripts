@@ -52,6 +52,8 @@ set policy new_policy [config][version] = !config_version
 #do set policy new_policy [config][version] = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
 
 :network-configs:
+# define networking configurations for the node - this includes which port (types) to open and whether binding is enabled
+# the values are relative to the node configuration itself
 process !local_scripts/node-deployment/policies/config_policy_networking.al
 
 if !node_type == operator then goto operator-scripts
