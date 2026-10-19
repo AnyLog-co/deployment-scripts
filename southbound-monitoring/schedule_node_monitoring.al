@@ -58,7 +58,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "script": [
             "run scheduler 2",
             "if not !view_monitoring_dest  then schedule scheduler = 2 and name=view_monitoring_dest  and time=300 seconds and task view_monitoring_dest = blockchain get query bring.ip_port",
-            "if not !store_monitoring_dest then schedule scheduler = 2 and name=store_monitoring_dest and time=300 seconds and task if not !store_monitoring_dest then store_monitoring_dest = blockchain get operator bring.last [*][ip] : [*][port]"
+            "if not !store_monitoring_dest then schedule scheduler = 2 and name=store_monitoring_dest and time=300 seconds and task if not !store_monitoring_dest then store_monitoring_dest = blockchain get operator bring.last [*][ip] : [*][port]",
             "if !node_type == operator and !store_monitoring == true then process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
             "schedule scheduler = 2 and name = get_stats and time=!monitoring_frequency and task node_insight = get stats where service = operator and topic = summary  and format = json",
             "schedule scheduler = 2 and name = get_timestamp and time=!monitoring_frequency and task node_insight[timestamp] = get datetime local now()",
