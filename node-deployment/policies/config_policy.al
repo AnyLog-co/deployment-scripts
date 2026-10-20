@@ -48,8 +48,8 @@ else if !is_policy then config_id = from !is_policy bring [*][config]
 
 :check-policy:
 
-if !config_id then is_config = blockchain get config where id = !config_id bring.count
-if !is_config and !is_config.int > 0 and set_create_config == true then goto config-policy
+if !config_id then is_config = blockchain get config where id = !config_id
+if (!is_config or create_config == true)  and !config_id then goto config-policy
 else if not !config_id and !create_config == true then goto declare-policy-error
 
 :prepare-new-policy:
