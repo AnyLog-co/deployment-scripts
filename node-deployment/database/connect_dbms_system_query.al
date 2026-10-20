@@ -33,8 +33,11 @@ if !system_query_db == sqlite then connect dbms system_query where type=sqlite a
 if !system_query == true and $ENABLE_REMOTE_GUI == true and !node_type != query and !is_hidden == false then
 do set tmp_node_type = !node_type
 do set node_type = query
+do set tmp_config_id = !config_id
+do set config_id = remote-gui
 do process !local_scripts/node-deployment/policies/node_policy.al
 do set node_type = !tmp_node_type
+do set config_id = !tmp_config_id
 do echo "Warning: This node is not a query node but meets the criteria for monitoring. A query policy has been defined because `system_query` is enabled, `ENABLE_REMOTE_GUI == true`, `node_type != query`, and the node is not hidden."
 
 
