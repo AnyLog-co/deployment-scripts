@@ -140,6 +140,7 @@ do goto publish-policy
 
 :operator-scripts:
 <set policy new_policy [config][script] = [
+    "set debug interactive",
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
     "process !local_scripts/orchestrator/orchestrator.al",
