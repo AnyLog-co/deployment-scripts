@@ -30,15 +30,27 @@ if !enable_debug == true then set debug on
 
 set create_config = false
 
+:config-by-node-type:
+# extract policy ID if exists:
+#   1. user defined ID as an env variable
+#   2. user defined name as an AnyLg (<- env) variable
+#   3. reuse based on existing content in policy
+# validation
+#   1. check whether exists in blockchain (by ID)
+#   2. if exist goto config from policy 
+#   3. if DNE but already exists then goto error 
+
+process !local_scripts/node-deployment/policies/validate_node_policy.al
+
+if $CONFIG_ID then config_id = $CONFIG_ID
+else if not $CONfIG_ID and !config_name then config_id = blockchain get config where company=!company_name and name=!config_name and node_type=!node_type bring.first [*][id]
+else if !is_policy then config_id = from !is_policy bring [*][config]
 
 :check-policy:
 
-if $CONFIG_ID then config_id = $CONFIG_ID
-else if not !config_id then config_id = blockchain get config where company=!company_name and name=!config_name and node_type=!node_type bring.first [*][id]
-
-if !config_id then goto config-policy
+if !config_id then is_config = blockchain get config where id = !config_id bring.count
+if !is_config and !is_config.int > 0 and set_create_config == false then goto config-policy
 else if not !config_id and !create_config == true then goto declare-policy-error
-
 
 :prepare-new-policy:
 
@@ -68,9 +80,9 @@ if !node_type == generic then
     "if !system_query == true and !enable_mcp == true then run mcp server",
     "process !local_scripts/orchestrator/orchestrator.al",
     "process !local_scripts/node-deployment/policies/node_name.al",
-    "if !disable_node_monitoring == false then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
-    "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
-    "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
+    "process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
+    "process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
 
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
     "if !is_edgelake == false and $LICENSE_KEY then set license where activation_key=$LICENSE_KEY"
@@ -89,7 +101,7 @@ if !node_type == master or !node_type == query then
     "run scheduler 1",
     "if !system_query == true and !enable_mcp == true then run mcp server",
 
-    "if !disable_node_monitoring == false then process  !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "process  !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
 
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
     "if !is_edgelake == false and $LICENSE_KEY then set license where activation_key=$LICENSE_KEY"
@@ -115,9 +127,9 @@ if !node_type == publisher then
     "if !system_query == true and !enable_mcp == true then run mcp server",
     "if !enable_aggregations == true then process !local_scripts/sample-scripts/aggregation.al",
 
-    "if !disable_node_monitoring == false then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
-    "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
-    "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
+    "process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
+    "process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
 
     "if !enable_mqtt == true then process !local_scripts/data-generator/data_generator.al",
     "if !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
@@ -147,9 +159,9 @@ do goto publish-policy
     "if !enable_mqtt == true then process !local_scripts/data-generator/data_generator.al",
     "if !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
 
-    "if !disable_node_monitoring == false then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
-    "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
-    "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
+    "process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
+    "process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
 
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
     "if !is_edgelake == false and $LICENSE_KEY then set license where activation_key=$LICENSE_KEY"
@@ -175,6 +187,7 @@ config from policy where id = !config_id
 
 :end-script:
 end script
+
 
 :sign-policy-error:
 print "Failed to sign config policy"
