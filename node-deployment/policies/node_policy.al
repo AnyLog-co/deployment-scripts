@@ -24,8 +24,8 @@
 on error ignore
 
 :set-debug:
-if !enable_debug == true then set debug on
-
+# if !enable_debug == true then set debug on
+set debug on
 
 if !is_hidden == true then
 do process !local_scripts/node-deployment/policies/node_name.al

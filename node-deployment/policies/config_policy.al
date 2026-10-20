@@ -26,7 +26,8 @@
 
 on error ignore
 :set-debug:
-if !enable_debug == true then set debug on
+# if !enable_debug == true then set debug on
+set debug on
 
 set create_config = false
 
