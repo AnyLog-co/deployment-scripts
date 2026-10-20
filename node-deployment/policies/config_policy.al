@@ -177,7 +177,7 @@ if !error_code == 3 then goto declare-policy-error
 
 
 set create_config = true
-set is_config = false
+if not !config_id then  config_id  = from !new_policy bring [*][id]
 
 goto check-policy
 
