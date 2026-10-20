@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: f1fae5e -->
+<!-- last-processed: 55bbcb7 -->
+
+<!-- os-dev: 55bbcb7 (2026-10-20) -->
+
+* **Ori Shadmon** (2026-10-20)
+  * Node deployment / Policies: pre-create monitoring policies + support for config/node relation
 
 <!-- os-dev: f1fae5e (2026-10-20) -->
 
@@ -490,7 +495,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: f1fae5e -->
+<!-- last-processed: 55bbcb7 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
