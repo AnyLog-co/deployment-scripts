@@ -2,10 +2,10 @@
 # Validate if policy exists
 # - dns not bind      -> ip = !external_dns
 # - dns bound         -> local_ip = !dns
-# - overlay not bound -> local_ip = !overlay_ip
-# - overlay bound     -> ip = !overlay_ip
-# - not bound         -> ip = !external_ip
-# - bound             -> ip = !ip
+# - overlay, neither TCP nor policy bound -> local_ip = !overlay_ip
+# - overlay, TCP or policy bound          -> ip = !overlay_ip
+# - neither TCP nor policy bound          -> local_ip = !ip
+# - TCP or policy bound                   -> ip = !ip
 #
 # for operator validate ID if policy exists
 #-----------------------------------------------------------------------------------------------------------------------
@@ -37,13 +37,13 @@ do goto check-policy
 else goto mismatch-error
 
 :overlay-check:
-if !tcp_bind == false and !overlay_ip then
+if !tcp_bind == false and !policy_tcp_bind == false and !overlay_ip then
 <do is_policy = blockchain get !node_type where
     company=!company_name and
     local_ip = !overlay_ip and
     port = !anylog_server_port bring.first>
 do goto check-policy
-else if !tcp_bind == true and !overlay_ip then
+else if (!tcp_bind == true or !policy_tcp_bind == true) and !overlay_ip then
 <do is_policy = blockchain get !node_type where
     company=!company_name and
     ip = !overlay_ip and
@@ -52,13 +52,13 @@ do goto check-policy
 else goto mismatch-error
 
 :generic-check:
-if !tcp_bind == false then
+if !tcp_bind == false and !policy_tcp_bind == false then
 <do is_policy = blockchain get !node_type where
     company=!company_name and
     local_ip = !ip and
     port = !anylog_server_port bring.first>
 do goto check-policy
-else if !tcp_bind == true then
+else if (!tcp_bind == true or !policy_tcp_bind == true) then
 <do is_policy = blockchain get !node_type where
     company=!company_name and
     ip = !ip and
