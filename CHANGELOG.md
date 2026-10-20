@@ -6,7 +6,16 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 1ece836 -->
+<!-- last-processed: 018bb4a -->
+
+<!-- os-dev: 018bb4a (2026-10-20) -->
+
+* **Ori Shadmon** (2026-10-20)
+  * Archive: archive node name validation
+  * Node deployment / Database: if remote-gui query node then specify it's a remote-gui query node
+  * Node deployment / Policies: archive node name validation
+* **Justin Boyd** (2026-10-20)
+  * Node deployment / Policies: fix: update policy validation logic for overlay and TCP bindings
 
 <!-- os-dev: 1ece836 (2026-10-20) -->
 
@@ -515,7 +524,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 1ece836 -->
+<!-- last-processed: 018bb4a -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
