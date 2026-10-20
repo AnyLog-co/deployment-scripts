@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 562a12d -->
+<!-- last-processed: bca198e -->
+
+<!-- os-dev: bca198e (2026-10-20) -->
+
+* **Ori Shadmon** (2026-10-20)
+  * Node deployment / Policies: config logic change
 
 <!-- os-dev: 562a12d (2026-10-20) -->
 
@@ -500,7 +505,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 562a12d -->
+<!-- last-processed: bca198e -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
