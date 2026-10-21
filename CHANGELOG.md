@@ -6,7 +6,14 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 018bb4a -->
+<!-- last-processed: 6238ea2 -->
+
+<!-- os-dev: 6238ea2 (2026-10-21) -->
+
+* **Ori Shadmon** (2026-10-20 – 2026-10-21)
+  * Node deployment: remove duplicate code
+  * Node deployment / Policies: remove duplicate code; archive node name validation
+  * Southbound / Monitoring: monitoring
 
 <!-- os-dev: 018bb4a (2026-10-20) -->
 
@@ -524,7 +531,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 018bb4a -->
+<!-- last-processed: 6238ea2 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
