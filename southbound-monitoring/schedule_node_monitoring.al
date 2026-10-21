@@ -81,7 +81,7 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
             "schedule scheduler = 2 and name = get_error_count and time = 30 seconds task if !errin and !errout then error_count = python int(!errin) + int(!errout)",
             "schedule scheduler = 2 and name = error_count and time = 30 seconds task if !error_count then node_insight[Network Error] = !error_count.int",
 
-            "schedule scheduler = 2 and name = set_node_type and time=!monitoring_frequency and task node_insight[node type] = !node_type",
+            "schedule scheduler = 2 and name = set_node_type and time = 30 seconds task if !error_count then node_insight[node type] = !node_type",
             "schedule scheduler = 2 and name = clean_status and time = 30 seconds task node_insight[status]='Active'",
 
             "schedule scheduler = 2 and name = local_monitor_node and time = 30 seconds task monitor operators where info = !node_insight",
