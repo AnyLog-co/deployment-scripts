@@ -50,6 +50,8 @@ if !is_policy then goto config-policy
 # failure show created policy
 if not !is_policy and !create_policy == true then goto declare-policy-error
 
+#             "schedule scheduler = 2 and name = clean_status  and time = 30 seconds task node_insight[status] = Active",
+
 :create-policy
 <new_policy = {
     "schedule": {
@@ -57,14 +59,13 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
         "name": "Node Monitoring Schedule",
         "script": [
             "run scheduler 2",
-            "print --- blockchain get process ---",
             "blockchain get query bring.ip_port",
             "if not !view_monitoring_dest  then schedule scheduler = 2 and name=view_monitoring_dest  and time=300 seconds and task view_monitoring_dest = blockchain get query bring.ip_port",
             "if not !store_monitoring_dest then schedule scheduler = 2 and name=store_monitoring_dest and time=300 seconds and task if not !store_monitoring_dest then store_monitoring_dest = blockchain get operator bring.last [*][ip] : [*][port]",
-            "print --- blockchain get process ---",
             "if !node_type == operator and !store_monitoring == true then process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
             "schedule scheduler = 2 and name = get_stats and time=!monitoring_frequency and task node_insight = get stats where service = operator and topic = summary  and format = json",
             "schedule scheduler = 2 and name = get_timestamp and time=!monitoring_frequency and task node_insight[timestamp] = get datetime local now()",
+            "schedule scheduler = 2 and name = set_node_type and time = 30 seconds task node_insight[node type] = !node_type",
 
             "schedule scheduler = 2 and name = get_disk_space and time=!monitoring_frequency and task disk_space = get disk percentage .",
             "schedule scheduler = 2 and name = get_cpu_percent and time = 30 seconds task cpu_percent = get node info cpu_percent",
@@ -80,9 +81,6 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
             "schedule scheduler = 2 and name = errout and time = 30 seconds task errout = get node info net_io_counters errout",
             "schedule scheduler = 2 and name = get_error_count and time = 30 seconds task if !errin and !errout then error_count = python int(!errin) + int(!errout)",
             "schedule scheduler = 2 and name = error_count and time = 30 seconds task if !error_count then node_insight[Network Error] = !error_count.int",
-
-            "schedule scheduler = 2 and name = set_node_type and time = 30 seconds task if !error_count then node_insight[node type] = !node_type",
-            "schedule scheduler = 2 and name = clean_status and time = 30 seconds task node_insight[status]='Active'",
 
             "schedule scheduler = 2 and name = local_monitor_node and time = 30 seconds task monitor operators where info = !node_insight",
 
