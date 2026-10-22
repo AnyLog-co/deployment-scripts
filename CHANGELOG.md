@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 6238ea2 -->
+<!-- last-processed: 115177b -->
+
+<!-- os-dev: 115177b (2026-10-21) -->
+
+* **Ori Shadmon** (2026-10-21)
+  * Southbound / Monitoring: schedule param not written correctly
 
 <!-- os-dev: 6238ea2 (2026-10-21) -->
 
@@ -531,7 +536,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 6238ea2 -->
+<!-- last-processed: 115177b -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
