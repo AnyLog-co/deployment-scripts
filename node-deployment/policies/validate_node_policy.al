@@ -17,16 +17,10 @@ on error ignore
 if !enable_debug == true then set debug on
 
 :sync-blockchain:
-is_blockchain = blockchain get * bring.count
-if !is_blockchain.int == 0 then set is_blockchain = ""
 
-if not !is_blockchain and !master_configs == true then
-do blockchain pull to json
-do blockchain update file
-
-else if not !is_blockchain and  !master_configs != true then run blockchain sync
-
-blockchain reload metadata
+if !master_configs != true then
+do run blockchain sync
+do blockchain reload metadata
 
 
 :process-select:
