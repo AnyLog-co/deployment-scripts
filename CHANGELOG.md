@@ -6,7 +6,14 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 115177b -->
+<!-- last-processed: 30d348d -->
+
+<!-- os-dev: 30d348d (2026-10-22) -->
+
+* **Ori Shadmon** (2026-10-21)
+  * Node deployment / Database: sync bug
+  * Node deployment / Policies: sync bug
+  * Southbound / Monitoring: sync bug
 
 <!-- os-dev: 115177b (2026-10-21) -->
 
@@ -536,7 +543,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 115177b -->
+<!-- last-processed: 30d348d -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
