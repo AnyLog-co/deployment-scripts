@@ -1,7 +1,7 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # Based on node_type create relevant databases / tables for blockchain logical database
 #-----------------------------------------------------------------------------------------------------------------------
-# process !local_scripts/node-deployment/database/configure_dbms_almgm.al
+# process !local_scripts/node-deployment/database/configure_dbms_blockchain.al
 
 on error ignore
 :set-debug:

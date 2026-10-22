@@ -16,6 +16,16 @@ on error ignore
 :set-debug:
 if !enable_debug == true then set debug on
 
+:sync-blockchain:
+if !master_configs == true then
+do blockchain pull to json
+do blockchain update file
+
+else if !master_configs != true then run blockchain sync
+
+blockchain reload metadata
+
+
 :process-select:
 set is_policy = ""
 if !enable_dns == false and not !overlay_ip then goto generic-check
