@@ -6,7 +6,14 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 30d348d -->
+<!-- last-processed: 661e9ac -->
+
+<!-- os-dev: 661e9ac (2026-10-22) -->
+
+* **Ori Shadmon** (2026-10-21 – 2026-10-22)
+  * Node deployment: working code with psql + sqlite
+  * Node deployment / Database: working code with psql + sqlite
+  * Node deployment / Policies: working code with psql + sqlite; validate
 
 <!-- os-dev: 30d348d (2026-10-22) -->
 
@@ -543,7 +550,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 30d348d -->
+<!-- last-processed: 661e9ac -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
