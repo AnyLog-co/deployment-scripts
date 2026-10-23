@@ -7,8 +7,11 @@
 # process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
 
-if !node_monitoring == false and !syslog_monitoring == false and !docker_monitoring == false then goto end-script
+:set-params;
+if !monitoring_db_configured == true then goto end-script
 
 :connect-dbms:
 db_name = monitoring
@@ -34,15 +37,23 @@ on error goto connect-error
 else connect dbms !db_name where type=!monitoring_db
 
 :data-partitioning:
-if !enable_partitions == true then
-do on error goto partitioning-error
-do partition monitoring * using insert_timestamp by 12 hours
-<do schedule time=12 hours and name="Monitoring - Drop Partitions"
+# if !enable_partitions == true then
+on error goto partitioning-error
+partition monitoring * using insert_timestamp by 12 hours
+<schedule time=12 hours and name="Monitoring - Drop Partitions"
     task drop partition where dbms=monitoring and table="*" and keep=3>
 
 # schedule name=remove_archive and time=1 day and task delete archive where days = 3
 
 set db_name = ""
+
+set monitoring_db_configured = true
+
+:define tables:
+on error ignore
+if !store_monitoring == true and !disable_node_monitoring == false then process !local_scripts/southbound-monitoring/table_node_monitoring.al
+if !store_monitoring == true and !syslog_monitoring == true then process !local_scripts/southbound-monitoring/table_syslog_monitoring.al
+if !store_monitoring == true and !docker_monitoring == true then process !local_scripts/southbound-monitoring/table_docker_monitoring.al
 
 :end-script:
 end script

@@ -6,6 +6,9 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # process !local_scripts/node-deployment/database/connect_dbms_sql.al
 
+:set-debug:
+if !enable_debug == true then set debug on
+
 :check-db:
 err_code = 0
 

@@ -17,45 +17,30 @@
 #----------------------------------------------------------------------------------------------------------------------#
 # process !local_scripts/node-deployment/policies/node_name.al
 
-:set-params:
 on error ignore
 
-if !node_type != operator then goto node-name
+:set-debug:
+if !enable_debug == true then set debug on
 
-policy_count = blockchain get !node_type where cluster = !cluster_id bring.count
-if not !policy_count then goto node-name-operator
-else goto node-name-operator-bkup
+if !node_type == operator and not !cluster_name then goto cluster-name
+else if !node_name then goto end-script
+
+rand_int = random int
+
+:cluster-name:
+if !cluster_id then cluster_name = blockchain get cluster where id = !cluster_id bring.first [*][name]
+else if $CLUSTER_NAME and not !cluster_name then cluster_name = $CLUSTER_NAME
+else if not $CLUSTER_NAME and not !cluster_name then cluster_name = "cluster-" + !node_hostname + "-" + !node_company_name + "-" + !node_type + "-" + !rand_int
 
 :node-name:
-# not operator node define policies
-policy_count = blockchain get !node_type where company = !company_name bring.count
-if !policy_count then policy_count = python !policy_count.int + 1
-else policy_count = 1
-
-node_name = !node_hostname + "-" + !node_company_name + "-" + !node_type + !policy_count
-goto set-node-name
-
-:node-name-operator:
-policy_count  = blockchain get !node_type where company = !company_name and main = true  bring.count
-if !policy_count then policy_count = python !policy_count.int + 1
-else policy_count = 1
-
-node_name = !node_hostname + "-" + !node_company_name + "-operator" + !policy_count
-goto set-node-name
-
-:node-name-operator-bkup:
-# backup operator
-basename      = blockchain get !node_type where cluster = !cluster_id and main = true bring.first [*][name]
-policy_count  = blockchain get !node_type where cluster = !cluster_id and main = false bring.count
-if !policy_count then policy_count = python !policy_count.int + 1
-else policy_count = 1
-
-node_name  = !basename + "-bkup" + !policy_count
-
-goto set-node-name
+if $NODE_NAME and not !node_name then node_name = $NODE_NAME
+else if not !node_name and not $NODE_NAME then node_name = !node_hostname + "-" + !node_company_name + "-" + !node_type + "-" + !rand_int
 
 :set-node-name:
-set node name !node_name
+if not !set_node_name or !set_node_name != true then
+do set node name !node_name
+do set set_node_name = true
 
 :end-script:
+if !enable_debug == true then set debug off
 end script

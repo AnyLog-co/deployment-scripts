@@ -20,17 +20,29 @@
 #   "ledger" : "local"
 # }}
 #----------------------------------------------------------------------------------------------------------------------
-# process !local_scripts/data-generator/mqtt_enterprise_c_sub.al
+# process !local_scripts/data-generator/mqtt_enterprise_c.al
 
 :msg-client:
 on error goto msg-client-error
 <run msg client where
-    broker=172.104.228.251 and port=1883 and
-    user=anyloguser and password=mqtt4AnyLog! and
+    broker=!mqtt_broker and port=!mqtt_port and
+    user=!mqtt_user and password=!mqtt_passwd and
     master_node = !ledger_conn and log=false and
     topic=(
-        name=Enterprise C/sub/# and
-        dbms = !default_dbms and
+        name="proveit/Enterprise C/sub/#" and
+        dbms = !msg_dbms and
+        dynamic = true
+    ) and topic=(
+        name="proveit/Enterprise C/tff/#" and
+        dbms = !msg_dbms and
+        dynamic = true
+    ) and topic=(
+        name="proveit/Enterprise C/sum/#" and
+        dbms = !msg_dbms and
+        dynamic = true
+    ) and topic=(
+        name="proveit/Enterprise C/chrom/#" and
+        dbms = !msg_dbms and
         dynamic = true
     )>
 

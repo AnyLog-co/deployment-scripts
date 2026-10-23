@@ -11,27 +11,16 @@
 #       - support scripts
 #-----------------------------------------------------------------------------------------------------------------------
 # python3.11 AnyLog-Network/anylog_enterprise/anylog.py process $ANYLOG_PATH/deployment-scripts/node-deployment/main.al
+# system date
 
 :set-debug:
-on error call set-debug-error
-if $ENABLE_TRACEBACK == true or $ENABLE_TRACEBACK == True or $ENABLE_TRACEBACK == TRUE then
-do set exception traceback on
-do set debug_mode = true
-
-# replace with with `if $TRACE_LEVEL then trace level = $TRACE_LEVEL` but not currently supported
-if $TRACE_LEVEL == 1 then
-do trace level = 1
-do set debug_mode = true
-else if $TRACE_LEVEL == 2 then
-do trace level = 1
-do set debug_mode = true
-else if $TRACE_LEVEL == 3 then
-do trace level = 1
-do set debug_mode = true
-
-
-# if $TRACE_LEVEL then trace level = $TRACE_LEVEL
-# if $TRACE_LEVEL and !debug_mode == false then do set debug_mode = true
+set enable_debug = false
+if      $TRACE_LEVEL and $TRACE_LEVEL == 1 then trace level = 1
+else if $TRACE_LEVEL and $TRACE_LEVEL == 2 then trace level = 2
+else if $TRACE_LEVEL and $TRACE_LEVEL == 3 then trace level = 3
+else if $SCRIPT_DEBUG == true              then
+do set enable_debug = true
+do set debug on
 
 :disable-auth:
 set echo queue on
@@ -48,7 +37,7 @@ deployment_type = python !version.split(" ")[0]
 if !deployment_type == AnyLog then release_type = python !version.split("(")[-1].split(")")
 if !deployment_type != AnyLog or !release_type == "RTS" then set is_edgelake = true
 
-if !is_edgelake == true and $NODE_TYPE == publisher then edgelake-error
+if !is_edgelake == true and $NODE_TYPE == publisher then goto edgelake-error
 
 :directories:
 
@@ -72,32 +61,42 @@ do goto terminate-scripts
 create work directories
 
 :set-params:
-process !local_scripts/node-deployment/authentication/gen_keys.al
+# if !is_edgelake == false then  process !local_scripts/node-deployment/authentication/gen_keys.al
 process !local_scripts/node-deployment/set_params.al
 
 :set-configs:
 on error ignore
 process !local_scripts/node-deployment/policies/config_policy.al
 
-:end-script:
-
-on error ignore
-if !debug_mode == true then
-do set exception traceback off
-do trace level = 0
-
+:finish-deployment:
+if !node_type != generic then
+do run blockchain sync
+do blockchain reload metadata
 
 get processes
+
 if !enable_mqtt == true then get msg client
+
+:end-script:
+on error ignore
+if $TRACE_LEVEL and $TRACE_LEVEL.int > 0 then trace level = 0
+else if !enable_debug == true then set debug off
+
+# system date
 end script
+
+:terminate-scripts:
+on error ignore
+
+if $TRACE_LEVEL and $TRACE_LEVEL.int > 0 then trace level = 0
+else if !enable_debug == true then set debug off
+
+exit scripts
 
 :set-debug-error:
 echo "Failed to set enable debug state"
 return
 
-:terminate-scripts:
-if $TRACE_LEVEL == 1 or $TRACE_LEVEL == 3 then  trace level = 0
-exit scripts
 
 
 :edgelake-error:

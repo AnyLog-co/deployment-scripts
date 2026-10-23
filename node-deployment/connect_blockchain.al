@@ -9,7 +9,10 @@
 # process !local_scripts/node-deployment/connect_blockchain.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
 
+:sync-processing:
 if !blockchain_source == master then goto blockchain-sync
 
 :blockchain-connect:

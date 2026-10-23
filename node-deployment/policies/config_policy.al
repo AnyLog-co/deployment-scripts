@@ -25,15 +25,32 @@
 # process !local_scripts/node-deployment/policies/config_policy.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
 set create_config = false
 
+:config-by-node-type:
+# extract policy ID if exists:
+#   1. user defined ID as an env variable
+#   2. user defined name as an AnyLg (<- env) variable
+#   3. reuse based on existing content in policy
+# validation
+#   1. check whether exists in blockchain (by ID)
+#   2. if exist goto config from policy 
+#   3. if DNE but already exists then goto error 
+
+process !local_scripts/node-deployment/policies/validate_node_policy.al
+
+if $CONFIG_ID then config_id = $CONFIG_ID
+else if not $CONfIG_ID and !config_name then config_id = blockchain get config where company=!company_name and name=!config_name and node_type=!node_type bring.first [*][id]
+else if !is_policy then config_id = from !is_policy bring [*][config]
 
 :check-policy:
 
-config_id = blockchain get config where company=!company_name and name=!config_name and node_type=!node_type bring.first [*][id]
-if !config_id then goto config-policy
-if not !config_id and !create_config == true then goto declare-policy-error
-
+if !config_id then is_config = blockchain get config where id = !config_id
+if (!is_config or create_config == true)  and !config_id then goto config-policy
+else if not !config_id and !create_config == true then goto declare-policy-error
 
 :prepare-new-policy:
 
@@ -43,13 +60,17 @@ set policy new_policy [config][name] = !config_name
 set policy new_policy [config][company] = !company_name
 set policy new_policy [config][node_type] = !node_type
 set policy new_policy [config][version] = !config_version
+#if not !config_version then
+#do set policy new_policy [config][version] = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
 
 :network-configs:
+# define networking configurations for the node - this includes which port (types) to open and whether binding is enabled
+# the values are relative to the node configuration itself
 process !local_scripts/node-deployment/policies/config_policy_networking.al
 
 if !node_type == operator then goto operator-scripts
 else if !node_type == publisher then goto publisher-scripts
-else if !node_type == master or node_type == query then goto master-query
+else if !node_type == master or !node_type == query then goto master-query
 
 :generic-node:
 if !node_type == generic then
@@ -57,13 +78,14 @@ if !node_type == generic then
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "run scheduler 1",
     "if !system_query == true and !enable_mcp == true then run mcp server",
-
-    "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
-    "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
-    "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
+    "process !local_scripts/orchestrator/orchestrator.al",
+    "process !local_scripts/node-deployment/policies/node_name.al",
+    "process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
+    "process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
 
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "process !local_scripts/node-deployment/policies/license_policy.al"
+    "if !is_edgelake == false and $LICENSE_KEY then set license where activation_key=$LICENSE_KEY"
 ]>
 do goto publish-policy
 
@@ -72,17 +94,20 @@ if !node_type == master or !node_type == query then
 <do set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
-    "if !is_hidden == false then process !local_scripts/node-deployment/policies/node_policy.al",
-    "if !is_hidden == true and not !node_name then process !local_scripts/node-deployment/policies/node_name.al",
-    "if !is_hidden == true then set node name !node_name",
+    "process !local_scripts/orchestrator/orchestrator.al",
+    "process !local_scripts/node-deployment/policies/node_policy.al",
+    "run blockchain sync",
+    "blockchain reload metadata",
     "run scheduler 1",
     "if !system_query == true and !enable_mcp == true then run mcp server",
 
-    "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/policy_node_monitoring.al",
+    "process  !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
 
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "process !local_scripts/node-deployment/policies/license_policy.al"
+    "if !is_edgelake == false and $LICENSE_KEY then set license where activation_key=$LICENSE_KEY"
 ]>
+#     "process !local_scripts/node-deployment/policies/license_policy.al"
+
 do goto publish-policy
 
 :publisher-scripts:
@@ -90,9 +115,10 @@ if !node_type == publisher then
 <do set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
-    "if !is_hidden == false then process !local_scripts/node-deployment/policies/node_policy.al",
-    "if !is_hidden == true and not !node_name then process !local_scripts/node-deployment/policies/node_name.al",
-    "if !is_hidden == true then set node name !node_name",
+    "process !local_scripts/orchestrator/orchestrator.al",
+    "process !local_scripts/node-deployment/policies/node_policy.al",
+    "run blockchain sync",
+    "blockchain reload metadata",
     "run scheduler 1",
     "set buffer threshold where time=!threshold_time and volume=!threshold_volume and write_immediate=false",
     "run streamer",
@@ -101,15 +127,14 @@ if !node_type == publisher then
     "if !system_query == true and !enable_mcp == true then run mcp server",
     "if !enable_aggregations == true then process !local_scripts/sample-scripts/aggregation.al",
 
-    "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
-    "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
-    "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
+    "process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
+    "process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
 
-    "process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
     "if !enable_mqtt == true then process !local_scripts/data-generator/data_generator.al",
     "if !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "process !local_scripts/node-deployment/policies/license_policy.al"
+    "if !is_edgelake == false and $LICENSE_KEY then set license where activation_key=$LICENSE_KEY"
 ]>
 do goto publish-policy
 
@@ -117,13 +142,16 @@ do goto publish-policy
 <set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
+    "process !local_scripts/orchestrator/orchestrator.al",
     "process !local_scripts/node-deployment/policies/cluster_policy.al",
     "process !local_scripts/node-deployment/policies/node_policy.al",
+    "run blockchain sync",
+    "blockchain reload metadata",
     "run scheduler 1",
     "set buffer threshold where time=!threshold_time and volume=!threshold_volume and write_immediate=!write_immediate",
     "run streamer",
-    "if !enable_ha == true then run data distributor",
-    "if !enable_ha == true then run data consumer where start_date=!start_date",
+    "if !disable_ha == false then run data distributor",
+    "if !disable_ha == false then run data consumer where start_date=!start_date",
     "if !operator_id and !blockchain_source != master then run operator where create_table=!create_table and update_tsd_info=!update_tsd_info and compress_json=!compress_file and compress_sql=!compress_sql and archive_json=!archive and archive_sql=!archive_sql and blockchain=!blockchain_source and policy=!operator_id and threads=!operator_threads",
     "if !operator_id and !blockchain_source == master then run operator where create_table=!create_table and update_tsd_info=!update_tsd_info and compress_json=!compress_file and compress_sql=!compress_sql and archive_json=!archive and archive_sql=!archive_sql and master_node=!ledger_conn and policy=!operator_id and threads=!operator_threads",
     "if !system_query == true and !enable_mcp == true then run mcp server",
@@ -131,36 +159,34 @@ do goto publish-policy
     "if !enable_mqtt == true then process !local_scripts/data-generator/data_generator.al",
     "if !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
 
-    "process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
-    "if !node_monitoring == true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
-    "if !monitoring_node == true then process !local_scripts/southbound-monitoring/monitoring_node.al",
-    "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
-    "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
+    "process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
+    "process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
 
     "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "process !local_scripts/node-deployment/policies/license_policy.al"
+    "if !is_edgelake == false and $LICENSE_KEY then set license where activation_key=$LICENSE_KEY"
 ]>
 
 :publish-policy:
-
 set is_config = true
 process !local_scripts/node-deployment/policies/publish_policy.al
 if !error_code == 1 then goto sign-policy-error
 if !error_code == 2 then goto prepare-policy-error
 if !error_code == 3 then goto declare-policy-error
+
+
 set create_config = true
-wait 5
-blockchain reload metadata
-set is_config = false
+if not !config_id then  config_id  = from !new_policy bring [*][id]
+
 goto check-policy
 
 :config-policy:
-
 on error goto config-policy-error
 config from policy where id = !config_id
 
 :end-script:
 end script
+
 
 :sign-policy-error:
 print "Failed to sign config policy"
