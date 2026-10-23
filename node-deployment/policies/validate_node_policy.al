@@ -7,6 +7,9 @@
 # - neither TCP nor policy bound          -> local_ip = !ip
 # - TCP or policy bound                   -> ip = !ip
 #
+# If no policy matches this node's connection, but a policy of the same type + name already exists
+# (i.e. same name, different connection), the script rejects the node and stops.
+#
 # for operator validate ID if policy exists
 #-----------------------------------------------------------------------------------------------------------------------
 # process !local_scripts/node-deployment/policies/validate_node_policy.al
@@ -76,9 +79,14 @@ else goto network-config-error
 :check-policy:
 on error ignore
 
-if not !is_policy then
-do process !local_scripts/node-deployment/policies/node_name.al
+if not !is_policy and not !node_name then process !local_scripts/node-deployment/policies/node_name.al
 # do goto set-node-name
+
+:check-name-conflict:
+# No policy matched this node's connection - make sure the name isn't already taken by another node of the same type
+set name_policy = ""
+if not !is_policy and !node_name then name_policy = blockchain get !node_type where name = !node_name bring.first
+if !name_policy then goto name-conflict-error
 
 if !is_policy and !node_type == operator then
 do cluster_id = from !is_policy bring [*][cluster]
@@ -105,4 +113,12 @@ goto terminate-scripts
 
 :network-config-error:
 print "No valid network configurations - cannot continue"
+goto terminate-scripts
+
+:name-conflict-error:
+conflict_company = from !name_policy bring [*][company]
+conflict_ip = from !name_policy bring [*][ip]
+conflict_local_ip = from !name_policy bring [*][local_ip]
+conflict_port = from !name_policy bring [*][port]
+echo "Error: a " !node_type " policy named " !node_name " already exists with a different connection (company: " !conflict_company ", ip: " !conflict_ip ", local_ip: " !conflict_local_ip ", port: " !conflict_port "). Set a unique NODE_NAME or remove the existing policy - cannot continue."
 goto terminate-scripts
