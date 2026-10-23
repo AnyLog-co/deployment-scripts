@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 661e9ac -->
+<!-- last-processed: 8094fc8 -->
+
+<!-- os-dev: 8094fc8 (2026-10-23) -->
+
+* **Ori Shadmon** (2026-10-22)
+  * Node deployment / Policies: validate node name in addition to net configs
 
 <!-- os-dev: 661e9ac (2026-10-22) -->
 
@@ -550,7 +555,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 661e9ac -->
+<!-- last-processed: 8094fc8 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
