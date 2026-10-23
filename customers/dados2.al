@@ -1,7 +1,7 @@
 <new_policy = {
     "mapping": {
         "id": "dados",
-        "dbms": !default_dbms,
+        "dbms": "dados",
         "table": "ds_data",
         "reading": "",
         "schema": {
@@ -79,7 +79,6 @@
     }
 }>
 
-process !local_scripts/node-deployment/policies/publish_policy.al
-
+blockchain insert where policy=!new_policy and local=true
 
 run msg client where broker=rest and user-agent=anylog and log=false and topic=(name="spBv1.0/#" and policy=dados)
