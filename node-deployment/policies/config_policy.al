@@ -43,7 +43,7 @@ set create_config = false
 process !local_scripts/node-deployment/policies/validate_node_policy.al
 
 if $CONFIG_ID then config_id = $CONFIG_ID
-else if not $CONfIG_ID and !config_name then config_id = blockchain get config where company=!company_name and name=!config_name and node_type=!node_type bring.first [*][id]
+else if not $CONFIG_ID and !config_name then config_id = blockchain get config where company=!company_name and name=!config_name and node_type=!node_type bring.first [*][id]
 else if !is_policy then config_id = from !is_policy bring [*][config]
 
 :check-policy:
