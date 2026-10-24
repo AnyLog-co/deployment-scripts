@@ -5,14 +5,12 @@ if !enable_debug == true then set debug on
 
 :set-configs:
 create_policy = false
-hardware_id = get hardware id
 barbara_id = $BARBARA_ID
 
 :check-policy:
 <is_policy = blockchain get orchestrator where
     type = "barbara" and
     company = !company_name and
-    hardware = !hardware_id and
     barbara = !barbara_id
 >
 
@@ -25,7 +23,6 @@ else if !is_policy then goto end-script
    "orchestrator": {
       "type": "barbara",
       "company": !company_name,
-      "hardware": !hardware_id,
       "barbara": !barbara_id
 }}>
 
