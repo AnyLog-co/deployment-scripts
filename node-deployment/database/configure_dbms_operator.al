@@ -39,9 +39,9 @@ exit scripts
 echo "Missing logical database - connect continue"
 goto terminate-scripts
 
-:partitioning-error;
-echo "Failed to set partitions for logical database: " + !default_dbms + " - data will stored in a single table"
-goto end-script
+:partitioning-error:
+echo "Failed to set partitions for logical database: " + !default_dbms + " - data will be stored in a single table"
+goto worker-threads
 
 :worker-thread-err:
 echo "Failed to define worker threads for data insertion"
