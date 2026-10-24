@@ -57,7 +57,8 @@ set policy new_policy [!node_type][name] = !node_name
 set policy new_policy [!node_type][company] = !company_name
 if !config_id then set policy new_policy [!node_type][config] = !config_id
 
-set policy new_policy [!node_type][hostname] = !hostname
+# hostname not stable on a container recreation
+#set policy new_policy [!node_type][hostname] = !hostname
 if $HZN_DEVICE_ID then set policy new_policy [!node_type][hzn_device_id] = $HZN_DEVICE_ID
 
 :network-node_type:

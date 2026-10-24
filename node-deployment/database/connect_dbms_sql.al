@@ -16,8 +16,9 @@ if not !db_name then
 do err_code = 1
 do goto end-script
 
-list_dbs = get databases where format=json
-if !list_dbs contains !db_name then goto end-script
+# check isn't needed. 'connect dbms' already returns success when the same db is already connected with the same type, and returns an error if it's connected with a different type 
+#list_dbs = get databases where format=json
+#if !list_dbs contains !db_name then goto end-script
 
 :connect:
 on error goto connect-error
@@ -37,6 +38,6 @@ end script
 exit scripts
 
 
-:almgm-dbms-error:
+:connect-error:
 echo "Error: Unable to connect to " + !db_name + " database with db type: " + !db_type + ". Cannot continue"
 goto terminate-scripts
