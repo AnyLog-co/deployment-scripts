@@ -39,6 +39,7 @@ if $CONFIG_ID then config_id = $CONFIG_ID
 set is_hidden =false
 set master_configs = false
 company_name = Acme
+hardware_id = get hardware id
 
 if not $NODE_TYPE then goto missing-node-type
 else if $NODE_TYPE == master-operator  then node_type = operator

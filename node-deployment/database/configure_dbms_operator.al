@@ -41,7 +41,7 @@ goto terminate-scripts
 
 :partitioning-error:
 echo "Failed to set partitions for logical database: " + !default_dbms + " - data will be stored in a single table"
-goto worker-threads
+goto terminate-scripts
 
 :worker-thread-err:
 echo "Failed to define worker threads for data insertion"
