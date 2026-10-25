@@ -6,7 +6,18 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 8094fc8 -->
+<!-- last-processed: fb4c4db -->
+
+<!-- os-dev: fb4c4db (2026-10-25) -->
+
+* **Ori Shadmon** (2026-10-23 – 2026-10-24)
+  * Node deployment: merge (with minor changes)
+  * Node deployment / Database: merge (with minor changes)
+  * Node deployment / Policies: merge (with minor changes); spelling
+* **Justin Boyd** (2026-10-23)
+  * General: orchestrator policy fix to prevent duplicate policies
+  * Node deployment / Database: fix for anylog db not being created + typo fix
+  * Node deployment / Policies: remove hostname for stability/duplicate prevention
 
 <!-- os-dev: 8094fc8 (2026-10-23) -->
 
@@ -555,7 +566,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 8094fc8 -->
+<!-- last-processed: fb4c4db -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
