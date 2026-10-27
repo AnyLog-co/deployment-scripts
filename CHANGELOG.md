@@ -6,7 +6,192 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: fd20772 -->
+<!-- last-processed: 8094fc8 -->
+
+<!-- os-dev: 8094fc8 (2026-10-23) -->
+
+* **Ori Shadmon** (2026-10-22)
+  * Node deployment / Policies: validate node name in addition to net configs
+
+<!-- os-dev: 661e9ac (2026-10-22) -->
+
+* **Ori Shadmon** (2026-10-21 – 2026-10-22)
+  * Node deployment: working code with psql + sqlite
+  * Node deployment / Database: working code with psql + sqlite
+  * Node deployment / Policies: working code with psql + sqlite; validate
+
+<!-- os-dev: 30d348d (2026-10-22) -->
+
+* **Ori Shadmon** (2026-10-21)
+  * Node deployment / Database: sync bug
+  * Node deployment / Policies: sync bug
+  * Southbound / Monitoring: sync bug
+
+<!-- os-dev: 115177b (2026-10-21) -->
+
+* **Ori Shadmon** (2026-10-21)
+  * Southbound / Monitoring: schedule param not written correctly
+
+<!-- os-dev: 6238ea2 (2026-10-21) -->
+
+* **Ori Shadmon** (2026-10-20 – 2026-10-21)
+  * Node deployment: remove duplicate code
+  * Node deployment / Policies: remove duplicate code; archive node name validation
+  * Southbound / Monitoring: monitoring
+
+<!-- os-dev: 018bb4a (2026-10-20) -->
+
+* **Ori Shadmon** (2026-10-20)
+  * Archive: archive node name validation
+  * Node deployment / Database: if remote-gui query node then specify it's a remote-gui query node
+  * Node deployment / Policies: archive node name validation
+* **Justin Boyd** (2026-10-20)
+  * Node deployment / Policies: fix: update policy validation logic for overlay and TCP bindings
+
+<!-- os-dev: 1ece836 (2026-10-20) -->
+
+* **Ori Shadmon** (2026-10-20)
+  * Node deployment / Policies: config logic change - remove debug code
+
+<!-- os-dev: 3e25d13 (2026-10-20) -->
+
+* **Ori Shadmon** (2026-10-20)
+  * Node deployment / Policies: config logic change
+
+<!-- os-dev: bca198e (2026-10-20) -->
+
+* **Ori Shadmon** (2026-10-20)
+  * Node deployment / Policies: config logic change
+
+<!-- os-dev: 562a12d (2026-10-20) -->
+
+* **Ori Shadmon** (2026-10-20)
+  * Node deployment / Policies: config logic change
+
+<!-- os-dev: 55bbcb7 (2026-10-20) -->
+
+* **Ori Shadmon** (2026-10-20)
+  * Node deployment / Policies: pre-create monitoring policies + support for config/node relation
+
+<!-- os-dev: f1fae5e (2026-10-20) -->
+
+* **Ori Shadmon** (2026-10-20)
+  * Node deployment / Policies: pre-create monitoring policies + support for config/node relation
+  * Southbound / Monitoring: pre-create monitoring policies + support for config/node relation
+
+<!-- os-dev: 917f2cf (2026-10-19) -->
+
+* **Ori Shadmon** (2026-10-19)
+  * Node deployment / Policies: config info in node
+
+<!-- os-dev: 43b7c82 (2026-10-19) -->
+
+* **Ori Shadmon** (2026-10-19)
+  * Node deployment: formatting + noticed IP issues
+  * Node deployment / Policies: formatting + noticed IP issues; comment
+* **Justin Boyd** (2026-10-19)
+  * Node deployment: Added vpn advertise flag to handle VPN configuration
+  * Node deployment / Policies: Added vpn advertise flag to handle VPN configuration
+
+<!-- os-dev: 848aec7 (2026-10-19) -->
+
+* **Ori Shadmon** (2026-10-19)
+  * Southbound / Monitoring: missing comma @ store_monitoring_dest
+
+<!-- os-dev: f8e8d2d (2026-10-15) -->
+
+* **Ori Shadmon** (2026-10-15)
+  * Node deployment: container testing for ledger conn
+
+<!-- os-dev: 6fb9e04 (2026-10-15) -->
+
+* **Ori Shadmon** (2026-10-15)
+  * Customers: weather
+
+<!-- os-dev: 658f85e (2026-10-15) -->
+
+* **Ori Shadmon** (2026-10-15)
+  * Customers: weather
+
+<!-- os-dev: 571e2b3 (2026-10-15) -->
+
+* **Ori Shadmon** (2026-10-15)
+  * Node deployment / Policies: weather
+  * Southbound / Monitoring: weather
+
+<!-- os-dev: 1b24e3e (2026-10-15) -->
+
+* **Ori Shadmon** (2026-10-15)
+  * Southbound / Monitoring: weather
+
+<!-- os-dev: 767b956 (2026-10-15) -->
+
+* **Ori Shadmon** (2026-10-15)
+  * Customers: schneider weather station usecase
+
+<!-- os-dev: b1aa431 (2026-10-14) -->
+
+* **Ori Shadmon** (2026-10-14)
+  * General: if hide tag
+
+<!-- os-dev: 793296a (2026-10-14) -->
+
+* **Ori Shadmon** (2026-10-14)
+  * Docker: wrong path
+
+<!-- os-dev: c7d5ca3 (2026-10-14) -->
+
+* **Ori Shadmon** (2026-10-14)
+  * General: image build tag naming
+
+<!-- os-dev: 1a948da (2026-10-14) -->
+
+* **Ori Shadmon** (2026-10-14)
+  * General: image build tag naming
+
+<!-- os-dev: 7baf7f1 (2026-10-14) -->
+
+* **Ori Shadmon** (2026-10-14)
+  * Node deployment / Database: numbering
+
+<!-- os-dev: 42c5382 (2026-10-14) -->
+
+* **Ori Shadmon** (2026-10-14)
+  * Node deployment / Database: query policy
+
+<!-- os-dev: 0792ab4 (2026-10-13) -->
+
+* **Ori Shadmon** (2026-10-13)
+  * Node deployment: if config policy ID
+  * Node deployment / Policies: if config policy ID
+
+<!-- os-dev: 204b5a6 (2026-10-13) -->
+
+* **Ori Shadmon** (2026-10-13)
+  * Node deployment / Database: integrate system_query w/ query node
+
+<!-- os-dev: a492acf (2026-10-13) -->
+
+* **Ori Shadmon** (2026-10-13)
+  * Node deployment: instead of enabling node monitoring we disable it if we do not want to - storage + forwarding works the same as before
+  * Node deployment / Database: integrate system_query w/ query node
+  * Node deployment / Policies: instead of enabling node monitoring we disable it if we do not want to - storage + forwarding works the same as before
+  * Southbound / Monitoring: instead of enabling node monitoring we disable it if we do not want to - storage + forwarding works the same as before
+
+<!-- os-dev: 2d86610 (2026-10-12) -->
+
+* **Ori Shadmon** (2026-10-12)
+  * Node deployment: fix logic for 127 on ledger conn for different ports
+
+<!-- os-dev: 916ab5e (2026-10-12) -->
+
+* **Ori Shadmon** (2026-10-12)
+  * Node deployment: fix logic for 127 on ledger conn for different ports
+
+<!-- os-dev: e5146c9 (2026-10-12) -->
+
+* **Ori Shadmon** (2026-10-12)
+  * Node deployment: debug code
 
 <!-- os-dev: fd20772 (2026-10-09) -->
 
@@ -370,7 +555,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: fd20772 -->
+<!-- last-processed: 8094fc8 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])

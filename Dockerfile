@@ -1,5 +1,5 @@
 FROM busybox
+WORKDIR /app
+COPY . /app/deployment-scripts/
 
-COPY . deployment-scripts/
-
-CMD ["sh", "-c", "mkdir -p /target && cp -a /deployment-scripts/. /target/ && echo 'deployment-scripts copied to volume'"]
+CMD ["sh", "-c", "mkdir -p /target && cp -a /app/deployment-scripts/. /target/ && echo 'deployment-scripts copied to volume'"]
