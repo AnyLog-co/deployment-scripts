@@ -65,12 +65,6 @@ else if !blockchain_source == master then
 goto end-script
 
 :end-script:
-
-# blockchain sync
-wait 15
-run blockchain sync
-blockchain reload metadata
-
 end script
 
 :terminate-scripts:

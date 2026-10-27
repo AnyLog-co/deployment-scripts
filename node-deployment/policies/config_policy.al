@@ -46,24 +46,24 @@ set policy new_policy [config][name] = !config_name
 set policy new_policy [config][company] = !company_name
 set policy new_policy [config][node_type] = !node_type
 set policy new_policy [config][version] = !config_version
-if not !config_version then
-do set policy new_policy [config][version] = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
+#if not !config_version then
+#do set policy new_policy [config][version] = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
 
 :network-configs:
 process !local_scripts/node-deployment/policies/config_policy_networking.al
 
 if !node_type == operator then goto operator-scripts
 else if !node_type == publisher then goto publisher-scripts
-else if !node_type == master or node_type == query then goto master-query
+else if !node_type == master or !node_type == query then goto master-query
 
 :generic-node:
 if !node_type == generic then
 <do set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
-    "process !local_scripts/node-deployment/policies/node_name.al",
     "run scheduler 1",
     "if !system_query == true and !enable_mcp == true then run mcp server",
-
+    "process !local_scripts/orchestrator/orchestrator.al",
+    "process !local_scripts/node-deployment/policies/node_name.al",
     "if !node_monitoring   == true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
     "if !syslog_monitoring == true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
     "if !docker_monitoring == true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
@@ -78,10 +78,8 @@ if !node_type == master or !node_type == query then
 <do set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
-    "process !local_scripts/node-deployment/policies/node_name.al",
-    "if !is_hidden == false then process !local_scripts/node-deployment/policies/node_policy.al",
-    "if !is_hidden == true and not !node_name then process !local_scripts/node-deployment/policies/node_name.al",
-    "if !is_hidden == true then set node name !node_name",
+    "process !local_scripts/orchestrator/orchestrator.al",
+    "process !local_scripts/node-deployment/policies/node_policy.al",
     "run scheduler 1",
     "if !system_query == true and !enable_mcp == true then run mcp server",
 
@@ -99,10 +97,8 @@ if !node_type == publisher then
 <do set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
-    "process !local_scripts/node-deployment/policies/node_name.al",
-    "if !is_hidden == false then process !local_scripts/node-deployment/policies/node_policy.al",
-    "if !is_hidden == true and not !node_name then process !local_scripts/node-deployment/policies/node_name.al",
-    "if !is_hidden == true then set node name !node_name",
+    "process !local_scripts/orchestrator/orchestrator.al",
+    "process !local_scripts/node-deployment/policies/node_policy.al",
     "run scheduler 1",
     "set buffer threshold where time=!threshold_time and volume=!threshold_volume and write_immediate=false",
     "run streamer",
@@ -126,7 +122,7 @@ do goto publish-policy
 <set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
-    "process !local_scripts/node-deployment/policies/node_name.al",
+    "process !local_scripts/orchestrator/orchestrator.al",
     "process !local_scripts/node-deployment/policies/cluster_policy.al",
     "process !local_scripts/node-deployment/policies/node_policy.al",
     "run scheduler 1",
@@ -150,16 +146,16 @@ do goto publish-policy
 ]>
 
 :publish-policy:
-
 set is_config = true
 process !local_scripts/node-deployment/policies/publish_policy.al
 if !error_code == 1 then goto sign-policy-error
 if !error_code == 2 then goto prepare-policy-error
 if !error_code == 3 then goto declare-policy-error
+
+
 set create_config = true
-wait 5
-blockchain reload metadata
 set is_config = false
+
 goto check-policy
 
 :config-policy:

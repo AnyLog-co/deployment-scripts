@@ -23,7 +23,6 @@ on error ignore
 }}>
 
 :publish-policy:
-
 process !local_scripts/node-deployment/policies/publish_policy.al
 if !error_code == 1 then goto sign-policy-error
 if !error_code == 2 then goto prepare-policy-error

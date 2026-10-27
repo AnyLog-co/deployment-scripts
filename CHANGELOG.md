@@ -6,7 +6,199 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 013ab46 -->
+<!-- last-processed: fd20772 -->
+
+<!-- os-dev: fd20772 (2026-10-09) -->
+
+* **Ori Shadmon** (2026-10-09)
+  * Node deployment: self loopup simplified
+
+<!-- os-dev: 5b095c9 (2026-10-09) -->
+
+* **Ori Shadmon** (2026-10-09)
+  * General: orchestrator + other stuff
+  * Node deployment / Policies: orchestrator + other stuff; testing for publisher
+* **Justin Boyd** (2026-10-09)
+  * Node deployment: added self-ip loopback in set_params.al
+
+<!-- os-dev: 95d1ea6 (2026-10-09) -->
+
+* **Ori Shadmon** (2026-10-08)
+  * Node deployment / Policies: tmp removval of publisher from code
+
+<!-- os-dev: ce380b8 (2026-10-09) -->
+
+* **Ori Shadmon** (2026-10-08)
+  * Node deployment / Policies: integrate logic where node policy to use local IP but network is not bound
+  * Southbound / Monitoring: integrate logic where node policy to use local IP but network is not bound
+
+<!-- os-dev: 77a4c34 (2026-10-08) -->
+
+* **Ori Shadmon** (2026-10-08)
+  * Node deployment: integrate logic where node policy to use local IP but network is not bound
+
+<!-- os-dev: f752f26 (2026-10-08) -->
+
+* **Ori Shadmon** (2026-10-08)
+  * Node deployment: integrate logic where node policy to use local IP but network is not bound
+  * Node deployment / Policies: integrate logic where node policy to use local IP but network is not bound
+
+<!-- os-dev: 0e667e3 (2026-10-08) -->
+
+* **Ori Shadmon** (2026-10-07)
+  * Node deployment / Policies: else if bug caused name to be overwritten
+
+<!-- os-dev: 42c7488 (2026-10-08) -->
+
+* **Ori Shadmon** (2026-10-07)
+  * Node deployment: improvements with the deployment scripts
+
+<!-- os-dev: b26e102 (2026-10-08) -->
+
+* **Ori Shadmon** (2026-10-07)
+  * Archive: improvements with the deployment scripts
+  * Node deployment: improvements with the deployment scripts
+  * Node deployment / Policies: improvements with the deployment scripts
+
+<!-- os-dev: 623757c (2026-10-06) -->
+
+* **Ori Shadmon** (2026-10-05)
+  * Node deployment: fix ledger sselection for default; publish policy logic + monitoring support with new scheduler; improve monitoring - in progress
+  * Node deployment / Policies: publish policy logic + monitoring support with new scheduler; blockchain wait - moved to be used in every case
+  * Southbound / Monitoring: publish policy logic + monitoring support with new scheduler; improve monitoring - in progress; blockchain wait - moved to be used in every case; monitoring set to scheduler 2
+
+<!-- os-dev: c0ae6f4 (2026-10-03) -->
+
+* **Ori Shadmon** (2026-10-02)
+  * Southbound / Monitoring: blockchain table reset
+
+<!-- os-dev: aff5054 (2026-10-03) -->
+
+* **Ori Shadmon** (2026-10-02)
+  * Southbound / Monitoring: monitoring
+
+<!-- os-dev: aced0d2 (2026-10-02) -->
+
+* **Ori Shadmon** (2026-10-02)
+  * Node deployment / Policies: debug on publish policy
+
+<!-- os-dev: 4c81624 (2026-10-02) -->
+
+* **Ori Shadmon** (2026-10-02)
+  * Node deployment / Policies: debug on publish policy
+
+<!-- os-dev: 76452bc (2026-10-02) -->
+
+* **Ori Shadmon** (2026-10-02)
+  * Node deployment / Policies: debug
+
+<!-- os-dev: 3ab0f3a (2026-10-02) -->
+
+* **Ori Shadmon** (2026-10-02)
+  * Node deployment: defaults + node policy cluster issue
+
+<!-- os-dev: 5d8814d (2026-10-02) -->
+
+* **Ori Shadmon** (2026-10-02)
+  * Node deployment: defaults + node policy cluster issue
+  * Node deployment / Policies: defaults + node policy cluster issue
+
+<!-- os-dev: 70f890e (2026-10-02) -->
+
+* **Ori Shadmon** (2026-10-02)
+  * Southbound / Monitoring: scheduler = 2
+
+<!-- os-dev: a43699b (2026-10-02) -->
+
+* **Ori Shadmon** (2026-10-02)
+  * Southbound / Monitoring: scheduler = 2
+
+<!-- os-dev: 12dd6b6 (2026-10-02) -->
+
+* **Ori Shadmon** (2026-10-02)
+  * Node deployment / Policies: debug for policies rm
+
+<!-- os-dev: d0e82b2 (2026-10-02) -->
+
+* **Ori Shadmon** (2026-10-01 – 2026-10-02)
+  * Node deployment: in progress - improve behavior for faster performance + removal of sleeps; cleaned setting configs; revert
+  * Node deployment / Policies: in progress - improve behavior for faster performance + removal of sleeps; simplified if true; revert
+
+<!-- os-dev: c32f11f (2026-10-01) -->
+
+* **Ori Shadmon** (2026-09-30)
+  * Node deployment / Policies: readded exit scripts - for bug
+
+<!-- os-dev: 9f31a45 (2026-10-01) -->
+
+* **Ori Shadmon** (2026-09-30)
+  * Node deployment / Policies: readded exit scripts - for bug
+
+<!-- os-dev: d61ce55 (2026-10-01) -->
+
+* **Ori Shadmon** (2026-09-30)
+  * Node deployment / Policies: readded exit scripts - for bug
+
+<!-- os-dev: f2443e7 (2026-10-01) -->
+
+* **Ori Shadmon** (2026-09-30)
+  * Node deployment / Policies: readded exit scripts - for bug
+
+<!-- os-dev: 36ac737 (2026-10-01) -->
+
+* **Ori Shadmon** (2026-09-30)
+  * Node deployment / Policies: blockchain sync
+
+<!-- os-dev: 102ed9a (2026-10-01) -->
+
+* **Ori Shadmon** (2026-09-30)
+  * Node deployment / Policies: blockchain sync
+
+<!-- os-dev: 2859930 (2026-10-01) -->
+
+* **Ori Shadmon** (2026-09-30)
+  * Node deployment / Policies: exit scripts
+
+<!-- os-dev: a7ae0f9 (2026-10-01) -->
+
+* **Ori Shadmon** (2026-09-30)
+  * Node deployment / Policies: exit scripts
+
+<!-- os-dev: df02bf0 (2026-10-01) -->
+
+* **Ori Shadmon** (2026-09-30)
+  * Node deployment: revert + simplified cluster logic
+  * Node deployment / Policies: wait 65; revert + simplified cluster logic
+
+<!-- os-dev: 0414415 (2026-09-30) -->
+
+* **Ori Shadmon** (2026-09-30)
+  * Node deployment: minor debug changes
+  * Node deployment / Policies: minor debug changes
+
+<!-- os-dev: 93cb600 (2026-09-30) -->
+
+* **Ori Shadmon** (2026-09-30)
+  * Node deployment / Policies: wait 60
+
+<!-- os-dev: 0b4707b (2026-09-30) -->
+
+* **Ori Shadmon** (2026-09-30)
+  * Node deployment: cluster / operator sync
+  * Node deployment / Policies: cluster / operator sync
+
+<!-- os-dev: 8b6f6fa (2026-09-29) -->
+
+* **Ori Shadmon** (2026-09-29)
+  * Node deployment: integration into SCRIPT_DEBUG - wheere if enable will do set debug on on each file
+  * Node deployment / Database: integration into SCRIPT_DEBUG - wheere if enable will do set debug on on each file
+  * Node deployment / Policies: integration into SCRIPT_DEBUG - wheere if enable will do set debug on on each file
+  * Southbound / Monitoring: integration into SCRIPT_DEBUG - wheere if enable will do set debug on on each file
+
+<!-- os-dev: 4971215 (2026-09-29) -->
+
+* **Ori Shadmon** (2026-09-29)
+  * Node deployment: broker configs
 
 <!-- os-dev: 013ab46 (2026-09-22) -->
 
@@ -178,7 +370,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 013ab46 -->
+<!-- last-processed: fd20772 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
