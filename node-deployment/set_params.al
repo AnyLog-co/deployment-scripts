@@ -21,16 +21,25 @@ if !enable_debug == true then set debug on
 
 if $DISABLE_CLI == true then set cli off
 
+
+:check-container:
+set is_docker = false
+set is_k8s = false
+if $KUBERNETES_SERVICE_HOST then set is_k8s = true
+if !is_k8s == false then is_docker = file test /.dockerenv
+
 :required-params:
 # config_version = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
 config_version = "2.1.2609"
 
 hostname = get hostname
-ledger_conn = 127.0.0.1:32048
+
+if $CONFIG_ID then config_id = $CONFIG_ID
 
 set is_hidden =false
 set master_configs = false
 company_name = Acme
+hardware_id = get hardware id
 
 if not $NODE_TYPE then goto missing-node-type
 else if $NODE_TYPE == master-operator  then node_type = operator
@@ -152,6 +161,18 @@ if $BROKER_THREADS and $BROKER_THREADS.int >= 1  then broker_threads = $BROKER_T
 if not $NIC_TYPE and $OVERLAY_IP then overlay_ip = $OVERLAY_IP
 if $CONFIG_NAME then config_name = $CONFIG_NAME
 
+#:vpn-advertisement:
+# Advertise the node's overlay IP for VPN access when enabled and network requirements are met.
+
+#set vpn_advertise = false
+#if not $VPN_ADVERTISE or $VPN_ADVERTISE == false then goto self-ip-loopback
+
+#if not $OVERLAY_IP or $NIC_TYPE or !enable_dns == true or !tcp_bind == true or !rest_bind == true or !broker_bind == true then
+#do on error call vpn-advertise-error
+#overlay_ip = $OVERLAY_IP
+#set vpn_advertise = true
+#do on error ignore
+
 :self-ip-loopback:
 # we're configuring the self IP as `127.0.0.1`, when the NIC is either loopback or docker address.
 # Situation(s): (Docker) port-forwarding "forcefully" used in situation where network should be defined or vise-versa.
@@ -167,24 +188,15 @@ do on error ignore
 :ledger-config:
 # option to not set ledger_conn for master
 if $LEDGER_CONN then set env_ledger = $LEDGER_CONN
+else env_ledger = 127.0.0.1:32048
 
 if !env_ledger then
 do env_ledger_ip = python !env_ledger.split(":")[0]
 do env_ledger_port = python !env_ledger.split(":")[1]
 
-if !tcp_bind == true and (!env_ledger_ip == host.docker.internal or !env_ledger_ip == "127.0.0.1") and !env_ledger_port == !anylog_server_port then goto select-ledger
-else if $LEDGER_CONN then
-do set ledger_conn = $LEDGER_CONN
-do goto authentication
-
-:select-ledger:
-if !master_configs == true and !enable_dns == true then ledger_conn = !external_dns + ":" + !anylog_server_port
-else if !master_configs == false and !enable_dns == true then ledger_conn = !external_dns + ":32048"
-else if !master_configs == true and !overlay_ip then ledger_conn = !overlay_ip + ":" + !anylog_server_port
-else if !master_configs == false and !overlay_ip then ledger_conn = !overlay_ip + ":32048"
-else if !master_configs == true then ledger_conn = !ip + ":" + !anylog_server_port
-else if !master_configs == false then ledger_conn = !ip + ":32048"
-
+if      !is_docker == true and !env_ledger_ip == 127.0.0.1 and !env_ledger_port then ledger_conn = "host.docker.internal:" + !env_ledger_port
+# else if !is_k8s    == true and !env_ledger_ip == 127.0.0.1 and !env_ledger_port then ledger_conn =
+else ledger_conn = !env_ledger
 
 :authentication:
 set enable_auth = false
@@ -379,8 +391,7 @@ if $MSG_VALUE_COLUMN then msg_value_column=$MSG_VALUE_COLUMN
 
 
 :monitoring:
-set monitoring_node     = false
-set node_monitoring     = true
+set disable_node_monitoring     = false
 set syslog_monitoring   = true
 set docker_monitoring   = true
 set store_monitoring    = false
@@ -397,8 +408,7 @@ docker_frequency = 10
 if not $MONITORING_DB then  monitoring_db = $DB_TYPE
 else if $MONITORING_DB == psql or $MONITORING_DB == sqlite then monitoring_db = $MONITORING_DB
 
-if $MONITORING_NODE == false then set monitoring_node = false
-if $NODE_MONITORING == false   then set node_monitoring   = false
+if $DISABLE_NODE_MONITORING == true   then set disable_node_monitoring   = true
 if $SYSLOG_MONITORING == false then set syslog_monitoring = false
 if $DOCKER_MONITORING == false then set docker_monitoring = false
 
@@ -589,3 +599,7 @@ goto terminate-scripts
 :self-ip-error:
 print "Failed to configure loopback self IP"
 return
+
+#:vpn-advertise-error:
+#print "VPN_ADVERTISE must be true or false. When true, set OVERLAY_IP, leave NIC_TYPE empty, disable ENABLE_DNS, and set TCP_BIND, REST_BIND and BROKER_BIND to false."
+#return

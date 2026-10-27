@@ -130,6 +130,19 @@ Below is an example policy for an operator node. When applied, it enables:
 }
 ```
 
+## Opt-in VPN advertisement
+
+Set `VPN_ADVERTISE=true` to advertise `OVERLAY_IP` as both the primary `ip`
+and `local_ip` in newly generated runtime and node policies. REST and messaging
+addresses also use the overlay IP. Unset or `false` preserves existing public-IP,
+DNS and NAT rules.
+
+This mode requires `OVERLAY_IP`, an empty `NIC_TYPE`, `ENABLE_DNS=false`, and
+`TCP_BIND=false`, `REST_BIND=false`, `BROKER_BIND=false`. Keep
+`SELF_IP_LOOPBACK=true` for local TCP communication. Use matching published and
+internal `ANYLOG_*_PORT` values; separate advertised port mappings are not
+implemented by this mode. The containers must have working VPN routing.
+
 ## Enable Aggregations
 
 The <a href="https://github.com/AnyLog-co/documentation/blob/master/aggregations.md" target="_blank">Aggregation function</a>

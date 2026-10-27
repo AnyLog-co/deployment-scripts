@@ -20,6 +20,15 @@ if !enable_debug == true then set debug on
 
 set create_policy = false
 
+:sync-blockchain:
+if !master_configs == true then
+do blockchain pull to json
+do blockchain update file
+
+else if !master_configs != true then run blockchain sync
+
+blockchain reload metadata
+
 :check-policy:
 on error ignore
 
