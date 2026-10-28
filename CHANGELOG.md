@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: fb4c4db -->
+<!-- last-processed: 690dc39 -->
+
+<!-- os-dev: 690dc39 (2026-10-28) -->
+
+* **Ori Shadmon** (2026-10-28)
+  * Node deployment / Policies: comment out config publisher
 
 <!-- os-dev: fb4c4db (2026-10-25) -->
 
@@ -566,7 +571,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: fb4c4db -->
+<!-- last-processed: 690dc39 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
