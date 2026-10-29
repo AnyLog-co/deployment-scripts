@@ -5,6 +5,8 @@
 #   Every node policy matching target_name and target_ip is removed from:
 #       1. the local blockchain file    - blockchain delete policy where id = ... and local = true
 #       2. the master ledger            - blockchain drop policy where id = ...
+#   Cluster child policies (parent = cluster id) published from the node's IP are removed too. Children published
+#   by other nodes stay, so the cluster policy stays while any other child references it.
 #   The config, orchestrator and cluster policies referenced by the node policy are removed only when
 #   no other policy in the ledger still references them (they can be shared with other nodes).
 #   Other policies issued from the node's IP are listed in the dry run for manual review, not removed.
@@ -12,22 +14,22 @@
 #   The script refuses to remove the node it is running on (node_name).
 #   A master node can only be removed from a master node (NODE_TYPE master, master-operator or master-publisher).
 #
-# Parameters - set them before processing this script:
-#   set target_name = anylog-standalone-operator
-#   set target_ip = 136.23.47.189
-#   set confirm = true          (omit, or set to false, for a dry run that only lists the matching policies)
-#
-# Usage:
-#   process !local_scripts/sample-scripts/remove_node.al
+# Usage - pass the parameters on the process command, in this order (all three are required):
+#   process !local_scripts/sample-scripts/remove_node.al <node_name> <node_ip> <confirm>
+#   Dry run (lists the matching policies, no changes):
+#     process !local_scripts/sample-scripts/remove_node.al anylog-standalone-operator 136.23.47.189 false
+#   Apply the removal:
+#     process !local_scripts/sample-scripts/remove_node.al anylog-standalone-operator 136.23.47.189 true
 #----------------------------------------------------------------------------------------------------------------------#
+variables(target_name, target_ip, confirm)
 on error ignore
 
 set last_policy_id = none
+set last_child_id = none
 
 if not !target_name then goto missing-params
 if not !target_ip then goto missing-params
 if !target_name == !node_name then goto self-removal-error
-if not !confirm then set confirm = false
 
 set local_is_master = false
 if $NODE_TYPE == master or $NODE_TYPE == master-operator or $NODE_TYPE == master-publisher then set local_is_master = true
@@ -57,7 +59,7 @@ blockchain delete policy where id = !policy_id and local = true
 blockchain drop policy where id = !policy_id
 blockchain reload metadata
 print "Removed node policy id: " !policy_id
-goto check-config
+goto remove-children
 
 :removal-done:
 node_count = blockchain get (master,operator,publisher,query,generic,relay) where name = !target_name and ip = !target_ip bring.count
@@ -70,14 +72,41 @@ print "Could not remove all node policies for name=" !target_name " ip=" !target
 goto end-script
 
 :dry-run:
-print "Dry run - no changes made. Set confirm = true to apply the removals listed below."
+print "Dry run - no changes made. Re-run with confirm = true as the last parameter to apply the removals listed below."
 policy_id = blockchain get (master,operator,publisher,query,generic,relay) where name = !target_name and ip = !target_ip bring.first [*][id]
 config_id = blockchain get (master,operator,publisher,query,generic,relay) where id = !policy_id bring.first [*][config]
 orchestrator_id = blockchain get (master,operator,publisher,query,generic,relay) where id = !policy_id bring.first [*][orchestrator]
 cluster_id = blockchain get (master,operator,publisher,query,generic,relay) where id = !policy_id bring.first [*][cluster]
 print "Other ledger entries issued from ip " !target_ip " (not removed by this script - review manually):"
 sql blockchain format=table and stat=false select policy_type, policy_id, company_name from ledger where host = '!target_ip' and policy_id != '!policy_id'
+goto list-children
+
+:list-children:
+if not !cluster_id then goto check-config
+print "Cluster child policies published from ip " !target_ip " (removed when confirm = true):"
+sql blockchain format=table and stat=false select policy_id, company_name from ledger where policy_type = 'cluster' and policy like '%!cluster_id%' and policy_id != '!cluster_id' and policy like '%Node at !target_ip:%'
 goto check-config
+
+# Child cluster policies are removed one at a time, then the loop re-counts until none are left
+:remove-children:
+if not !cluster_id then goto check-config
+sql_count = sql blockchain format=json:list and stat=false select count(*) as count from ledger where policy_type = 'cluster' and policy like '%!cluster_id%' and policy_id != '!cluster_id' and policy like '%Node at !target_ip:%'
+serialized_count = python !sql_count.replace('[', '').replace(']', '')
+child_count = from !serialized_count bring [count]
+if not !child_count then goto check-config
+if !child_count == 0 then goto check-config
+child_id_list = sql blockchain format=json:list and stat=false select policy_id from ledger where policy_type = 'cluster' and policy like '%!cluster_id%' and policy_id != '!cluster_id' and policy like '%Node at !target_ip:%' limit 1
+serialized_id = python !child_id_list.replace('[', '').replace(']', '')
+child_policy_id = from !serialized_id bring [policy_id]
+if not !child_policy_id then goto check-config
+if !child_policy_id == !last_child_id then print "Could not remove cluster child policy id: " !child_policy_id " - check the ledger and local blockchain file"
+if !child_policy_id == !last_child_id then goto check-config
+set last_child_id = !child_policy_id
+blockchain delete policy where id = !child_policy_id and local = true
+blockchain drop policy where id = !child_policy_id
+blockchain reload metadata
+print "Removed cluster child policy id: " !child_policy_id " (published from ip " !target_ip ")"
+goto remove-children
 
 # An empty count is treated as still referenced (ref_count != 0), so nothing is dropped on a failed query
 :check-config:
@@ -100,7 +129,7 @@ if !ref_count == 0 and !confirm == true then blockchain drop policy where id = !
 
 :check-cluster:
 if not !cluster_id then goto after-checks
-sql_count = sql blockchain format=json:list and stat=false select count(*) as count from ledger where policy like '%!cluster_id%' and policy_id != '!cluster_id' and policy_id != '!policy_id'
+sql_count = sql blockchain format=json:list and stat=false select count(*) as count from ledger where policy like '%!cluster_id%' and policy_id != '!cluster_id' and policy_id != '!policy_id' and not (policy_type = 'cluster' and policy like '%Node at !target_ip:%')
 serialized_count = python !sql_count.replace('[', '').replace(']', '')
 ref_count = from !serialized_count bring [count]
 if !ref_count != 0 then print "Keep cluster policy - still used by other policies: " !cluster_id
@@ -124,7 +153,7 @@ print "Refusing to remove node " !target_name " - it is the node this script is 
 goto end-script
 
 :missing-params:
-print "Set target_name and target_ip before processing this script"
+print "Usage: process !local_scripts/sample-scripts/remove_node.al <node_name> <node_ip> <confirm>"
 
 :end-script:
 end script
