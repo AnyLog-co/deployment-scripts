@@ -395,6 +395,7 @@ set disable_node_monitoring     = false
 set syslog_monitoring   = true
 set docker_monitoring   = true
 set store_monitoring    = false
+set monitoring_scheduler_env_params = false
 
 store_monitoring_dest   = ""
 monitoring_db = sqlite
