@@ -77,29 +77,19 @@ policy_id = blockchain get (master,operator,publisher,query,generic,relay) where
 config_id = blockchain get (master,operator,publisher,query,generic,relay) where id = !policy_id bring.first [*][config]
 orchestrator_id = blockchain get (master,operator,publisher,query,generic,relay) where id = !policy_id bring.first [*][orchestrator]
 cluster_id = blockchain get (master,operator,publisher,query,generic,relay) where id = !policy_id bring.first [*][cluster]
-print "Other ledger entries issued from ip " !target_ip " (not removed by this script - review manually):"
-host_entries = sql blockchain format=json:list and stat=false select policy_type, policy_id, company_name from ledger where host = '!target_ip' and policy_id != '!policy_id'
-print "Other ledger entries from ip " !target_ip ": " !host_entries
-goto list-children
-
-:list-children:
 if not !cluster_id then goto check-config
 print "Cluster child policies published from ip " !target_ip " (removed when confirm = true):"
-child_entries = sql blockchain format=json:list and stat=false select policy_id, company_name from ledger where policy_type = 'cluster' and policy like '%!cluster_id%' and policy_id != '!cluster_id' and policy like '%Node at !target_ip:%'
+child_entries = blockchain get cluster where parent = !cluster_id and [source] contains !target_ip bring [*][id] separator = ,
 print "Child entries: " !child_entries
 goto check-config
 
 # Child cluster policies are removed one at a time, then the loop re-counts until none are left
 :remove-children:
 if not !cluster_id then goto check-config
-sql_count = sql blockchain format=json:list and stat=false select count(*) as count from ledger where policy_type = 'cluster' and policy like '%!cluster_id%' and policy_id != '!cluster_id' and policy like '%Node at !target_ip:%'
-serialized_count = python !sql_count.replace('[', '').replace(']', '')
-child_count = from !serialized_count bring [count]
+child_count = blockchain get cluster where parent = !cluster_id and [source] contains !target_ip bring.count
 if not !child_count then goto check-config
 if !child_count == 0 then goto check-config
-child_id_list = sql blockchain format=json:list and stat=false select policy_id from ledger where policy_type = 'cluster' and policy like '%!cluster_id%' and policy_id != '!cluster_id' and policy like '%Node at !target_ip:%' limit 1
-serialized_id = python !child_id_list.replace('[', '').replace(']', '')
-child_policy_id = from !serialized_id bring [policy_id]
+child_policy_id = blockchain get cluster where parent = !cluster_id and [source] contains !target_ip bring.first [*][id]
 if not !child_policy_id then goto check-config
 if !child_policy_id == !last_child_id then print "Could not remove cluster child policy id: " !child_policy_id " - check the ledger and local blockchain file"
 if !child_policy_id == !last_child_id then goto check-config
@@ -113,27 +103,25 @@ goto remove-children
 # An empty count is treated as still referenced (ref_count != 0), so nothing is dropped on a failed query
 :check-config:
 if not !config_id then goto check-orchestrator
-sql_count = sql blockchain format=json:list and stat=false select count(*) as count from ledger where policy like '%!config_id%' and policy_id != '!config_id' and policy_id != '!policy_id'
-serialized_count = python !sql_count.replace('[', '').replace(']', '')
-ref_count = from !serialized_count bring [count]
+ref_count = blockchain get (master,operator,publisher,query,generic,relay) where config = !config_id and id != !policy_id bring.count
 if !ref_count != 0 then print "Keep config policy - still used by other policies: " !config_id
 if !ref_count == 0 then print "Config policy not used by other policies: " !config_id
 if !ref_count == 0 and !confirm == true then blockchain drop policy where id = !config_id
 
 :check-orchestrator:
 if not !orchestrator_id then goto check-cluster
-sql_count = sql blockchain format=json:list and stat=false select count(*) as count from ledger where policy like '%!orchestrator_id%' and policy_id != '!orchestrator_id' and policy_id != '!policy_id'
-serialized_count = python !sql_count.replace('[', '').replace(']', '')
-ref_count = from !serialized_count bring [count]
+ref_count = blockchain get (master,operator,publisher,query,generic,relay) where orchestrator = !orchestrator_id and id != !policy_id bring.count
 if !ref_count != 0 then print "Keep orchestrator policy - still used by other policies: " !orchestrator_id
 if !ref_count == 0 then print "Orchestrator policy not used by other policies: " !orchestrator_id
 if !ref_count == 0 and !confirm == true then blockchain drop policy where id = !orchestrator_id
 
 :check-cluster:
 if not !cluster_id then goto after-checks
-sql_count = sql blockchain format=json:list and stat=false select count(*) as count from ledger where policy like '%!cluster_id%' and policy_id != '!cluster_id' and policy_id != '!policy_id' and not (policy_type = 'cluster' and policy like '%Node at !target_ip:%')
-serialized_count = python !sql_count.replace('[', '').replace(']', '')
-ref_count = from !serialized_count bring [count]
+ref_count = blockchain get (master,operator,publisher,query,generic,relay) where cluster = !cluster_id and id != !policy_id bring.count
+all_children = blockchain get cluster where parent = !cluster_id bring.count
+own_children = blockchain get cluster where parent = !cluster_id and [source] contains !target_ip bring.count
+# Child policies published by other nodes under the same root still reference it
+if !all_children != !own_children then set ref_count = 1
 if !ref_count != 0 then print "Keep cluster policy - still used by other policies: " !cluster_id
 if !ref_count == 0 then print "Cluster policy not used by other policies: " !cluster_id
 if !ref_count == 0 and !confirm == true then blockchain drop policy where id = !cluster_id
