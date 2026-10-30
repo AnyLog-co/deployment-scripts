@@ -78,13 +78,15 @@ config_id = blockchain get (master,operator,publisher,query,generic,relay) where
 orchestrator_id = blockchain get (master,operator,publisher,query,generic,relay) where id = !policy_id bring.first [*][orchestrator]
 cluster_id = blockchain get (master,operator,publisher,query,generic,relay) where id = !policy_id bring.first [*][cluster]
 print "Other ledger entries issued from ip " !target_ip " (not removed by this script - review manually):"
-sql blockchain format=table and stat=false select policy_type, policy_id, company_name from ledger where host = '!target_ip' and policy_id != '!policy_id'
+host_entries = sql blockchain format=json:list and stat=false select policy_type, policy_id, company_name from ledger where host = '!target_ip' and policy_id != '!policy_id'
+print "Other ledger entries from ip " !target_ip ": " !host_entries
 goto list-children
 
 :list-children:
 if not !cluster_id then goto check-config
 print "Cluster child policies published from ip " !target_ip " (removed when confirm = true):"
-sql blockchain format=table and stat=false select policy_id, company_name from ledger where policy_type = 'cluster' and policy like '%!cluster_id%' and policy_id != '!cluster_id' and policy like '%Node at !target_ip:%'
+child_entries = sql blockchain format=json:list and stat=false select policy_id, company_name from ledger where policy_type = 'cluster' and policy like '%!cluster_id%' and policy_id != '!cluster_id' and policy like '%Node at !target_ip:%'
+print "Child entries: " !child_entries
 goto check-config
 
 # Child cluster policies are removed one at a time, then the loop re-counts until none are left
