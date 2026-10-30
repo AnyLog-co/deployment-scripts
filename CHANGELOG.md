@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 70c618e -->
+<!-- last-processed: 8af860d -->
+
+<!-- os-dev: 8af860d (2026-10-30) -->
+
+* **Ori Shadmon** (2026-10-30)
+  * Southbound / Monitoring: monitoring_scheduler_env_params  param for repeating variables
 
 <!-- os-dev: 70c618e (2026-10-30) -->
 
@@ -588,7 +593,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 70c618e -->
+<!-- last-processed: 8af860d -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
