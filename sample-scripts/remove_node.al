@@ -1,6 +1,16 @@
 # Remove a node from an isolated demo master's ledger.
-#
-# Usage:
+#   
+#   Script flow:
+# 
+#   Validate request
+#       → find matching node policies
+#       → identify that node's cluster children
+#       → remove only its exclusive table policies and children
+#       → remove unreferenced config/orchestrator/cluster policies
+#       → remove the node policy
+#       → refresh and verify the master's local blockchain
+# 
+# Usage: Last argument is a confirmation flag (true/false)
 #   process !local_scripts/sample-scripts/demo_remove_node.al <node_name> false
 #   process !local_scripts/sample-scripts/demo_remove_node.al <node_name> true
 #
