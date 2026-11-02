@@ -11,8 +11,8 @@
 #       → refresh and verify the master's local blockchain
 # 
 # Usage: Last argument is a confirmation flag (true/false)
-#   process !local_scripts/sample-scripts/demo_remove_node.al <node_name> false
-#   process !local_scripts/sample-scripts/demo_remove_node.al <node_name> true
+#   process !local_scripts/sample-scripts/remove_node.al <node_name> false
+#   process !local_scripts/sample-scripts/remove_node.al <node_name> true
 #
 # Stop the target and other policy writers, synchronize the master's local
 # blockchain with its ledger, and back up both before applying. This script
