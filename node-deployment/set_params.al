@@ -194,7 +194,7 @@ if !env_ledger then
 do env_ledger_ip = python !env_ledger.split(":")[0]
 do env_ledger_port = python !env_ledger.split(":")[1]
 
-if      !is_docker == true and !env_ledger_ip == 127.0.0.1 and !env_ledger_port then ledger_conn = "host.docker.internal:" + !env_ledger_port
+if !is_docker == true and !env_ledger_ip == 127.0.0.1 and !env_ledger_port and $self_ip_loopback == false then ledger_conn = "host.docker.internal:" + !env_ledger_port
 # else if !is_k8s    == true and !env_ledger_ip == 127.0.0.1 and !env_ledger_port then ledger_conn =
 else ledger_conn = !env_ledger
 
