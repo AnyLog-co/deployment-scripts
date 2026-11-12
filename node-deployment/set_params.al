@@ -186,17 +186,29 @@ do on error ignore
 
 
 :ledger-config:
-# option to not set ledger_conn for master
-if $LEDGER_CONN then set env_ledger = $LEDGER_CONN
-else env_ledger = 127.0.0.1:32048
+# Notice: the ledger connectivity logic is intended for "master node" infrastructure where the user provides IP + port
+# A version of the same logic path for a real blockchain (ie URL) is to be integrated
+# ---- Part 1: keep what the customer gave us; only master may omit it ----
+if $LEDGER_CONN then env_ledger = $LEDGER_CONN
+else if !master_configs == true then
+do ledger_conn = !ip + ":" + !anylog_server_port
+do goto authentication
+else goto missing-ledger-conn
 
-if !env_ledger then
-do env_ledger_ip = python !env_ledger.split(":")[0]
-do env_ledger_port = python !env_ledger.split(":")[1]
+# ---- Part 1B: Force use the user inputted ledger ----
+if $FORCE_LEDGER == true then
+do ledger_conn = !env_ledger
+do goto authentication
 
-if      !is_docker == true and !env_ledger_ip == 127.0.0.1 and !env_ledger_port then ledger_conn = "host.docker.internal:" + !env_ledger_port
-# else if !is_k8s    == true and !env_ledger_ip == 127.0.0.1 and !env_ledger_port then ledger_conn =
-else ledger_conn = !env_ledger
+# ---- Part 2: make it reachable from where this node runs ----
+env_ledger_ip   = python !env_ledger.split(":")[0]
+env_ledger_port = python !env_ledger.split(":")[1]
+
+if !is_docker == true and (!env_ledger_ip == 127.0.0.1 or !env_ledger_ip == localhost) then env_ledger_ip = host.docker.internal
+# k8s: 127.0.0.1 is the pod itself -> require a Service name instead of rewriting
+
+ledger_conn = !env_ledger_ip + ":" + !env_ledger_port
+
 
 :authentication:
 set enable_auth = false
