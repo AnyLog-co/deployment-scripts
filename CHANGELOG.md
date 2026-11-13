@@ -6,7 +6,14 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 8af860d -->
+<!-- last-processed: edef631 -->
+
+<!-- os-dev: edef631 (2026-11-12) -->
+
+* **Ori Shadmon** (2026-10-30 – 2026-11-12)
+  * Node deployment: enforce ledger conn logic; patch from monitoring where values were repeating
+  * Node deployment / Policies: if !tcp_bind == false and !policy_tcp_bind == false then we also check the external IP
+  * Southbound / Monitoring: patch from monitoring where values were repeating
 
 <!-- os-dev: 8af860d (2026-10-30) -->
 
@@ -593,7 +600,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 8af860d -->
+<!-- last-processed: edef631 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
