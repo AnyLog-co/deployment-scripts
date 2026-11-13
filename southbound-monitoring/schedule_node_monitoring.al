@@ -62,9 +62,10 @@ if not !is_policy and !create_policy == true then goto declare-policy-error
             "blockchain get query bring.ip_port",
             "process !local_scripts/southbound-monitoring/scheduled_params.al",
             "if !node_type == operator and !store_monitoring == true then process !local_scripts/southbound-monitoring/configure_dbms_monitoring.al",
-                "schedule scheduler = 2 and name = get_stats and time=!monitoring_frequency and task node_insight = get stats where service = operator and topic = summary  and format = json",
-                "schedule scheduler = 2 and name = get_timestamp and time=!monitoring_frequency and task node_insight[timestamp] = get datetime local now()",
-                "schedule scheduler = 2 and name = set_node_type and time = 30 seconds task node_insight[node type] = !node_type",
+            "schedule scheduler = 2 and name = get_stats and time=!monitoring_frequency and task node_insight = get stats where service = operator and topic = summary  and format = json",
+            "schedule scheduler = 2 and name = get_timestamp and time=!monitoring_frequency and task node_insight[timestamp] = get datetime local now()",
+            "if !node_type == query then schedule scheduler = 2 and name = set_node_type and time = 30 seconds task if !node_insight and !node_type then node_insight[node type] = 'query'",
+            "if !node_type != query then schedule scheduler = 2 and name = set_node_type and time = 30 seconds task if !node_insight and !node_type then node_insight[node type] = !node_type",
 
             "schedule scheduler = 2 and name = get_disk_space and time=!monitoring_frequency and task disk_space = get disk percentage .",
             "schedule scheduler = 2 and name = get_cpu_percent and time = 30 seconds task cpu_percent = get node info cpu_percent",
