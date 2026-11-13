@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: edef631 -->
+<!-- last-processed: 9c2dddc -->
+
+<!-- os-dev: 9c2dddc (2026-11-13) -->
+
+* **Ori Shadmon** (2026-11-12)
+  * Southbound / Monitoring: for node monitoring, query is recognized as a command, thus needed to manually define it as a var
 
 <!-- os-dev: edef631 (2026-11-12) -->
 
@@ -600,7 +605,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: edef631 -->
+<!-- last-processed: 9c2dddc -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
