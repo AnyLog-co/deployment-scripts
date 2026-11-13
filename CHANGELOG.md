@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 9c2dddc -->
+<!-- last-processed: a70d875 -->
+
+<!-- os-dev: a70d875 (2026-11-13) -->
+
+* **Ori Shadmon** (2026-11-13)
+  * Node deployment: missing overlay vs no overlay
 
 <!-- os-dev: 9c2dddc (2026-11-13) -->
 
@@ -605,7 +610,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 9c2dddc -->
+<!-- last-processed: a70d875 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
