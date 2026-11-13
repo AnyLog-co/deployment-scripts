@@ -190,6 +190,9 @@ do on error ignore
 # A version of the same logic path for a real blockchain (ie URL) is to be integrated
 # ---- Part 1: keep what the customer gave us; only master may omit it ----
 if $LEDGER_CONN then env_ledger = $LEDGER_CONN
+else if !master_configs == true and !overlay_ip then
+do ledger_conn = !overlay_ip + ":" + !anylog_server_port
+do goto authentication
 else if !master_configs == true then
 do ledger_conn = !ip + ":" + !anylog_server_port
 do goto authentication
