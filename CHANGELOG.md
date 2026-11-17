@@ -6,7 +6,12 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: a70d875 -->
+<!-- last-processed: 57a4ced -->
+
+<!-- os-dev: 57a4ced (2026-11-17) -->
+
+* **Ori Shadmon** (2026-11-16)
+  * Data generator: wind turbine2 - testing '+'
 
 <!-- os-dev: a70d875 (2026-11-13) -->
 
@@ -610,7 +615,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: a70d875 -->
+<!-- last-processed: 57a4ced -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
