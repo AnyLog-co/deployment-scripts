@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 25ece0c -->
+<!-- last-processed: 8b16064 -->
+
+<!-- os-dev: 8b16064 (2026-11-18) -->
+
+* **Ori Shadmon** (2026-11-17)
+  * Customers: missing weather
 
 <!-- os-dev: 25ece0c (2026-11-18) -->
 
@@ -22,7 +27,7 @@ layout: page
 
 <!-- os-dev: 7e412ef (2026-11-16) -->
 =======
-<!-- last-processed: 25ece0c -->
+<!-- last-processed: 8b16064 -->
 
 <!-- os-dev: 57a4ced (2026-11-17) -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
@@ -633,9 +638,9 @@ layout: page
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
 <<<<<<< HEAD
-<!-- last-processed: 25ece0c -->
+<!-- last-processed: 8b16064 -->
 =======
-<!-- last-processed: 25ece0c -->
+<!-- last-processed: 8b16064 -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
