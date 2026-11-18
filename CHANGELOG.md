@@ -5,7 +5,14 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 038158f -->
+<!-- last-processed: 25ece0c -->
+
+<!-- os-dev: 25ece0c (2026-11-18) -->
+
+* **Ori Shadmon** (2026-11-17)
+  * Customers: sample scripts for weather stations
+  * Data generator: sample scripts for weather stations
+  * General: changelog
 
 <!-- os-dev: 038158f (2026-11-17) -->
 
@@ -15,7 +22,7 @@ layout: page
 
 <!-- os-dev: 7e412ef (2026-11-16) -->
 =======
-<!-- last-processed: 038158f -->
+<!-- last-processed: 25ece0c -->
 
 <!-- os-dev: 57a4ced (2026-11-17) -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
@@ -626,9 +633,9 @@ layout: page
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
 <<<<<<< HEAD
-<!-- last-processed: 038158f -->
+<!-- last-processed: 25ece0c -->
 =======
-<!-- last-processed: 038158f -->
+<!-- last-processed: 25ece0c -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
