@@ -5,10 +5,20 @@ layout: page
 ---
 
 ## Unreleased
-<<<<<<< HEAD
-<!-- last-processed: 7e412ef -->
+<!-- last-processed: 038158f -->
+
+<!-- os-dev: 038158f (2026-11-17) -->
+
+* **Ori Shadmon** (2026-11-17)
+  * Customers: sample scripts for weather stations
+  * Data generator: sample scripts for weather stations
 
 <!-- os-dev: 7e412ef (2026-11-16) -->
+=======
+<!-- last-processed: 038158f -->
+
+<!-- os-dev: 57a4ced (2026-11-17) -->
+>>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 * **Ori Shadmon** (2026-11-16)
   * Data generator: wind turbine2 - testing '+'
@@ -615,7 +625,11 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 7e412ef -->
+<<<<<<< HEAD
+<!-- last-processed: 038158f -->
+=======
+<!-- last-processed: 038158f -->
+>>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
