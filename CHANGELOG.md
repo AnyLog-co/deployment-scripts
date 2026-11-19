@@ -5,7 +5,13 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 8b16064 -->
+<!-- last-processed: bd72ee1 -->
+
+<!-- os-dev: bd72ee1 (2026-11-19) -->
+
+* **Ori Shadmon** (2026-11-18)
+  * Customers: dynamic=true -> auto_uns=true
+  * General: dynamic=true -> auto_uns=true
 
 <!-- os-dev: 8b16064 (2026-11-18) -->
 
@@ -27,7 +33,7 @@ layout: page
 
 <!-- os-dev: 7e412ef (2026-11-16) -->
 =======
-<!-- last-processed: 8b16064 -->
+<!-- last-processed: bd72ee1 -->
 
 <!-- os-dev: 57a4ced (2026-11-17) -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
@@ -638,9 +644,9 @@ layout: page
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
 <<<<<<< HEAD
-<!-- last-processed: 8b16064 -->
+<!-- last-processed: bd72ee1 -->
 =======
-<!-- last-processed: 8b16064 -->
+<!-- last-processed: bd72ee1 -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
