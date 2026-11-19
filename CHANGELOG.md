@@ -5,7 +5,14 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: b957915 -->
+<!-- last-processed: 5d55a3b -->
+
+<!-- os-dev: 5d55a3b (2026-11-19) -->
+
+* **Ori Shadmon** (2026-11-19)
+  * Node deployment / Database: moved mcp logic to sys query by default - for other uses configure manually
+  * Node deployment / Policies: moved mcp logic to sys query by default - for other uses configure manually
+  * Southbound / Monitoring: moved mcp logic to sys query by default - for other uses configure manually
 
 <!-- os-dev: b957915 (2026-11-19) -->
 
@@ -44,7 +51,7 @@ layout: page
 
 <!-- os-dev: 7e412ef (2026-11-16) -->
 =======
-<!-- last-processed: b957915 -->
+<!-- last-processed: 5d55a3b -->
 
 <!-- os-dev: 57a4ced (2026-11-17) -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
@@ -655,9 +662,9 @@ layout: page
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
 <<<<<<< HEAD
-<!-- last-processed: b957915 -->
+<!-- last-processed: 5d55a3b -->
 =======
-<!-- last-processed: b957915 -->
+<!-- last-processed: 5d55a3b -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
