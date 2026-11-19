@@ -7,7 +7,7 @@
 # wind_direction = {"station_id":"WS-001","location":"Fresno, CA","ts":"2026-11-17T19:33:52Z","value":13.17,"unit":"deg","source":"forecast"}
 # rain = {"station_id":"WS-001","location":"Fresno, CA","ts":"2026-11-17T19:33:52Z","value":0.0,"unit":"mm","source":"forecast"}
 #--------------------------------------------------------------------------------------------------------------#
-# process !local_scripts/customers/weather_station_demo/weather_station_mqtt.al
+# process !local_scripts/customers/weather-station/weather_station_mqtt.al
 
 
 # temperature = {"station_id":"WS-001","location":"Fresno, CA","ts":"2026-11-17T19:33:52Z","value":76.0,"unit":"degF","source":"forecast"}
@@ -86,17 +86,16 @@ on error ignore
 # run msg client where broker = 172.104.228.251 and port = 1883 and user=anyloguser and password=mqtt4AnyLog! and
 <run msg client where broker = local and
     master_node=!ledger_conn and log=false and topic=(
-        name=ws/WS-001/heartbeat and
+        name=ws/WS-002/heartbeat and
         dbms=!default_dbms and
         table=heartbeat and
         column.timestamp.timestamp="now()" and
-       column.station_id.str="bring [station_id]" and
-       column.heartbeat.float="bring [heartbeat]"
+        column.station_id.str="bring [station_id]" and
+        column.heartbeat.float="bring [heartbeat]"
     ) and topic = (
-        name="ws/WS-001/#" and
+        name="ws/WS-002/#" and
         policy=!policy_id and
-        dynamic=true and
-        table=weather_stations
+        auto_uns=true
 )>
 
 
