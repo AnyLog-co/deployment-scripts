@@ -5,7 +5,13 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: bd72ee1 -->
+<!-- last-processed: ca0e487 -->
+
+<!-- os-dev: ca0e487 (2026-11-19) -->
+
+* **Ori Shadmon** (2026-11-18)
+  * Node deployment: moved license key logic + node status validation into a unified script outside the policy
+  * Node deployment / Policies: moved license key logic + node status validation into a unified script outside the policy
 
 <!-- os-dev: bd72ee1 (2026-11-19) -->
 
@@ -33,7 +39,7 @@ layout: page
 
 <!-- os-dev: 7e412ef (2026-11-16) -->
 =======
-<!-- last-processed: bd72ee1 -->
+<!-- last-processed: ca0e487 -->
 
 <!-- os-dev: 57a4ced (2026-11-17) -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
@@ -644,9 +650,9 @@ layout: page
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
 <<<<<<< HEAD
-<!-- last-processed: bd72ee1 -->
+<!-- last-processed: ca0e487 -->
 =======
-<!-- last-processed: bd72ee1 -->
+<!-- last-processed: ca0e487 -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
