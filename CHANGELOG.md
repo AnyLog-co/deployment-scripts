@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 5d55a3b -->
+<!-- last-processed: c1b9527 -->
+
+<!-- os-dev: c1b9527 (2026-11-19) -->
+
+* **Ori Shadmon** (2026-11-19)
+  * Node deployment / Database: mcp is now automated for anylog such that connection occurs on the Anthropic (Claude / Chat) side
 
 <!-- os-dev: 5d55a3b (2026-11-19) -->
 
@@ -51,7 +56,7 @@ layout: page
 
 <!-- os-dev: 7e412ef (2026-11-16) -->
 =======
-<!-- last-processed: 5d55a3b -->
+<!-- last-processed: c1b9527 -->
 
 <!-- os-dev: 57a4ced (2026-11-17) -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
@@ -662,9 +667,9 @@ layout: page
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
 <<<<<<< HEAD
-<!-- last-processed: 5d55a3b -->
+<!-- last-processed: c1b9527 -->
 =======
-<!-- last-processed: 5d55a3b -->
+<!-- last-processed: c1b9527 -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
