@@ -19,10 +19,6 @@ if !system_query_db == sqlite then connect dbms system_query where type=sqlite a
     autocommit = !autocommit and
     unlog = !memory>
 
-:connect-mcp:
-on error call connect-mcp-err
-run mcp server
-
 :define-query-policy:
 
 # if we are looking at a node that's not query, but does fit a certain set of criteria, then define a query policy
