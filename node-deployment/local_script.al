@@ -10,3 +10,4 @@
 # Documentation: https://github.com/AnyLog-co/documentation
 #-----------------------------------------------------------------------------------------------------------------------
 # process !local_scripts/node-deployment/local_script.al
+on error ignore
