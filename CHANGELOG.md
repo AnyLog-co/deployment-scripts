@@ -5,7 +5,13 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 5fdc9f7 -->
+<!-- last-processed: 2bfa155 -->
+
+<!-- os-dev: 2bfa155 (2026-11-24) -->
+
+* **Ori Shadmon** (2026-11-24)
+  * Node deployment: integrated $-FORCE_DISABLE_ALL - when set disables anything beyond required configs for specified node type
+  * Node deployment / Policies: integrated $-FORCE_DISABLE_ALL - when set disables anything beyond required configs for specified node type
 
 <!-- os-dev: 5fdc9f7 (2026-11-24) -->
 
@@ -73,7 +79,7 @@ layout: page
 
 <!-- os-dev: 7e412ef (2026-11-16) -->
 =======
-<!-- last-processed: 5fdc9f7 -->
+<!-- last-processed: 2bfa155 -->
 
 <!-- os-dev: 57a4ced (2026-11-17) -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
@@ -684,9 +690,9 @@ layout: page
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
 <<<<<<< HEAD
-<!-- last-processed: 5fdc9f7 -->
+<!-- last-processed: 2bfa155 -->
 =======
-<!-- last-processed: 5fdc9f7 -->
+<!-- last-processed: 2bfa155 -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
