@@ -131,10 +131,13 @@ do on error call nic-error
 do set internal ip with !nic_type
 do on error ignore
 
-if $ENABLE_DNS == true then set  enable_dns = true
+if $ENABLE_DNS == true then
+do set enable_dns = true
+do set reply ip = dynamic
+
 if $EXTERNAL_DNS then set external_dns = $EXTERNAL_DNS
 
-# enable DNS - `BBR_COM_NET_ALIAS` is the alternative for Barbara orchestation tool
+# enable DNS - `BBR_COM_NET_ALIAS` is the alternative for Barbara orchestration tool
 if $BBR_COM_NET_ALIAS then set dns = BBR_COM_NET_ALIAS
 else if $DNS then set dns = $DNS
 
