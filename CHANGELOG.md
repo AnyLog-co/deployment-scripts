@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 2bfa155 -->
+<!-- last-processed: 054c7d6 -->
+
+<!-- os-dev: 054c7d6 (2026-11-24) -->
+
+* **Ori Shadmon** (2026-11-24)
+  * Node deployment: dns support improvements
 
 <!-- os-dev: 2bfa155 (2026-11-24) -->
 
@@ -79,7 +84,7 @@ layout: page
 
 <!-- os-dev: 7e412ef (2026-11-16) -->
 =======
-<!-- last-processed: 2bfa155 -->
+<!-- last-processed: 054c7d6 -->
 
 <!-- os-dev: 57a4ced (2026-11-17) -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
@@ -690,9 +695,9 @@ layout: page
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
 <<<<<<< HEAD
-<!-- last-processed: 2bfa155 -->
+<!-- last-processed: 054c7d6 -->
 =======
-<!-- last-processed: 2bfa155 -->
+<!-- last-processed: 054c7d6 -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
