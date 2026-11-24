@@ -29,7 +29,7 @@
 on error ignore
 
 if      !msg_topic == rand-data    then process !local_scripts/data-generator/rand_data.al
-if      !msg_topic == rand-data2   then process !local_scripts/data-generator/rand_data2.al
+else if !msg_topic == rand-data2   then process !local_scripts/data-generator/rand_data2.al
 else if !msg_topic == power-plant  then process !local_scripts/smart-city/power_plant.al
 else if !msg_topic == waste-water  then process !local_scripts/smart-city/waste_water_plant.al
 else if !msg_topic == water-pant   then process !local_scripts/smart-city/water_plant.al
