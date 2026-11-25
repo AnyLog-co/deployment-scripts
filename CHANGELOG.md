@@ -5,7 +5,14 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 4b34232 -->
+<!-- last-processed: 6596d11 -->
+
+<!-- os-dev: 6596d11 (2026-11-25) -->
+
+* **Ori Shadmon** (2026-11-25)
+  * General: clean spacing + missing param(s)
+  * Node deployment: clean spacing + missing param(s); blockchain seed for non-master
+  * Node deployment / Policies: clean spacing + missing param(s)
 
 <!-- os-dev: 4b34232 (2026-11-25) -->
 
@@ -103,7 +110,7 @@ layout: page
 
 <!-- os-dev: 7e412ef (2026-11-16) -->
 =======
-<!-- last-processed: 4b34232 -->
+<!-- last-processed: 6596d11 -->
 
 <!-- os-dev: 57a4ced (2026-11-17) -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
@@ -714,9 +721,9 @@ layout: page
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
 <<<<<<< HEAD
-<!-- last-processed: 4b34232 -->
+<!-- last-processed: 6596d11 -->
 =======
-<!-- last-processed: 4b34232 -->
+<!-- last-processed: 6596d11 -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
