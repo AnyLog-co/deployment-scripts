@@ -124,6 +124,8 @@ rest_threads=6
 rest_timeout=30
 broker_bind = false
 broker_threads=6
+# ignore the external DNS value (used for local machine testing)
+set ignore_external_dns = false
 
 if $NIC_TYPE then
 do set nic_type = $NIC_TYPE
@@ -135,10 +137,12 @@ if $ENABLE_DNS == true then
 do set enable_dns = true
 do set reply ip = dynamic
 
+if $IGNORE_EXTERNAL_DNS == true then set ignore_external_dns = true
 if $EXTERNAL_DNS then set external_dns = $EXTERNAL_DNS
 
+
 # enable DNS - `BBR_COM_NET_ALIAS` is the alternative for Barbara orchestration tool
-if $BBR_COM_NET_ALIAS then set dns = BBR_COM_NET_ALIAS
+if $BBR_COM_NET_ALIAS then set dns = $BBR_COM_NET_ALIAS
 else if $DNS then set dns = $DNS
 
 else if $DNS_DOMAIN then dns = !hostname.$DNS_DOMAIN
