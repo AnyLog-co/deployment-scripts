@@ -30,7 +30,7 @@ if !is_k8s == false then is_docker = file test /.dockerenv
 
 :required-params:
 # config_version = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
-config_version = "2.1.2609"
+config_version = "2.1.2611"
 
 hostname = get hostname
 
