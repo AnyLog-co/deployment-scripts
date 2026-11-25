@@ -46,7 +46,7 @@ blockchain set account info where platform = !blockchain_source and contract = !
 
 :blockchain-seed:
 on error goto blockchain-seed-error
-if !blockchain_source == master then and !master_configs != true blockchain seed from !ledger_conn
+if !blockchain_source == master and !master_configs != true then blockchain seed from !ledger_conn
 
 :blockchain-sync:
 on error goto blockchain-sync-error

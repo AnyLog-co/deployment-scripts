@@ -105,8 +105,8 @@ if !node_type == operator and !branch then set policy new_policy [!node_type][br
 if !node_type == operator and !dept then set policy new_policy [!node_type][dept] = !dept
 
 :set-orchestrator-info:
-if !orchestrator_id then set policy new_policy [!node_type][orchestrator] = !orchestrator_id
-if !bbr_common_network then policy new_policy[!node_type][common_network] = !bbr_common_network
+if !orchestrator_id     then set policy new_policy [!node_type][orchestrator]   = !orchestrator_id
+if !bbr_common_network  then set policy new_policy [!node_type][common_network] = !bbr_common_network
 
 :publish-policy:
 process !local_scripts/node-deployment/policies/publish_policy.al
