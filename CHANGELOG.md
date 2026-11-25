@@ -5,7 +5,13 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 1874284 -->
+<!-- last-processed: 543d80a -->
+
+<!-- os-dev: 543d80a (2026-11-25) -->
+
+* **Ori Shadmon** (2026-11-24)
+  * Node deployment: working dns
+  * Node deployment / Policies: working dns
 
 <!-- os-dev: 1874284 (2026-11-25) -->
 
@@ -92,7 +98,7 @@ layout: page
 
 <!-- os-dev: 7e412ef (2026-11-16) -->
 =======
-<!-- last-processed: 1874284 -->
+<!-- last-processed: 543d80a -->
 
 <!-- os-dev: 57a4ced (2026-11-17) -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
@@ -703,9 +709,9 @@ layout: page
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
 <<<<<<< HEAD
-<!-- last-processed: 1874284 -->
+<!-- last-processed: 543d80a -->
 =======
-<!-- last-processed: 1874284 -->
+<!-- last-processed: 543d80a -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
