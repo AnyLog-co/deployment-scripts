@@ -5,7 +5,15 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 054c7d6 -->
+<!-- last-processed: 1874284 -->
+
+<!-- os-dev: 1874284 (2026-11-25) -->
+
+* **Ori Shadmon** (2026-11-24)
+  * Data generator: if -> else if
+  * General: working barbara example
+  * Node deployment: working barbara example
+  * Node deployment / Policies: working barbara example
 
 <!-- os-dev: 054c7d6 (2026-11-24) -->
 
@@ -84,7 +92,7 @@ layout: page
 
 <!-- os-dev: 7e412ef (2026-11-16) -->
 =======
-<!-- last-processed: 054c7d6 -->
+<!-- last-processed: 1874284 -->
 
 <!-- os-dev: 57a4ced (2026-11-17) -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
@@ -695,9 +703,9 @@ layout: page
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
 <<<<<<< HEAD
-<!-- last-processed: 054c7d6 -->
+<!-- last-processed: 1874284 -->
 =======
-<!-- last-processed: 054c7d6 -->
+<!-- last-processed: 1874284 -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
