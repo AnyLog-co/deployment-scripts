@@ -24,12 +24,12 @@ process !local_scripts/node-deployment/policies/license_policy.al
 if !node_type != operator and !node_type != publisher then goto check-processes
 
 
-if $FORCE_DISABLE_ALL == false and !enable_mqtt == true then get msg client
-if $FORCE_DISABLE_ALL == false and !docker_monitoring == true then get scheduled pull
-if $FORCE_DISABLE_ALL == false and !syslog_monitoring == true then get msg rules
+if $FORCE_DISABLE_ALL != true and !enable_mqtt == true then get msg client
+if $FORCE_DISABLE_ALL != true and !docker_monitoring == true then get scheduled pull
+if $FORCE_DISABLE_ALL != true and !syslog_monitoring == true then get msg rules
 
 :check-processes:
-if $FORCE_DISABLE_ALL == false and !disable_node_monitoring == false then get scheduler
+if $FORCE_DISABLE_ALL != true and !disable_node_monitoring == false then get scheduler
 
 get processes
 

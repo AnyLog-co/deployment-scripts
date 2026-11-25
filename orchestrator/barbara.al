@@ -6,7 +6,7 @@ if !enable_debug == true then set debug on
 :set-configs:
 create_policy = false
 barbara_id = $BARBARA_ID
-bbr_common_network = $BBR_COMMON_NETWORK
+
 
 :check-policy:
 <is_policy = blockchain get orchestrator where
@@ -25,7 +25,6 @@ else if !is_policy then goto end-script
       "type": "barbara",
       "company": !company_name,
       "barbara": !barbara_id,
-      "common_network": !bbr_common_network
 }}>
 
 :publish-policy:
