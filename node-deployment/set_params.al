@@ -201,13 +201,11 @@ do on error ignore
 # A version of the same logic path for a real blockchain (ie URL) is to be integrated
 # ---- Part 1: keep what the customer gave us; only master may omit it ----
 if $LEDGER_CONN then env_ledger = $LEDGER_CONN
-else if !master_configs == true and !overlay_ip then
-do ledger_conn = !overlay_ip + ":" + !anylog_server_port
-do goto authentication
-else if !master_configs == true then
-do ledger_conn = !ip + ":" + !anylog_server_port
-do goto authentication
+else if !master_configs == true and !overlay_ip then ledger_conn = !overlay_ip + ":" + !anylog_server_port
+else if !master_configs == true                 then ledger_conn = !ip + ":" + !anylog_server_port
 else goto missing-ledger-conn
+
+if !ledger_conn then goto authentication
 
 # ---- Part 1B: Force use the user inputted ledger ----
 if $FORCE_LEDGER == true then
@@ -222,7 +220,6 @@ if !is_docker == true and (!env_ledger_ip == 127.0.0.1 or !env_ledger_ip == loca
 # k8s: 127.0.0.1 is the pod itself -> require a Service name instead of rewriting
 
 ledger_conn = !env_ledger_ip + ":" + !env_ledger_port
-
 
 :authentication:
 set enable_auth = false
