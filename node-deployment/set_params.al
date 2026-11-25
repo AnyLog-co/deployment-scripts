@@ -144,7 +144,6 @@ if $EXTERNAL_DNS then set external_dns = $EXTERNAL_DNS
 # enable DNS - `BBR_COM_NET_ALIAS` is the alternative for Barbara orchestration tool
 if $BBR_COM_NET_ALIAS then set dns = $BBR_COM_NET_ALIAS
 else if $DNS then set dns = $DNS
-
 else if $DNS_DOMAIN then dns = !hostname.$DNS_DOMAIN
 
 if $ANYLOG_SERVER_PORT then anylog_server_port = $ANYLOG_SERVER_PORT

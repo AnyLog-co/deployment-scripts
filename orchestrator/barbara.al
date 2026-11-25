@@ -6,6 +6,7 @@ if !enable_debug == true then set debug on
 :set-configs:
 create_policy = false
 barbara_id = $BARBARA_ID
+bbr_common_network = $BBR_COMMON_NETWORK
 
 
 :check-policy:
@@ -24,7 +25,7 @@ else if !is_policy then goto end-script
    "orchestrator": {
       "type": "barbara",
       "company": !company_name,
-      "barbara": !barbara_id,
+      "barbara": !barbara_id
 }}>
 
 :publish-policy:
