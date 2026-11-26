@@ -20,6 +20,7 @@ on error ignore
 if !enable_debug == true then set debug on
 
 :sync-blockchain:
+if !create_policy == true then goto process-select
 
 if !master_configs != true then
 do run blockchain sync
