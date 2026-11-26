@@ -5,7 +5,13 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 300106d -->
+<!-- last-processed: 3384250 -->
+
+<!-- os-dev: 3384250 (2026-11-25) -->
+
+* **Ori Shadmon** (2026-11-25)
+  * Node deployment: spacing / order of operations
+  * Node deployment / Policies: spacing / order of operations
 
 <!-- os-dev: 300106d (2026-11-25) -->
 
@@ -115,7 +121,7 @@ layout: page
 
 <!-- os-dev: 7e412ef (2026-11-16) -->
 =======
-<!-- last-processed: 300106d -->
+<!-- last-processed: 3384250 -->
 
 <!-- os-dev: 57a4ced (2026-11-17) -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
@@ -726,9 +732,9 @@ layout: page
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
 <<<<<<< HEAD
-<!-- last-processed: 300106d -->
+<!-- last-processed: 3384250 -->
 =======
-<!-- last-processed: 300106d -->
+<!-- last-processed: 3384250 -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
