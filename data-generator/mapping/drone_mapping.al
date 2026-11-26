@@ -20,7 +20,7 @@ set new_policy = ""
 <new_policy = {
     "mapping": {
         "id": !policy_id,
-        "dbms": !default_dbms,
+        "dbms": !msg_dbms,
         "table": "bring [table]",
         "schema": {
             "drone_id": {

@@ -23,12 +23,17 @@
 # process  !local_scripts/southbound-monitoring/table_syslog_monitoring.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
 set create_table = false
 
 :check-table-policy:
 is_table = blockchain get table where dbms=monitoring and name=syslog
 if !is_table then goto end-script
-else if not !is_table and !create_table == true then goto declare-policy-error
+else if not !is_table and !create_table == true then
+do call declare-policy-warning
+do goto end-script
 
 :declare-policy:
 <new_policy = {
@@ -66,3 +71,7 @@ goto terminate-scripts
 :declare-policy-error:
 print "Failed to declare cluster policy on blockchain"
 goto terminate-scripts
+
+:declare-policy-warning:
+echo "Warning: Table policy monitoring.syslog was published but is not visible locally yet. Continuing; it should appear after the next blockchain sync (up to 60 seconds)."
+return

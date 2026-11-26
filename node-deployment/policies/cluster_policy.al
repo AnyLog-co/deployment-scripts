@@ -12,33 +12,58 @@
 # }}
 # ---- Sample Policy ---
 #-----------------------------------------------------------------------------------------------------------------------
-# process !local_scripts/node-deployment/policies/declare_cluster_policy.al
-
+# process !local_scripts/node-deployment/policies/cluster_policy.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
+
 set create_policy = false
 
-:set-cluster-name:
-if !cluster_name then goto check-policy
-cluster_num = blockchain get cluster where company = !company_name bring.count
-# cluster_num = blockchain get root policies include cluster where company=!company_name bring.count
-if not !cluster_num then cluster_num = 1
-else cluster_num = python !cluster_num.int + 1
-cluster_name = !node_company_name + "-cluster" + !cluster_num
+:sync-blockchain:
+if !master_configs == true then
+do blockchain pull to json
+do blockchain update file
 
-goto prep-policy
+else if !master_configs != true then run blockchain sync
+
+blockchain reload metadata
 
 :check-policy:
 on error ignore
-cluster_id = blockchain get cluster where name=!cluster_name and company=!company_name bring.first [*][id] 
-if !cluster_id then goto end-script
+
+# checks nodes based on name, company and networking configurations
+# this check for Operator node, but also creates a new cluster name / ID if needed
+if $CLUSTER_NAME then cluster_id = blockchain get cluster where company=!company_name and name=$CLUSTER_NAME bring.first [*][id]
+if !cluster_id then
+do cluster_name = $CLUSTER_NAME
+do goto check-primary
+
+process !local_scripts/node-deployment/policies/validate_node_policy.al
+
+if !create_policy == true and not !cluster_id and !cluster_name then
+do cluster_id = blockchain get cluster where name=!cluster_name and company=!company_name bring.first [*][id]
+
 if not !cluster_id and !create_policy == true then goto declare-policy-error
+else if not !cluster_id and !create_policy == false then goto prep-policy
+
+:check-primary:
+if !cluster_id then operator_count = blockchain get operator where cluster = !cluster_id
+
+if $IS_MAIN and $IS_MAIN == true then set is_main = true
+else if $IS_MAIN and $IS_MAIN == false then set is_main = false
+# operator count wil always be "" or numeric, it will not be 0 (at this time - 2026-10-07)
+else if !operator_count then set is_main = false
+
+if !cluster_id then goto end-script
+
 
 :prep-policy:
 on error ignore
 new_policy = create policy cluster with defaults where company=!company_name and name=!cluster_name
 
 :publish-policy:
+
 set is_node_policy = true
 process !local_scripts/node-deployment/policies/publish_policy.al
 if !error_code == 1 then goto sign-policy-error
@@ -47,7 +72,6 @@ if !error_code == 3 then goto declare-policy-error
 set create_policy = true
 set is_node_policy = false
 
-wait 5
 goto check-policy
 
 :end-script:

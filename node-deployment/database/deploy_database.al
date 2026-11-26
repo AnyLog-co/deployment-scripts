@@ -5,7 +5,10 @@
 # process !local_scripts/node-deployment/database/deploy_database.al
 
 on error ignore
+:set-debug:
+if !enable_debug == true then set debug on
 
+:deploy-dbms:
 if !node_type == master or !master_configs == true then process !local_scripts/node-deployment/database/configure_dbms_blockchain.al
 
 if !node_type == publisher or !node_type == operator then process !local_scripts/node-deployment/database/configure_dbms_almgm.al

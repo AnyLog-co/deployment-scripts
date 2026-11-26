@@ -3,6 +3,9 @@
 #----------------------------------------------------------------------------------------------------------------------#
 on error ignore
 
+:set-debug:
+if !enable_debug == true then set debug on
+
 :validate-process:
 if !blobs_storage == false and !blobs_folder == false then goto blobs-archiver-warning
 else if !blobs_storage == true and not !blob_storage_type then goto missing-storage-type

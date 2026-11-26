@@ -11,7 +11,7 @@
                 "bring": "[timestamp]"
             },
             "snapshot_id": {
-                "type": "int",
+                "type": "string",
                 "default": null,
                 "bring": "[snapshot_id]"
             },
@@ -46,7 +46,7 @@
                 "bring": "[value_int]"
             },
             "value_uint": {
-                "type": "numeric(20)",
+                "type": "string",
                 "default": null,
                 "bring": "[value_uint]"
             },
@@ -71,7 +71,7 @@
                 "bring": "[value_bytes]"
             },
             "alias": {
-                "type": "int",
+                "type": "string",
                 "default": null,
                 "bring": "[alias]"
             }

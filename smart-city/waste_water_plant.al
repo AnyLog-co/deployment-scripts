@@ -21,7 +21,7 @@ on error goto msg-client-error
     user=anyloguser and password=mqtt4AnyLog! and
     log=false and topic=(
         name=wwp-analog and
-        dbms=!default_dbms and
+        dbms=!msg_dbms and
         table=wwp_analog and
         column.timestamp.timestamp = "bring [timestamp]" and
         column.am_pdb1_feedback = (type=float and value="bring [AM_PDB1_FEEDBACK]") and
@@ -72,7 +72,7 @@ on error goto msg-client-error
         column.am_sludgepress_daily = (type=float and value="bring [AM_SLUDGEPRESS_DAILY]")
     ) and topic=(
         name=wwp-digital and
-        dbms=!default_dbms and
+        dbms=!msg_dbms and
         table=wwp_digital and
         column.timestamp.timestamp = "bring [timestamp]" and
         column.ss_screenrun_s = (type=bool and value="bring [SS_SCREENRUN_S]") and

@@ -1,0 +1,99 @@
+#-----------------------------------------------------------------------------------------------------------------------
+# Validate if policy exists
+# - dns not bind      -> ip = !external_dns
+# - dns bound         -> local_ip = !dns
+# - overlay not bound -> local_ip = !overlay_ip
+# - overlay bound     -> ip = !overlay_ip
+# - not bound         -> ip = !external_ip
+# - bound             -> ip = !ip
+#
+# for operator validate ID if policy exists
+#-----------------------------------------------------------------------------------------------------------------------
+# process !local_scripts/node-deployment/policies/validate_node_policy.al
+
+on error ignore
+
+:set-debug:
+if !enable_debug == true then set debug on
+
+:process-select:
+if !enable_dns == false and not !overlay_ip then goto generic-check
+if !enable_dns == false and !overlay_ip then goto overlay-check
+
+:dns-check:
+if !external_dns then
+<do is_policy = blockchain get !node_type where
+    company=!company_name and
+    ip = !external_dns and
+    port = !anylog_server_port bring.first>
+do goto check-operator
+else if !tcp_bind == true and !dns then
+<do is_policy = blockchain get !node_type where
+    company=!company_name and
+    ip = !dns and
+    port = !anylog_server_port bring.first>
+do goto check-operator
+else goto mismatch-error
+
+:overlay-check:
+if !tcp_bind == false and !overlay_ip then
+<do is_policy = blockchain get !node_type where
+    company=!company_name and
+    local_ip = !overlay_ip and
+    port = !anylog_server_port bring.first>
+do goto check-operator
+else if !tcp_bind == true and !overlay_ip then
+<do is_policy = blockchain get !node_type where
+    company=!company_name and
+    ip = !overlay_ip and
+    port = !anylog_server_port bring.first>
+do goto check-operator
+else goto mismatch-error
+
+:generic-check:
+if !tcp_bind == false then
+<do is_policy = blockchain get !node_type where
+    company=!company_name and
+    local_ip = !ip and
+    port = !anylog_server_port bring.first>
+do goto check-operator
+else if !tcp_bind == true then
+<do is_policy = blockchain get !node_type where
+    company=!company_name and
+    ip = !ip and
+    port = !anylog_server_port bring.first>
+do goto check-operator
+else goto network-config-error
+
+:check-operator:
+on error ignore
+if !is_policy then tmp_node_name = from !is_policy bring [*][name]
+else if not !is_policy and not $NODE_NAME then
+do process !local_scripts/node-deployment/policies/node_name.al
+
+if $NODE_NAME and !tmp_node_name and !tmp_node_name != $NODE_NAME then
+do echo "user defined node name doesn't match this node - Node Name:" $NODE_NAME
+do node_name = !tmp_node_name
+
+# if !is_policy and not !node_conn then node_conn = from !is_policy bring.ip_port
+
+if !node_type == operator and !is_policy then
+do operator_id = from !is_policy bring [*][id]
+do cluster_id = from !is_policy bring [*][cluster]
+
+:set-node-name:
+if !node_name then set node name !node_name
+
+:end-script:
+end script
+
+:terminate-scripts:
+exit scripts
+
+:mismatch-error:
+print "Inconsistency in network configurations - please validate configs"
+goto terminate-scripts
+
+:network-config-error:
+print "No valid network configurations - cannot continue"
+goto terminate-scripts
