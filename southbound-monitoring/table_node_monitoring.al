@@ -46,7 +46,9 @@ set create_policy = false
 on error ignore
 is_table = blockchain get table where dbms=monitoring and name=node_insight
 if !is_table then goto end-script
-if not !is_table and !create_policy == true then goto declare-policy-error
+else if not !is_table and !create_table == true then
+do call declare-policy-warning
+do goto end-script
 
 :prep-policy:
 create_stmt = "CREATE TABLE IF NOT EXISTS node_insight( row_id SERIAL PRIMARY KEY, insert_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, tsd_name CHAR(3), tsd_id INT, node_name varchar, status varchar, operational_time TEXT, processing_time TEXT, elapsed_time TEXT, new_rows INT, total_rows INT, new_errors INT, total_errors INT, avg_rows_sec FLOAT, timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, node_type char(9), free_space_percent FLOAT, cpu_percent FLOAT, packets_recv INT, packets_sent INT, network_error INT ); CREATE INDEX node_insight_timestamp_index ON node_insight(timestamp); CREATE INDEX node_insight_tsd_index ON node_insight(tsd_name, tsd_id); CREATE INDEX node_insight_insert_timestamp_index ON node_insight(insert_timestamp); CREATE INDEX node_insight_node_name_index ON node_insight(node_name);"
@@ -94,3 +96,7 @@ goto terminate-scripts
 :policy-error:
 print "Failed to publish policy for an unknown reason"
 goto terminate-scripts
+
+:declare-policy-warning:
+echo "Warning: Table policy monitoring.node_insight was published but is not visible locally yet. Continuing; it should appear after the next blockchain sync (up to 60 seconds)."
+return

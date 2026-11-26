@@ -11,6 +11,7 @@
 
 :set-debug:
 if !enable_debug == true then set debug on
+if !monitoring_scheduler_env_params == true then goto end-script
 
 schedule_time = 300 seconds
 if !is_scheduled_dest == true then goto end-script
@@ -25,8 +26,9 @@ if !is_scheduled_dest == true then goto end-script
 <if not !store_monitoring_dest then
     schedule scheduler = 2 and name=store_monitoring_dest and time=!schedule_time and task
         if not !store_monitoring_dest then
-            store_monitoring_dest = blockchain get monitoring-node where type=operator bring.last [*][ip] : [*][port]>
+            store_monitoring_dest = blockchain get operator bring.last [*][ip] : [*][port]>
 
+set monitoring_scheduler_env_params = true
 
 :end-script:
 set is_scheduled_dest = true

@@ -30,7 +30,7 @@ if !is_k8s == false then is_docker = file test /.dockerenv
 
 :required-params:
 # config_version = system grep -m1 "^version" !local_scripts/setup.cfg | awk -F " = " '{print $2}' | xargs
-config_version = "2.1.2609"
+config_version = "2.1.2611"
 
 hostname = get hostname
 
@@ -39,6 +39,7 @@ if $CONFIG_ID then config_id = $CONFIG_ID
 set is_hidden =false
 set master_configs = false
 company_name = Acme
+hardware_id = get hardware id
 
 if not $NODE_TYPE then goto missing-node-type
 else if $NODE_TYPE == master-operator  then node_type = operator
@@ -123,6 +124,8 @@ rest_threads=6
 rest_timeout=30
 broker_bind = false
 broker_threads=6
+# ignore the external DNS value (used for local machine testing)
+set ignore_external_dns = false
 
 if $NIC_TYPE then
 do set nic_type = $NIC_TYPE
@@ -130,9 +133,17 @@ do on error call nic-error
 do set internal ip with !nic_type
 do on error ignore
 
-if $ENABLE_DNS == true then set  enable_dns = true
+if $ENABLE_DNS == true then
+do set enable_dns = true
+do set reply ip = dynamic
+
+if $IGNORE_EXTERNAL_DNS == true then set ignore_external_dns = true
 if $EXTERNAL_DNS then set external_dns = $EXTERNAL_DNS
-if $DNS then set dns = $DNS
+
+
+# enable DNS - `BBR_COM_NET_ALIAS` is the alternative for Barbara orchestration tool
+if $BBR_COM_NET_ALIAS then set dns = $BBR_COM_NET_ALIAS
+else if $DNS then set dns = $DNS
 else if $DNS_DOMAIN then dns = !hostname.$DNS_DOMAIN
 
 if $ANYLOG_SERVER_PORT then anylog_server_port = $ANYLOG_SERVER_PORT
@@ -185,17 +196,29 @@ do on error ignore
 
 
 :ledger-config:
-# option to not set ledger_conn for master
-if $LEDGER_CONN then set env_ledger = $LEDGER_CONN
-else env_ledger = 127.0.0.1:32048
+# Notice: the ledger connectivity logic is intended for "master node" infrastructure where the user provides IP + port
+# A version of the same logic path for a real blockchain (ie URL) is to be integrated
+# ---- Part 1: keep what the customer gave us; only master may omit it ----
+if $LEDGER_CONN then env_ledger = $LEDGER_CONN
+else if !master_configs == true and !overlay_ip then ledger_conn = !overlay_ip + ":" + !anylog_server_port
+else if !master_configs == true                 then ledger_conn = !ip + ":" + !anylog_server_port
+else goto missing-ledger-conn
 
-if !env_ledger then
-do env_ledger_ip = python !env_ledger.split(":")[0]
-do env_ledger_port = python !env_ledger.split(":")[1]
+if !ledger_conn then goto authentication
 
-if      !is_docker == true and !env_ledger_ip == 127.0.0.1 and !env_ledger_port then ledger_conn = "host.docker.internal:" + !env_ledger_port
-# else if !is_k8s    == true and !env_ledger_ip == 127.0.0.1 and !env_ledger_port then ledger_conn =
-else ledger_conn = !env_ledger
+# ---- Part 1B: Force use the user inputted ledger ----
+if $FORCE_LEDGER == true then
+do ledger_conn = !env_ledger
+do goto authentication
+
+# ---- Part 2: make it reachable from where this node runs ----
+env_ledger_ip   = python !env_ledger.split(":")[0]
+env_ledger_port = python !env_ledger.split(":")[1]
+
+if !is_docker == true and (!env_ledger_ip == 127.0.0.1 or !env_ledger_ip == localhost) then env_ledger_ip = host.docker.internal
+# k8s: 127.0.0.1 is the pod itself -> require a Service name instead of rewriting
+
+ledger_conn = !env_ledger_ip + ":" + !env_ledger_port
 
 :authentication:
 set enable_auth = false
@@ -394,6 +417,7 @@ set disable_node_monitoring     = false
 set syslog_monitoring   = true
 set docker_monitoring   = true
 set store_monitoring    = false
+set monitoring_scheduler_env_params = false
 
 store_monitoring_dest   = ""
 monitoring_db = sqlite

@@ -5,8 +5,209 @@ layout: page
 ---
 
 ## Unreleased
-<<<<<<< HEAD
-<!-- last-processed: 661e9ac -->
+<!-- last-processed: 1e17c6e -->
+
+<!-- os-dev: 1e17c6e (2026-11-26) -->
+
+* **Ori Shadmon** (2026-11-26)
+  * Node deployment / Policies: path
+
+<!-- os-dev: 636ae63 (2026-11-26) -->
+
+* **Ori Shadmon** (2026-11-25)
+  * Node deployment / Policies: revert node policy
+
+<!-- os-dev: 05ef479 (2026-11-26) -->
+
+* **Ori Shadmon** (2026-11-25)
+  * Node deployment / Policies: if !create_policy == true then we're going to ignore the manual blockchain sync
+
+<!-- os-dev: 81c93b2 (2026-11-26) -->
+
+* **Ori Shadmon** (2026-11-25)
+  * Node deployment / Policies: if !create_policy == true then we're going to ignore the manual blockchain sync
+
+<!-- os-dev: 3384250 (2026-11-25) -->
+
+* **Ori Shadmon** (2026-11-25)
+  * Node deployment: spacing / order of operations
+  * Node deployment / Policies: spacing / order of operations
+
+<!-- os-dev: 300106d (2026-11-25) -->
+
+* **Ori Shadmon** (2026-11-25)
+  * Node deployment: v2.1.2611
+
+<!-- os-dev: 6596d11 (2026-11-25) -->
+
+* **Ori Shadmon** (2026-11-25)
+  * General: clean spacing + missing param(s)
+  * Node deployment: clean spacing + missing param(s); blockchain seed for non-master
+  * Node deployment / Policies: clean spacing + missing param(s)
+
+<!-- os-dev: 4b34232 (2026-11-25) -->
+
+* **Ori Shadmon** (2026-11-25)
+  * Node deployment: ledger logic
+
+<!-- os-dev: 543d80a (2026-11-25) -->
+
+* **Ori Shadmon** (2026-11-24)
+  * Node deployment: working dns
+  * Node deployment / Policies: working dns
+
+<!-- os-dev: 1874284 (2026-11-25) -->
+
+* **Ori Shadmon** (2026-11-24)
+  * Data generator: if -> else if
+  * General: working barbara example
+  * Node deployment: working barbara example
+  * Node deployment / Policies: working barbara example
+
+<!-- os-dev: 054c7d6 (2026-11-24) -->
+
+* **Ori Shadmon** (2026-11-24)
+  * Node deployment: dns support improvements
+
+<!-- os-dev: 2bfa155 (2026-11-24) -->
+
+* **Ori Shadmon** (2026-11-24)
+  * Node deployment: integrated $-FORCE_DISABLE_ALL - when set disables anything beyond required configs for specified node type
+  * Node deployment / Policies: integrated $-FORCE_DISABLE_ALL - when set disables anything beyond required configs for specified node type
+
+<!-- os-dev: 5fdc9f7 (2026-11-24) -->
+
+* **Ori Shadmon** (2026-11-24)
+  * General: integrate baraba support for new params
+  * Node deployment: integrate baraba support for new params
+
+<!-- os-dev: 7ffe737 (2026-11-23) -->
+
+* **Ori Shadmon** (2026-11-23)
+  * Data generator: basic rand data with hardcoded value for testing scale
+  * Node deployment: basic rand data with hardcoded value for testing scale
+
+<!-- os-dev: 629f7ae (2026-11-19) -->
+
+* **Ori Shadmon** (2026-11-19)
+  * Southbound / Monitoring: swapped error for warning in echo
+
+<!-- os-dev: c1b9527 (2026-11-19) -->
+
+* **Ori Shadmon** (2026-11-19)
+  * Node deployment / Database: mcp is now automated for anylog such that connection occurs on the Anthropic (Claude / Chat) side
+
+<!-- os-dev: 5d55a3b (2026-11-19) -->
+
+* **Ori Shadmon** (2026-11-19)
+  * Node deployment / Database: moved mcp logic to sys query by default - for other uses configure manually
+  * Node deployment / Policies: moved mcp logic to sys query by default - for other uses configure manually
+  * Southbound / Monitoring: moved mcp logic to sys query by default - for other uses configure manually
+
+<!-- os-dev: b957915 (2026-11-19) -->
+
+* **Ori Shadmon** (2026-11-18)
+  * Node deployment / Policies: working license key
+
+<!-- os-dev: ca0e487 (2026-11-19) -->
+
+* **Ori Shadmon** (2026-11-18)
+  * Node deployment: moved license key logic + node status validation into a unified script outside the policy
+  * Node deployment / Policies: moved license key logic + node status validation into a unified script outside the policy
+
+<!-- os-dev: bd72ee1 (2026-11-19) -->
+
+* **Ori Shadmon** (2026-11-18)
+  * Customers: dynamic=true -> auto_uns=true
+  * General: dynamic=true -> auto_uns=true
+
+<!-- os-dev: 8b16064 (2026-11-18) -->
+
+* **Ori Shadmon** (2026-11-17)
+  * Customers: missing weather
+
+<!-- os-dev: 25ece0c (2026-11-18) -->
+
+* **Ori Shadmon** (2026-11-17)
+  * Customers: sample scripts for weather stations
+  * Data generator: sample scripts for weather stations
+  * General: changelog
+
+<!-- os-dev: 038158f (2026-11-17) -->
+
+* **Ori Shadmon** (2026-11-17)
+  * Customers: sample scripts for weather stations
+  * Data generator: sample scripts for weather stations
+
+<!-- os-dev: 7e412ef (2026-11-16) -->
+=======
+<!-- last-processed: 1e17c6e -->
+
+<!-- os-dev: 57a4ced (2026-11-17) -->
+>>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
+
+* **Ori Shadmon** (2026-11-16)
+  * Data generator: wind turbine2 - testing '+'
+
+<!-- os-dev: a70d875 (2026-11-13) -->
+
+* **Ori Shadmon** (2026-11-13)
+  * Node deployment: missing overlay vs no overlay
+
+<!-- os-dev: 9c2dddc (2026-11-13) -->
+
+* **Ori Shadmon** (2026-11-12)
+  * Southbound / Monitoring: for node monitoring, query is recognized as a command, thus needed to manually define it as a var
+
+<!-- os-dev: edef631 (2026-11-12) -->
+
+* **Ori Shadmon** (2026-10-30 – 2026-11-12)
+  * Node deployment: enforce ledger conn logic; patch from monitoring where values were repeating
+  * Node deployment / Policies: if !tcp_bind == false and !policy_tcp_bind == false then we also check the external IP
+  * Southbound / Monitoring: patch from monitoring where values were repeating
+
+<!-- os-dev: 8af860d (2026-10-30) -->
+
+* **Ori Shadmon** (2026-10-30)
+  * Southbound / Monitoring: monitoring_scheduler_env_params  param for repeating variables
+
+<!-- os-dev: 70c618e (2026-10-30) -->
+
+* **Ori Shadmon** (2026-07-02 – 2026-10-30)
+  * Archive: rm un-needed code
+  * Customers: rm un-needed code
+  * Customers / Machine builder: rm un-needed code
+  * Customers / ProveIt: rm un-needed code
+  * Customers / Smart city: rm un-needed code
+  * Data generator: rm un-needed code
+  * General: rm un-needed code
+  * Node deployment: monitoring_scheduler_env_params  param for repeating variables
+  * Southbound / Monitoring: monitoring_scheduler_env_params  param for repeating variables
+  * Test: rm un-needed code
+  * Test / Network: rm un-needed code
+* **Mark Davidson** (2026-07-16)
+  * Data generator: Update MQTT topic names to include 'proveit/' prefix
+
+<!-- os-dev: 690dc39 (2026-10-28) -->
+
+* **Ori Shadmon** (2026-10-28)
+  * Node deployment / Policies: comment out config publisher
+
+<!-- os-dev: fb4c4db (2026-10-25) -->
+
+* **Ori Shadmon** (2026-10-23 – 2026-10-24)
+  * Node deployment: merge (with minor changes)
+  * Node deployment / Database: merge (with minor changes)
+  * Node deployment / Policies: merge (with minor changes); spelling
+* **Justin Boyd** (2026-10-23)
+  * General: orchestrator policy fix to prevent duplicate policies
+  * Node deployment / Database: fix for anylog db not being created + typo fix
+  * Node deployment / Policies: remove hostname for stability/duplicate prevention
+
+<!-- os-dev: 8094fc8 (2026-10-23) -->
+
+* **Ori Shadmon** (2026-10-22)
+  * Node deployment / Policies: validate node name in addition to net configs
 
 <!-- os-dev: 661e9ac (2026-10-22) -->
 
@@ -550,7 +751,11 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: 661e9ac -->
+<<<<<<< HEAD
+<!-- last-processed: 1e17c6e -->
+=======
+<!-- last-processed: 1e17c6e -->
+>>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])

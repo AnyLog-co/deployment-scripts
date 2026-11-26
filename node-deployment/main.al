@@ -69,13 +69,11 @@ on error ignore
 process !local_scripts/node-deployment/policies/config_policy.al
 
 :finish-deployment:
-if !node_type != generic then
-do run blockchain sync
-do blockchain reload metadata
+# if !node_type != generic then
+# do run blockchain sync
+# do blockchain reload metadata
 
-get processes
-
-if !enable_mqtt == true then get msg client
+process !local_scripts/node-deployment/status_check.al
 
 :end-script:
 on error ignore

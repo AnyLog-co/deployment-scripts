@@ -174,7 +174,8 @@ on error goto msg-client-err
 <run msg client where broker=local and master_node=!ledger_conn and log=false and topic=(
     name="weather-station/weatherstation/#" and
     policy=!policy_id and
-    dynamic=true
+    auto_uns=true and
+
 )>
 
 :end-script:

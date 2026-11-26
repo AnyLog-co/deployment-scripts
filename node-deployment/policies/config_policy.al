@@ -43,7 +43,7 @@ set create_config = false
 process !local_scripts/node-deployment/policies/validate_node_policy.al
 
 if $CONFIG_ID then config_id = $CONFIG_ID
-else if not $CONfIG_ID and !config_name then config_id = blockchain get config where company=!company_name and name=!config_name and node_type=!node_type bring.first [*][id]
+else if not $CONFIG_ID and !config_name then config_id = blockchain get config where company=!company_name and name=!config_name and node_type=!node_type bring.first [*][id]
 else if !is_policy then config_id = from !is_policy bring [*][config]
 
 :check-policy:
@@ -77,15 +77,14 @@ if !node_type == generic then
 <do set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "run scheduler 1",
-    "if !system_query == true and !enable_mcp == true then run mcp server",
+    
     "process !local_scripts/orchestrator/orchestrator.al",
     "process !local_scripts/node-deployment/policies/node_name.al",
-    "process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
-    "process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
-    "process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
+    "if $FORCE_DISABLE_ALL != true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "if $FORCE_DISABLE_ALL != true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
+    "if $FORCE_DISABLE_ALL != true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
 
-    "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "if !is_edgelake == false and $LICENSE_KEY then set license where activation_key=$LICENSE_KEY"
+    "if $FORCE_DISABLE_ALL != true and !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al"
 ]>
 do goto publish-policy
 
@@ -99,18 +98,15 @@ if !node_type == master or !node_type == query then
     "run blockchain sync",
     "blockchain reload metadata",
     "run scheduler 1",
-    "if !system_query == true and !enable_mcp == true then run mcp server",
-
-    "process  !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
-
-    "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "if !is_edgelake == false and $LICENSE_KEY then set license where activation_key=$LICENSE_KEY"
+    "if $FORCE_DISABLE_ALL != true and !enable_mqtt == true then process !local_scripts/data-generator/data_generator.al",
+    "if $FORCE_DISABLE_ALL != true and !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al"
 ]>
-#     "process !local_scripts/node-deployment/policies/license_policy.al"
 
 do goto publish-policy
 
 :publisher-scripts:
+#     "run publisher where archive_json=true and compress_json=!compress_file and compress_sql=!compress_file and dbms_name=!dbms_file_location and table_name=!table_file_location",
+
 if !node_type == publisher then
 <do set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
@@ -122,19 +118,14 @@ if !node_type == publisher then
     "run scheduler 1",
     "set buffer threshold where time=!threshold_time and volume=!threshold_volume and write_immediate=false",
     "run streamer",
-    "run publisher where archive_json=true and compress_json=!compress_file and compress_sql=!compress_file and dbms_name=!dbms_file_location and table_name=!table_file_location",
     "schedule name=remove_archive and time=1 day and task delete archive where days = !archive_delete",
-    "if !system_query == true and !enable_mcp == true then run mcp server",
     "if !enable_aggregations == true then process !local_scripts/sample-scripts/aggregation.al",
-
     "process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
     "process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
     "process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
-
-    "if !enable_mqtt == true then process !local_scripts/data-generator/data_generator.al",
-    "if !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
-    "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "if !is_edgelake == false and $LICENSE_KEY then set license where activation_key=$LICENSE_KEY"
+    "if $FORCE_DISABLE_ALL != true and  !enable_mqtt == true then process !local_scripts/data-generator/data_generator.al",
+    "if $FORCE_DISABLE_ALL != true and !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
+    "if $FORCE_DISABLE_ALL != true and !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al"
 ]>
 do goto publish-policy
 
@@ -154,17 +145,13 @@ do goto publish-policy
     "if !disable_ha == false then run data consumer where start_date=!start_date",
     "if !operator_id and !blockchain_source != master then run operator where create_table=!create_table and update_tsd_info=!update_tsd_info and compress_json=!compress_file and compress_sql=!compress_sql and archive_json=!archive and archive_sql=!archive_sql and blockchain=!blockchain_source and policy=!operator_id and threads=!operator_threads",
     "if !operator_id and !blockchain_source == master then run operator where create_table=!create_table and update_tsd_info=!update_tsd_info and compress_json=!compress_file and compress_sql=!compress_sql and archive_json=!archive and archive_sql=!archive_sql and master_node=!ledger_conn and policy=!operator_id and threads=!operator_threads",
-    "if !system_query == true and !enable_mcp == true then run mcp server",
-    "if !enable_aggregations == true then process !local_scripts/sample-scripts/aggregation.al",
-    "if !enable_mqtt == true then process !local_scripts/data-generator/data_generator.al",
-    "if !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
-
-    "process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
-    "process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
-    "process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
-
-    "if !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al",
-    "if !is_edgelake == false and $LICENSE_KEY then set license where activation_key=$LICENSE_KEY"
+    "if $FORCE_DISABLE_ALL != true and !enable_aggregations == true then process !local_scripts/sample-scripts/aggregation.al",
+    "if $FORCE_DISABLE_ALL != true and !enable_mqtt == true then process !local_scripts/data-generator/data_generator.al",
+    "if $FORCE_DISABLE_ALL != true and !enable_video_streaming == true then process !local_scripts/southbound-video-streaming/video_ai.al",
+    "if $FORCE_DISABLE_ALL != true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
+    "if $FORCE_DISABLE_ALL != true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
+    "if $FORCE_DISABLE_ALL != true then process !local_scripts/southbound-monitoring/schedule_docker_monitoring.al",
+    "if $FORCE_DISABLE_ALL != true and !deploy_local_script == true then process !local_scripts/node-deployment/local_script.al"
 ]>
 
 :publish-policy:
