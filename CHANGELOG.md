@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 636ae63 -->
+<!-- last-processed: 1e17c6e -->
+
+<!-- os-dev: 1e17c6e (2026-11-26) -->
+
+* **Ori Shadmon** (2026-11-26)
+  * Node deployment / Policies: path
 
 <!-- os-dev: 636ae63 (2026-11-26) -->
 
@@ -136,7 +141,7 @@ layout: page
 
 <!-- os-dev: 7e412ef (2026-11-16) -->
 =======
-<!-- last-processed: 636ae63 -->
+<!-- last-processed: 1e17c6e -->
 
 <!-- os-dev: 57a4ced (2026-11-17) -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
@@ -747,9 +752,9 @@ layout: page
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
 <<<<<<< HEAD
-<!-- last-processed: 636ae63 -->
+<!-- last-processed: 1e17c6e -->
 =======
-<!-- last-processed: 636ae63 -->
+<!-- last-processed: 1e17c6e -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
