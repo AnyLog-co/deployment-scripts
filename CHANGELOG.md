@@ -5,7 +5,12 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 05ef479 -->
+<!-- last-processed: 636ae63 -->
+
+<!-- os-dev: 636ae63 (2026-11-26) -->
+
+* **Ori Shadmon** (2026-11-25)
+  * Node deployment / Policies: revert node policy
 
 <!-- os-dev: 05ef479 (2026-11-26) -->
 
@@ -131,7 +136,7 @@ layout: page
 
 <!-- os-dev: 7e412ef (2026-11-16) -->
 =======
-<!-- last-processed: 05ef479 -->
+<!-- last-processed: 636ae63 -->
 
 <!-- os-dev: 57a4ced (2026-11-17) -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
@@ -742,9 +747,9 @@ layout: page
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
 <<<<<<< HEAD
-<!-- last-processed: 05ef479 -->
+<!-- last-processed: 636ae63 -->
 =======
-<!-- last-processed: 05ef479 -->
+<!-- last-processed: 636ae63 -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
