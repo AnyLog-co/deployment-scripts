@@ -34,7 +34,7 @@ do goto end-script
 set create_policy = false
 if !is_relay == true then set node_type = relay
 
-#:check-policy:
+:check-policy:
 #run blockchain sync
 #blockchain reload metadata
 
@@ -46,7 +46,7 @@ if !is_primary then set is_main = false
 
 if not !is_policy and !create_policy == false then goto create-policy
 if not !is_policy and !create_policy == true then goto config-policy-error
-else goto node-info
+else goto end-script
 
 
 
@@ -116,13 +116,6 @@ if !error_code == 3 then goto declare-policy-error
 
 set create_policy = true
 goto check-policy
-
-:node-info:
-on error ignore
-
-:declare-hzn:
-if ($HZN_DEVICE_ID or $HZN_NODE_ID) and $HZN_ORGANIZATION then process !local_scripts/node-deployment/policies/hzn_policy.al
-
 
 :end-script:
 if !is_relay == true then set node_type = master
