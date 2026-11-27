@@ -69,10 +69,6 @@ on error ignore
 process !local_scripts/node-deployment/policies/config_policy.al
 
 :finish-deployment:
-# if !node_type != generic then
-# do run blockchain sync
-# do blockchain reload metadata
-
 process !local_scripts/node-deployment/status_check.al
 
 :end-script:

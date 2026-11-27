@@ -26,17 +26,13 @@ on error ignore
 :set-debug:
 if !enable_debug == true then set debug on
 
-if !is_hidden == true then
-do process !local_scripts/node-deployment/policies/node_name.al
-do goto end-script
+if !is_hidden == true then goto end-script
 
 :is-node-policy:
 set create_policy = false
 if !is_relay == true then set node_type = relay
 
 :check-policy:
-#run blockchain sync
-#blockchain reload metadata
 
 # checks nodes based on name, company and networking configurations
 process !local_scripts/node-deployment/policies/validate_node_policy.al
