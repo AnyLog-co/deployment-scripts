@@ -13,7 +13,7 @@ on error ignore
 if !enable_debug == true then set debug on
 
 :sync-processing:
-if !blockchain_source == master then goto blockchain-seed
+if !blockchain_source == master then goto blockchain-sync
 
 :blockchain-connect:
 on error goto connect-blockchain-account-error
@@ -43,10 +43,6 @@ do print "New Contract created: " !contract " - make sure to save contract / upd
 
 on error goto blockchain-account-error
 blockchain set account info where platform = !blockchain_source and contract = !contract
-
-:blockchain-seed:
-on error goto blockchain-seed-error
-if !blockchain_source == master and !master_configs != true then blockchain seed from !ledger_conn
 
 :blockchain-sync:
 on error goto blockchain-sync-error
