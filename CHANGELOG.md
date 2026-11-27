@@ -5,7 +5,13 @@ layout: page
 ---
 
 ## Unreleased
-<!-- last-processed: 1e17c6e -->
+<!-- last-processed: 23d531a -->
+
+<!-- os-dev: 23d531a (2026-11-27) -->
+
+* **Ori Shadmon** (2026-11-26 – 2026-11-27)
+  * Node deployment: working code; node name / cluster name logic change; unneded blockchain seed
+  * Node deployment / Policies: working code; node name / cluster name logic change
 
 <!-- os-dev: 1e17c6e (2026-11-26) -->
 
@@ -141,7 +147,7 @@ layout: page
 
 <!-- os-dev: 7e412ef (2026-11-16) -->
 =======
-<!-- last-processed: 1e17c6e -->
+<!-- last-processed: 23d531a -->
 
 <!-- os-dev: 57a4ced (2026-11-17) -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
@@ -752,9 +758,9 @@ layout: page
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
 <<<<<<< HEAD
-<!-- last-processed: 1e17c6e -->
+<!-- last-processed: 23d531a -->
 =======
-<!-- last-processed: 1e17c6e -->
+<!-- last-processed: 23d531a -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
