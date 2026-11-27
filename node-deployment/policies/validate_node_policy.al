@@ -20,6 +20,7 @@ on error ignore
 if !enable_debug == true then set debug on
 
 :sync-blockchain:
+if !create_policy == true then goto process-select
 
 if !master_configs != true then
 do run blockchain sync
@@ -65,6 +66,7 @@ else goto mismatch-error
 if !tcp_bind == false and !policy_tcp_bind == false then
 <do is_policy = blockchain get !node_type where
     company=!company_name and
+    ip=!external_ip and
     local_ip = !ip and
     port = !anylog_server_port bring.first>
 do goto check-policy

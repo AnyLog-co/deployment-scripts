@@ -26,11 +26,26 @@ if !enable_debug == true then set debug on
 if !is_edgelake == true then goto end-script
 
 :check-policy:
+on error ignore
+is_blockchain_license = blockchain get license bring.last
+if not !is_blockchain_license then goto set-params
 
+# --- license exists on the blockchain: rebuild the activation key from its fields ---
+key_num      = from !is_blockchain_license bring [*][activation_key]
+company      = from !is_blockchain_license bring [*][company]
+expiration   = from !is_blockchain_license bring [*][expiration]
+license_type = from !is_blockchain_license bring [*][type]
+max_nodes    = from !is_blockchain_license bring [*][max_nodes]
 
-activation_key =  blockchain get license bring.last [license][activation_key] "{'company':'"  [license][company] "','expiration':'"  [license][expiration] "','type':'" [license][type] "'}"
+if not !key_num then goto missing-license-key
+if not !max_nodes then set max_nodes = 0         # older licenses without max_nodes
+
+license_info = {"company": !company, "expiration": !expiration, "type": !license_type, "max_nodes": !max_nodes.int}
+serialized_json_info  = json !license_info
+activation_key = !key_num + !serialized_json_info
+
 if !activation_key then goto set-license
-if not !activation_key and not $LICENSE_KEY then goto missing-license-key
+goto missing-license-key
 
 :set-params:
 on error ignore
@@ -40,6 +55,7 @@ license_key_num = $LICENSE_KEY[:256]
 license_type = from $LICENSE_KEY[256:] bring [type]
 expiration = from $LICENSE_KEY[256:] bring [expiration]
 owner = from $LICENSE_KEY[256:] bring [company]
+max_nodes = from $LICENSE_KEY[256:]  bring [max_nodes]
 
 :create-license:
 on error ignore
@@ -48,7 +64,8 @@ on error ignore
         "company": !owner,
         "expiration": !expiration,
         "type": !license_type,
-        "activation_key": !license_key_num
+        "activation_key": !license_key_num,
+        "max_nodes": !max_nodes.int
     }
 }>
 

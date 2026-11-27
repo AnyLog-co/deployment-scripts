@@ -18,34 +18,16 @@ on error ignore
 :set-debug:
 if !enable_debug == true then set debug on
 
+if !node_type != operator then goto end-script
+
 set create_policy = false
 
-:sync-blockchain:
-if !master_configs == true then
-do blockchain pull to json
-do blockchain update file
-
-else if !master_configs != true then run blockchain sync
-
-blockchain reload metadata
-
 :check-policy:
-on error ignore
 
-# checks nodes based on name, company and networking configurations
-# this check for Operator node, but also creates a new cluster name / ID if needed
-if $CLUSTER_NAME then cluster_id = blockchain get cluster where company=!company_name and name=$CLUSTER_NAME bring.first [*][id]
-if !cluster_id then
-do cluster_name = $CLUSTER_NAME
-do goto check-primary
+if !cluster_id then goto check-primary
+else if !cluster_name then is_cluster = blockchain get cluster where name=!cluster_name and company=!company_name bring.first
 
-process !local_scripts/node-deployment/policies/validate_node_policy.al
-
-if !create_policy == true and not !cluster_id and !cluster_name then
-do cluster_id = blockchain get cluster where name=!cluster_name and company=!company_name bring.first [*][id]
-
-if not !cluster_id and !create_policy == true then goto declare-policy-error
-else if not !cluster_id and !create_policy == false then goto prep-policy
+if !is_cluster then cluster_id = from !is_cluster bring [*][id]
 
 :check-primary:
 if !cluster_id then operator_count = blockchain get operator where cluster = !cluster_id

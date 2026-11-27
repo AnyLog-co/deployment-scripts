@@ -1,0 +1,2271 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [
+        "Power Plant"
+      ],
+      "targetBlank": false,
+      "title": "Menu",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
+  "panels": [
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "bdr5p5qemo5j4c"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": null,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<p class =\"panel-title-text\"\n  style=\"\n    font-size: xx-large;\n    text-align:center;\n    height:40%;\n    bottom:0;\n    margin:0;\">Power Plant</p>\n<hr\n  style=\"\n    width:40%;\n    margin-bottom: 8px;\">\n<p class =\"panel-subtitle-text\"\n  style=\"\n    font-size: large;\n    text-align:center;\n    height:60%;\n    bottom:0;\n    margin:0;\n    max-width: 100%;\">Generators</p>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Monitor"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 250
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": false,
+                    "title": "${__value.raw} Detail",
+                    "url": "http://10.10.1.15:3000/d/adr6o6aadpipsd/power-monitor-detail?orgId=1&var-monitor=${__value.raw}"
+                  }
+                ]
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "BCT": {
+                        "index": 6,
+                        "text": "(BCT) Bus Tie 12470/12470"
+                      },
+                      "BF1": {
+                        "index": 1,
+                        "text": "(BF1) West Feeder"
+                      },
+                      "BF2": {
+                        "index": 2,
+                        "text": "(BF2) East Feeder"
+                      },
+                      "BF3": {
+                        "index": 3,
+                        "text": "(BF3) Center Feeder"
+                      },
+                      "BF4": {
+                        "index": 4,
+                        "text": "(BF4) Industrial Feeder"
+                      },
+                      "BSP": {
+                        "index": 5,
+                        "text": "(BSP) Station Power"
+                      },
+                      "CBT": {
+                        "index": 7,
+                        "text": "(CBT) Bus Tie 12470/12470"
+                      },
+                      "CDT": {
+                        "index": 12,
+                        "text": "(CDT) Bus Tie 12470/2400"
+                      },
+                      "CF1": {
+                        "index": 8,
+                        "text": "(CF1) Southeast Feeder"
+                      },
+                      "CF2": {
+                        "index": 9,
+                        "text": "(CF2) AC Homes"
+                      },
+                      "CF3": {
+                        "index": 10,
+                        "text": "(CF3) North Feeder"
+                      },
+                      "CSP": {
+                        "index": 11,
+                        "text": "(CSP) Station Power"
+                      },
+                      "DCT": {
+                        "index": 13,
+                        "text": "(DCT) Bus Tie 2400/12470"
+                      },
+                      "DF1": {
+                        "index": 14,
+                        "text": "(DF1) North Residence"
+                      },
+                      "DF2": {
+                        "index": 15,
+                        "text": "(DF2) North Main"
+                      },
+                      "DF3": {
+                        "index": 16,
+                        "text": "(DF3) Wenger West"
+                      },
+                      "DF4": {
+                        "index": 17,
+                        "text": "(DF4) South Main"
+                      },
+                      "DSP": {
+                        "index": 18,
+                        "text": "(DSP) Station Power"
+                      },
+                      "KPL": {
+                        "index": 0,
+                        "text": "(KPL) Westar Interconnection"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Real Power"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "kwatt"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Reactive Power"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 125
+              },
+              {
+                "id": "unit",
+                "value": "kvoltampreact"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Power Factor"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 109
+              },
+              {
+                "id": "unit",
+                "value": ""
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A-B Current"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "amp"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "B-C Current"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "amp"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "C-A Current"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "amp"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 3
+      },
+      "id": null,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 2,
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "adi6yezvufx8gd"
+          },
+          "editorMode": "code",
+          "hide": false,
+          "payload": "{\r\n  \"sql\": \"select timestamp,monitor_id,realpower,reactivepower,powerfactor,a_current,b_current,c_current from pp_pm where (monitor_id='BG8' or monitor_id='BG9' or monitor_id='BG10' or monitor_id='BG11') ORDER BY timestamp DESC limit 4\"\r\n}",
+          "refId": "A",
+          "target": "cos.pp_pm"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Reactive Power",
+            "binary": {
+              "left": "reactivepower",
+              "operator": "*",
+              "right": "0.1"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Power Factor",
+            "binary": {
+              "left": "powerfactor",
+              "operator": "*",
+              "right": "0.01"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "max(timestamp)": true,
+              "powerfactor": true,
+              "reactivepower": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Power Factor": 6,
+              "Reactive Power": 4,
+              "a_current": 7,
+              "b_current": 8,
+              "c_current": 9,
+              "max(timestamp)": 0,
+              "monitor_id": 1,
+              "powerfactor": 5,
+              "reactivepower": 3,
+              "realpower": 2
+            },
+            "renameByName": {
+              "a_current": "A-B Current",
+              "b_current": "B-C Current",
+              "c_current": "C-A Current",
+              "monitor_id": "Monitor",
+              "powerfactor": "",
+              "realpower": "Real Power"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Monitor"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 250
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": false,
+                    "title": "${__value.raw} Detail",
+                    "url": "http://10.10.1.15:3000/d/adr6o6aadpipsd/power-monitor-detail?orgId=1&var-monitor=${__value.raw}"
+                  }
+                ]
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "BCT": {
+                        "index": 6,
+                        "text": "(BCT) Bus Tie 12470/12470"
+                      },
+                      "BF1": {
+                        "index": 1,
+                        "text": "(BF1) West Feeder"
+                      },
+                      "BF2": {
+                        "index": 2,
+                        "text": "(BF2) East Feeder"
+                      },
+                      "BF3": {
+                        "index": 3,
+                        "text": "(BF3) Center Feeder"
+                      },
+                      "BF4": {
+                        "index": 4,
+                        "text": "(BF4) Industrial Feeder"
+                      },
+                      "BSP": {
+                        "index": 5,
+                        "text": "(BSP) Station Power"
+                      },
+                      "CBT": {
+                        "index": 7,
+                        "text": "(CBT) Bus Tie 12470/12470"
+                      },
+                      "CDT": {
+                        "index": 12,
+                        "text": "(CDT) Bus Tie 12470/2400"
+                      },
+                      "CF1": {
+                        "index": 8,
+                        "text": "(CF1) Southeast Feeder"
+                      },
+                      "CF2": {
+                        "index": 9,
+                        "text": "(CF2) AC Homes"
+                      },
+                      "CF3": {
+                        "index": 10,
+                        "text": "(CF3) North Feeder"
+                      },
+                      "CSP": {
+                        "index": 11,
+                        "text": "(CSP) Station Power"
+                      },
+                      "DCT": {
+                        "index": 13,
+                        "text": "(DCT) Bus Tie 2400/12470"
+                      },
+                      "DF1": {
+                        "index": 14,
+                        "text": "(DF1) North Residence"
+                      },
+                      "DF2": {
+                        "index": 15,
+                        "text": "(DF2) North Main"
+                      },
+                      "DF3": {
+                        "index": 16,
+                        "text": "(DF3) Wenger West"
+                      },
+                      "DF4": {
+                        "index": 17,
+                        "text": "(DF4) South Main"
+                      },
+                      "DSP": {
+                        "index": 18,
+                        "text": "(DSP) Station Power"
+                      },
+                      "KPL": {
+                        "index": 0,
+                        "text": "(KPL) Westar Interconnection"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A-B Voltage"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "kvolt"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "B-C Voltage"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "kvolt"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "C-A Voltage"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "kvolt"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Frequency"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "rothz"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 12,
+        "y": 3
+      },
+      "id": null,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 2,
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "hide": false,
+          "payload": "{\r\n  \"sql\": \"select timestamp,monitor_id,a_n_voltage,b_n_voltage,c_n_voltage,frequency from pp_pm where (monitor_id='BG8' or monitor_id='BG9' or monitor_id='BG10' or monitor_id='BG11') ORDER BY timestamp DESC limit 1\"\r\n}",
+          "refId": "A",
+          "target": "cos.pp_pm"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "A-B Voltage",
+            "binary": {
+              "left": "a_n_voltage",
+              "operator": "*",
+              "right": "0.01"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "B-C Voltage",
+            "binary": {
+              "left": "b_n_voltage",
+              "operator": "*",
+              "right": "0.01"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "C-A Voltage",
+            "binary": {
+              "left": "c_n_voltage",
+              "operator": "*",
+              "right": "0.01"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Frequency",
+            "binary": {
+              "left": "frequency",
+              "operator": "*",
+              "right": "0.01"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "a_n_voltage": true,
+              "b_n_voltage": true,
+              "c_n_voltage": true,
+              "frequency": true,
+              "max(timestamp)": true,
+              "monitor_id": true,
+              "powerfactor": true,
+              "reactivepower": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Power Factor": 6,
+              "Reactive Power": 4,
+              "a_current": 7,
+              "b_current": 8,
+              "c_current": 9,
+              "max(timestamp)": 0,
+              "monitor_id": 1,
+              "powerfactor": 5,
+              "reactivepower": 3,
+              "realpower": 2
+            },
+            "renameByName": {
+              "a_current": "A-B Current",
+              "a_n_voltage": "",
+              "b_current": "B-C Current",
+              "b_n_voltage": "",
+              "c_current": "C-A Current",
+              "c_n_voltage": "",
+              "monitor_id": "Monitor",
+              "powerfactor": "",
+              "realpower": "Real Power"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Monitor"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 250
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": false,
+                    "title": "${__value.raw} Detail",
+                    "url": "http://10.10.1.15:3000/d/adr6o6aadpipsd/power-monitor-detail?orgId=1&var-monitor=${__value.raw}"
+                  }
+                ]
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "BCT": {
+                        "index": 6,
+                        "text": "(BCT) Bus Tie 12470/12470"
+                      },
+                      "BF1": {
+                        "index": 1,
+                        "text": "(BF1) West Feeder"
+                      },
+                      "BF2": {
+                        "index": 2,
+                        "text": "(BF2) East Feeder"
+                      },
+                      "BF3": {
+                        "index": 3,
+                        "text": "(BF3) Center Feeder"
+                      },
+                      "BF4": {
+                        "index": 4,
+                        "text": "(BF4) Industrial Feeder"
+                      },
+                      "BSP": {
+                        "index": 5,
+                        "text": "(BSP) Station Power"
+                      },
+                      "CBT": {
+                        "index": 7,
+                        "text": "(CBT) Bus Tie 12470/12470"
+                      },
+                      "CDT": {
+                        "index": 12,
+                        "text": "(CDT) Bus Tie 12470/2400"
+                      },
+                      "CF1": {
+                        "index": 8,
+                        "text": "(CF1) Southeast Feeder"
+                      },
+                      "CF2": {
+                        "index": 9,
+                        "text": "(CF2) AC Homes"
+                      },
+                      "CF3": {
+                        "index": 10,
+                        "text": "(CF3) North Feeder"
+                      },
+                      "CSP": {
+                        "index": 11,
+                        "text": "(CSP) Station Power"
+                      },
+                      "DCT": {
+                        "index": 13,
+                        "text": "(DCT) Bus Tie 2400/12470"
+                      },
+                      "DF1": {
+                        "index": 14,
+                        "text": "(DF1) North Residence"
+                      },
+                      "DF2": {
+                        "index": 15,
+                        "text": "(DF2) North Main"
+                      },
+                      "DF3": {
+                        "index": 16,
+                        "text": "(DF3) Wenger West"
+                      },
+                      "DF4": {
+                        "index": 17,
+                        "text": "(DF4) South Main"
+                      },
+                      "DSP": {
+                        "index": 18,
+                        "text": "(DSP) Station Power"
+                      },
+                      "KPL": {
+                        "index": 0,
+                        "text": "(KPL) Westar Interconnection"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Real Power"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "kwatt"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Reactive Power"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 125
+              },
+              {
+                "id": "unit",
+                "value": "kvoltampreact"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Power Factor"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 109
+              },
+              {
+                "id": "unit",
+                "value": ""
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A-B Current"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "amp"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "B-C Current"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "amp"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "C-A Current"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "amp"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "id": null,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 2,
+        "showHeader": false,
+        "sortBy": []
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "hide": false,
+          "payload": "{\r\n  \"sql\": \"select timestamp,monitor_id,realpower,reactivepower,powerfactor,a_current,b_current,c_current from pp_pm where (monitor_id='CG7' or monitor_id='CG12') ORDER BY timestamp DESC limit 2\"\r\n}",
+          "refId": "A",
+          "target": "cos.pp_pm"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Reactive Power",
+            "binary": {
+              "left": "reactivepower",
+              "operator": "*",
+              "right": "0.1"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Power Factor",
+            "binary": {
+              "left": "powerfactor",
+              "operator": "*",
+              "right": "0.01"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "max(timestamp)": true,
+              "powerfactor": true,
+              "reactivepower": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Power Factor": 6,
+              "Reactive Power": 4,
+              "a_current": 7,
+              "b_current": 8,
+              "c_current": 9,
+              "max(timestamp)": 0,
+              "monitor_id": 1,
+              "powerfactor": 5,
+              "reactivepower": 3,
+              "realpower": 2
+            },
+            "renameByName": {
+              "a_current": "A-B Current",
+              "b_current": "B-C Current",
+              "c_current": "C-A Current",
+              "monitor_id": "Monitor",
+              "powerfactor": "",
+              "realpower": "Real Power"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Monitor"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 250
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": false,
+                    "title": "${__value.raw} Detail",
+                    "url": "http://10.10.1.15:3000/d/adr6o6aadpipsd/power-monitor-detail?orgId=1&var-monitor=${__value.raw}"
+                  }
+                ]
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "BCT": {
+                        "index": 6,
+                        "text": "(BCT) Bus Tie 12470/12470"
+                      },
+                      "BF1": {
+                        "index": 1,
+                        "text": "(BF1) West Feeder"
+                      },
+                      "BF2": {
+                        "index": 2,
+                        "text": "(BF2) East Feeder"
+                      },
+                      "BF3": {
+                        "index": 3,
+                        "text": "(BF3) Center Feeder"
+                      },
+                      "BF4": {
+                        "index": 4,
+                        "text": "(BF4) Industrial Feeder"
+                      },
+                      "BSP": {
+                        "index": 5,
+                        "text": "(BSP) Station Power"
+                      },
+                      "CBT": {
+                        "index": 7,
+                        "text": "(CBT) Bus Tie 12470/12470"
+                      },
+                      "CDT": {
+                        "index": 12,
+                        "text": "(CDT) Bus Tie 12470/2400"
+                      },
+                      "CF1": {
+                        "index": 8,
+                        "text": "(CF1) Southeast Feeder"
+                      },
+                      "CF2": {
+                        "index": 9,
+                        "text": "(CF2) AC Homes"
+                      },
+                      "CF3": {
+                        "index": 10,
+                        "text": "(CF3) North Feeder"
+                      },
+                      "CSP": {
+                        "index": 11,
+                        "text": "(CSP) Station Power"
+                      },
+                      "DCT": {
+                        "index": 13,
+                        "text": "(DCT) Bus Tie 2400/12470"
+                      },
+                      "DF1": {
+                        "index": 14,
+                        "text": "(DF1) North Residence"
+                      },
+                      "DF2": {
+                        "index": 15,
+                        "text": "(DF2) North Main"
+                      },
+                      "DF3": {
+                        "index": 16,
+                        "text": "(DF3) Wenger West"
+                      },
+                      "DF4": {
+                        "index": 17,
+                        "text": "(DF4) South Main"
+                      },
+                      "DSP": {
+                        "index": 18,
+                        "text": "(DSP) Station Power"
+                      },
+                      "KPL": {
+                        "index": 0,
+                        "text": "(KPL) Westar Interconnection"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A-B Voltage"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "kvolt"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "B-C Voltage"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "kvolt"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "C-A Voltage"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "kvolt"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Frequency"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "rothz"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 12,
+        "y": 9
+      },
+      "id": null,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 2,
+        "showHeader": false,
+        "sortBy": []
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "hide": false,
+          "payload": "{\r\n  \"sql\": \"select timestamp,monitor_id,a_n_voltage,b_n_voltage,c_n_voltage,frequency from pp_pm where (monitor_id='CG7' or monitor_id='CG12') ORDER BY timestamp DESC limit 1\"\r\n}",
+          "refId": "A",
+          "target": "cos.pp_pm"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "A-B Voltage",
+            "binary": {
+              "left": "a_n_voltage",
+              "operator": "*",
+              "right": "0.01"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "B-C Voltage",
+            "binary": {
+              "left": "b_n_voltage",
+              "operator": "*",
+              "right": "0.01"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "C-A Voltage",
+            "binary": {
+              "left": "c_n_voltage",
+              "operator": "*",
+              "right": "0.01"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Frequency",
+            "binary": {
+              "left": "frequency",
+              "operator": "*",
+              "right": "0.01"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "a_n_voltage": true,
+              "b_n_voltage": true,
+              "c_n_voltage": true,
+              "frequency": true,
+              "max(timestamp)": true,
+              "monitor_id": true,
+              "powerfactor": true,
+              "reactivepower": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Power Factor": 6,
+              "Reactive Power": 4,
+              "a_current": 7,
+              "b_current": 8,
+              "c_current": 9,
+              "max(timestamp)": 0,
+              "monitor_id": 1,
+              "powerfactor": 5,
+              "reactivepower": 3,
+              "realpower": 2
+            },
+            "renameByName": {
+              "a_current": "A-B Current",
+              "a_n_voltage": "",
+              "b_current": "B-C Current",
+              "b_n_voltage": "",
+              "c_current": "C-A Current",
+              "c_n_voltage": "",
+              "monitor_id": "Monitor",
+              "powerfactor": "",
+              "realpower": "Real Power"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Monitor"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 250
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": false,
+                    "title": "${__value.raw} Detail",
+                    "url": "http://10.10.1.15:3000/d/adr6o6aadpipsd/power-monitor-detail?orgId=1&var-monitor=${__value.raw}"
+                  }
+                ]
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "BCT": {
+                        "index": 6,
+                        "text": "(BCT) Bus Tie 12470/12470"
+                      },
+                      "BF1": {
+                        "index": 1,
+                        "text": "(BF1) West Feeder"
+                      },
+                      "BF2": {
+                        "index": 2,
+                        "text": "(BF2) East Feeder"
+                      },
+                      "BF3": {
+                        "index": 3,
+                        "text": "(BF3) Center Feeder"
+                      },
+                      "BF4": {
+                        "index": 4,
+                        "text": "(BF4) Industrial Feeder"
+                      },
+                      "BSP": {
+                        "index": 5,
+                        "text": "(BSP) Station Power"
+                      },
+                      "CBT": {
+                        "index": 7,
+                        "text": "(CBT) Bus Tie 12470/12470"
+                      },
+                      "CDT": {
+                        "index": 12,
+                        "text": "(CDT) Bus Tie 12470/2400"
+                      },
+                      "CF1": {
+                        "index": 8,
+                        "text": "(CF1) Southeast Feeder"
+                      },
+                      "CF2": {
+                        "index": 9,
+                        "text": "(CF2) AC Homes"
+                      },
+                      "CF3": {
+                        "index": 10,
+                        "text": "(CF3) North Feeder"
+                      },
+                      "CSP": {
+                        "index": 11,
+                        "text": "(CSP) Station Power"
+                      },
+                      "DCT": {
+                        "index": 13,
+                        "text": "(DCT) Bus Tie 2400/12470"
+                      },
+                      "DF1": {
+                        "index": 14,
+                        "text": "(DF1) North Residence"
+                      },
+                      "DF2": {
+                        "index": 15,
+                        "text": "(DF2) North Main"
+                      },
+                      "DF3": {
+                        "index": 16,
+                        "text": "(DF3) Wenger West"
+                      },
+                      "DF4": {
+                        "index": 17,
+                        "text": "(DF4) South Main"
+                      },
+                      "DSP": {
+                        "index": 18,
+                        "text": "(DSP) Station Power"
+                      },
+                      "KPL": {
+                        "index": 0,
+                        "text": "(KPL) Westar Interconnection"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Real Power"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "kwatt"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Reactive Power"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 125
+              },
+              {
+                "id": "unit",
+                "value": "kvoltampreact"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Power Factor"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 109
+              },
+              {
+                "id": "unit",
+                "value": ""
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A-B Current"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "amp"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "B-C Current"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "amp"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "C-A Current"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "amp"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 12
+      },
+      "id": null,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 2,
+        "showHeader": false,
+        "sortBy": []
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "hide": false,
+          "payload": "{\r\n  \"sql\": \"select timestamp,monitor_id,realpower,reactivepower,powerfactor,a_current,b_current,c_current from pp_pm where (monitor_id='DG2' or monitor_id='DG3' or monitor_id='DG4' or monitor_id='DG5' or monitor_id='DG6') ORDER BY timestamp DESC limit 5\"\r\n}",
+          "refId": "A",
+          "target": "cos.pp_pm"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Reactive Power",
+            "binary": {
+              "left": "reactivepower",
+              "operator": "*",
+              "right": "0.1"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Power Factor",
+            "binary": {
+              "left": "powerfactor",
+              "operator": "*",
+              "right": "0.01"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "max(timestamp)": true,
+              "powerfactor": true,
+              "reactivepower": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Power Factor": 6,
+              "Reactive Power": 4,
+              "a_current": 7,
+              "b_current": 8,
+              "c_current": 9,
+              "max(timestamp)": 0,
+              "monitor_id": 1,
+              "powerfactor": 5,
+              "reactivepower": 3,
+              "realpower": 2
+            },
+            "renameByName": {
+              "a_current": "A-B Current",
+              "b_current": "B-C Current",
+              "c_current": "C-A Current",
+              "monitor_id": "Monitor",
+              "powerfactor": "",
+              "realpower": "Real Power"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "simpod-json-datasource",
+        "uid": "cdu9ph99hjjswc"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Monitor"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 250
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": false,
+                    "title": "${__value.raw} Detail",
+                    "url": "http://10.10.1.15:3000/d/adr6o6aadpipsd/power-monitor-detail?orgId=1&var-monitor=${__value.raw}"
+                  }
+                ]
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "BCT": {
+                        "index": 6,
+                        "text": "(BCT) Bus Tie 12470/12470"
+                      },
+                      "BF1": {
+                        "index": 1,
+                        "text": "(BF1) West Feeder"
+                      },
+                      "BF2": {
+                        "index": 2,
+                        "text": "(BF2) East Feeder"
+                      },
+                      "BF3": {
+                        "index": 3,
+                        "text": "(BF3) Center Feeder"
+                      },
+                      "BF4": {
+                        "index": 4,
+                        "text": "(BF4) Industrial Feeder"
+                      },
+                      "BSP": {
+                        "index": 5,
+                        "text": "(BSP) Station Power"
+                      },
+                      "CBT": {
+                        "index": 7,
+                        "text": "(CBT) Bus Tie 12470/12470"
+                      },
+                      "CDT": {
+                        "index": 12,
+                        "text": "(CDT) Bus Tie 12470/2400"
+                      },
+                      "CF1": {
+                        "index": 8,
+                        "text": "(CF1) Southeast Feeder"
+                      },
+                      "CF2": {
+                        "index": 9,
+                        "text": "(CF2) AC Homes"
+                      },
+                      "CF3": {
+                        "index": 10,
+                        "text": "(CF3) North Feeder"
+                      },
+                      "CSP": {
+                        "index": 11,
+                        "text": "(CSP) Station Power"
+                      },
+                      "DCT": {
+                        "index": 13,
+                        "text": "(DCT) Bus Tie 2400/12470"
+                      },
+                      "DF1": {
+                        "index": 14,
+                        "text": "(DF1) North Residence"
+                      },
+                      "DF2": {
+                        "index": 15,
+                        "text": "(DF2) North Main"
+                      },
+                      "DF3": {
+                        "index": 16,
+                        "text": "(DF3) Wenger West"
+                      },
+                      "DF4": {
+                        "index": 17,
+                        "text": "(DF4) South Main"
+                      },
+                      "DSP": {
+                        "index": 18,
+                        "text": "(DSP) Station Power"
+                      },
+                      "KPL": {
+                        "index": 0,
+                        "text": "(KPL) Westar Interconnection"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A-B Voltage"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "kvolt"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "B-C Voltage"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "kvolt"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "C-A Voltage"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "kvolt"
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Frequency"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "rothz"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 12,
+        "y": 12
+      },
+      "id": null,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 2,
+        "showHeader": false,
+        "sortBy": []
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "simpod-json-datasource",
+            "uid": "bdr5p5qemo5j4c"
+          },
+          "editorMode": "code",
+          "hide": false,
+          "payload": "{\r\n  \"sql\": \"select timestamp,monitor_id,a_n_voltage,b_n_voltage,c_n_voltage,frequency from pp_pm where (monitor_id='DG2' or monitor_id='DG3' or monitor_id='DG4' or monitor_id='DG5' or monitor_id='DG6') ORDER BY timestamp DESC limit 1\"\r\n}",
+          "refId": "A",
+          "target": "cos.pp_pm"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "A-B Voltage",
+            "binary": {
+              "left": "a_n_voltage",
+              "operator": "*",
+              "right": "0.01"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "B-C Voltage",
+            "binary": {
+              "left": "b_n_voltage",
+              "operator": "*",
+              "right": "0.01"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "C-A Voltage",
+            "binary": {
+              "left": "c_n_voltage",
+              "operator": "*",
+              "right": "0.01"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Frequency",
+            "binary": {
+              "left": "frequency",
+              "operator": "*",
+              "right": "0.01"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "a_n_voltage": true,
+              "b_n_voltage": true,
+              "c_n_voltage": true,
+              "frequency": true,
+              "max(timestamp)": true,
+              "monitor_id": true,
+              "powerfactor": true,
+              "reactivepower": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Power Factor": 6,
+              "Reactive Power": 4,
+              "a_current": 7,
+              "b_current": 8,
+              "c_current": 9,
+              "max(timestamp)": 0,
+              "monitor_id": 1,
+              "powerfactor": 5,
+              "reactivepower": 3,
+              "realpower": 2
+            },
+            "renameByName": {
+              "a_current": "A-B Current",
+              "a_n_voltage": "",
+              "b_current": "B-C Current",
+              "b_n_voltage": "",
+              "c_current": "C-A Current",
+              "c_n_voltage": "",
+              "monitor_id": "Monitor",
+              "powerfactor": "",
+              "realpower": "Real Power"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 39,
+  "tags": [
+    "Power Plant"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "utc",
+  "title": "Generators",
+  "uid": "fdtivmkxwdreoc",
+  "version": 2,
+  "weekStart": ""
+}

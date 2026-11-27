@@ -19,7 +19,6 @@ if !system_query_db == sqlite then connect dbms system_query where type=sqlite a
     autocommit = !autocommit and
     unlog = !memory>
 
-
 :define-query-policy:
 
 # if we are looking at a node that's not query, but does fit a certain set of criteria, then define a query policy
@@ -46,5 +45,9 @@ end script
 
 
 :system-query-db-error:
-echo "Error: Unable to connect to almgm database with db type: " !system_query_db ". Cannot continue"
+echo "Error: Unable to connect to system_query database with db type: " !system_query_db ". Cannot continue"
 goto end-script
+
+:connect-mcp-err:
+echo "Error: failed to configure MCP connection"
+return

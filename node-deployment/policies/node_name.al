@@ -22,14 +22,23 @@ on error ignore
 :set-debug:
 if !enable_debug == true then set debug on
 
-if !node_type == operator and not !cluster_name then goto cluster-name
-else if !node_name then goto end-script
-
+if !node_type != operator and not !node_name then goto node-name
+else if !node_type != operator  and !node_name then goto set-node-name
 
 :cluster-name:
-if !cluster_id then cluster_name = blockchain get cluster where id = !cluster_id bring.first [*][name]
-else if $CLUSTER_NAME and not !cluster_name then cluster_name = $CLUSTER_NAME
-else if not $CLUSTER_NAME and not !cluster_name then cluster_name = "cluster-" + !node_hostname + "-" + !node_company_name + "-" + !node_type + "-" + !hardware_id
+if $CLUSTER_ID then cluster_id = $CLUSTER_ID
+if $CLUSTER_NAME then cluster_name = $CLUSTER_NAME
+if not !cluster_name and not !cluster_id then  cluster_name = "cluster-" + !node_hostname + "-" + !node_company_name + "-" + !node_type + "-" + !hardware_id
+
+if !cluster_id then is_cluster = blockchain get cluster where id = !cluster_id
+else if !cluster_name then !is_cluster = blockchain get cluster where name=!cluster_name and company=!company_name bring.first
+
+if !cluster_id and not !is_cluster then goto missing-cluster
+if !is_cluster then
+do cluster_name = from !is_cluster bring [*][name]
+do cluster_id   = from !is_cluster bring [*][id]
+
+if !node_name then goto set-node-name
 
 :node-name:
 if $NODE_NAME and not !node_name then node_name = $NODE_NAME
@@ -43,3 +52,10 @@ do set set_node_name = true
 :end-script:
 if !enable_debug == true then set debug off
 end script
+
+:terminate-scripts:
+exit scripts
+
+:missing-cluster:
+echo "Missing cluster with ID " + !cluster_id
+goto terminate-scripts

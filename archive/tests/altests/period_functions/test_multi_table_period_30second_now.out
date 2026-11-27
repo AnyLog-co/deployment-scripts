@@ -1,0 +1,21 @@
+==========================================================================
+Title:      30 second increments
+Date:       2023-04-06 16:37:50.021742
+Command:    select parentelement, min(value) as min_val, max(value) as max_val, avg(value)::float(6) as avg_value, sum(value)::float(6) as sum_val, count(*) as row_count from ping_sensor where period(second, 30, now(), timestamp) group by parentelement
+DBMS:       test
+Include:    (percentagecpu_sensor)
+Extend:     (@table_name as table)
+Format:     table
+==========================================================================
+table                parentelement                        min_val max_val avg_value sum_val row_count 
+-------------------- ------------------------------------ ------- ------- --------- ------- --------- 
+percentagecpu_sensor 1ab3b14e-93b1-11e9-b465-d4856454f4ba    0.43    99.8 53.894521  7868.6       146 
+percentagecpu_sensor 62e71893-92e0-11e9-b465-d4856454f4ba    1.06   99.59 49.271879 7341.51       149 
+percentagecpu_sensor 68ae8bef-92e1-11e9-b465-d4856454f4ba    0.71   99.05 49.706048 8300.91       167 
+percentagecpu_sensor d515dccb-58be-11ea-b46d-d4856454f4ba    2.77   99.63 49.447037 8010.42       162 
+percentagecpu_sensor f0bd0832-a81e-11ea-b46d-d4856454f4ba    0.34   99.15 45.026429 7564.44       168 
+ping_sensor          1ab3b14e-93b1-11e9-b465-d4856454f4ba    0.01   10.95  5.387875 1901.92       353 
+ping_sensor          62e71893-92e0-11e9-b465-d4856454f4ba     0.0    3.99  1.962685  635.91       324 
+ping_sensor          68ae8bef-92e1-11e9-b465-d4856454f4ba    0.46   48.97 25.286921 7636.65       302 
+ping_sensor          d515dccb-58be-11ea-b46d-d4856454f4ba    0.11   48.63 25.653353 8491.26       331 
+ping_sensor          f0bd0832-a81e-11ea-b46d-d4856454f4ba    2.09   36.95 19.795886 6592.03       333 

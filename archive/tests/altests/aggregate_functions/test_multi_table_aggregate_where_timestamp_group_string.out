@@ -1,0 +1,15 @@
+==========================================================================
+Title:      Aggregate Summary WHERE timestamp AND GROUP string
+Date:       2023-04-05 22:14:03.354387
+Command:    select device_name, min(timestamp) as min_ts, max(timestamp) as max_ts, min(value) as min_val, max(value) as max_val, avg(value)::float(6) as avg_value, sum(value)::float(6) as sum_val, count(*) as row_count from ping_sensor where timestamp >= '2022-01-01 00:00:00' and timestamp <= '2022-12-31 23:59:59.999999' group by device_name
+DBMS:       test
+Include:    (percentagecpu_sensor)
+Format:     table
+==========================================================================
+device_name     min_ts                     max_ts                     min_val max_val avg_value sum_val   row_count 
+--------------- -------------------------- -------------------------- ------- ------- --------- --------- --------- 
+ADVA FSP3000R7  2022-02-13 21:20:51.999012 2022-04-16 19:49:52.012942     0.0   99.99  25.89967  87799.88      3390 
+Catalyst 3500XL 2022-02-13 21:58:46.378304 2022-04-16 20:09:52.725939     0.0   99.94 37.382385 124632.87      3334 
+GOOGLE_PING     2022-02-13 22:09:46.053613 2022-04-16 19:35:51.596377    0.02   99.94 35.715113 121181.38      3393 
+Ubiquiti OLT    2022-02-13 21:21:46.746294 2022-04-16 20:33:46.370019    0.05    99.9 37.734474  129051.9      3420 
+VM Lit SL NMS   2022-02-13 22:06:52.719775 2022-04-16 16:12:52.398129     0.0   99.96 28.373984  96499.92      3401 

@@ -17,7 +17,7 @@
         name=power-plant and
         dbms=!msg_dbms and
         table=pp_pm and
-        dynamic=true and
+        auto_uns=true and
         column.timestamp.timestamp = "bring [timestamp]" and
         column.monitor_id = (type=string and value="bring [monitor_id]") and
         column.a_current.float = "bring [A_Current]" and

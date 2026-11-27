@@ -1,0 +1,21 @@
+==========================================================================
+Title:      Aggregate Summary with GROUP BY string
+Date:       2023-04-05 22:14:04.519014
+Command:    select device_name, min(value) as min_val, max(value) as max_val, avg(value)::float(6) as avg_value, sum(value)::float(6) as sum_val, count(*) as row_count from ping_sensor group by device_name
+DBMS:       test
+Include:    (percentagecpu_sensor)
+Extend:     (@table_name as table)
+Format:     table
+==========================================================================
+table                device_name     min_val max_val avg_value sum_val   row_count 
+-------------------- --------------- ------- ------- --------- --------- --------- 
+percentagecpu_sensor ADVA FSP3000R7      0.0   99.99  50.20932   97506.5      1942 
+percentagecpu_sensor Catalyst 3500XL     0.0   99.94 50.536835  99001.66      1959 
+percentagecpu_sensor GOOGLE_PING        0.02   99.94 50.498919  102765.3      2035 
+percentagecpu_sensor Ubiquiti OLT       0.07    99.9  49.99139 100682.66      2014 
+percentagecpu_sensor VM Lit SL NMS      0.02   99.96 50.179132 102867.22      2050 
+ping_sensor          ADVA FSP3000R7      0.0     4.0   1.97175   4022.37      2040 
+ping_sensor          Catalyst 3500XL    0.03   48.97 24.462562  48313.56      1975 
+ping_sensor          GOOGLE_PING        2.01   36.99 19.511103  38573.45      1977 
+ping_sensor          Ubiquiti OLT       0.05    49.0 25.059048  50268.45      2006 
+ping_sensor          VM Lit SL NMS       0.0    11.0  5.477433  10965.82      2002 

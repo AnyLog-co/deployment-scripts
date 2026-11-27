@@ -1,0 +1,10 @@
+==========================================================================
+Title:      1 minute increments
+Date:       2023-04-06 16:37:41.966246
+Command:    select min(value) as min_val, max(value) as max_val, avg(value)::float(6) as avg_value, sum(value)::float(6) as sum_val, count(*) as row_count from ping_sensor where period(minute, 1, now(), timestamp)
+DBMS:       test
+Format:     table
+==========================================================================
+min_val max_val avg_value sum_val  row_count 
+------- ------- --------- -------- --------- 
+    0.0   48.97 15.372958 25257.77      1643 

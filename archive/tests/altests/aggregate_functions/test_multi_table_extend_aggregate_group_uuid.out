@@ -1,0 +1,21 @@
+==========================================================================
+Title:      Aggregate Summary GROUP BY UUID
+Date:       2023-04-05 22:14:04.758574
+Command:    select parentelement, min(value) as min_val, max(value) as max_val, avg(value)::float(6) as avg_value, sum(value)::float(6) as sum_val, count(*) as row_count from ping_sensor group by parentelement
+DBMS:       test
+Include:    (percentagecpu_sensor)
+Extend:     (@table_name as table)
+Format:     table
+==========================================================================
+table                parentelement                        min_val max_val avg_value sum_val   row_count 
+-------------------- ------------------------------------ ------- ------- --------- --------- --------- 
+percentagecpu_sensor 1ab3b14e-93b1-11e9-b465-d4856454f4ba    0.02   99.96 50.179132 102867.22      2050 
+percentagecpu_sensor 62e71893-92e0-11e9-b465-d4856454f4ba     0.0   99.99  50.20932   97506.5      1942 
+percentagecpu_sensor 68ae8bef-92e1-11e9-b465-d4856454f4ba     0.0   99.94 50.536835  99001.66      1959 
+percentagecpu_sensor d515dccb-58be-11ea-b46d-d4856454f4ba    0.07    99.9  49.99139 100682.66      2014 
+percentagecpu_sensor f0bd0832-a81e-11ea-b46d-d4856454f4ba    0.02   99.94 50.498919  102765.3      2035 
+ping_sensor          1ab3b14e-93b1-11e9-b465-d4856454f4ba     0.0    11.0  5.477433  10965.82      2002 
+ping_sensor          62e71893-92e0-11e9-b465-d4856454f4ba     0.0     4.0   1.97175   4022.37      2040 
+ping_sensor          68ae8bef-92e1-11e9-b465-d4856454f4ba    0.03   48.97 24.462562  48313.56      1975 
+ping_sensor          d515dccb-58be-11ea-b46d-d4856454f4ba    0.05    49.0 25.059048  50268.45      2006 
+ping_sensor          f0bd0832-a81e-11ea-b46d-d4856454f4ba    2.01   36.99 19.511103  38573.45      1977 

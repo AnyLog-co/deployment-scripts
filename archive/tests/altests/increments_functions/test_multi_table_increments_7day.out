@@ -1,0 +1,14 @@
+==========================================================================
+Title:      7 day increments
+Date:       2023-04-06 16:32:03.051793
+Command:    select increments(day, 7, timestamp), min(timestamp) as min_ts, max(timestamp) as max_ts, min(value) as min_val, max(value) as max_val, avg(value)::float(6) as avg_value, sum(value)::float(6) as sum_val, count(*) as row_count from ping_sensor where timestamp >= '2022-02-01 00:00:00' and timestamp < '2022-03-01 00:00:00'
+DBMS:       test
+Include:    (percentagecpu_sensor)
+Format:     table
+==========================================================================
+min_ts                     max_ts                     min_val max_val avg_value sum_val  row_count 
+-------------------------- -------------------------- ------- ------- --------- -------- --------- 
+2022-02-13 21:20:51.999012 2022-02-13 23:46:47.209683    3.55   99.55 49.196923   639.56        13 
+2022-02-14 00:05:46.394511 2022-02-20 23:59:46.416928     0.0   99.72 32.535393 58401.03      1795 
+2022-02-21 00:00:52.013706 2022-02-27 23:59:47.509135     0.0   99.94 34.095694 68259.58      2002 
+2022-02-28 00:06:52.388725 2022-02-28 23:43:46.851381    0.04   99.66 32.218885  9246.82       287 
