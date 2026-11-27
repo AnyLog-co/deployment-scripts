@@ -1,11 +1,11 @@
 #----------------------------------------------------------------------------------------------------------------------
 # The following provides an example for data coming in from Topic - Enterprise_C/#
-# unlike the other examples, "Enterprise C" is dynamic which means it automatically creates a UNS structure
+# unlike the other examples, "Enterprise C" is auto_uns which means it automatically creates a UNS structure
 # based on the data flowing in and then inserts it into AnyLog.
 #
 # Data is stored in timestamp / value logic with the sensor/device acting as the table name
 #
-# The following example uses dynamic against topic = Enterprise C/sub/#
+# The following example uses auto_uns against topic = Enterprise C/sub/#
 #
 # :sample UNS:
 # {"uns" : {
@@ -31,7 +31,7 @@ on error goto msg-client-error
     topic=(
         name=!msg_topic and
         dbms = !msg_dbms and
-        dynamic = true
+        auto_uns = true
     )>
 
 

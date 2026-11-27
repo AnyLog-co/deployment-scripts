@@ -26,7 +26,8 @@ on error goto msg-client-error
     user=!mqtt_user and password=!mqtt_passwd and
     log=false and topic=(
         name=!msg_topic and
-        policy = rig-data
+        policy = rig-data and
+        auto_uns=true
     )>
 
 :end-script:

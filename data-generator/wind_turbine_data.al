@@ -32,7 +32,8 @@ on error goto msg-client-error
         policy = available-power and
         policy = blade-pitch and
         policy = energy and
-        policy = reactive-power
+        policy = reactive-power and
+        auto_uns=true
     ) >
 
 :end-script:

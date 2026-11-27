@@ -47,7 +47,8 @@ on error goto msg-client-error
         policy = CHARGER-DEVICE-LOGS and
         policy = CHARGER-LOGS and
         policy = VESSEL-POWER-LOGS and
-        policy = VESSEL-STATE-LOGS
+        policy = VESSEL-STATE-LOGS and
+        auto_uns=true
     )>
 
 
