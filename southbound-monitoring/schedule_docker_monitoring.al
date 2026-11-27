@@ -61,7 +61,7 @@ if !error_code == 3 then goto declare-policy-error
 
 :config-policy:
 on error goto config-policy-error
-config from policy where id=!schedule_id
+if !docker_monitoring == true then config from policy where id=!schedule_id
 
 :end-script:
 end script

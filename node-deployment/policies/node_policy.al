@@ -26,7 +26,6 @@ on error ignore
 :set-debug:
 if !enable_debug == true then set debug on
 
-
 if !is_hidden == true then
 do process !local_scripts/node-deployment/policies/node_name.al
 do goto end-script
@@ -56,9 +55,11 @@ set new_policy = ""
 set policy new_policy [!node_type] = {}
 set policy new_policy [!node_type][name] = !node_name
 set policy new_policy [!node_type][company] = !company_name
+if !config_id then set policy new_policy [!node_type][config] = !config_id
 
-set policy new_policy [!node_type][hostname] = !hostname
-if $HZN_DEVICE_ID then set policy new_policy [!node_type][hzn_device_id] = $HZN_DEVICE_ID
+# hostname not stable on a container recreation
+if !hostname then set policy new_policy [!node_type][hostname] = !hostname
+if !orchestrator_id then set policy new_policy [!node_type][orchestrator] = !orchestrator_id
 
 :network-node_type:
 
