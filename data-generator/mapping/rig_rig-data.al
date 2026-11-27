@@ -22,6 +22,7 @@ set new_policy = {}
         "id" : "rig-data",
         "dbms" : !msg_dbms,
         "table" : "bring [table]",
+        "group_by_attribute": ["rig_id"],
         "readings" : "",
         "schema" : {
             "timestamp" : {
