@@ -45,7 +45,9 @@ set create_policy = false
 on error ignore
 is_table = blockchain get table where dbms=monitoring and name=docker_insight
 if !is_table then goto end-script
-if not !is_table and !create_policy == true then goto declare-policy-error
+else if not !is_table and !create_table == true then
+do call declare-policy-warning
+do goto end-script
 
 :prep-policy:
 create_stmt = "CREATE TABLE IF NOT EXISTS docker_insight( row_id SERIAL PRIMARY KEY, insert_timestamp TIMESTAMP NOT NULL, tsd_name CHAR(3), tsd_id INT, hostname VARCHAR, container VARCHAR, created TIMESTAMP, timestamp TIMESTAMP NOT NULL, uptime TEXT, memory_usage_bytes BIGINT, disk_read_bytes BIGINT, disk_write_bytes BIGINT, network_rx_packets INT, network_tx_packets INT, user_id INT, process_id INT, parent_process_id INT, cpu_usage FLOAT, start_time CHAR(5), terminal CHAR(5), cpu_time TEXT, command VARCHAR ); CREATE INDEX docker_insight_timestamp_index ON docker_insight(timestamp); CREATE INDEX docker_insight_tsd_index ON docker_insight(tsd_name, tsd_id); CREATE INDEX docker_insight_insert_timestamp_index ON docker_insight(insert_timestamp); CREATE INDEX docker_insight_hostname_index ON docker_insight(hostname);"
@@ -53,7 +55,7 @@ create_stmt = "CREATE TABLE IF NOT EXISTS docker_insight( row_id SERIAL PRIMARY 
 <new_policy = {
     "table": {
         "dbms": "monitoring",
-            "name": "docker_insight",
+        "name": "docker_insight",
         "create": !create_stmt
     }
 }>
@@ -93,3 +95,7 @@ goto terminate-scripts
 :policy-error:
 print "Failed to publish policy for an unknown reason"
 goto terminate-scripts
+
+:declare-policy-warning:
+echo "Warning: Table policy monitoring.docker_insight was published but is not visible locally yet. Continuing; it should appear after the next blockchain sync (up to 60 seconds)."
+return
