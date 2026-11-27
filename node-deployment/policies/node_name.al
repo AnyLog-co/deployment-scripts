@@ -22,7 +22,8 @@ on error ignore
 :set-debug:
 if !enable_debug == true then set debug on
 
-if not !node_type == operator and not !node_name then goto set-node-name
+if !node_type != operator and not !node_name then goto node-name
+else if !node_type != operator  and !node_name then goto set-node-name
 
 :cluster-name:
 if $CLUSTER_ID then cluster_id = $CLUSTER_ID
@@ -36,6 +37,8 @@ if !cluster_id and not !is_cluster then goto missing-cluster
 if !is_cluster then
 do cluster_name = from !is_cluster bring [*][name]
 do cluster_id   = from !is_cluster bring [*][id]
+
+if !node_name then goto set-node-name
 
 :node-name:
 if $NODE_NAME and not !node_name then node_name = $NODE_NAME

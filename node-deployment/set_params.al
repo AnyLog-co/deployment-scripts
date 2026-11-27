@@ -58,7 +58,6 @@ else if !license_key then company_name = from !license_key[256:] bring [company]
 node_hostname     = python !hostname.lower().replace(' ', '_').strip()
 if !company_name then node_company_name = python !company_name.lower().replace(' ', '_').replace('.', '_').strip()
 
-!local_scripts/node-deployment/policies/node_name.al
 
 :general-params:
 # check if user inputted env variables + utilize that

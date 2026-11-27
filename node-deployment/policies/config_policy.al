@@ -76,8 +76,8 @@ else if !node_type == master or !node_type == query then goto master-query
 if !node_type == generic then
 <do set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
+    "process !local_scripts/node-deployment/policies/node_name.al",
     "run scheduler 1",
-    
     "process !local_scripts/orchestrator/orchestrator.al",
     "if $FORCE_DISABLE_ALL != true then process !local_scripts/southbound-monitoring/schedule_node_monitoring.al",
     "if $FORCE_DISABLE_ALL != true then process !local_scripts/southbound-monitoring/schedule_syslog_monitoring.al",
@@ -92,6 +92,7 @@ if !node_type == master or !node_type == query then
 <do set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
+    "process !local_scripts/node-deployment/policies/node_name.al",
     "process !local_scripts/orchestrator/orchestrator.al",
     "process !local_scripts/node-deployment/policies/node_policy.al",
     "run scheduler 1",
@@ -108,6 +109,7 @@ if !node_type == publisher then
 <do set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
+    "process !local_scripts/node-deployment/policies/node_name.al",
     "process !local_scripts/orchestrator/orchestrator.al",
     "process !local_scripts/node-deployment/policies/node_policy.al",
     "run scheduler 1",
@@ -128,6 +130,7 @@ do goto publish-policy
 <set policy new_policy [config][script] = [
     "process !local_scripts/node-deployment/database/deploy_database.al",
     "process !local_scripts/node-deployment/connect_blockchain.al",
+    "process !local_scripts/node-deployment/policies/node_name.al",
     "process !local_scripts/orchestrator/orchestrator.al",
     "process !local_scripts/node-deployment/policies/cluster_policy.al",
     "process !local_scripts/node-deployment/policies/node_policy.al",

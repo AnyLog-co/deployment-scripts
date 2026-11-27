@@ -16,14 +16,18 @@
 
 on error ignore
 :set-debug:
-# if !enable_debug == true then set debug on
-set debug on
+if !enable_debug == true then set debug on
+
+if !node_type != operator then goto end-script
 
 set create_policy = false
 
 :check-policy:
 
+if !cluster_id then goto check-primary
+else if !cluster_name then is_cluster = blockchain get cluster where name=!cluster_name and company=!company_name bring.first
 
+if !is_cluster then cluster_id = from !is_cluster bring [*][id]
 
 :check-primary:
 if !cluster_id then operator_count = blockchain get operator where cluster = !cluster_id
