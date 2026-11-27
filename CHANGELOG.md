@@ -6,7 +6,18 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: 2e24415 -->
+<!-- last-processed: 9ea0519 -->
+
+<!-- os-predev: 9ea0519 (2026-11-27) -->
+
+* **Ori Shadmon** (2026-10-28 – 2026-11-27)
+  * Customers: dynamic=true -> auto_uns=true; missing weather; sample scripts for weather stations
+  * Data generator: if -> else if; basic rand data with hardcoded value for testing scale; sample scripts for weather stations; wind turbine2 - testing '+'
+  * General: version control; clean spacing + missing param(s); working barbara example; integrate baraba support for new params; dynamic=true -> auto_uns=true; changelog
+  * Node deployment: working code; node name / cluster name logic change; unneded blockchain seed; spacing / order of operations; v2.1.2611; clean spacing + missing param(s); blockchain seed for non-master; ledger logic; working dns; working barbara example; dns support improvements; integrated $-FORCE_DISABLE_ALL - when set disables anything beyond required configs for specified node type; integrate baraba support for new params; basic rand data with hardcoded value for testing scale; moved license key logic + node status validation into a unified script outside the policy; missing overlay vs no overlay; enforce ledger conn logic; monitoring_scheduler_env_params  param for repeating variables
+  * Node deployment / Database: mcp is now automated for anylog such that connection occurs on the Anthropic (Claude / Chat) side; moved mcp logic to sys query by default - for other uses configure manually
+  * Node deployment / Policies: working code; node name / cluster name logic change; path; revert node policy; if !create_policy == true then we're going to ignore the manual blockchain sync; spacing / order of operations; clean spacing + missing param(s); working dns; working barbara example; integrated $-FORCE_DISABLE_ALL - when set disables anything beyond required configs for specified node type; moved mcp logic to sys query by default - for other uses configure manually; working license key; moved license key logic + node status validation into a unified script outside the policy; if !tcp_bind == false and !policy_tcp_bind == false then we also check the external IP; comment out config publisher
+  * Southbound / Monitoring: swapped error for warning in echo; moved mcp logic to sys query by default - for other uses configure manually; for node monitoring, query is recognized as a command, thus needed to manually define it as a var; monitoring_scheduler_env_params  param for repeating variables
 
 <!-- Developers: add bullets below as changes land in your branch -->
 
@@ -62,7 +73,7 @@ layout: page
 
 ### [bf794d5] · 2026-06-19 – 2026-06-23
 =======
-<!-- last-processed: 23d531a -->
+<!-- last-processed: 9ea0519 -->
 
 <!-- os-dev: 23d531a (2026-11-27) -->
 
@@ -204,7 +215,7 @@ layout: page
 
 <!-- os-dev: 7e412ef (2026-11-16) -->
 =======
-<!-- last-processed: 23d531a -->
+<!-- last-processed: 9ea0519 -->
 
 <!-- os-dev: 57a4ced (2026-11-17) -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
@@ -815,9 +826,9 @@ layout: page
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
 <<<<<<< HEAD
-<!-- last-processed: 23d531a -->
+<!-- last-processed: 9ea0519 -->
 =======
-<!-- last-processed: 23d531a -->
+<!-- last-processed: 9ea0519 -->
 >>>>>>> df35a89f669386857f59360e6bff4e08de6f3581
 
 <!-- os-dev: e728a5a (2026-08-24) -->
