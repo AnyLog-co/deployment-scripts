@@ -20,6 +20,7 @@ else if not !is_policy and !create_policy == true then goto declare-policy-error
         "dbms" : !msg_dbms,
         "table" : "energy",
         "readings" : "",
+        "group_by_attributes": ["turbine_id"],
         "schema" : {
             "timestamp" : {
                 "type" : "timestamp",

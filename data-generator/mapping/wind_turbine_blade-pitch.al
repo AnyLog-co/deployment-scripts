@@ -19,6 +19,7 @@ else if not !is_policy and !create_policy == true then goto declare-policy-error
         "id" : "blade-pitch",
         "dbms" : !msg_dbms,
         "table" : "blade_pitch",
+        "group_by_attributes": ["turbine_id"],
         "readings" : "",
         "schema" : {
             "timestamp" : {
