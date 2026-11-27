@@ -6,7 +6,24 @@ layout: page
 
 ## Unreleased
 <<<<<<< HEAD
-<!-- last-processed: fb4c4db -->
+<!-- last-processed: 2e24415 -->
+
+<!-- predev-main: 2e24415 (2026-10-30) -->
+
+* **Ori Shadmon** (2026-07-02 – 2026-10-30)
+  * Archive: rm un-needed code
+  * Customers: rm un-needed code
+  * Customers / Machine builder: rm un-needed code
+  * Customers / ProveIt: rm un-needed code
+  * Customers / Smart city: rm un-needed code
+  * Data generator: rm un-needed code
+  * General: rm un-needed code
+  * Node deployment: patch from monitoring where values were repeating
+  * Southbound / Monitoring: patch from monitoring where values were repeating
+  * Test: rm un-needed code
+  * Test / Network: rm un-needed code
+* **Mark Davidson** (2026-07-16)
+  * Data generator: Update MQTT topic names to include 'proveit/' prefix
 
 <!-- os-dev: fb4c4db (2026-10-25) -->
 
@@ -566,7 +583,7 @@ layout: page
 
 <!-- os-dev: bd7b642 (2026-08-24) -->
 =======
-<!-- last-processed: fb4c4db -->
+<!-- last-processed: 2e24415 -->
 
 <!-- os-dev: e728a5a (2026-08-24) -->
 >>>>>>> 0abf1bb (chore: update CHANGELOG unreleased [skip ci])
