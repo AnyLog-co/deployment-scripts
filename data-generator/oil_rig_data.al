@@ -24,7 +24,7 @@ on error goto msg-client-error
 <run msg client where
     broker=!mqtt_broker and port=!mqtt_port and
     user=!mqtt_user and password=!mqtt_passwd and
-    log=false and topic=(
+    master_node = !ledger_conn and log=false and topic=(
         name=!msg_topic and
         policy = rig-data and
         auto_uns=true
