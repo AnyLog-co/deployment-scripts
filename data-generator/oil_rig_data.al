@@ -25,22 +25,7 @@ on error goto msg-client-error
     broker=!mqtt_broker and port=!mqtt_port and
     user=!mqtt_user and password=!mqtt_passwd and
     log=false and topic=(
-        name=rig-data/rig-1 and
-        policy = rig-data
-    ) and topic=(
-        name=rig-data/rig-7 and
-        policy = rig-data
-    ) and topic=(
-        name=rig-data/rig-12 and
-        policy = rig-data
-    ) and topic=(
-        name=rig-data/rig-23 and
-        policy = rig-data
-    ) and topic=(
-        name=rig-data/rig-31 and
-        policy = rig-data
-    ) and topic=(
-        name=rig-data/rig-44 and
+        name=!msg_topic and
         policy = rig-data
     )>
 

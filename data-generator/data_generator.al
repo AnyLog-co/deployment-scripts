@@ -27,23 +27,18 @@
 # process !local_scripts/data-generator/data_generator.al
 
 on error ignore
+topic_root = python !msg_topic.split('/')[0]
 
-if      !msg_topic == rand-data    then process !local_scripts/data-generator/rand_data.al
-else if !msg_topic == rand-data2   then process !local_scripts/data-generator/rand_data2.al
-else if !msg_topic == power-plant  then process !local_scripts/smart-city/power_plant.al
-else if !msg_topic == waste-water  then process !local_scripts/smart-city/waste_water_plant.al
-else if !msg_topic == water-pant   then process !local_scripts/smart-city/water_plant.al
-else if !msg_topic == wind-turbine then process !local_scripts/data-generator/wind_turbine_data.al
-else if !msg_topic == rig-data     then process !local_scripts/data-generator/oil_rig_data.al
-else if !msg_topic == wind-turbine then process !local_scripts/data-generator/wind_turbine_data.al
-else if !msg_topic == vessel-data-agg  then process !local_scripts/data-generator/vessel_aggregation_demo.al
-else if !msg_topic == vessel-data  then process !local_scripts/data-generator/vessel_data.al
-else if !msg_topic == enterprise-a then process  !local_scripts/data-generator/mqtt_enterprise_a.al
-else if !msg_topic == enterprise-b then process  !local_scripts/data-generator/mqtt_enterprise_b.al
-else if !msg_topic == enterprise-c then process  !local_scripts/data-generator/mqtt_enterprise_c.al
-else echo "Support for topic: " + !msg_topic + " not found"
+if      !topic_root == vessel-data  then process !local_scripts/data-generator/vessel_data.al
+else if !topic_root == rig-data     then process !local_scripts/data-generator/oil_rig_data.al
+else if !topic_root == wind-turbine then process !local_scripts/data-generator/wind_turbine_data.al
+else if !msg_topic == ""proveit/Enterprise A/Dallas/#"" then process !local_scripts/data-generator/mqtt_enterprise_a.al
+<else if !msg_topic == "proveit/Enterprise B/Site1/#" or
+         !msg_topic == "proveit/Enterprise B/Site3/#" or
+         !msg_topic == "proveit/Enterprise B/Site3/#" then
+    process !local_scripts/data-generator/mqtt_enterprise_b.al>
+else if !msg_topic == "proveit/Enterprise C/#" then !local_scripts/data-generator/mqtt_enterprise_c.al
 
-get msg client
 
 :end-script:
 end script

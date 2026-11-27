@@ -29,14 +29,11 @@ on error goto msg-client-error
     user=!mqtt_user and password=!mqtt_passwd and
     master_node = !ledger_conn and log=false and
     topic=(
-        name="proveit/Enterprise A/opto22/#" and
-        dbms = !msg_dbms and
-        dynamic = true
-    ) and topic=(
-        name="proveit/Enterprise A/Dallas/#" and
+        name=!msg_topic and
         dbms = !msg_dbms and
         dynamic = true
     )>
+
 
 :end-script:
 end script

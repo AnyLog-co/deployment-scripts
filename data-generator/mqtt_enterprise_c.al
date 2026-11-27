@@ -29,19 +29,7 @@ on error goto msg-client-error
     user=!mqtt_user and password=!mqtt_passwd and
     master_node = !ledger_conn and log=false and
     topic=(
-        name="proveit/Enterprise C/sub/#" and
-        dbms = !msg_dbms and
-        dynamic = true
-    ) and topic=(
-        name="proveit/Enterprise C/tff/#" and
-        dbms = !msg_dbms and
-        dynamic = true
-    ) and topic=(
-        name="proveit/Enterprise C/sum/#" and
-        dbms = !msg_dbms and
-        dynamic = true
-    ) and topic=(
-        name="proveit/Enterprise C/chrom/#" and
+        name=!msg_topic and
         dbms = !msg_dbms and
         dynamic = true
     )>

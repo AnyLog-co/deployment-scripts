@@ -32,21 +32,16 @@ process !local_scripts/data-generator/mapping/vessel_VESSEL-POWER-LOGS.al
 process !local_scripts/data-generator/mapping/vessel_VESSEL-STATE-LOGS.al
 
 
+:aggregation:
+process !local_scripts/data-generator/vessel_aggregation_demo.al
+
 :msg-client:
 on error goto msg-client-error
 <run msg client where
     broker=!mqtt_broker and port=!mqtt_port and
     user=!mqtt_user and password=!mqtt_passwd and
     log=false and topic=(
-        name=vessel-data/DLT and
-        policy = BATTERY-PACK-DEVICE-LOGS and
-        policy = BATTERY-PACK-LOGS and
-        policy = CHARGER-DEVICE-LOGS and
-        policy = CHARGER-LOGS and
-        policy = VESSEL-POWER-LOGS and
-        policy = VESSEL-STATE-LOGS
-    ) and topic=(
-        name=vessel-data/DLB and
+        name=!msg_topic and
         policy = BATTERY-PACK-DEVICE-LOGS and
         policy = BATTERY-PACK-LOGS and
         policy = CHARGER-DEVICE-LOGS and

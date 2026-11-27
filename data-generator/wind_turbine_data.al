@@ -28,66 +28,12 @@ on error goto msg-client-error
     broker=!mqtt_broker and port=!mqtt_port and
     user=!mqtt_user and password=!mqtt_passwd and
     log=false and topic=(
-        name=wind-turbine/turbine-1 and
+        name=!msg_topic and
         policy = available-power and
         policy = blade-pitch and
         policy = energy and
         policy = reactive-power
-    ) and topic=(
-        name=wind-turbine/turbine-2 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
-    ) and topic=(
-        name=wind-turbine/turbine-3 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
-    ) and topic=(
-        name=wind-turbine/turbine-5 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
-    ) and topic=(
-        name=wind-turbine/turbine-6 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
-    ) and topic=(
-        name=wind-turbine/turbine-7 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
-    ) and topic=(
-        name=wind-turbine/turbine-8 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
-    ) and topic=(
-        name=wind-turbine/turbine-9 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
-    ) and topic=(
-        name=wind-turbine/turbine-10 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
-    ) and topic=(
-        name=wind-turbine/turbine-11 and
-        policy = available-power and
-        policy = blade-pitch and
-        policy = energy and
-        policy = reactive-power
-    )>
+    ) >
 
 :end-script:
 end script
