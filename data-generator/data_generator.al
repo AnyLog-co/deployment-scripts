@@ -32,9 +32,9 @@ topic_root = python !msg_topic.split('/')[0]
 if      !topic_root == vessel-data  then process !local_scripts/data-generator/vessel_data.al
 else if !topic_root == rig-data     then process !local_scripts/data-generator/oil_rig_data.al
 else if !topic_root == wind-turbine then process !local_scripts/data-generator/wind_turbine_data.al
-else if !msg_topic == ""proveit/Enterprise A/Dallas/#"" then process !local_scripts/data-generator/mqtt_enterprise_a.al
+else if !msg_topic == "proveit/Enterprise A/Dallas/#" then process !local_scripts/data-generator/mqtt_enterprise_a.al
 <else if !msg_topic == "proveit/Enterprise B/Site1/#" or
-         !msg_topic == "proveit/Enterprise B/Site3/#" or
+         !msg_topic == "proveit/Enterprise B/Site2/#" or
          !msg_topic == "proveit/Enterprise B/Site3/#" then
     process !local_scripts/data-generator/mqtt_enterprise_b.al>
 else if !msg_topic == "proveit/Enterprise C/#" then !local_scripts/data-generator/mqtt_enterprise_c.al
